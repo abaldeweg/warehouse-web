@@ -23,7 +23,11 @@
 				"EditorConfig.EditorConfig",
 				"DavidAnson.vscode-markdownlint",
 				"christian-kohler.npm-intellisense",
-				"christian-kohler.path-intellisense"
+				"christian-kohler.path-intellisense",
+				"Vue.volar",
+				"streetsidesoftware.code-spell-checker",
+				"streetsidesoftware.code-spell-checker-german",
+				"vitest.explorer"
 			]
 		}
 	}

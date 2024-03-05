@@ -11,7 +11,7 @@
   "author": "André Baldeweg <a@baldeweg.org>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/abaldeweg/js-monorepo-template"
+    "url": "https://github.com/abaldeweg/warehouse-web"
   },
   "license": "MIT"
 }
