@@ -8,10 +8,10 @@ const { t } = useI18n()
 useTitle({ title: t('welcome') })
 
 const config = {
-  url: '',
-  realm: '',
-  clientId: '',
-  redirectUri: '',
+  url: import.meta.env.VITE_AUTH_URL,
+  realm: import.meta.env.VITE_AUTH_REALM,
+  clientId: import.meta.env.VITE_AUTH_CLIENT,
+  redirectUri: import.meta.env.VITE_AUTH_REDIRECT,
 }
 const { isAuthenticated, token, idToken, userInfo, userProfile, hasRole, expired } = useKeycloak(config)
 </script>
