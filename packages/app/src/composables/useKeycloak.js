@@ -1,11 +1,13 @@
 import Keycloak from 'keycloak-js'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 export function useKeycloak(config) {
+  const isAuthenticated = ref(false)
   const token = ref()
   const idToken = ref()
+  const expired = computed(() => keycloak.isTokenExpired() )
   const userInfo = ref()
-  const isAuthenticated = ref(false)
+  const userProfile = ref()
 
   const keycloak = new Keycloak({
     url: config.url,
@@ -19,12 +21,16 @@ export function useKeycloak(config) {
     redirectUri: config.redirectUri,
     checkLoginIFrame: false
   }).then((authenticated) => {
+    isAuthenticated.value = authenticated
     token.value = keycloak.token
     idToken.value = keycloak.idToken
-    userInfo.value = keycloak.userInfo
-    userProfile.value = keycloak.userProfile
-    isAuthenticated.value = authenticated
 
+    keycloak.loadUserInfo().then((data) => {
+      userInfo.value = data
+    })
+    keycloak.loadUserProfile().then((data) => {
+      userProfile.value = data
+    })
   }).catch((error) => {
     console.error('Failed to initialize adapter: ', error);
   })
@@ -41,9 +47,5 @@ export function useKeycloak(config) {
     return keycloak.hasRealmRole(role)
   }
 
-  const expired = () => {
-    return keycloak.isTokenExpired()
-  }
-
-  return { token, idToken, userInfo, hasRole, expired }
+  return { isAuthenticated, token, idToken, expired, userInfo, userProfile, hasRole }
 }

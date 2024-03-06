@@ -13,19 +13,36 @@ const config = {
   clientId: '',
   redirectUri: '',
 }
-const { token, idToken, userInfo, hasRole, expired } = useKeycloak(config)
+const { isAuthenticated, token, idToken, userInfo, userProfile, hasRole, expired } = useKeycloak(config)
 </script>
 
 <template>
   <BContainer size="m">
     <h1>{{ $t('welcome') }}</h1>
-    <p>Token: {{ token }}</p>
-    <p>ID Token: {{ idToken }}</p>
-    <p>Role: {{ hasRole('admin') }}</p>
-    <p>{{ hasRole('user') }}</p>
-    <p>{{ expired() }}</p>
 
-    <pre><code>{{ token }}</code></pre>
-    <pre><code>{{ userInfo }}</code></pre>
+    <details v-if="isAuthenticated">
+      <summary>DEBUG</summary>
+
+      <p>ID Token</p>
+      <BCode>{{ idToken }}</BCode>
+
+      <p>Token</p>
+      <BCode>{{ token }}</BCode>
+
+      <p>User Info</p>
+      <BCode>{{ userInfo }}</BCode>
+
+      <p>User Profile</p>
+      <BCode>{{ userProfile }}</BCode>
+
+      <p>Admin</p>
+      <BCode>{{ hasRole('admin') }}</BCode>
+
+      <p>User</p>
+      <BCode>{{ hasRole('user') }}</BCode>
+
+      <p>Expired</p>
+      <BCode>{{ expired }}</BCode>
+    </details>
   </BContainer>
 </template>
