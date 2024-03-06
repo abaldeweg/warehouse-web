@@ -5,7 +5,7 @@ export function useKeycloak(config) {
   const isAuthenticated = ref(false)
   const token = ref()
   const idToken = ref()
-  const expired = computed(() => keycloak.isTokenExpired() )
+  const expired = computed(() => keycloak.isTokenExpired())
   const userInfo = ref()
   const userProfile = ref()
 
