@@ -11,7 +11,7 @@
     "i18n:report": "vue-i18n-extract report --vueFiles './src/**/*.?(js|vue)' --languageFiles './locales/*.?(json|yml|yaml|js)'"
   },
   "dependencies": {
-    "@baldeweg/ui": "0.7.0",
+    "@baldeweg/ui": "0.9.7",
     "axios": "1.6.7",
     "js-cookie": "3.0.5",
     "keycloak-js": "^23.0.3",
