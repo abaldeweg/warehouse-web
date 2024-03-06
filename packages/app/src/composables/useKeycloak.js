@@ -19,7 +19,7 @@ export function useKeycloak(config) {
     onLoad: "login-required",
     pkceMethod: 'S256',
     redirectUri: config.redirectUri,
-    checkLoginIFrame: false
+    checkLoginIframe: false
   }).then((authenticated) => {
     isAuthenticated.value = authenticated
     token.value = keycloak.token
