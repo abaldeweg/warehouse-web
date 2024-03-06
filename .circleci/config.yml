@@ -12,7 +12,7 @@ executors:
       - image: cimg/node:21.6
 
 jobs:
-  example-unit:
+  app-unit:
     executor: node
     steps:
       - checkout
@@ -24,4 +24,4 @@ jobs:
 workflows:
   test:
     jobs:
-      - example-unit
+      - app-unit
