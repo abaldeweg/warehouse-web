@@ -19,7 +19,7 @@ jobs:
       - node/install-packages:
           pkg-manager: yarn
       - run:
-          command: yarn workspace example test
+          command: yarn workspace app test:unit:ci
 
 workflows:
   test:
