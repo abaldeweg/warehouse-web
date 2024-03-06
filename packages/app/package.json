@@ -17,7 +17,7 @@
     "keycloak-js": "^23.0.3",
     "vue": "3.3.13",
     "vue-i18n": "9.8.0",
-    "vue-router": "4.2.5"
+    "vue-router": "4.3.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "1.6.1",
