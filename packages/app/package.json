@@ -31,7 +31,7 @@
     "msw": "2.2.13",
     "prettier": "3.2.5",
     "start-server-and-test": "2.0.3",
-    "vite": "5.2.8",
+    "vite": "5.2.9",
     "vite-plugin-pwa": "0.19.8",
     "vite-plugin-webfont-dl": "3.9.3",
     "vitest": "1.5.0",
