@@ -1,0 +1,14 @@
+{
+  "name": "root",
+  "private": true,
+  "dependencies": {
+    "vue": "3.5.13"
+  },
+  "devDependencies": {},
+  "author": "André Baldeweg <a@baldeweg.org>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abaldeweg/js-monorepo-template"
+  },
+  "license": "MIT"
+}

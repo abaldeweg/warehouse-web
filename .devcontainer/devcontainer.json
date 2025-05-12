@@ -1,0 +1,24 @@
+{
+	"name": "Node.js",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+	"features": {
+		"ghcr.io/abaldeweg/devcontainer_features/bash:3.0.0": {}
+	},
+	"postCreateCommand": "pnpm install",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mikestead.dotenv",
+				"EditorConfig.EditorConfig",
+				"DavidAnson.vscode-markdownlint",
+				"christian-kohler.npm-intellisense",
+				"mrmlnc.vscode-apache",
+				"Vue.volar",
+				"redhat.vscode-yaml",
+				"vitest.explorer",
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode"
+			]
+		}
+	}
+}
