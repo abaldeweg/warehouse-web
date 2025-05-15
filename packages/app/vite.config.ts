@@ -42,6 +42,7 @@ export default defineConfig(({ mode }) => {
       }),
       ViteWebfontDownload([
         'https://fonts.googleapis.com/css2?family=Open+Sans&display=swap',
+        'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'
       ]),
     ],
     base: env.VITE_BASE_URL,

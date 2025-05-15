@@ -6,6 +6,15 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
+const theme = () => {
+  if (import.meta.env.VITE_APP_THEME === 'false') return
+
+  document.documentElement.innerHTML +=
+    '<style>@import "' + import.meta.env.VITE_APP_THEME + '";</style>'
+}
+
+theme()
+
 const ui = createUi()
 const app = createApp(App)
 const head = createHead({
@@ -33,5 +42,6 @@ enableMocking().then(() => {
   app.use(i18n)
   app.use(router)
   app.use(head)
+
   app.mount('#app')
 })
