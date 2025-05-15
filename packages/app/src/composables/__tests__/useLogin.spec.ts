@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { useLogin } from './useLogin'
+import { useLogin } from '../useLogin'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 
