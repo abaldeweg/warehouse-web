@@ -18,9 +18,20 @@ const head = createHead({
   ]
 })
 
-app.use(ui)
-app.use(i18n)
-app.use(router)
-app.use(head)
+async function enableMocking() {
+  if (import.meta.env.MODE !== 'development') {
+    return
+  }
 
-app.mount('#app')
+  const { worker } = await import('./mocks/browser')
+
+  return worker.start()
+}
+
+enableMocking().then(() => {
+  app.use(ui)
+  app.use(i18n)
+  app.use(router)
+  app.use(head)
+  app.mount('#app')
+})
