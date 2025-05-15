@@ -4,6 +4,7 @@ import { useHead } from '@unhead/vue'
 import AppMasthead from './components/AppMasthead.vue'
 import { onMounted, ref } from 'vue'
 import {useRouter} from 'vue-router'
+import AppPanel from './components/AppPanel.vue'
 
 useHead({
   title: 'Home',
@@ -15,9 +16,8 @@ const about = import.meta.env.VITE_APP_ABOUT
 
 onMounted(() => {
   const router = useRouter()
-  router.beforeEach((to, from, next) => {
+  router.beforeEach(() => {
     isDrawerActive.value = false
-    next()
   })
 })
 </script>
@@ -29,20 +29,13 @@ onMounted(() => {
     <RouterView />
 
     <div class="footer">
-      <b-container size="s">
+      <BContainer size="s">
         <div v-html="about" />
-      </b-container>
+      </BContainer>
     </div>
   </BApp>
 
-  <BPanel v-model="isDrawerActive" @close="isDrawerActive = false">
-    <BContainer size="m">
-      <BNav :nav="[
-        { route: { name: 'home' }, title: $t('home') },
-        { route: { name: 'orders' }, title: $t('reservation') },
-      ]" />
-    </BContainer>
-  </BPanel>
+  <AppPanel v-model:isDrawerActive="isDrawerActive"  />
 </template>
 
 <style scoped>
