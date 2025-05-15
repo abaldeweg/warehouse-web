@@ -1,13 +1,15 @@
 import { ref } from 'vue'
-import { useRequest } from '@/composables/useRequest.ts'
 import Cookies from 'js-cookie'
-import { useI18n } from 'vue-i18n'
 import type { Ref } from 'vue'
+import type { AxiosResponse } from 'axios'
+import axios from 'axios'
+import type { Method } from 'axios'
+import type { Product } from '@/composables/useProduct'
 
 interface Order {
   id: string
   notes: string
-  books: Array<{ id: string }>
+  books: Product[]
   salutation: string
   firstname: string
   surname: string
@@ -30,16 +32,37 @@ interface UseOrder {
 const orders = ref<Order[] | null>(null)
 
 export function useOrder(): UseOrder {
-  const { config, setAuthHeader, request } = useRequest()
+  /**
+   * Make an authenticated API request.
+   * @param {Method} method - HTTP method
+   * @param {string} url - API endpoint
+   * @param {any} [data] - Request body
+   * @param {any} [params] - Query parameters
+   * @returns {Promise<AxiosResponse>} - Axios response promise
+   */
+  const request = (method: Method, url: string, data?: any, params?: any): Promise<AxiosResponse> => {
+    const config = {
+      baseURL: import.meta.env.VITE_APP_API,
+      timeout: 50000,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + Cookies.get('token'),
+      },
+    }
 
-  config.value.baseURL = import.meta.env.VUE_APP_API
-  setAuthHeader(Cookies.get('token') || '')
+    return axios.create(config).request({
+      method,
+      url,
+      data,
+      params,
+    })
+  }
 
   const order = ref<Order | null>(null)
 
   const isLoading = ref(false)
 
-  const flatten = (data: Array<{ id: string }>): string => {
+  const flatten = (data: Product[]): string => {
     return data.map((element) => element.id).join(',')
   }
 

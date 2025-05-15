@@ -20,6 +20,7 @@ const router = createRouter({
       path: '/orders/:id',
       name: 'order.detail',
       component: () => import('../views/OrderDetailView.vue'),
+      props: true,
     },
     {
       path: '/account',

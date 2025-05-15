@@ -9,7 +9,7 @@ export const handlers = [
       },
     ])
   }),
-  http.get('*/api/reservation/ed8340cc-2d8a-11ef-b142-0242ac120003', (req) => {
+  http.get('*/api/reservation/ed8440cc-2d8a-11ef-b142-0242ac120003', (req) => {
     return HttpResponse.json({
       id: 'ed8440cc-2d8a-11ef-b142-0242ac120003',
       createdAt: 1718726018,
