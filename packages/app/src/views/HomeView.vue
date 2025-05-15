@@ -11,6 +11,7 @@ useHead({
 
 <template>
   <BContainer size="m">
-    Welcome to the app!
+    <p>Welcome to the app!</p>
+    <p>This is just a preview, very much stuff is missing.</p>
   </BContainer>
 </template>
