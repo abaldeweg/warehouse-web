@@ -5,16 +5,16 @@ import type { AxiosResponse } from 'axios'
 import axios from 'axios'
 import type { Method } from 'axios'
 
+const isAuthenticated: Ref<boolean> = ref(false)
+const user: Ref<Record<string, any> | null> = ref(null)
+const lastCheck: Ref<number | null> = ref(null)
+
 /**
  * useAuth composable for authentication logic.
  * @returns {Object} - Methods for authentication
  *   - isUserAuthenticated: Checks if the user is authenticated (with token refresh if needed)
  */
 export function useAuth() {
-  const isAuthenticated: Ref<boolean> = ref(false)
-  const user: Ref<Record<string, any> | null> = ref(null)
-  const lastCheck: Ref<number | null> = ref(null)
-
   /**
    * Make an authenticated API request.
    * @param {Method} method - HTTP method
@@ -62,8 +62,8 @@ export function useAuth() {
       const response = await request('post', '/api/token/refresh', {
         refresh_token: Cookies.get('refresh_token'),
       })
-       Cookies.set('token', response.data.token, { expires: 7 })
-       Cookies.set('refresh_token', response.data.refresh_token, {
+      Cookies.set('token', response.data.token, { expires: 7 })
+      Cookies.set('refresh_token', response.data.refresh_token, {
         expires: 30,
       })
     }
@@ -106,7 +106,7 @@ export function useAuth() {
   const isUserAuthenticated = async (): Promise<boolean> => {
     const currentTime = Math.floor(Date.now() / 1000);
 
-    if (!lastCheck.value || currentTime - lastCheck.value > 3600) {
+    if (!Cookies.get('token') || !lastCheck.value || currentTime - lastCheck.value > 3600) {
       await getUserAuthenticationStatus();
       updateLastCheck();
     }
@@ -115,6 +115,8 @@ export function useAuth() {
   }
 
   return {
-    isUserAuthenticated
+    isAuthenticated,
+    user,
+    isUserAuthenticated,
   }
 }
