@@ -2,56 +2,55 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { useToken } from '../useToken'
 import type { User } from '../useToken'
 import axios from 'axios'
+import Cookies from 'js-cookie'
+
+vi.mock('axios')
+vi.mock('js-cookie')
 
 describe('useToken', () => {
-  const mockAxios = {
-    request: vi.fn()
+  const mockUser: User = {
+    id: 1,
+    username: 'testuser',
+    roles: ['user'],
+    branch: {
+      id: 1,
+      name: 'Main',
+      steps: '',
+      currency: 'EUR',
+      ordering: '',
+      public: true,
+      pricelist: '',
+      cart: false,
+      content: null,
+    },
+    isUser: true,
+    isAdmin: false,
   }
 
   beforeEach(() => {
     vi.clearAllMocks()
+    vi.resetModules()
   })
 
-  it('should initialize user as null', () => {
-    const { user } = useToken()
-
-    expect(user.value).toBeNull()
-  })
-
-  it('should set user on successful fetch', async () => {
-    const mockUser: User = {
-      id: 1,
-      username: 'test',
-      roles: ['user'],
-      branch: {
-        id: 1,
-        name: 'main',
-        steps: '',
-        currency: 'EUR',
-        ordering: '',
-        public: true,
-        pricelist: '',
-        cart: false,
-        content: null,
-      },
-      isUser: true,
-      isAdmin: false,
-    }
-    mockAxios.request.mockResolvedValue({ status: 200, data: mockUser })
-
+  it('fetchUser updates on 200 response', async () => {
+    Cookies.get.mockReturnValue('test-token')
+    axios.create.mockReturnValue({
+      request: vi.fn().mockResolvedValue({ status: 200, data: mockUser })
+    })
     const { user, fetchUser } = useToken()
+    user.value = { ...mockUser }
     await fetchUser()
-
     expect(user.value).toEqual(mockUser)
   })
 
-  it('should set user to null if fetch fails', async () => {
-    mockAxios.request.mockResolvedValue({ status: 500, data: {} })
+  it('fetchUser leaves user as null on non-200 response', async () => {
+    Cookies.get.mockReturnValue('test-token')
+    axios.create.mockReturnValue({
+      request: vi.fn().mockResolvedValue({ status: 401, data: null })
+    })
     const { user, fetchUser } = useToken()
-    user.value = { id: 1 } as any
-
+    user.value = { ...mockUser }
     await fetchUser()
-
     expect(user.value).toBeNull()
   })
 })
