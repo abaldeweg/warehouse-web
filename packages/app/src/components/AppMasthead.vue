@@ -5,8 +5,8 @@ import { useLogout } from '@/composables/useLogout'
 
 const hasLogo = import.meta.env.VITE_APP_LOGO === 'false' ? false : true
 
-const { isAuthenticated, user, isUserAuthenticated} = useAuth()
-isUserAuthenticated()
+const { isAuthenticated, user, checkAuthenticationStatus} = useAuth()
+checkAuthenticationStatus()
 
 const { logout } = useLogout()
 </script>

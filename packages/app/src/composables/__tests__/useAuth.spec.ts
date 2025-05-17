@@ -38,8 +38,8 @@ describe('useAuth', () => {
       if (key === 'refresh_token') return undefined;
     });
 
-    const { isUserAuthenticated } = useAuth();
-    const result = await isUserAuthenticated();
+    const { checkAuthenticationStatus } = useAuth();
+    const result = await checkAuthenticationStatus();
 
     expect(result).toBeFalsy();
   });
@@ -55,8 +55,8 @@ describe('useAuth', () => {
     };
     (axios.create as Mock).mockImplementation(() => mockAxiosInstance);
 
-    const { isUserAuthenticated } = useAuth();
-    const result = await isUserAuthenticated();
+    const { checkAuthenticationStatus } = useAuth();
+    const result = await checkAuthenticationStatus();
 
     expect(result).toBeTruthy();
   });
@@ -91,8 +91,8 @@ describe('useAuth', () => {
     const mockAxiosInstance = { request: mockRequest };
     (axios.create as Mock).mockImplementation(() => mockAxiosInstance);
 
-    const { isUserAuthenticated } = useAuth();
-    const result = await isUserAuthenticated();
+    const { checkAuthenticationStatus } = useAuth();
+    const result = await checkAuthenticationStatus();
 
     expect(Cookies.set).toHaveBeenCalledWith('token', 'new-token', { expires: 7 });
     expect(Cookies.set).toHaveBeenCalledWith('refresh_token', 'new-refresh-token', { expires: 30 });

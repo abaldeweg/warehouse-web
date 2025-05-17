@@ -52,9 +52,9 @@ router.beforeEach(async (to) => {
     return
   }
 
-  const { isUserAuthenticated } = useAuth()
+  const { checkAuthenticationStatus } = useAuth()
 
-  const authenticated = await isUserAuthenticated()
+  const authenticated = await checkAuthenticationStatus()
   if (!authenticated) {
     router.push({ name: 'login' })
   }
