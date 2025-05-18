@@ -34,7 +34,7 @@ const countOrders = computed(() => {
 <template>
   <BMasthead>
     <BMastheadItem position="start" v-if="isAuthenticated">
-      <span @click="$emit('open-drawer')">
+      <span @click="$emit('open-drawer')" :style="{ cursor: 'pointer' }">
         <BMaterialIcon>menu</BMaterialIcon>
       </span>
     </BMastheadItem>
