@@ -30,7 +30,7 @@ const shop = import.meta.env.VITE_SHOP
         <BNav :nav="[
         { route: { name: 'home' }, title: $t('home') },
         { route: catalog, title: $t('catalog') },
-        { route: { name: 'orders' }, title: $t('reservation') },
+        { route: { name: 'orders' }, title: $t('reservations') },
         { route: settings, title: $t('settings') },
         { route: shop, title: $t('shop') },
       ]" />

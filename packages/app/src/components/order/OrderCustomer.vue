@@ -44,7 +44,7 @@ defineEmits([
               :items="[
                 { key: 'm', value: $t('mr') },
                 { key: 'f', value: $t('mrs') },
-                { key: 'd', value: $t('none_divers') },
+                { key: 'd', value: $t('none_diverse') },
               ]"
               id="salutation"
               :modelValue="order.salutation"
