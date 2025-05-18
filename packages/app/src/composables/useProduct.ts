@@ -3,21 +3,6 @@ import type { AxiosResponse } from 'axios'
 import axios from 'axios'
 import type { Method } from 'axios'
 
-export interface Product {
-  id: string
-  title: string
-  price: number
-  sold?: boolean
-  removed?: boolean
-  author: {
-    firstname: string
-    surname: string
-  }
-  genre: {
-    name: string
-  }
-}
-
 export function useProduct() {
   /**
    * Make an authenticated API request.
@@ -40,12 +25,14 @@ export function useProduct() {
     })
   }
 
-  const sellAll = (products: Product[]): void => {
+  // Sell all products
+  const sellAll = (products: any[]): void => {
     products.forEach((element) => {
       sell(element.id)
     })
   }
 
+  // Sell a product by ID
   const sell = (id: string): Promise<AxiosResponse> => {
     return request('put', '/api/book/sell/' + id)
   }

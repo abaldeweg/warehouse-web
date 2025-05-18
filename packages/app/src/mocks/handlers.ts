@@ -6,6 +6,12 @@ export const handlers = [
       {
         id: 'ed8440cc-2d8a-11ef-b142-0242ac120003',
         createdAt: 1718726018,
+        open: true,
+      },
+      {
+        id: 'ed8440cc-2d8a-11ef-b142-0242ac120003',
+        createdAt: 1718726018,
+        open: false,
       },
     ])
   }),
@@ -33,6 +39,7 @@ export const handlers = [
       salutation: 'f',
       firstname: 'Jane',
       surname: 'Doe',
+      open: true
     })
   }),
   http.post('*/api/login_check', (req) => {

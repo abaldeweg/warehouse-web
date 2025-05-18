@@ -29,7 +29,7 @@ onMounted(() => {
     <RouterView />
 
     <div class="footer">
-      <BContainer size="s">
+      <BContainer size="m">
         <div v-html="about" />
       </BContainer>
     </div>

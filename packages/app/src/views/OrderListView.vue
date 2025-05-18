@@ -16,6 +16,13 @@ const toLocaleDateString = (data: number): string => {
   const date = new Date(data * 1000)
   return date.toLocaleString()
 }
+
+const isOlderThan14Days = (createdAt: number) => {
+  const now = Date.now() / 1000
+  const orderDate = createdAt
+  const diff = now - orderDate
+  return diff > 14 * 86400
+}
 </script>
 
 <template>
@@ -28,20 +35,19 @@ const toLocaleDateString = (data: number): string => {
   </BContainer>
 
   <BContainer size="m" v-if="orders">
-    <BList
-      v-for="item in orders"
-      :key="item.id"
-      :route="{ name: 'order.detail', params: { id: item.id } }"
-      divider
-    >
+    <BList v-for="item in orders" :key="item.id" :route="{ name: 'order.detail', params: { id: item.id } }" divider>
       <template #title>
         {{ $t('order_from') }} {{ toLocaleDateString(item.createdAt) }}
-        <BChip v-if="item.open">{{ $t('is_new') }}</BChip>
       </template>
 
-      <template #options>
+      <template #text>
+        <span v-if="item.open">{{ $t('is_new') }}</span>
+        <span v-if="!item.open && isOlderThan14Days(item.createdAt)">{{ $t('older_than_14_days') }}</span>
+      </template>
+
+      <template #controls>
         <RouterLink :to="{ name: 'order.detail', params: { id: item.id } }">
-          {{ $t('details') }}
+          <BMaterialIcon>edit</BMaterialIcon>
         </RouterLink>
       </template>
     </BList>
