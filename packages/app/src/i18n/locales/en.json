@@ -38,5 +38,6 @@
   "print": "Print",
   "sell": "Sell",
   "sell_all": "Sell All",
-  "delete_order": "Delete Order"
+  "delete_order": "Delete Order",
+  "new_password": "New Password"
 }

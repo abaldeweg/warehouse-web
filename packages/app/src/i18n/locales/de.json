@@ -38,5 +38,6 @@
   "print": "Drucken",
   "sell": "Verkaufen",
   "sell_all": "Alles verkaufen",
-  "delete_order": "Bestellung löschen"
+  "delete_order": "Bestellung löschen",
+  "new_password": "Neues Passwort"
 }
