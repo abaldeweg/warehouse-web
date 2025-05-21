@@ -4,12 +4,11 @@ import type { Ref } from 'vue'
 import type { AxiosResponse } from 'axios'
 import axios from 'axios'
 import type { Method } from 'axios'
-import type { Product } from '@/composables/useProduct'
 
 interface Order {
   id: string
   notes: string
-  books: Product[]
+  books: any[]
   salutation: string
   firstname: string
   surname: string
@@ -25,7 +24,7 @@ interface UseOrder {
   isLoading: Ref<boolean>
   list: () => Promise<void>
   show: (id: string) => Promise<void>
-  update: () => Promise<void>
+  update: (data: any) => Promise<void>
   remove: (id: string) => Promise<void>
 }
 
@@ -62,7 +61,7 @@ export function useOrder(): UseOrder {
 
   const isLoading = ref(false)
 
-  const flatten = (data: Product[]): string => {
+  const flatten = (data: any[]): string => {
     return data.map((element) => element.id).join(',')
   }
 
@@ -82,18 +81,18 @@ export function useOrder(): UseOrder {
     order.value = res.data
   }
 
-  const update = async () => {
-    if (!order.value) return
+  const update = async (data: any) => {
+    if (!data) return
 
-    await request('put', `/api/reservation/${order.value.id}`, {
-      notes: order.value.notes,
-      books: flatten(order.value.books),
-      salutation: order.value.salutation,
-      firstname: order.value.firstname,
-      surname: order.value.surname,
-      mail: order.value.mail,
-      phone: order.value.phone,
-      open: order.value.open,
+    await request('put', `/api/reservation/${data.id}`, {
+      notes: data.notes,
+      books: flatten(data.books),
+      salutation: data.salutation,
+      firstname: data.firstname,
+      surname: data.surname,
+      mail: data.mail,
+      phone: data.phone,
+      open: data.open,
     })
   }
 
