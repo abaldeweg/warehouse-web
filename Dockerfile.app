@@ -33,7 +33,7 @@ ENV VITE_SETTINGS=$VITE_SETTINGS
 ARG VITE_SHOP
 ENV VITE_SHOP=$VITE_SHOP
 
-RUN pnpm build
+RUN pnpm -F app build
 
 # production stage
 FROM httpd:2.4 as production-stage
