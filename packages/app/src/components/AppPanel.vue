@@ -1,13 +1,16 @@
-<script setup>
+<script setup lang="ts">
+import { computed } from 'vue'
 import AppLogo from '@/components/AppLogo.vue'
 
 defineProps({
   isDrawerActive: Boolean,
 })
 
-const catalog = import.meta.env.VITE_CATALOG
-const settings = import.meta.env.VITE_SETTINGS
-const shop = import.meta.env.VITE_SHOP
+const catalog: string = import.meta.env.VITE_CATALOG
+const settings: string = import.meta.env.VITE_SETTINGS
+const shop: string = import.meta.env.VITE_SHOP
+
+const hasLogo = computed(() => true)
 </script>
 
 <template>
@@ -23,18 +26,17 @@ const shop = import.meta.env.VITE_SHOP
           </svg>
         </RouterLink>
       </BContainer>
-      </template>
+    </template>
 
-
-      <BContainer size="m">
-        <BNav :nav="[
+    <BContainer size="m">
+      <BNav :nav="[
         { route: { name: 'home' }, title: $t('home') },
         { route: catalog, title: $t('catalog') },
         { route: { name: 'orders' }, title: $t('reservations') },
         { route: settings, title: $t('settings') },
         { route: shop, title: $t('shop') },
       ]" />
-      </BContainer>
+    </BContainer>
   </BPanel>
 </template>
 
