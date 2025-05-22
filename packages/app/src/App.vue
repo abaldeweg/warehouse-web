@@ -3,8 +3,8 @@ import { RouterView } from 'vue-router'
 import { useHead } from '@unhead/vue'
 import AppMasthead from './components/AppMasthead.vue'
 import { onMounted, ref } from 'vue'
-import {useRouter} from 'vue-router'
-import AppPanel from './components/AppPanel.vue'
+import { useRouter } from 'vue-router'
+import AppPanel from '@/components/AppPanel.vue'
 
 useHead({
   title: 'Home',
@@ -35,7 +35,7 @@ onMounted(() => {
     </div>
   </BApp>
 
-  <AppPanel v-model:isDrawerActive="isDrawerActive"  />
+  <AppPanel v-model:isDrawerActive="isDrawerActive" />
 </template>
 
 <style scoped>
