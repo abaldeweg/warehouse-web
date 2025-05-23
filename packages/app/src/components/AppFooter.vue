@@ -12,7 +12,6 @@ const about = import.meta.env.VITE_APP_ABOUT
 .footer {
   border-top: 1px solid var(--color-neutral-02);
 }
-
 @media print {
   .footer {
     display: none;

@@ -70,7 +70,7 @@ const { update } = useOrder()
       id="notes"
       :placeholder="$t('notes')"
       :label="$t('notes')"
-      v-model="order.password"
+      v-model="order.notes"
     />
 
     <BFormGroup buttons>

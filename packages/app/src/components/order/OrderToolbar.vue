@@ -26,10 +26,10 @@ const updateStatus = (status: string): void => {
 
 <template>
   <div class="toolbar">
-    <div class="toolbar_start">
+    <div class="toolbar_group">
       <RouterLink :to="{ name: 'reservation' }">&lang; {{ $t('back') }}</RouterLink>
     </div>
-    <div class="toolbar_end">
+    <div class="toolbar_group">
       <BMaterialIcon @click="remove(order.id)" :style="{ cursor: 'pointer' }">
         delete
       </BMaterialIcon>
@@ -50,19 +50,11 @@ const updateStatus = (status: string): void => {
   border-radius: 20px;
   padding: 20px;
 }
-
-.toolbar_start {
+.toolbar_group {
   display: flex;
   gap: 20px;
   align-items: center;
 }
-
-.toolbar_end {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
 @media print {
   .toolbar {
     display: none;

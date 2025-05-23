@@ -1,17 +1,13 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { useDate } from '@/composables/useDate'
 
-const props = defineProps<{ created: number }>()
+defineProps<{ created: number }>()
 
-const outdated = computed(() => {
-  const now = Date.now() / 1000
-  const diff = Math.round(now - props.created)
-  return diff > 14 * 86000
-})
+const { isOlderThan } = useDate()
 </script>
 
 <template>
-  <BAlert type="error" v-if="outdated">
+  <BAlert type="error" v-if="isOlderThan(14, created)">
     {{ $t('old_order') }}
   </BAlert>
 </template>

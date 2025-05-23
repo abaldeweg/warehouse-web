@@ -48,7 +48,7 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to) => {
-  if (to.name === 'login') {
+  if (to.name === 'account.login') {
     return
   }
 
@@ -56,7 +56,7 @@ router.beforeEach(async (to) => {
 
   const authenticated = await checkAuthenticationStatus()
   if (!authenticated) {
-    router.push({ name: 'login' })
+    router.push({ name: 'account.login' })
   }
 })
 

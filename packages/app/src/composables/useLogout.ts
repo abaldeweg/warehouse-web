@@ -11,7 +11,7 @@ export function useLogout() {
     Cookies.remove('token')
     Cookies.remove('refresh_token')
 
-    router.push({ name: 'login' })
+    router.push({ name: 'account.login' })
   }
 
   return {

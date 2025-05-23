@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import Login from '@/components/auth/Login.vue'
+import Login from '@/components/account/Login.vue'
 import { useHead } from '@unhead/vue'
 
 const { t } = useI18n()
