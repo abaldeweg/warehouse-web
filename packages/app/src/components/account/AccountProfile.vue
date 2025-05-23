@@ -14,19 +14,15 @@ const { logout } = useLogout()
 
 <template>
   <div class="media" />
-
   <h2>
     {{ $t('hello_name', { name: user?.username || '' }) }}
   </h2>
-
   <div class="branch">
     {{ user?.branch?.name || '' }}
   </div>
-
   <BDivider />
-
   <div class="actions">
-    <RouterLink :to="{ name: 'password' }">
+    <RouterLink :to="{ name: 'account.password' }">
       {{ t('change_password') }}
     </RouterLink>
     <BButton design="text" @click.prevent="logout">

@@ -27,7 +27,7 @@ const updateStatus = (status: string): void => {
 <template>
   <div class="toolbar">
     <div class="toolbar_start">
-      <RouterLink :to="{ name: 'orders' }">&lang; {{ $t('back') }}</RouterLink>
+      <RouterLink :to="{ name: 'reservation' }">&lang; {{ $t('back') }}</RouterLink>
     </div>
     <div class="toolbar_end">
       <BMaterialIcon @click="remove(order.id)" :style="{ cursor: 'pointer' }">

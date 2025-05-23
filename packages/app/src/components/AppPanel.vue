@@ -10,7 +10,8 @@ const catalog: string = import.meta.env.VITE_CATALOG
 const settings: string = import.meta.env.VITE_SETTINGS
 const shop: string = import.meta.env.VITE_SHOP
 
-const hasLogo: string | null = import.meta.env.VITE_APP_LOGO !== 'false' ? import.meta.env.VITE_APP_LOGO : null
+const hasLogo: string | null =
+  import.meta.env.VITE_APP_LOGO !== 'false' ? import.meta.env.VITE_APP_LOGO : null
 </script>
 
 <template>
@@ -44,7 +45,7 @@ const hasLogo: string | null = import.meta.env.VITE_APP_LOGO !== 'false' ? impor
         :nav="[
           { route: { name: 'home' }, title: $t('home') },
           { route: catalog, title: $t('catalog') },
-          { route: { name: 'orders' }, title: $t('reservations') },
+          { route: { name: 'reservation' }, title: $t('reservations') },
           { route: settings, title: $t('settings') },
           { route: shop, title: $t('shop') },
         ]"

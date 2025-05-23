@@ -14,28 +14,28 @@ const router = createRouter({
     {
       path: '/reservation',
       name: 'reservation',
-      component: () => import('../views/OrderListView.vue'),
+      component: () => import('../views/reservation/ReservationView.vue'),
     },
     {
       path: '/reservation/:id',
       name: 'reservation.detail',
-      component: () => import('../views/OrderDetailView.vue'),
+      component: () => import('../views/reservation/DetailView.vue'),
       props: true,
     },
     {
       path: '/account',
       name: 'account',
-      component: () => import('../views/AccountView.vue'),
+      component: () => import('../views/account/AccountView.vue'),
     },
     {
       path: '/account/password',
       name: 'account.password',
-      component: () => import('../views/PasswordView.vue'),
+      component: () => import('../views/account/PasswordView.vue'),
     },
     {
-      path: '/login',
-      name: 'login',
-      component: () => import('../views/LoginView.vue'),
+      path: '/account/login',
+      name: 'account.login',
+      component: () => import('../views/account/LoginView.vue'),
     },
     {
       path: '/:pathMatch(.*)',

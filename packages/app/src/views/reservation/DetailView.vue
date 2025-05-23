@@ -6,6 +6,8 @@ import OrderAge from '@/components/order/OrderAge.vue'
 import OrderTable from '@/components/order/OrderTable.vue'
 import OrderCustomer from '@/components/order/OrderCustomer.vue'
 import OrderToolbar from '@/components/order/OrderToolbar.vue'
+import { onMounted } from 'vue'
+import { useDate } from '@/composables/useDate.ts'
 
 const props = defineProps<{ id: string }>()
 
@@ -14,12 +16,11 @@ const { t } = useI18n()
 useHead({ title: t('order') })
 
 const { order, show } = useOrder()
-show(props.id)
+onMounted(() => {
+  show(props.id)
+})
 
-const toLocaleDateString = (data: number): string => {
-  const date = new Date(data * 1000)
-  return date.toLocaleString()
-}
+const { toLocaleDateString } = useDate()
 </script>
 
 <template>

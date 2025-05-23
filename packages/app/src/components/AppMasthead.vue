@@ -54,11 +54,11 @@ const countOrders = computed(() => {
         variant="inline"
         :content="countOrders"
         background="primary"
-        :action="{ name: 'orders' }"
+        :action="{ name: 'reservation' }"
         style="font-size: 0.8rem"
         v-if="countOrders > 0"
       >
-        <RouterLink :to="{ name: 'orders' }">
+        <RouterLink :to="{ name: 'reservation' }">
           <BMaterialIcon>euro</BMaterialIcon>
         </RouterLink>
       </BBadge>
