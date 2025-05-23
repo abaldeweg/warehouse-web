@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  vue-ts-unit:
+  app:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,4 +21,4 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Run tests
-        run: pnpm -F vue-ts test
+        run: pnpm -F app test
