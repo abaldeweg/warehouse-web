@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useAuth } from '@/composables/useAuth.ts'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(import.meta.env.VITE_BASE_URL),
   linkActiveClass: 'isActive',
   linkExactActiveClass: 'isActiveExact',
   routes: [
@@ -12,13 +12,13 @@ const router = createRouter({
       component: () => import('../views/HomeView.vue'),
     },
     {
-      path: '/orders',
-      name: 'orders',
+      path: '/reservation',
+      name: 'reservation',
       component: () => import('../views/OrderListView.vue'),
     },
     {
-      path: '/orders/:id',
-      name: 'order.detail',
+      path: '/reservation/:id',
+      name: 'reservation.detail',
       component: () => import('../views/OrderDetailView.vue'),
       props: true,
     },
@@ -28,8 +28,8 @@ const router = createRouter({
       component: () => import('../views/AccountView.vue'),
     },
     {
-      path: '/password',
-      name: 'password',
+      path: '/account/password',
+      name: 'account.password',
       component: () => import('../views/PasswordView.vue'),
     },
     {
