@@ -23,6 +23,6 @@ describe('useLogout', () => {
     logout()
     expect(Cookies.remove).toHaveBeenCalledWith('token')
     expect(Cookies.remove).toHaveBeenCalledWith('refresh_token')
-    expect(pushMock).toHaveBeenCalledWith({ name: 'login' })
+    expect(pushMock).toHaveBeenCalledWith({ name: 'account.login' })
   })
 })
