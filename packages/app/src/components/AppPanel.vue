@@ -10,7 +10,7 @@ const catalog: string = import.meta.env.VITE_CATALOG
 const settings: string = import.meta.env.VITE_SETTINGS
 const shop: string = import.meta.env.VITE_SHOP
 
-const hasLogo = computed(() => true)
+const hasLogo: string | null = import.meta.env.VITE_APP_LOGO !== 'false' ? import.meta.env.VITE_APP_LOGO : null
 </script>
 
 <template>
