@@ -39,5 +39,8 @@
   "sell": "Verkaufen",
   "sell_all": "Alles verkaufen",
   "delete_order": "Bestellung löschen",
-  "new_password": "Neues Passwort"
+  "new_password": "Neues Passwort",
+  "username": "Nutzername",
+  "password": "Passwort",
+  "login": "Anmeldung"
 }
