@@ -9,7 +9,7 @@ export function useProduct() {
    */
   const request = (method: Method, url: string, data?: any, params?: any): Promise<AxiosResponse> => {
     const config = {
-      baseURL: import.meta.env.VITE_APP_API,
+      baseURL: import.meta.env.VITE_BASE_URL,
       timeout: 50000,
       headers: {
         'Content-Type': 'application/json',
