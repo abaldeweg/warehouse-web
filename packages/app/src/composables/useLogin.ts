@@ -9,6 +9,7 @@ import { useRouter } from 'vue-router'
  * useLogin composable for handling user authentication.
  */
 export function useLogin() {
+  const router = useRouter()
   const username = ref<string | null>(null)
   const password = ref<string | null>(null)
   const isLoggingIn = ref<boolean>(false)
@@ -79,7 +80,6 @@ export function useLogin() {
    * Updates state and navigates on success.
    */
   const login = async (): Promise<void> => {
-    const router = useRouter()
     invalidCredentials.value = false
     isLoggingIn.value = true
 
