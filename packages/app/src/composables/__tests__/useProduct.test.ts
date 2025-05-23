@@ -13,7 +13,7 @@ describe('useProduct', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     mockAxios.create = vi.fn(() => ({ request: mockRequest }))
-      ; (Cookies.get as any) = vi.fn(() => 'test-token')
+    ;(Cookies.get as any) = vi.fn(() => 'test-token')
   })
 
   it('should call sell with correct id', async () => {
@@ -23,13 +23,17 @@ describe('useProduct', () => {
 
     await sellAll(products)
 
-    expect(mockRequest).toHaveBeenCalledWith(expect.objectContaining({
-      method: 'put',
-      url: '/api/book/sell/1',
-    }))
-    expect(mockRequest).toHaveBeenCalledWith(expect.objectContaining({
-      method: 'put',
-      url: '/api/book/sell/2',
-    }))
+    expect(mockRequest).toHaveBeenCalledWith(
+      expect.objectContaining({
+        method: 'put',
+        url: '/api/book/sell/1',
+      }),
+    )
+    expect(mockRequest).toHaveBeenCalledWith(
+      expect.objectContaining({
+        method: 'put',
+        url: '/api/book/sell/2',
+      }),
+    )
   })
 })

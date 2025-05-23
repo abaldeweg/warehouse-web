@@ -10,10 +10,22 @@ const { username, password, isLoggingIn, invalidCredentials, login } = useLogin(
   </BAlert>
 
   <BForm @submit.prevent="login">
-    <BInput type="text" id="username" :placeholder="$t('username')" :label="$t('username')" autofocus
-      v-model="username" />
+    <BInput
+      type="text"
+      id="username"
+      :placeholder="$t('username')"
+      :label="$t('username')"
+      autofocus
+      v-model="username"
+    />
 
-    <BInput type="password" id="password" :placeholder="$t('password')" :label="$t('password')" v-model="password" />
+    <BInput
+      type="password"
+      id="password"
+      :placeholder="$t('password')"
+      :label="$t('password')"
+      v-model="password"
+    />
 
     <BFormGroup buttons>
       <BFormItem>

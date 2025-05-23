@@ -2,33 +2,33 @@ import Cookies from 'js-cookie'
 import type { AxiosResponse } from 'axios'
 import axios from 'axios'
 import type { Method } from 'axios'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 /**
  * Represents a branch entity with its properties.
  */
 interface Branch {
-  id: number;
-  name: string;
-  steps: string;
-  currency: string;
-  ordering: string;
-  public: boolean;
-  pricelist: string;
-  cart: boolean;
-  content: any;
+  id: number
+  name: string
+  steps: string
+  currency: string
+  ordering: string
+  public: boolean
+  pricelist: string
+  cart: boolean
+  content: any
 }
 
 /**
  * Represents a user entity with associated branch and roles.
  */
 export interface User {
-  id: number;
-  username: string;
-  roles: string[];
-  branch: Branch;
-  isUser: boolean;
-  isAdmin: boolean;
+  id: number
+  username: string
+  roles: string[]
+  branch: Branch
+  isUser: boolean
+  isAdmin: boolean
 }
 
 /**

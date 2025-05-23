@@ -35,7 +35,7 @@ describe('useToken', () => {
   it('fetchUser updates on 200 response', async () => {
     Cookies.get.mockReturnValue('test-token')
     axios.create.mockReturnValue({
-      request: vi.fn().mockResolvedValue({ status: 200, data: mockUser })
+      request: vi.fn().mockResolvedValue({ status: 200, data: mockUser }),
     })
     const { user, fetchUser } = useToken()
     user.value = { ...mockUser }
@@ -46,7 +46,7 @@ describe('useToken', () => {
   it('fetchUser leaves user as null on non-200 response', async () => {
     Cookies.get.mockReturnValue('test-token')
     axios.create.mockReturnValue({
-      request: vi.fn().mockResolvedValue({ status: 401, data: null })
+      request: vi.fn().mockResolvedValue({ status: 401, data: null }),
     })
     const { user, fetchUser } = useToken()
     user.value = { ...mockUser }

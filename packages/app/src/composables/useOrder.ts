@@ -39,13 +39,18 @@ export function useOrder(): UseOrder {
    * @param {any} [params] - Query parameters
    * @returns {Promise<AxiosResponse>} - Axios response promise
    */
-  const request = (method: Method, url: string, data?: any, params?: any): Promise<AxiosResponse> => {
+  const request = (
+    method: Method,
+    url: string,
+    data?: any,
+    params?: any,
+  ): Promise<AxiosResponse> => {
     const config = {
       baseURL: import.meta.env.VITE_BASE_URL,
       timeout: 50000,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + Cookies.get('token'),
+        Authorization: 'Bearer ' + Cookies.get('token'),
       },
     }
 

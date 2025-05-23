@@ -15,11 +15,11 @@ describe('usePassword', () => {
       create: vi.fn().mockReturnThis(),
       request: vi.fn(),
     }
-      ; (axios as any).create = vi.fn(() => mockAxios)
+    ;(axios as any).create = vi.fn(() => mockAxios)
     mockCookies = {
       get: vi.fn(() => 'test-token'),
     }
-      ; (Cookies as any).get = mockCookies.get
+    ;(Cookies as any).get = mockCookies.get
   })
 
   afterEach(() => {
@@ -36,7 +36,8 @@ describe('usePassword', () => {
   })
 
   it('should set passwordSuccessful to true on 200 response', async () => {
-    const { password, isChangingPassword, passwordSuccessful, passwordError, changePassword } = usePassword()
+    const { password, isChangingPassword, passwordSuccessful, passwordError, changePassword } =
+      usePassword()
     password.value = 'newpass'
     mockAxios.request.mockResolvedValue({ status: 200 })
 
@@ -54,7 +55,8 @@ describe('usePassword', () => {
   })
 
   it('should set passwordError to true on non-200 response', async () => {
-    const { password, isChangingPassword, passwordSuccessful, passwordError, changePassword } = usePassword()
+    const { password, isChangingPassword, passwordSuccessful, passwordError, changePassword } =
+      usePassword()
     password.value = 'badpass'
     mockAxios.request.mockResolvedValue({ status: 400 })
 

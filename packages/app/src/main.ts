@@ -22,9 +22,9 @@ const head = createHead({
     {
       title: 'Home',
       titleTemplate: '%s - js-monorepo-template',
-      htmlAttrs: { lang: navigator.language }
+      htmlAttrs: { lang: navigator.language },
     },
-  ]
+  ],
 })
 
 async function enableMocking() {

@@ -17,13 +17,18 @@ export function useLogin() {
   /**
    * Make an authenticated API request.
    */
-  const request = (method: Method, url: string, data?: any, params?: any): Promise<AxiosResponse> => {
+  const request = (
+    method: Method,
+    url: string,
+    data?: any,
+    params?: any,
+  ): Promise<AxiosResponse> => {
     const config = {
       baseURL: import.meta.env.VITE_BASE_URL,
       timeout: 50000,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + Cookies.get('token'),
+        Authorization: 'Bearer ' + Cookies.get('token'),
       },
     }
 
@@ -62,7 +67,7 @@ export function useLogin() {
    * Stores authentication tokens in cookies.
    */
   const setCookies = (response: AxiosResponse): void => {
-    if (!isValid(response)) return;
+    if (!isValid(response)) return
     Cookies.set('token', response.data.token, { expires: 7 })
     Cookies.set('refresh_token', response.data.refresh_token, {
       expires: 30,

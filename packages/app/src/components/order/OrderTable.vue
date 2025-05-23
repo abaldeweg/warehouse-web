@@ -42,9 +42,7 @@ const sum = computed(() => {
             <span v-if="product.sold"> - {{ $t('sold') }}</span>
             <span v-if="product.removed"> - {{ $t('removed') }}</span>
           </td>
-          <td>
-            {{ product.author.surname }}, {{ product.author.firstname }}
-          </td>
+          <td>{{ product.author.surname }}, {{ product.author.firstname }}</td>
           <td>{{ product.genre.name }}</td>
           <td class="alignRight">{{ currency(product.price) }}</td>
         </tr>

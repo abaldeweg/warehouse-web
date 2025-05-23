@@ -34,7 +34,7 @@ describe('useLogin', () => {
       request: vi.fn(),
     }
     mockRequest = axiosInstance.request
-      ; (axios.create as unknown as ReturnType<typeof vi.fn>).mockReturnValue(axiosInstance)
+    ;(axios.create as unknown as ReturnType<typeof vi.fn>).mockReturnValue(axiosInstance)
     mockGet.mockReturnValue('test-token')
   })
 

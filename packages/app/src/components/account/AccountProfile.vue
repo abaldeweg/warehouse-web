@@ -39,11 +39,7 @@ const { logout } = useLogout()
 .media {
   border-radius: 5px;
   background: var(--color-neutral-02);
-  background: linear-gradient(
-    90deg,
-    var(--color-primary-10) 0%,
-    var(--color-primary-05) 100%
-  );
+  background: linear-gradient(90deg, var(--color-primary-10) 0%, var(--color-primary-05) 100%);
   height: 10px;
   margin-bottom: 20px;
 }

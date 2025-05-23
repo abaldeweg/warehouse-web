@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { usePassword } from '@/composables/usePassword.ts'
 
-const { changePassword, password, passwordSuccessful, passwordError, isChangingPassword } = usePassword()
+const { changePassword, password, passwordSuccessful, passwordError, isChangingPassword } =
+  usePassword()
 </script>
 
 <template>
@@ -13,9 +14,14 @@ const { changePassword, password, passwordSuccessful, passwordError, isChangingP
     <p>{{ $t('password_update_error') }}</p>
   </BAlert>
 
-
   <BForm @submit.prevent="changePassword">
-    <BInput type="password" id="password" :placeholder="$t('new_password')" :label="$t('new_password')" v-model="password" />
+    <BInput
+      type="password"
+      id="password"
+      :placeholder="$t('new_password')"
+      :label="$t('new_password')"
+      v-model="password"
+    />
 
     <BFormGroup buttons>
       <BFormItem>

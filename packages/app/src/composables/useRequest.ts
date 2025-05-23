@@ -6,18 +6,18 @@ import type { Method } from 'axios'
 import type { AxiosRequestConfig } from 'axios'
 
 interface UseRequestConfig extends AxiosRequestConfig {
-  baseURL?: string;
-  timeout?: number;
+  baseURL?: string
+  timeout?: number
   headers?: {
-    [key: string]: string;
-  };
+    [key: string]: string
+  }
 }
 
 interface UseRequestReturn {
-  config: Ref<UseRequestConfig>;
-  localConfig: UseRequestConfig;
-  setAuthHeader: (token: string) => void;
-  request: (method: Method, url: string, data?: any, params?: any) => Promise<AxiosResponse>;
+  config: Ref<UseRequestConfig>
+  localConfig: UseRequestConfig
+  setAuthHeader: (token: string) => void
+  request: (method: Method, url: string, data?: any, params?: any) => Promise<AxiosResponse>
 }
 
 /**
@@ -47,7 +47,7 @@ export function useRequest(localConfig: UseRequestConfig = {}): UseRequestReturn
     },
   })
 
-  let mergedConfig = { ...config.value, ...localConfig }
+  const mergedConfig = { ...config.value, ...localConfig }
 
   /**
    * Sets the Authorization header with a bearer token.
@@ -56,7 +56,7 @@ export function useRequest(localConfig: UseRequestConfig = {}): UseRequestReturn
    */
   const setAuthHeader = (token: string) => {
     if (!mergedConfig.headers) {
-      mergedConfig.headers = {};
+      mergedConfig.headers = {}
     }
     mergedConfig.headers['Authorization'] = 'Bearer ' + token
   }
@@ -70,7 +70,12 @@ export function useRequest(localConfig: UseRequestConfig = {}): UseRequestReturn
    * @param {object} params The request query parameters.
    * @returns {Promise} A promise that resolves with the Axios response.
    */
-  const request = (method: Method, url: string, data?: any, params?: any): Promise<AxiosResponse> => {
+  const request = (
+    method: Method,
+    url: string,
+    data?: any,
+    params?: any,
+  ): Promise<AxiosResponse> => {
     return axios.create(mergedConfig).request({
       method,
       url,

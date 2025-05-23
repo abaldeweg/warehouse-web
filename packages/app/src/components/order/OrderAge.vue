@@ -5,7 +5,7 @@ const props = defineProps<{ created: number }>()
 
 const outdated = computed(() => {
   const now = Date.now() / 1000
-  const diff = Math.round((now - props.created))
+  const diff = Math.round(now - props.created)
   return diff > 14 * 86000
 })
 </script>

@@ -39,7 +39,7 @@ export const handlers = [
       salutation: 'f',
       firstname: 'Jane',
       surname: 'Doe',
-      open: true
+      open: true,
     })
   }),
   http.post('*/api/login_check', (req) => {
@@ -47,24 +47,22 @@ export const handlers = [
   }),
   http.get('*/api/me', (req) => {
     return HttpResponse.json({
-      "id": 2,
-      "username": "admin",
-      "roles": [
-        "ROLE_USER"
-      ],
-      "branch": {
-        "id": 1,
-        "name": "Branch 1",
-        "steps": "0",
-        "currency": "EUR",
-        "ordering": "",
-        "public": true,
-        "pricelist": "",
-        "cart": true,
-        "content": null
+      id: 2,
+      username: 'admin',
+      roles: ['ROLE_USER'],
+      branch: {
+        id: 1,
+        name: 'Branch 1',
+        steps: '0',
+        currency: 'EUR',
+        ordering: '',
+        public: true,
+        pricelist: '',
+        cart: true,
+        content: null,
       },
-      "isUser": true,
-      "isAdmin": false
+      isUser: true,
+      isAdmin: false,
     })
   }),
 ]

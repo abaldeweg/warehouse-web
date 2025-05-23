@@ -1,8 +1,8 @@
 import { ref } from 'vue'
 
 interface ToastMessage {
-  type: string;
-  message: string;
+  type: string
+  message: string
 }
 
 const messages = ref<ToastMessage[]>([])

@@ -50,17 +50,23 @@ const countOrders = computed(() => {
     </BMastheadItem>
 
     <BMastheadItem position="end" v-if="isAuthenticated" class="actions">
-      <BBadge variant="inline" :content="countOrders" background="primary" :action="{ 'name': 'orders' }"
-        style="font-size: 0.8rem;" v-if="countOrders > 0">
-        <RouterLink :to="{ 'name': 'orders' }">
+      <BBadge
+        variant="inline"
+        :content="countOrders"
+        background="primary"
+        :action="{ name: 'orders' }"
+        style="font-size: 0.8rem"
+        v-if="countOrders > 0"
+      >
+        <RouterLink :to="{ name: 'orders' }">
           <BMaterialIcon>euro</BMaterialIcon>
         </RouterLink>
       </BBadge>
-      <BMaterialIcon v-if="countOrders === 0">euro</BMaterialIcon />
+      <BMaterialIcon v-if="countOrders === 0">euro</BMaterialIcon>
       <BDropdown position="bottom" class="action">
         <template #selector>
           <span @click.prevent>
-            <BMaterialIcon style="cursor: pointer;">account_circle</BMaterialIcon>
+            <BMaterialIcon style="cursor: pointer">account_circle</BMaterialIcon>
           </span>
         </template>
 
