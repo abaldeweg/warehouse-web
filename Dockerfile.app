@@ -35,11 +35,11 @@ RUN pnpm -F app build
 # production stage
 FROM httpd:2.4 as production-stage
 
-ARG VITE_BASE_URL
-ENV VITE_BASE_URL=$VITE_BASE_URL
+ARG VITE_APP_BASE_URL
+ENV VITE_APP_BASE_URL=$VITE_APP_BASE_URL
 
 COPY ./packages/app/docker/httpd.conf /usr/local/apache2/conf/httpd.conf
 
-COPY --from=build-stage /usr/app/packages/app/dist /usr/local/apache2/htdocs${VITE_BASE_URL}
+COPY --from=build-stage /usr/app/packages/app/dist /usr/local/apache2/htdocs${VITE_APP_BASE_URL}
 
 EXPOSE 80
