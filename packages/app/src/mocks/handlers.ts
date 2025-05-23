@@ -47,7 +47,7 @@ export const handlers = [
   }),
   http.get('*/api/me', () => {
     return HttpResponse.json({
-      id: 2,
+      id: 1,
       username: 'admin',
       roles: ['ROLE_USER'],
       branch: {
