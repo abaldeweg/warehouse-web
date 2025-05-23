@@ -46,7 +46,7 @@ export function useOrder(): UseOrder {
     params?: any,
   ): Promise<AxiosResponse> => {
     const config = {
-      baseURL: import.meta.env.VITE_BASE_URL,
+      baseURL: import.meta.env.VITE_API,
       timeout: 50000,
       headers: {
         'Content-Type': 'application/json',

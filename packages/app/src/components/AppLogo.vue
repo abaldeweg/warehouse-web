@@ -1,6 +1,5 @@
 <script setup lang="ts">
-const logo: string | null =
-  import.meta.env.VITE_APP_LOGO !== 'false' ? import.meta.env.VITE_APP_LOGO : null
+const logo: string | null = import.meta.env.VITE_LOGO !== 'false' ? import.meta.env.VITE_LOGO : null
 </script>
 
 <template>

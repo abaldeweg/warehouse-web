@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const about = import.meta.env.VITE_APP_ABOUT
+const about = import.meta.env.VITE_ABOUT
 </script>
 
 <template>

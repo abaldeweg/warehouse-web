@@ -14,4 +14,4 @@ More info about testing: https://jestjs.io/docs/getting-started
 
 ### Settings
 
-- VITE_BASE_URL - The Base URL, in case the app is installed in a subdirectory
+- VITE_API - The Base URL, in case the app is installed in a subdirectory

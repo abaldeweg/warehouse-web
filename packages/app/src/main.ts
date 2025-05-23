@@ -7,10 +7,10 @@ import App from './App.vue'
 import router from './router'
 
 const theme = () => {
-  if (import.meta.env.VITE_APP_THEME === 'false') return
+  if (import.meta.env.VITE_THEME === 'false') return
 
   document.documentElement.innerHTML +=
-    '<style>@import "' + import.meta.env.VITE_APP_THEME + '";</style>'
+    '<style>@import "' + import.meta.env.VITE_THEME + '";</style>'
 }
 
 theme()
