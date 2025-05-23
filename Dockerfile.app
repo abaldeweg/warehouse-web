@@ -1,5 +1,3 @@
-ARG VITE_BASE_URL
-
 # build stage
 FROM node:lts-alpine as build-stage
 
