@@ -45,7 +45,7 @@ export default defineConfig(({ mode }) => {
         'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'
       ]),
     ],
-    base: env.VITE_BASE_URL,
+    base: env.VITE_APP_BASE_URL,
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
