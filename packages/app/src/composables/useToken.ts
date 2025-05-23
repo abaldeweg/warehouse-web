@@ -50,7 +50,7 @@ export function useToken() {
     params?: any,
   ): Promise<AxiosResponse> => {
     const config = {
-      baseURL: import.meta.env.VITE_APP_API,
+      baseURL: import.meta.env.VITE_BASE_URL,
       timeout: 50000,
       headers: {
         'Content-Type': 'application/json',
