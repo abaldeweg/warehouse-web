@@ -14,16 +14,11 @@ export default defineConfig(({ mode }) => {
     plugins: [
       vue(),
       VitePWA({
-        includeAssets: [
-          'favicon.svg',
-          'favicon.ico',
-          'robots.txt',
-          'apple-touch-icon.png',
-        ],
+        includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
         manifest: {
           name: 'name',
-          short_name: 'short_name',
-          description: 'Description',
+          short_name: 'warehouse',
+          description: 'Discover products in our catalog.',
           theme_color: '#d31e27',
           icons: [
             {
@@ -38,11 +33,11 @@ export default defineConfig(({ mode }) => {
             },
           ],
         },
-        registerType: 'autoUpdate'
+        registerType: 'autoUpdate',
       }),
       ViteWebfontDownload([
         'https://fonts.googleapis.com/css2?family=Open+Sans&display=swap',
-        'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'
+        'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200',
       ]),
     ],
     base: env.VITE_APP_BASE_URL,
