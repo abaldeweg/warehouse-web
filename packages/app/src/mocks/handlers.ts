@@ -1,7 +1,7 @@
 import { http, HttpResponse } from 'msw'
 
 export const handlers = [
-  http.get('*/api/reservation/list', (req) => {
+  http.get('*/api/reservation/list', () => {
     return HttpResponse.json([
       {
         id: 'ed8440cc-2d8a-11ef-b142-0242ac120003',
@@ -15,7 +15,7 @@ export const handlers = [
       },
     ])
   }),
-  http.get('*/api/reservation/ed8440cc-2d8a-11ef-b142-0242ac120003', (req) => {
+  http.get('*/api/reservation/ed8440cc-2d8a-11ef-b142-0242ac120003', () => {
     return HttpResponse.json({
       id: 'ed8440cc-2d8a-11ef-b142-0242ac120003',
       createdAt: 1718726018,
@@ -42,10 +42,10 @@ export const handlers = [
       open: true,
     })
   }),
-  http.post('*/api/login_check', (req) => {
+  http.post('*/api/login_check', () => {
     return HttpResponse.json({ token: 'token', refresh_token: 'refresh_token' })
   }),
-  http.get('*/api/me', (req) => {
+  http.get('*/api/me', () => {
     return HttpResponse.json({
       id: 2,
       username: 'admin',
