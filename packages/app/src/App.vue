@@ -5,17 +5,19 @@ import AppMasthead from './components/AppMasthead.vue'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import AppPanel from '@/components/AppPanel.vue'
+import { useI18n } from 'vue-i18n'
+import AppFooter from './components/AppFooter.vue'
+
+const { t } = useI18n()
 
 useHead({
-  title: 'Home',
+  title: t('home'),
 })
 
 const isDrawerActive = ref(false)
-
-const about = import.meta.env.VITE_APP_ABOUT
+const router = useRouter()
 
 onMounted(() => {
-  const router = useRouter()
   router.beforeEach(() => {
     isDrawerActive.value = false
   })
@@ -25,27 +27,8 @@ onMounted(() => {
 <template>
   <BApp>
     <AppMasthead @open-drawer="isDrawerActive = true" />
-
     <RouterView />
-
-    <div class="footer">
-      <BContainer size="m">
-        <div v-html="about" />
-      </BContainer>
-    </div>
+    <AppFooter />
   </BApp>
-
   <AppPanel v-model:isDrawerActive="isDrawerActive" />
 </template>
-
-<style scoped>
-.footer {
-  border-top: 1px solid var(--color-neutral-02);
-}
-
-@media print {
-  .footer {
-    display: none;
-  }
-}
-</style>
