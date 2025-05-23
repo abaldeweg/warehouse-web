@@ -8,6 +8,6 @@ const { isOlderThan } = useDate()
 
 <template>
   <BAlert type="error" v-if="isOlderThan(14, created)">
-    {{ $t('old_order') }}
+    {{ $t('old_reservation') }}
   </BAlert>
 </template>

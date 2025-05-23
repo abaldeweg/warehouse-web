@@ -13,7 +13,7 @@ const props = defineProps<{ id: string }>()
 
 const { t } = useI18n()
 
-useHead({ title: t('order') })
+useHead({ title: t('reservation') })
 
 const { order, show } = useOrder()
 onMounted(() => {
@@ -34,7 +34,7 @@ const { toLocaleDateString } = useDate()
     </BContainer>
 
     <BContainer size="m">
-      <h1>{{ $t('order_from') }} {{ toLocaleDateString(order.createdAt) }}</h1>
+      <h1>{{ $t('reservation_from') }} {{ toLocaleDateString(order.createdAt) }}</h1>
     </BContainer>
 
     <BContainer size="m">

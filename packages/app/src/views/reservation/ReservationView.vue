@@ -7,7 +7,7 @@ import { useDate } from '@/composables/useDate.ts'
 
 const { t } = useI18n()
 
-useHead({ title: t('orders') })
+useHead({ title: t('reservations') })
 
 const { orders, isLoading, list } = useOrder()
 
@@ -18,7 +18,7 @@ const { toLocaleDateString, isOlderThan } = useDate()
 
 <template>
   <BContainer size="m">
-    <h1>{{ $t('orders') }}</h1>
+    <h1>{{ $t('reservations') }}</h1>
   </BContainer>
 
   <BContainer size="m" v-if="isLoading">
@@ -33,7 +33,7 @@ const { toLocaleDateString, isOlderThan } = useDate()
       divider
     >
       <template #title
-        >{{ $t('order_from') }} {{ toLocaleDateString(reservation.createdAt) }}</template
+        >{{ $t('reservation_from') }} {{ toLocaleDateString(reservation.createdAt) }}</template
       >
 
       <template #text>

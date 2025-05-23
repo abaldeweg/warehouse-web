@@ -8,7 +8,7 @@ const props = defineProps<{ order: any }>()
 
 const { t } = useI18n()
 
-useHead({ title: t('order') })
+useHead({ title: t('reservation') })
 
 const { remove, update } = useOrder()
 

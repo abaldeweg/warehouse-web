@@ -23,7 +23,7 @@ const { logout } = useLogout()
   <BDivider />
   <div class="actions">
     <RouterLink :to="{ name: 'account.password' }">
-      {{ t('change_password') }}
+      {{ t('update_password') }}
     </RouterLink>
     <BButton design="text" @click.prevent="logout">
       {{ $t('logout') }}
