@@ -16,7 +16,7 @@ interface Branch {
   public: boolean
   pricelist: string
   cart: boolean
-  content: any
+  content: string | null
 }
 
 /**
@@ -35,9 +35,6 @@ export interface User {
  * Composable for handling user authentication and token-based API requests.
  */
 export function useToken() {
-  /**
-   * Reactive reference to the current user, or null if not loaded.
-   */
   const user = ref<User | null>(null)
 
   /**

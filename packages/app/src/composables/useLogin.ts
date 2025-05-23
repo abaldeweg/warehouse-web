@@ -9,11 +9,12 @@ import { useRouter } from 'vue-router'
  * useLogin composable for handling user authentication.
  */
 export function useLogin() {
-  const router = useRouter()
   const username = ref<string | null>(null)
   const password = ref<string | null>(null)
   const isLoggingIn = ref<boolean>(false)
   const invalidCredentials = ref<boolean>(false)
+
+  const router = useRouter()
 
   /**
    * Make an authenticated API request.
