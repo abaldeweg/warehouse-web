@@ -40,5 +40,6 @@
   "new_password": "Neues Passwort",
   "username": "Nutzername",
   "password": "Passwort",
-  "login": "Anmeldung"
+  "login": "Anmeldung",
+  "delete_reservation": "Reservierung löschen"
 }

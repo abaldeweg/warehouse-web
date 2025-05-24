@@ -30,13 +30,15 @@ const updateStatus = (status: string): void => {
       <RouterLink :to="{ name: 'reservation' }">&lang; {{ $t('back') }}</RouterLink>
     </div>
     <div class="toolbar_group">
-      <BMaterialIcon @click="remove(order.id)" :style="{ cursor: 'pointer' }">
-        delete
-      </BMaterialIcon>
-      <BMaterialIcon @click="sellAll(order.books)" :style="{ cursor: 'pointer' }">
-        sell
-      </BMaterialIcon>
-      <BMaterialIcon @click="print" :style="{ cursor: 'pointer' }">print</BMaterialIcon>
+      <BTooltip :text="t('delete_reservation')" position="bottom">
+        <BMaterialIcon @click="remove(order.id)" color="#ff0000" hover>delete</BMaterialIcon>
+      </BTooltip>
+      <BTooltip :text="t('sell_all')" position="bottom">
+        <BMaterialIcon @click="sellAll(order.books)" hover> sell </BMaterialIcon>
+      </BTooltip>
+      <BTooltip :text="t('print')" position="bottom">
+        <BMaterialIcon @click="print" hover>print</BMaterialIcon>
+      </BTooltip>
       <BSwitch v-model="order.open" @update:modelValue="updateStatus" :label="$t('is_new')" />
     </div>
   </div>
