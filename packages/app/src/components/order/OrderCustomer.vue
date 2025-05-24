@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import { useOrder } from '@/composables/useOrder.js'
 
 defineProps<{
