@@ -51,7 +51,7 @@ const { update } = useOrder()
       id="mail"
       :placeholder="$t('mail')"
       :label="$t('mail')"
-      v-model="order.email"
+      v-model="order.mail"
     />
 
     <BInput
