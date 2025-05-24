@@ -41,5 +41,7 @@
   "username": "Nutzername",
   "password": "Passwort",
   "login": "Anmeldung",
-  "delete_reservation": "Reservierung löschen"
+  "delete_reservation": "Reservierung löschen",
+  "password_update_success": "Passwort erfolgreich geändert.",
+  "password_update_error": "Fehler beim Ändern des Passworts. Bitte versuchen Sie es erneut."
 }

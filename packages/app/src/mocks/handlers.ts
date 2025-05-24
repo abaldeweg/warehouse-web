@@ -45,6 +45,9 @@ export const handlers = [
   http.post('*/api/login_check', () => {
     return HttpResponse.json({ token: 'token', refresh_token: 'refresh_token' })
   }),
+  http.put('*/api/password', () => {
+    return HttpResponse.json({})
+  }),
   http.get('*/api/me', () => {
     return HttpResponse.json({
       id: 1,

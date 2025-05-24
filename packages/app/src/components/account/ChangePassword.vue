@@ -18,6 +18,7 @@ const { changePassword, password, passwordSuccessful, passwordError, isChangingP
     <BInput
       type="password"
       id="password"
+      required
       :placeholder="$t('new_password')"
       :label="$t('new_password')"
       v-model="password"

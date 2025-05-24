@@ -5,7 +5,7 @@ import ChangePassword from '@/components/account/ChangePassword.vue'
 
 const { t } = useI18n()
 
-useHead({ title: t('password') })
+useHead({ title: t('update_password') })
 </script>
 
 <template>
@@ -14,7 +14,7 @@ useHead({ title: t('password') })
   </BContainer>
 
   <BContainer size="s">
-    <h1>{{ t('password') }}</h1>
+    <h1>{{ t('update_password') }}</h1>
   </BContainer>
 
   <BContainer size="s">

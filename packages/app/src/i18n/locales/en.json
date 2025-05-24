@@ -41,5 +41,7 @@
   "username": "Username",
   "password": "Password",
   "login": "Login",
-  "delete_reservation": "Delete Reservation"
+  "delete_reservation": "Delete Reservation",
+  "password_update_success": "Password updated successfully.",
+  "password_update_error": "Error updating password. Please try again."
 }
