@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useAuth } from '@/composables/useAuth.ts'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.VITE_API),
+  history: createWebHistory(import.meta.env.VITE_BASE_URL),
   linkActiveClass: 'isActive',
   linkExactActiveClass: 'isActiveExact',
   routes: [
