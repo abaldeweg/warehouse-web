@@ -1,34 +1,20 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
-import { useHead } from '@unhead/vue'
-import AppMasthead from './components/AppMasthead.vue'
-import { onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
-import AppPanel from '@/components/AppPanel.vue'
-import { useI18n } from 'vue-i18n'
-import AppFooter from './components/AppFooter.vue'
+import { RouterView, useRouter } from 'vue-router'
+import { computed } from 'vue'
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import LoginLayout from '@/layouts/LoginLayout.vue'
 
-const { t } = useI18n()
+const layouts: Record<string, any> = {
+  default: DefaultLayout,
+  login: LoginLayout,
+}
 
-useHead({
-  title: t('home'),
-})
-
-const isDrawerActive = ref(false)
-const router = useRouter()
-
-onMounted(() => {
-  router.beforeEach(() => {
-    isDrawerActive.value = false
-  })
-})
+const route = useRouter().currentRoute
+const layout = computed(() => layouts[(route.value.meta.layout as string) || 'default'])
 </script>
 
 <template>
-  <BApp>
-    <AppMasthead @open-drawer="isDrawerActive = true" />
+  <component :is="layout">
     <RouterView />
-    <AppFooter />
-  </BApp>
-  <AppPanel v-model:isDrawerActive="isDrawerActive" />
+  </component>
 </template>
