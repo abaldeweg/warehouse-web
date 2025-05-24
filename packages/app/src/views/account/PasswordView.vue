@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
-import ChangePassword from '@/components/account/ChangePassword.vue'
+import ChangePassword from '@/components/account/UpdatePassword.vue'
 
 const { t } = useI18n()
 

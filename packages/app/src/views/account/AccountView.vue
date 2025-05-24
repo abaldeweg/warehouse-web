@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
-import AccountProfile from '@/components/account/AccountProfile.vue'
+import AccountProfile from '@/components/account/Profile.vue'
 
 const { t } = useI18n()
 
