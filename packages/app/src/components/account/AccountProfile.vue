@@ -25,7 +25,7 @@ const { logout } = useLogout()
     <RouterLink :to="{ name: 'account.password' }">
       {{ t('update_password') }}
     </RouterLink>
-    <BButton design="text" @click.prevent="logout">
+    <BButton design="outline" @click.prevent="logout">
       {{ $t('logout') }}
     </BButton>
   </div>
