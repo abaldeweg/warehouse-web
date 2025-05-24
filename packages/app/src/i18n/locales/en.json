@@ -43,5 +43,7 @@
   "login": "Login",
   "delete_reservation": "Delete Reservation",
   "password_update_success": "Password updated successfully.",
-  "password_update_error": "Error updating password. Please try again."
+  "password_update_error": "Error updating password. Please try again.",
+  "welcome_to_warehouse": "Welcome to the Warehouse App!",
+  "stats": "Statistics"
 }

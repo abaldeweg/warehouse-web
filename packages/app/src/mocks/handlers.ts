@@ -68,4 +68,14 @@ export const handlers = [
       isAdmin: false,
     })
   }),
+  http.get('*/api/book/stats', () => {
+    return HttpResponse.json({
+      all: 6372,
+      available: 4789,
+      reserved: 10,
+      sold: 600,
+      removed: 200,
+      storage: 3456.8663,
+    })
+  }),
 ]
