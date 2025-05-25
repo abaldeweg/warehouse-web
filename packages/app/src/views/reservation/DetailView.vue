@@ -30,7 +30,7 @@ const { toLocaleDateString } = useDate()
     </BContainer>
 
     <BContainer size="m">
-      <OrderAge :created="order.createdAt" />
+      <OrderAge :id="order.id" :created="order.createdAt" />
     </BContainer>
 
     <BContainer size="m">
