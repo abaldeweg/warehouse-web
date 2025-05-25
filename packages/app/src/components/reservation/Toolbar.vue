@@ -38,7 +38,7 @@ const mail = (mail: string, surname: string): void => {
         <BMaterialIcon @click="remove(order.id)" color="#ff0000" hover>delete</BMaterialIcon>
       </BTooltip>
       <BTooltip :text="t('sell_all')" position="bottom">
-        <BMaterialIcon @click="sellAll(order.books)" hover> sell </BMaterialIcon>
+        <BMaterialIcon @click="sellAll(order.books)" hover>sell</BMaterialIcon>
       </BTooltip>
       <BTooltip :text="t('compose_mail')" position="bottom">
         <BMaterialIcon @click="mail(order.mail, order.surname)" hover>mail</BMaterialIcon>
