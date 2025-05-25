@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { useHead } from '@unhead/vue'
 import Stats from '@/components/home/Stats.vue'
 import Reservations from '@/components/home/Reservations.vue'
+import Holidays from '@/components/home/Holidays.vue'
 
 const { t } = useI18n()
 
@@ -18,4 +19,5 @@ useHead({
 
   <Reservations />
   <Stats />
+  <Holidays />
 </template>
