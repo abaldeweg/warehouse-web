@@ -45,5 +45,8 @@
   "password_update_success": "Passwort erfolgreich geändert.",
   "password_update_error": "Fehler beim Ändern des Passworts. Bitte versuchen Sie es erneut.",
   "welcome_to_warehouse": "Willkommen in der Warehouse App!",
-  "stats": "Statistiken"
+  "stats": "Statistiken",
+  "reservation_mail_body": "Sehr geehrte/r Frau/ Herr {surname}, Ihre Reservierung ist bereit zur Abholung!",
+  "your_reservation": "Ihre Reservierung",
+  "compose_mail": "E-Mail verfassen"
 }

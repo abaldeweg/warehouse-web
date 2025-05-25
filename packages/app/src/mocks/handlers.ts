@@ -40,6 +40,7 @@ export const handlers = [
       firstname: 'Jane',
       surname: 'Doe',
       open: true,
+      mail: 'contact@store.localhost',
     })
   }),
   http.post('*/api/login_check', () => {
