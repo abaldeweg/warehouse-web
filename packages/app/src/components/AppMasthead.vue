@@ -80,6 +80,11 @@ const countOrders = computed(() => {
 body {
   --masthead-top-height: 60px;
 }
+@media print {
+  body {
+    --masthead-top-height: 0px;
+  }
+}
 </style>
 
 <style scoped>
