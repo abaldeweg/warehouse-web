@@ -40,17 +40,16 @@ export default defineConfig(({ mode }) => {
         'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200',
       ]),
     ],
-    base: env.VITE_BASE_URL,
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
       },
       dedupe: ['vue'],
     },
+    base: env.VITE_BASE_URL,
     test: {
       setupFiles: ['src/unit.setup.ts'],
       environment: 'jsdom',
-      exclude: [...configDefaults.exclude, 'e2e/**'],
       root: fileURLToPath(new URL('./', import.meta.url)),
     },
   }
