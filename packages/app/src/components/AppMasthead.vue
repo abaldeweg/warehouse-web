@@ -10,7 +10,7 @@ onMounted(checkAuthenticationStatus)
 
 const { logout } = useLogout()
 
-const { reservations, fetchReservations } = useReservations()
+const { reservations, reservationsCount,fetchReservations } = useReservations()
 let intervalId: ReturnType<typeof setInterval> | undefined
 
 onMounted(() => {
@@ -22,10 +22,6 @@ onMounted(() => {
 
 onUnmounted(() => {
   if (intervalId) clearInterval(intervalId)
-})
-
-const countReservations = computed(() => {
-  return reservations.value !== null ? reservations.value.length : 0
 })
 </script>
 
@@ -44,16 +40,16 @@ const countReservations = computed(() => {
     <BMastheadItem position="end" v-if="isAuthenticated" class="actions">
       <BBadge
         variant="inline"
-        :content="countReservations"
+        :content="reservationsCount"
         background="primary"
         :action="{ name: 'reservation' }"
-        v-if="countReservations > 0"
+        v-if="reservationsCount > 0"
       >
         <RouterLink :to="{ name: 'reservation' }">
           <BMaterialIcon>euro</BMaterialIcon>
         </RouterLink>
       </BBadge>
-      <BMaterialIcon v-if="countReservations === 0">euro</BMaterialIcon>
+      <BMaterialIcon v-if="reservationsCount === 0">euro</BMaterialIcon>
       <BDropdown position="bottom" class="action">
         <template #selector>
           <BMaterialIcon hover>account_circle</BMaterialIcon>

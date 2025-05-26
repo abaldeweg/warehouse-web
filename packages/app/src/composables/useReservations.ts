@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
 
@@ -20,6 +20,7 @@ interface Reservation {
 
 interface UseReservation {
   reservations: Ref<Reservation[]>
+  reservationsCount: Ref<number>
   fetchReservations: () => Promise<void>
 }
 
@@ -28,6 +29,10 @@ interface UseReservation {
  */
 export function useReservations(): UseReservation {
   const reservations = ref<Reservation[]>([])
+
+  const reservationsCount = computed(() => {
+    return reservations.value?.length || 0
+  })
 
   /**
    * Fetches the list of reservations from the API and updates the reactive reservations array.
@@ -43,6 +48,7 @@ export function useReservations(): UseReservation {
 
   return {
     reservations,
+    reservationsCount,
     fetchReservations,
   }
 }

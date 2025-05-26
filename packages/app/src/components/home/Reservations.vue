@@ -6,14 +6,10 @@ import { useReservations } from '@/composables/useReservations'
 
 const { t } = useI18n()
 
-const { reservations, fetchReservations } = useReservations()
+const { reservations, reservationsCount, fetchReservations } = useReservations()
 onMounted(fetchReservations)
 
 const { isOlderThan } = useDate()
-
-const countReservations = computed(() => {
-  return reservations.value?.length || 0
-})
 
 const countOpenReservations = computed(() => {
   return reservations.value?.filter((order) => order.open === true).length || 0
@@ -35,7 +31,7 @@ const countOutdatedReservations = computed(() => {
         <div class="card_number"><BMaterialIcon :size="50">storefront</BMaterialIcon></div>
       </div>
       <div class="card">
-        <div class="card_number">{{ countReservations }} in total</div>
+        <div class="card_number">{{ reservationsCount }} in total</div>
       </div>
       <div class="card">
         <div class="card_number isHighlighted">{{ countOpenReservations }} new</div>

@@ -35,4 +35,30 @@ describe('useReservations', () => {
 
     expect(reservations.value).toEqual(mockData)
   })
+
+  it('fetchReservations sets reservations and updates reservationsCount', async () => {
+    const mockData = [
+      {
+        id: '1',
+        branch_id: 101,
+        branch: {},
+        created_at: '2025-05-26T00:00:00Z',
+        notes: 'Test note',
+        books: [],
+        salutation: 'Mr.',
+        firstname: 'John',
+        surname: 'Doe',
+        mail: 'mail@localhost',
+        phone: '1234567890',
+        open: true,
+        createdAt: 1620000000,
+      },
+    ]
+    ;(apiClient.get as Mock).mockResolvedValueOnce({ data: mockData })
+
+    const { reservationsCount, fetchReservations } = useReservations()
+    await fetchReservations()
+
+    expect(reservationsCount.value).toBe(mockData.length)
+  })
 })
