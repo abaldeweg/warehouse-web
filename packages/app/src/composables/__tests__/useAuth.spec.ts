@@ -1,101 +1,57 @@
-import { describe, it, expect, vi } from 'vitest'
-import type { Mock } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { useAuth } from '../useAuth'
 import Cookies from 'js-cookie'
-import axios from 'axios'
-
-vi.mock('js-cookie', () => {
-  const mockCookies = {
-    get: vi.fn(),
-    set: vi.fn(),
-  }
-  return {
-    __esModule: true,
-    default: mockCookies,
-    ...mockCookies,
-  }
-})
-
-vi.mock('axios', () => {
-  const mockAxios = {
-    create: vi.fn(() => {
-      const mockRequest = vi.fn()
-      return {
-        request: mockRequest,
-      }
-    }),
-  }
-  return {
-    __esModule: true,
-    default: mockAxios,
-  }
-})
+import { apiClient } from '@/api/apiClient'
 
 describe('useAuth', () => {
-  it('should return false when user is not authenticated', async () => {
-    Cookies.get.mockImplementation((key: string): string | undefined => {
-      if (key === 'token') return undefined
-      if (key === 'refresh_token') return undefined
-    })
+  const mockApiResponse = { data: { id: 1, name: 'Test User' } }
 
-    const { checkAuthenticationStatus } = useAuth()
-    const result = await checkAuthenticationStatus()
-
-    expect(result).toBeFalsy()
+  beforeEach(() => {
+    vi.clearAllMocks()
+    Cookies.set = vi.fn()
   })
 
-  it('should fetch user data when token is available', async () => {
-    Cookies.get.mockImplementation((key: string): string | undefined => {
-      if (key === 'token') return 'valid-token'
-    })
+  it('should fetch user data if token exists', async () => {
+    Cookies.get = vi.fn().mockImplementation((key) => (key === 'token' ? 'valid-token' : undefined))
+    apiClient.get = vi.fn().mockResolvedValue(mockApiResponse)
 
-    const mockResponse = { data: { id: 1, name: 'Test User' } }
-    const mockAxiosInstance = {
-      request: vi.fn().mockResolvedValueOnce(mockResponse),
-    }
-    ;(axios.create as Mock).mockImplementation(() => mockAxiosInstance)
+    const { user, checkAuthenticationStatus } = useAuth()
+    await checkAuthenticationStatus()
 
-    const { checkAuthenticationStatus } = useAuth()
-    const result = await checkAuthenticationStatus()
-
-    expect(result).toBeTruthy()
+    expect(user.value).toEqual(mockApiResponse.data)
   })
 
-  it('should refresh token when token is expired but refresh token is available', async () => {
-    let token: string | undefined = undefined
-    Cookies.get.mockImplementation((key: string): string | undefined => {
-      if (key === 'token') return token
-      if (key === 'refresh_token') return 'valid-refresh-token'
-    })
-    Cookies.set.mockImplementation((key: string, value: string) => {
-      if (key === 'token') token = value
-    })
-
-    const mockTokenResponse = {
-      data: {
-        token: 'new-token',
-        refresh_token: 'new-refresh-token',
-      },
-    }
-    const mockUserResponse = { data: { id: 1, name: 'Test User' } }
-
-    const mockRequest = vi.fn((config) => {
-      if (config.method === 'post' && config.url === '/api/token/refresh') {
-        return Promise.resolve(mockTokenResponse)
-      }
-      if (config.method === 'get' && config.url === '/api/me') {
-        return Promise.resolve(mockUserResponse)
-      }
-      return Promise.reject(new Error('Unknown request'))
-    })
-    const mockAxiosInstance = { request: mockRequest }
-    ;(axios.create as Mock).mockImplementation(() => mockAxiosInstance)
+  it('should refresh token if token is missing but refresh_token exists', async () => {
+    Cookies.get = vi
+      .fn()
+      .mockImplementation((key) => (key === 'refresh_token' ? 'valid-refresh-token' : undefined))
+    apiClient.post = vi
+      .fn()
+      .mockResolvedValue({ data: { token: 'new-token', refresh_token: 'new-refresh-token' } })
 
     const { checkAuthenticationStatus } = useAuth()
-    const result = await checkAuthenticationStatus()
+    await checkAuthenticationStatus()
 
     expect(Cookies.set).toHaveBeenCalledWith('token', 'new-token', { expires: 7 })
     expect(Cookies.set).toHaveBeenCalledWith('refresh_token', 'new-refresh-token', { expires: 30 })
-    expect(result).toBeTruthy()
+  })
+
+  it('should set isAuthenticated to true if user data is valid', async () => {
+    Cookies.get = vi.fn().mockImplementation((key) => (key === 'token' ? 'valid-token' : undefined))
+    apiClient.get = vi.fn().mockResolvedValue(mockApiResponse)
+
+    const { isAuthenticated, checkAuthenticationStatus } = useAuth()
+    await checkAuthenticationStatus()
+
+    expect(isAuthenticated.value).toBe(true)
+  })
+
+  it('should set isAuthenticated to false if no valid token or user data', async () => {
+    Cookies.get = vi.fn().mockReturnValue(undefined)
+
+    const { isAuthenticated, checkAuthenticationStatus } = useAuth()
+    await checkAuthenticationStatus()
+
+    expect(isAuthenticated.value).toBe(false)
   })
 })

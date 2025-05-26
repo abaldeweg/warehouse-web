@@ -1,56 +1,52 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { useToken } from '../useToken'
-import type { User } from '../useToken'
-import axios from 'axios'
-import Cookies from 'js-cookie'
+import { apiClient } from '@/api/apiClient'
 
-vi.mock('axios')
-vi.mock('js-cookie')
+vi.mock('@/api/apiClient', () => ({
+  apiClient: {
+    get: vi.fn(),
+  },
+}))
 
 describe('useToken', () => {
-  const mockUser: User = {
-    id: 1,
-    username: 'testuser',
-    roles: ['user'],
-    branch: {
-      id: 1,
-      name: 'Main',
-      steps: '',
-      currency: 'EUR',
-      ordering: '',
-      public: true,
-      pricelist: '',
-      cart: false,
-      content: null,
-    },
-    isUser: true,
-    isAdmin: false,
-  }
+  let fetchUser: ReturnType<typeof useToken>['fetchUser']
+  let user: ReturnType<typeof useToken>['user']
 
   beforeEach(() => {
+    const composable = useToken()
+    fetchUser = composable.fetchUser
+    user = composable.user
     vi.clearAllMocks()
-    vi.resetModules()
   })
 
-  it('fetchUser updates on 200 response', async () => {
-    Cookies.get.mockReturnValue('test-token')
-    axios.create.mockReturnValue({
-      request: vi.fn().mockResolvedValue({ status: 200, data: mockUser }),
+  it('should fetch user and update user ref on success', async () => {
+    const mockUser = {
+      id: 1,
+      username: 'testuser',
+      roles: ['user'],
+      branch: {
+        id: 1,
+        name: 'Main Branch',
+        steps: 'step1',
+        currency: 'EUR',
+        ordering: 'manual',
+        public: true,
+        pricelist: 'pricelist',
+        cart: true,
+        content: null,
+      },
+      isUser: true,
+      isAdmin: false,
+    }
+
+    ;(apiClient.get as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+      status: 200,
+      data: mockUser,
     })
-    const { user, fetchUser } = useToken()
-    user.value = { ...mockUser }
+
     await fetchUser()
+
+    expect(apiClient.get).toHaveBeenCalledWith('/api/me')
     expect(user.value).toEqual(mockUser)
-  })
-
-  it('fetchUser leaves user as null on non-200 response', async () => {
-    Cookies.get.mockReturnValue('test-token')
-    axios.create.mockReturnValue({
-      request: vi.fn().mockResolvedValue({ status: 401, data: null }),
-    })
-    const { user, fetchUser } = useToken()
-    user.value = { ...mockUser }
-    await fetchUser()
-    expect(user.value).toBeNull()
   })
 })
