@@ -1,8 +1,7 @@
 import { ref } from 'vue'
 import Cookies from 'js-cookie'
 import type { Ref } from 'vue'
-import type { AxiosResponse, Method } from 'axios'
-import axios from 'axios'
+import { apiClient } from '@/api/apiClient'
 
 const isAuthenticated: Ref<boolean> = ref(false)
 const user: Ref<Record<string, any> | null> = ref(null)
@@ -13,38 +12,12 @@ const lastCheck: Ref<number | null> = ref(null)
  */
 export function useAuth() {
   /**
-   * Make an authenticated API request.
-   */
-  const request = (
-    method: Method,
-    url: string,
-    data?: any,
-    params?: any,
-  ): Promise<AxiosResponse> => {
-    const config = {
-      baseURL: import.meta.env.VITE_API,
-      timeout: 50000,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + Cookies.get('token'),
-      },
-    }
-
-    return axios.create(config).request({
-      method,
-      url,
-      data,
-      params,
-    })
-  }
-
-  /**
    * Fetch user data from the API and update the user ref.
    */
   const fetchUser = async (): Promise<void> => {
     user.value = null
     if (Cookies.get('token') !== undefined) {
-      const response = await request('get', '/api/me')
+      const response = await apiClient.get('/api/me')
       user.value = response.data
     }
   }
@@ -54,7 +27,7 @@ export function useAuth() {
    */
   const fetchTokenByRefreshToken = async (): Promise<void> => {
     if (Cookies.get('refresh_token')) {
-      const response = await request('post', '/api/token/refresh', {
+      const response = await apiClient.post('/api/token/refresh', {
         refresh_token: Cookies.get('refresh_token'),
       })
       Cookies.set('token', response.data.token, { expires: 7 })

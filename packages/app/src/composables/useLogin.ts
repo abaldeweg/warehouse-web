@@ -1,9 +1,8 @@
 import { ref } from 'vue'
 import Cookies from 'js-cookie'
-import type { Method } from 'axios'
-import axios from 'axios'
 import type { AxiosResponse } from 'axios'
 import { useRouter } from 'vue-router'
+import { apiClient } from '@/api/apiClient'
 
 /**
  * useLogin composable for handling user authentication.
@@ -17,36 +16,10 @@ export function useLogin() {
   const router = useRouter()
 
   /**
-   * Make an authenticated API request.
-   */
-  const request = (
-    method: Method,
-    url: string,
-    data?: any,
-    params?: any,
-  ): Promise<AxiosResponse> => {
-    const config = {
-      baseURL: import.meta.env.VITE_API,
-      timeout: 50000,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + Cookies.get('token'),
-      },
-    }
-
-    return axios.create(config).request({
-      method,
-      url,
-      data,
-      params,
-    })
-  }
-
-  /**
    * Checks the user's credentials by sending a login request to the API.
    */
   const checkLogin = async (): Promise<AxiosResponse> => {
-    const response = await request('post', '/api/login_check', {
+    const response = await apiClient.post('/api/login_check', {
       username: username.value,
       password: password.value,
     })

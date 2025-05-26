@@ -1,9 +1,6 @@
 import { ref } from 'vue'
-import Cookies from 'js-cookie'
 import type { Ref } from 'vue'
-import type { AxiosResponse } from 'axios'
-import axios from 'axios'
-import type { Method } from 'axios'
+import { apiClient } from '@/api/apiClient'
 
 export function usePassword() {
   const password: Ref<string | null> = ref(null)
@@ -12,38 +9,12 @@ export function usePassword() {
   const passwordError: Ref<boolean> = ref(false)
 
   /**
-   * Make an authenticated API request.
-   */
-  const request = (
-    method: Method,
-    url: string,
-    data?: any,
-    params?: any,
-  ): Promise<AxiosResponse> => {
-    const config = {
-      baseURL: import.meta.env.VITE_API,
-      timeout: 50000,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + Cookies.get('token'),
-      },
-    }
-
-    return axios.create(config).request({
-      method,
-      url,
-      data,
-      params,
-    })
-  }
-
-  /**
    * Attempts to change the user's password by sending a PUT request to the API.
    */
   const changePassword = async (): Promise<void> => {
     isChangingPassword.value = true
 
-    const response = await request('put', '/api/password', {
+    const response = await apiClient.put('/api/password', {
       password: password.value,
     })
 

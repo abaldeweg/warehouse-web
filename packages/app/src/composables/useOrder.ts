@@ -1,9 +1,6 @@
 import { ref } from 'vue'
-import Cookies from 'js-cookie'
 import type { Ref } from 'vue'
-import type { AxiosResponse } from 'axios'
-import axios from 'axios'
-import type { Method } from 'axios'
+import { apiClient } from '@/api/apiClient'
 
 interface Order {
   id: string
@@ -31,37 +28,6 @@ interface UseOrder {
 const orders = ref<Order[] | null>(null)
 
 export function useOrder(): UseOrder {
-  /**
-   * Make an authenticated API request.
-   * @param {Method} method - HTTP method
-   * @param {string} url - API endpoint
-   * @param {any} [data] - Request body
-   * @param {any} [params] - Query parameters
-   * @returns {Promise<AxiosResponse>} - Axios response promise
-   */
-  const request = (
-    method: Method,
-    url: string,
-    data?: any,
-    params?: any,
-  ): Promise<AxiosResponse> => {
-    const config = {
-      baseURL: import.meta.env.VITE_API,
-      timeout: 50000,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + Cookies.get('token'),
-      },
-    }
-
-    return axios.create(config).request({
-      method,
-      url,
-      data,
-      params,
-    })
-  }
-
   const order = ref<Order | null>(null)
 
   const isLoading = ref(false)
@@ -74,7 +40,7 @@ export function useOrder(): UseOrder {
     isLoading.value = true
 
     try {
-      const res = await request('get', '/api/reservation/list')
+      const res = await apiClient.get('/api/reservation/list')
       orders.value = res.data
     } finally {
       isLoading.value = false
@@ -82,14 +48,14 @@ export function useOrder(): UseOrder {
   }
 
   const show = async (id: string) => {
-    const res = await request('get', `/api/reservation/${id}`)
+    const res = await apiClient.get(`/api/reservation/${id}`)
     order.value = res.data
   }
 
   const update = async (data: any) => {
     if (!data) return
 
-    await request('put', `/api/reservation/${data.id}`, {
+    await apiClient.put(`/api/reservation/${data.id}`, {
       notes: data.notes,
       books: flatten(data.books),
       salutation: data.salutation,
@@ -102,7 +68,7 @@ export function useOrder(): UseOrder {
   }
 
   const remove = async (id: string) => {
-    await request('delete', `/api/reservation/${id}`)
+    await apiClient.delete(`/api/reservation/${id}`)
     await list()
   }
 

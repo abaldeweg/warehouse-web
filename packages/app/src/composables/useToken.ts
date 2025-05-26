@@ -1,8 +1,5 @@
-import Cookies from 'js-cookie'
-import type { AxiosResponse } from 'axios'
-import axios from 'axios'
-import type { Method } from 'axios'
 import { ref } from 'vue'
+import { apiClient } from '@/api/apiClient'
 
 /**
  * Represents a branch entity with its properties.
@@ -38,37 +35,11 @@ export function useToken() {
   const user = ref<User | null>(null)
 
   /**
-   * Make an authenticated API request.
-   */
-  const request = (
-    method: Method,
-    url: string,
-    data?: any,
-    params?: any,
-  ): Promise<AxiosResponse> => {
-    const config = {
-      baseURL: import.meta.env.VITE_API,
-      timeout: 50000,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + Cookies.get('token'),
-      },
-    }
-
-    return axios.create(config).request({
-      method,
-      url,
-      data,
-      params,
-    })
-  }
-
-  /**
    * Fetches the current user from the API and updates the user ref.
    */
   const fetchUser = async (): Promise<void> => {
     user.value = null
-    const res = await request('get', '/api/me')
+    const res = await apiClient.get('/api/me')
     if (res.status === 200) {
       user.value = res.data
     }
