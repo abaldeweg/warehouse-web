@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
-import { onMounted } from 'vue'
 import { useDate } from '@/composables/useDate.ts'
 import { useReservations } from '@/composables/useReservations'
 
@@ -9,8 +8,7 @@ const { t } = useI18n()
 
 useHead({ title: t('reservations') })
 
-const { reservations, fetchReservations } = useReservations()
-onMounted(fetchReservations)
+const { reservations } = useReservations()
 
 const { toLocaleDateString, isOlderThan } = useDate()
 </script>

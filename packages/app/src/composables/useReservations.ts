@@ -1,4 +1,4 @@
-import { computed, ref } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
 
@@ -45,6 +45,12 @@ export function useReservations(): UseReservation {
       console.error('Failed to fetch reservations:', error)
     }
   }
+
+  watchEffect(() => {
+    if (reservations.value.length === 0) {
+      fetchReservations()
+    }
+  })
 
   return {
     reservations,

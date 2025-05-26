@@ -5,7 +5,7 @@ import type { Mock } from 'vitest'
 
 vi.mock('@/api/apiClient', () => ({
   apiClient: {
-    get: vi.fn(),
+    get: vi.fn().mockResolvedValue({ data: [] }),
   },
 }))
 
@@ -28,7 +28,7 @@ describe('useReservations', () => {
         createdAt: 1620000000,
       },
     ]
-    ;(apiClient.get as Mock).mockResolvedValueOnce({ data: mockData })
+    ;(apiClient.get as Mock).mockResolvedValue({ data: mockData })
 
     const { reservations, fetchReservations } = useReservations()
     await fetchReservations()

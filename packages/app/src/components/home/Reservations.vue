@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useDate } from '@/composables/useDate'
 import { useReservations } from '@/composables/useReservations'
 
 const { t } = useI18n()
 
-const { reservations, reservationsCount, fetchReservations } = useReservations()
-onMounted(fetchReservations)
+const { reservations, reservationsCount } = useReservations()
 
 const { isOlderThan } = useDate()
 

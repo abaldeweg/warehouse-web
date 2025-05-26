@@ -2,7 +2,7 @@
 import AppLogo from '@/components/AppLogo.vue'
 import { useAuth } from '@/composables/useAuth'
 import { useLogout } from '@/composables/useLogout'
-import { computed, onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import { useReservations } from '@/composables/useReservations'
 
 const { isAuthenticated, user, checkAuthenticationStatus } = useAuth()
@@ -10,11 +10,10 @@ onMounted(checkAuthenticationStatus)
 
 const { logout } = useLogout()
 
-const { reservations, reservationsCount,fetchReservations } = useReservations()
+const { reservationsCount, fetchReservations } = useReservations()
 let intervalId: ReturnType<typeof setInterval> | undefined
 
 onMounted(() => {
-  fetchReservations()
   intervalId = setInterval(() => {
     fetchReservations()
   }, 60000)
