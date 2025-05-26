@@ -2,16 +2,15 @@
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { onMounted } from 'vue'
-import { useOrder } from '@/composables/useOrder.ts'
 import { useDate } from '@/composables/useDate.ts'
+import { useReservations } from '@/composables/useReservations'
 
 const { t } = useI18n()
 
 useHead({ title: t('reservations') })
 
-const { orders, isLoading, list } = useOrder()
-
-onMounted(list)
+const { reservations, fetchReservations } = useReservations()
+onMounted(fetchReservations)
 
 const { toLocaleDateString, isOlderThan } = useDate()
 </script>
@@ -21,20 +20,16 @@ const { toLocaleDateString, isOlderThan } = useDate()
     <h1>{{ $t('reservations') }}</h1>
   </BContainer>
 
-  <BContainer size="m" v-if="isLoading">
-    <BSpinner size="l" />
-  </BContainer>
-
-  <BContainer size="m" v-if="orders">
+  <BContainer size="m" v-if="reservations">
     <BList
-      v-for="reservation in orders"
+      v-for="reservation in reservations"
       :key="reservation.id"
       :route="{ name: 'reservation.detail', params: { id: reservation.id } }"
       divider
     >
-      <template #title
-        >{{ $t('reservation_from') }} {{ toLocaleDateString(reservation.createdAt) }}</template
-      >
+      <template #title>
+        {{ $t('reservation_from') }} {{ toLocaleDateString(reservation.createdAt) }}
+      </template>
 
       <template #text>
         <span v-if="reservation.open">{{ $t('is_new') }}</span>
@@ -45,7 +40,7 @@ const { toLocaleDateString, isOlderThan } = useDate()
 
       <template #controls>
         <RouterLink :to="{ name: 'reservation.detail', params: { id: reservation.id } }">
-          <BMaterialIcon>edit</BMaterialIcon>
+          <BMaterialIcon hover>edit</BMaterialIcon>
         </RouterLink>
       </template>
     </BList>

@@ -1,26 +1,26 @@
 <script setup lang="ts">
-import { useOrder } from '@/composables/useOrder'
 import { computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useDate } from '@/composables/useDate'
+import { useReservations } from '@/composables/useReservations'
 
 const { t } = useI18n()
 
-const { orders, list } = useOrder()
-onMounted(list)
+const { reservations, fetchReservations } = useReservations()
+onMounted(fetchReservations)
 
 const { isOlderThan } = useDate()
 
 const countReservations = computed(() => {
-  return orders.value?.length || 0
+  return reservations.value?.length || 0
 })
 
 const countOpenReservations = computed(() => {
-  return orders.value?.filter((order) => order.open === true).length || 0
+  return reservations.value?.filter((order) => order.open === true).length || 0
 })
 
 const countOutdatedReservations = computed(() => {
-  return orders.value?.filter((order) => isOlderThan(14, order.createdAt)).length || 0
+  return reservations.value?.filter((order) => isOlderThan(14, order.createdAt)).length || 0
 })
 </script>
 
