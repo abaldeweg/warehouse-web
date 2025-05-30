@@ -34,7 +34,16 @@ async function enableMocking() {
 
   const { worker } = await import('./mocks/browser')
 
-  return worker.start()
+  return worker.start({
+    onUnhandledRequest(request, print) {
+      const ignoredExtensions = ['vue', 'woff2', 'ts']
+      if (ignoredExtensions.some((ext) => request.url.endsWith(`.${ext}`))) {
+        return
+      }
+
+      print.warning()
+    },
+  })
 }
 
 enableMocking().then(() => {
