@@ -1,11 +1,11 @@
 import { ref, watch, type Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
 
-interface Reservation {
+export interface Reservation {
   id: string
   branch_id: number
   branch: any
-  created_at: string
+  createdAt: number
   notes: string
   books: any[]
   salutation: string
@@ -14,7 +14,6 @@ interface Reservation {
   mail: string
   phone: string
   open: boolean
-  createdAt: number
 }
 
 interface UseReservation {

@@ -1,17 +1,26 @@
 <script setup lang="ts">
-import { useOrder } from '@/composables/useOrder.js'
+interface Reservation {
+  salutation: string
+  firstname: string
+  surname: string
+  mail: string
+  phone: string
+  notes: string
+}
 
-defineProps<{
-  order: any
-}>()
+const props = defineProps<{ reservation: Reservation }>()
 
-const { update } = useOrder()
+const emit = defineEmits<{ (event: 'update', payload: Reservation): void }>()
+
+const handleUpdate = () => {
+  emit('update', { ...props.reservation })
+}
 </script>
 
 <template>
   <h2>{{ $t('customer') }}</h2>
 
-  <BForm @submit.prevent="update(order)">
+  <BForm @submit.prevent="handleUpdate">
     <BSelect
       type="options"
       name="salutation"
@@ -24,7 +33,7 @@ const { update } = useOrder()
       ]"
       optionsKeyName="key"
       optionsValueName="value"
-      v-model="order.salutation"
+      v-model="props.reservation.salutation"
     />
 
     <BInput
@@ -33,7 +42,7 @@ const { update } = useOrder()
       id="firstname"
       :placeholder="$t('firstname')"
       :label="$t('firstname')"
-      v-model="order.firstname"
+      v-model="props.reservation.firstname"
     />
 
     <BInput
@@ -42,7 +51,7 @@ const { update } = useOrder()
       id="surname"
       :placeholder="$t('surname')"
       :label="$t('surname')"
-      v-model="order.surname"
+      v-model="props.reservation.surname"
     />
 
     <BInput
@@ -51,7 +60,7 @@ const { update } = useOrder()
       id="mail"
       :placeholder="$t('mail')"
       :label="$t('mail')"
-      v-model="order.mail"
+      v-model="props.reservation.mail"
     />
 
     <BInput
@@ -60,7 +69,7 @@ const { update } = useOrder()
       id="phone"
       :placeholder="$t('phone')"
       :label="$t('phone')"
-      v-model="order.phone"
+      v-model="props.reservation.phone"
     />
 
     <BTextarea
@@ -69,7 +78,7 @@ const { update } = useOrder()
       id="notes"
       :placeholder="$t('notes')"
       :label="$t('notes')"
-      v-model="order.notes"
+      v-model="props.reservation.notes"
     />
 
     <BFormGroup buttons>
