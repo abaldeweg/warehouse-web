@@ -4,16 +4,52 @@ export const handlers = [
   http.get('*/api/reservation/list', () => {
     return HttpResponse.json([
       {
-        id: 'ed8440cc-2d8a-11ef-b142-0242ac120003',
-        createdAt: 1718726018,
+        id: 'ed8490cc-2d8a-11ef-b142-0242ac120003',
+        createdAt: new Date().getTime() / 1000,
+        notes: 'new reservation',
         open: true,
       },
       {
         id: 'ed8440cc-2d8a-11ef-b142-0242ac120003',
         createdAt: 1718726018,
+        notes: 'outdated reservation',
         open: false,
       },
+      {
+        id: 'ed8440cc-2dia-11ef-b142-0242ac120003',
+        createdAt: new Date().getTime() / 1000,
+        notes: 'empty reservation',
+        open: true,
+      },
     ])
+  }),
+  http.get('*/api/reservation/ed8490cc-2d8a-11ef-b142-0242ac120003', () => {
+    return HttpResponse.json({
+      id: 'ed8490cc-2d8a-11ef-b142-0242ac120003',
+      createdAt: new Date().getTime() / 1000,
+      notes: null,
+      books: [
+        {
+          id: '1ca572bf-eb59-11ee-a9bb-02d2ac140010',
+          added: 1711411200,
+          title: 'Book',
+          author: {
+            firstname: 'Jane',
+            surname: 'Doe',
+          },
+          genre: {
+            name: 'Thriller',
+          },
+          price: 2.5,
+          subtitle: null,
+        },
+      ],
+      salutation: 'f',
+      firstname: 'Jane',
+      surname: 'Doe',
+      open: true,
+      mail: 'contact@store.localhost',
+    })
   }),
   http.get('*/api/reservation/ed8440cc-2d8a-11ef-b142-0242ac120003', () => {
     return HttpResponse.json({
@@ -36,6 +72,19 @@ export const handlers = [
           subtitle: null,
         },
       ],
+      salutation: 'f',
+      firstname: 'Jane',
+      surname: 'Doe',
+      open: false,
+      mail: 'contact@store.localhost',
+    })
+  }),
+  http.get('*/api/reservation/ed8440cc-2dia-11ef-b142-0242ac120003', () => {
+    return HttpResponse.json({
+      id: 'ed8440cc-2dia-11ef-b142-0242ac120003',
+      createdAt: new Date().getTime() / 1000,
+      notes: null,
+      books: [],
       salutation: 'f',
       firstname: 'Jane',
       surname: 'Doe',
