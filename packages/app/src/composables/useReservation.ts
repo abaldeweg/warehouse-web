@@ -23,9 +23,11 @@ interface UseReservation {
   removeReservation: () => Promise<void>
 }
 
+// Define the useReservation composable function to manage reservation data
 export function useReservation(reservationId: string): UseReservation {
   const reservation = ref<Reservation | null>(null)
 
+  // Function to fetch reservation data by ID
   const fetchReservation = async (id: string) => {
     try {
       const response = await apiClient.get(`/api/reservation/${id}`)
@@ -35,6 +37,7 @@ export function useReservation(reservationId: string): UseReservation {
     }
   }
 
+  // Function to update the reservation data
   const updateReservation = async () => {
     try {
       let reservationData = { ...reservation.value }
@@ -49,6 +52,7 @@ export function useReservation(reservationId: string): UseReservation {
     }
   }
 
+  // Function to remove the reservation
   const removeReservation = async () => {
     try {
       if (reservation.value && 'id' in reservation.value) {
