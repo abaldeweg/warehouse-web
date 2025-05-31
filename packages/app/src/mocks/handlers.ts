@@ -128,4 +128,7 @@ export const handlers = [
       storage: 3456.8663,
     })
   }),
+  http.put('*/api/book/sell/*', () => {
+    return HttpResponse.json({})
+  }),
 ]

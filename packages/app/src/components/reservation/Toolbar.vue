@@ -5,7 +5,11 @@ import { useProduct } from '@/composables/useProduct.js'
 
 const props = defineProps<{ reservation: any }>()
 
-defineEmits<{ (event: 'update', status?: string): void; (event: 'remove'): void }>()
+defineEmits<{
+  (event: 'update', status?: string): void
+  (event: 'remove'): void
+  (event: 'sellProducts'): void
+}>()
 
 const { t } = useI18n()
 
@@ -22,6 +26,11 @@ const print = (): void => {
 const mail = (): void => {
   window.location.href = `mailto:${props.reservation.mail}?subject=${t('your_reservation')}&body=${t('reservation_mail_body', { surname: props.reservation.surname })}`
 }
+
+const sellAllProductsFromReservation = (products: any[]): void => {
+  sellAll(products)
+  props.reservation.value.books = []
+}
 </script>
 
 <template>
@@ -34,7 +43,7 @@ const mail = (): void => {
         <BMaterialIcon @click="$emit('remove')" color="#ff0000" hover>delete</BMaterialIcon>
       </BTooltip>
       <BTooltip :text="t('sell_all')" position="bottom">
-        <BMaterialIcon @click="sellAll(reservation.books)" hover>sell</BMaterialIcon>
+        <BMaterialIcon @click="$emit('sellProducts')" hover>sell</BMaterialIcon>
       </BTooltip>
       <BTooltip :text="t('compose_mail')" position="bottom">
         <BMaterialIcon @click="mail" hover>mail</BMaterialIcon>

@@ -7,6 +7,7 @@ import OrderCustomer from '@/components/reservation/Customer.vue'
 import OrderToolbar from '@/components/reservation/Toolbar.vue'
 import { useDate } from '@/composables/useDate.ts'
 import { useReservation } from '@/composables/useReservation'
+import { useProduct } from '@/composables/useProduct.js'
 
 const props = defineProps<{ id: string }>()
 
@@ -38,12 +39,27 @@ const updateCustomer = (fields: {
 }
 
 const { toLocaleDateString } = useDate()
+
+const { sellAll } = useProduct()
+
+// Function to sell all products in the reservation
+const sellProducts = (): void => {
+  if (reservation.value) {
+    sellAll(reservation.value.books)
+    reservation.value.books = []
+  }
+}
 </script>
 
 <template>
   <div v-if="reservation">
     <BContainer size="m">
-      <OrderToolbar :reservation="reservation" @remove="removeReservation" @update="updateStatus" />
+      <OrderToolbar
+        :reservation="reservation"
+        @remove="removeReservation"
+        @update="updateStatus"
+        @sellProducts="sellProducts"
+      />
     </BContainer>
 
     <BContainer size="m">

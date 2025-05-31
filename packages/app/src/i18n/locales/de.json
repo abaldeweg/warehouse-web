@@ -48,5 +48,6 @@
   "stats": "Statistiken",
   "reservation_mail_body": "Sehr geehrte/r Frau/ Herr {surname}, Ihre Reservierung ist bereit zur Abholung!",
   "your_reservation": "Ihre Reservierung",
-  "compose_mail": "E-Mail verfassen"
+  "compose_mail": "E-Mail verfassen",
+  "no_products_in_reservation_found": "Keine Produkte in der Reservierung gefunden."
 }

@@ -1,7 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps<{ products: any[] }>()
+
+const emit = defineEmits<{
+  (event: 'remove'): void
+}>()
+
+const { t } = useI18n()
 
 const catalog = import.meta.env.VITE_CATALOG
 
@@ -22,7 +29,16 @@ const sum = computed(() => {
 <template>
   <h2>{{ $t('products') }}</h2>
 
-  <BTable>
+  <BAlert v-if="products.length === 0" type="warning">
+    <BFlex justify="space-between" :align="'center'">
+      {{ $t('no_products_in_reservation_found') }}
+      <BButton design="text_danger" @click="emit('remove')" :style="{ float: 'right' }">{{
+        t('delete_reservation')
+      }}</BButton>
+    </BFlex>
+  </BAlert>
+
+  <BTable v-else>
     <table>
       <thead>
         <tr>

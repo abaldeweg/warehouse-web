@@ -48,5 +48,6 @@
   "stats": "Statistics",
   "reservation_mail_body": "Dear Mrs./ Mr. {surname}, Your reservation is ready for pickup!",
   "your_reservation": "Your Reservation",
-  "compose_mail": "Compose Mail"
+  "compose_mail": "Compose Mail",
+  "no_products_in_reservation_found": "No products in reservation found."
 }
