@@ -49,5 +49,9 @@
   "reservation_mail_body": "Dear Mrs./ Mr. {surname}, Your reservation is ready for pickup!",
   "your_reservation": "Your Reservation",
   "compose_mail": "Compose Mail",
-  "no_products_in_reservation_found": "No products in reservation found."
+  "no_products_in_reservation_found": "No products in reservation found.",
+  "remove_books_before_delete": "Please remove all books from the reservation before deleting it.",
+  "ok": "OK",
+  "sell_products_and_delete_reservation": "Sell and Delete",
+  "close": "Close"
 }

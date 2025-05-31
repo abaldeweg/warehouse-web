@@ -49,5 +49,9 @@
   "reservation_mail_body": "Sehr geehrte/r Frau/ Herr {surname}, Ihre Reservierung ist bereit zur Abholung!",
   "your_reservation": "Ihre Reservierung",
   "compose_mail": "E-Mail verfassen",
-  "no_products_in_reservation_found": "Keine Produkte in der Reservierung gefunden."
+  "no_products_in_reservation_found": "Keine Produkte in der Reservierung gefunden.",
+  "remove_books_before_delete": "Bitte entferne alle Bücher aus der Reservierung, bevor du sie löschst.",
+  "ok": "OK",
+  "sell_products_and_delete_reservation": "Verkaufen und Löschen",
+  "close": "Schließen"
 }

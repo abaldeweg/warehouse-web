@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import OrderAge from '@/components/reservation/Age.vue'
@@ -14,6 +15,8 @@ const props = defineProps<{ id: string }>()
 const { t } = useI18n()
 
 useHead({ title: t('reservation') })
+
+const isDeleteDialogVisible = ref(false)
 
 const { reservation, updateReservation, removeReservation } = useReservation(props.id)
 
@@ -49,6 +52,20 @@ const sellProducts = (): void => {
     reservation.value.books = []
   }
 }
+
+const remove = (): void => {
+  if (reservation.value && reservation.value.books.length > 0) {
+    isDeleteDialogVisible.value = true
+  } else {
+    removeReservation()
+  }
+}
+
+const sellAndDelete = (): void => {
+  sellProducts()
+  removeReservation()
+  isDeleteDialogVisible.value = false
+}
 </script>
 
 <template>
@@ -56,14 +73,14 @@ const sellProducts = (): void => {
     <BContainer size="m">
       <OrderToolbar
         :reservation="reservation"
-        @remove="removeReservation"
+        @remove="remove"
         @update="updateStatus"
         @sellProducts="sellProducts"
       />
     </BContainer>
 
     <BContainer size="m">
-      <OrderAge :reservation="reservation" @remove="removeReservation" />
+      <OrderAge :reservation="reservation" @remove="remove" />
     </BContainer>
 
     <BContainer size="m">
@@ -78,4 +95,14 @@ const sellProducts = (): void => {
       <OrderCustomer :reservation="reservation" @update="updateCustomer" />
     </BContainer>
   </div>
+
+  <BDialog v-model="isDeleteDialogVisible">
+    {{ t('remove_books_before_delete') }}
+    <template #actions>
+      <BButton design="outline_danger" @click="sellAndDelete" :style="{ marginRight: '20px' }">{{
+        t('sell_products_and_delete_reservation')
+      }}</BButton>
+      <BButton design="outline" @click="isDeleteDialogVisible = false">{{ t('close') }}</BButton>
+    </template>
+  </BDialog>
 </template>
