@@ -32,14 +32,28 @@ export function useAuth() {
    * Fetch a new token using the refresh token and update cookies.
    */
   const fetchTokenByRefreshToken = async (): Promise<void> => {
-    if (Cookies.get('refresh_token')) {
+    const refreshToken = Cookies.get('refresh_token')
+
+    if (!refreshToken) {
+      console.warn('No refresh token found in cookies.')
+      return
+    }
+
+    try {
       const response = await apiClient.post('/api/token/refresh', {
-        refresh_token: Cookies.get('refresh_token'),
+        refresh_token: refreshToken,
       })
-      Cookies.set('token', response.data.token, { expires: 7 })
-      Cookies.set('refresh_token', response.data.refresh_token, {
-        expires: 30,
-      })
+
+      const { token, refresh_token: newRefreshToken } = response.data || {}
+
+      if (token && newRefreshToken) {
+        Cookies.set('token', token, { expires: 7 })
+        Cookies.set('refresh_token', newRefreshToken, { expires: 30 })
+      } else {
+        console.error('Invalid token response:', response.data)
+      }
+    } catch (error: any) {
+      console.error('Error fetching token by refresh token:', error)
     }
   }
 
