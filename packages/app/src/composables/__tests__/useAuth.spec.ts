@@ -4,7 +4,19 @@ import Cookies from 'js-cookie'
 import { apiClient } from '@/api/apiClient'
 
 describe('useAuth', () => {
-  const mockApiResponse = { data: { id: 1, name: 'Test User' } }
+  const mockApiResponse = {
+    data: {
+      id: 1,
+      username: 'admin',
+      roles: ['ROLE_USER'],
+      branch: {
+        id: 1,
+        name: 'Branch 1',
+      },
+      isUser: true,
+      isAdmin: false,
+    },
+  }
 
   beforeEach(() => {
     vi.clearAllMocks()
@@ -13,7 +25,7 @@ describe('useAuth', () => {
 
   it('should fetch user data if token exists', async () => {
     Cookies.get = vi.fn().mockImplementation((key) => (key === 'token' ? 'valid-token' : undefined))
-    apiClient.get = vi.fn().mockResolvedValue(mockApiResponse)
+    apiClient.get = vi.fn().mockResolvedValue({ status: 200, ...mockApiResponse })
 
     const { user, checkAuthenticationStatus } = useAuth()
     await checkAuthenticationStatus()
@@ -38,7 +50,7 @@ describe('useAuth', () => {
 
   it('should set isAuthenticated to true if user data is valid', async () => {
     Cookies.get = vi.fn().mockImplementation((key) => (key === 'token' ? 'valid-token' : undefined))
-    apiClient.get = vi.fn().mockResolvedValue(mockApiResponse)
+    apiClient.get = vi.fn().mockResolvedValue({ status: 200, ...mockApiResponse })
 
     const { isAuthenticated, checkAuthenticationStatus } = useAuth()
     await checkAuthenticationStatus()
