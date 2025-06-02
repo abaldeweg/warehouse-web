@@ -20,9 +20,9 @@ const isDeleteDialogVisible = ref(false)
 
 const { reservation, updateReservation, removeReservation } = useReservation(props.id)
 
-const updateStatus = (status?: string): void => {
+const updateStatus = (status?: boolean): void => {
   if (status && reservation.value) {
-    ;(reservation.value as any).status = status
+    reservation.value.open = status
   }
   updateReservation()
 }
