@@ -17,8 +17,14 @@ export function useAuth() {
   const fetchUser = async (): Promise<void> => {
     user.value = null
     if (Cookies.get('token') !== undefined) {
-      const response = await apiClient.get('/api/me')
-      user.value = response.data
+      try {
+        const response = await apiClient.get('/api/me')
+        if (response.status === 200 && response.data && typeof response.data === 'object') {
+          user.value = response.data
+        }
+      } catch (error: any) {
+        console.error('Error fetching user data:', error)
+      }
     }
   }
 
