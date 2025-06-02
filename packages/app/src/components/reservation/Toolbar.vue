@@ -2,11 +2,28 @@
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { useProduct } from '@/composables/useProduct.js'
+import type { Branch } from '@/types/branch'
+import type { Book } from '@/types/book'
 
-const props = defineProps<{ reservation: any }>()
+export interface Reservation {
+  id: string
+  branch_id: number
+  branch: Branch
+  createdAt: number
+  notes: string
+  books: Book[]
+  salutation: string
+  firstname: string
+  surname: string
+  mail: string
+  phone: string
+  open: boolean
+}
+
+const props = defineProps<{ reservation: Reservation }>()
 
 defineEmits<{
-  (event: 'update', status?: string): void
+  (event: 'update', status?: boolean): void
   (event: 'remove'): void
   (event: 'sellProducts'): void
 }>()
@@ -27,9 +44,9 @@ const mail = (): void => {
   window.location.href = `mailto:${props.reservation.mail}?subject=${t('your_reservation')}&body=${t('reservation_mail_body', { surname: props.reservation.surname })}`
 }
 
-const sellAllProductsFromReservation = (products: any[]): void => {
+const sellAllProductsFromReservation = (products: Book[]): void => {
   sellAll(products)
-  props.reservation.value.books = []
+  props.reservation.books = []
 }
 </script>
 

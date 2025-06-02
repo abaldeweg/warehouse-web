@@ -4,7 +4,7 @@ import { computed } from 'vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import LoginLayout from '@/layouts/LoginLayout.vue'
 
-const layouts: Record<string, any> = {
+const layouts: Record<string, object> = {
   default: DefaultLayout,
   login: LoginLayout,
 }

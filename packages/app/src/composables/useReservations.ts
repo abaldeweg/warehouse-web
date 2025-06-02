@@ -1,22 +1,7 @@
 import { computed, ref, watchEffect } from 'vue'
 import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
-
-interface Reservation {
-  id: string
-  branch_id: number
-  branch: any
-  created_at: string
-  notes: string
-  books: any[]
-  salutation: string
-  firstname: string
-  surname: string
-  mail: string
-  phone: string
-  open: boolean
-  createdAt: number
-}
+import type { Reservation } from '@/types/reservation'
 
 interface UseReservation {
   reservations: Ref<Reservation[]>

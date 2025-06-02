@@ -1,9 +1,14 @@
 import type { AxiosResponse } from 'axios'
 import { apiClient } from '@/api/apiClient'
+import type { Book } from '@/types/book'
 
-export function useProduct() {
+export interface UseProduct {
+  sellAll: (products: Book[]) => void
+}
+
+export function useProduct(): UseProduct {
   // Sell all products
-  const sellAll = (products: any[]): void => {
+  const sellAll = (products: Book[]): void => {
     products.forEach((element) => {
       sell(element.id)
     })

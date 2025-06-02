@@ -2,7 +2,15 @@ import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
 
-export function usePassword() {
+export interface UsePassword {
+  password: Ref<string | null>
+  isChangingPassword: Ref<boolean>
+  passwordSuccessful: Ref<boolean>
+  passwordError: Ref<boolean>
+  changePassword: () => Promise<void>
+}
+
+export function usePassword(): UsePassword {
   const password: Ref<string | null> = ref(null)
   const isChangingPassword: Ref<boolean> = ref(false)
   const passwordSuccessful: Ref<boolean> = ref(false)

@@ -1,37 +1,20 @@
 import { ref } from 'vue'
+import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
+import type { User } from '@/types/user'
 
 /**
- * Represents a branch entity with its properties.
+ * Interface for the useToken composable.
  */
-interface Branch {
-  id: number
-  name: string
-  steps: string
-  currency: string
-  ordering: string
-  public: boolean
-  pricelist: string
-  cart: boolean
-  content: string | null
-}
-
-/**
- * Represents a user entity with associated branch and roles.
- */
-export interface User {
-  id: number
-  username: string
-  roles: string[]
-  branch: Branch
-  isUser: boolean
-  isAdmin: boolean
+export interface UseToken {
+  user: Ref<User | null>
+  fetchUser: () => Promise<void>
 }
 
 /**
  * Composable for handling user authentication and token-based API requests.
  */
-export function useToken() {
+export function useToken(): UseToken {
   const user = ref<User | null>(null)
 
   /**

@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import type { Book } from '@/types/book'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const props = defineProps<{ products: any[] }>()
+const props = defineProps<{ products: Book[] }>()
 
 const emit = defineEmits<{
   (event: 'remove'): void

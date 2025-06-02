@@ -1,20 +1,7 @@
 import { ref, watch, type Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
-
-export interface Reservation {
-  id: string
-  branch_id: number
-  branch: any
-  createdAt: number
-  notes: string
-  books: any[]
-  salutation: string
-  firstname: string
-  surname: string
-  mail: string
-  phone: string
-  open: boolean
-}
+import type { Reservation } from '@/types/reservation'
+import type { Book } from '@/types/book'
 
 interface UseReservation {
   reservation: Ref<Reservation | null>
@@ -42,7 +29,9 @@ export function useReservation(reservationId: string): UseReservation {
     try {
       let reservationData = { ...reservation.value }
       if (reservationData.books) {
-        reservationData.books = reservationData.books.map((book: any) => ({ id: book.id }))
+        reservationData.books = reservationData.books.map((book: Book) => ({
+          ...book,
+        }))
       }
       if (reservation.value && 'id' in reservation.value) {
         await apiClient.put(`/api/reservation/${reservation.value.id}`, reservationData)

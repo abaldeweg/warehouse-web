@@ -2,12 +2,14 @@ import confetti from 'canvas-confetti'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 
-export function useHolidays(): {
+export interface UseHolidays {
   date: Ref<Date>
   showPride: Ref<boolean>
   startHolidays: () => void
   stopHolidays: () => void
-} {
+}
+
+export function useHolidays(): UseHolidays {
   const date = ref<Date>(new Date())
   const hasParty = ref(false)
   const partyInterval = ref<number | null>(null)
