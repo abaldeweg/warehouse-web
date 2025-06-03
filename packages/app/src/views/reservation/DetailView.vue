@@ -88,7 +88,7 @@ const sellAndDelete = (): void => {
     </BContainer>
 
     <BContainer size="m">
-      <OrderTable :products="reservation.books" />
+      <OrderTable :products="reservation.books" @remove="removeReservation" />
     </BContainer>
 
     <BContainer size="m">

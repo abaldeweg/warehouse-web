@@ -5,6 +5,11 @@ defineProps({
   isDrawerActive: Boolean,
 })
 
+const emit = defineEmits<{
+  (event: 'update:isDrawerActive', value: boolean): void
+  (event: 'close-drawer'): void
+}>()
+
 const catalog: string = import.meta.env.VITE_CATALOG
 const settings: string = import.meta.env.VITE_SETTINGS
 const shop: string = import.meta.env.VITE_SHOP
@@ -13,8 +18,8 @@ const shop: string = import.meta.env.VITE_SHOP
 <template>
   <BPanel
     :model-value="isDrawerActive"
-    @update:model-value="$emit('update:isDrawerActive', $event)"
-    @close="$emit('close-drawer')"
+    @update:model-value="emit('update:isDrawerActive', $event)"
+    @close="emit('close-drawer')"
   >
     <template #header>
       <BContainer>
