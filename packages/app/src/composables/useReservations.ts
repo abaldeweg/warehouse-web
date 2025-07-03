@@ -3,6 +3,9 @@ import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
 import type { Reservation } from '@/types/reservation'
 
+/**
+ * Interface for the useReservations composable.
+ */
 interface UseReservation {
   reservations: Ref<Reservation[]>
   reservationsCount: Ref<number>
