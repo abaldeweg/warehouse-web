@@ -2,6 +2,9 @@ import confetti from 'canvas-confetti'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 
+/**
+ * Interface for the holidays composable.
+ */
 export interface UseHolidays {
   date: Ref<Date>
   showPride: Ref<boolean>
@@ -9,6 +12,9 @@ export interface UseHolidays {
   stopHolidays: () => void
 }
 
+/**
+ * useHolidays composable for managing holiday effects like confetti and snow.
+ */
 export function useHolidays(): UseHolidays {
   const date = ref<Date>(new Date())
   const hasParty = ref(false)
@@ -17,6 +23,9 @@ export function useHolidays(): UseHolidays {
   const snowInterval = ref<number | null>(null)
   const showPride = ref(false)
 
+  /**
+   * Triggers a confetti burst at a given x position and drift.
+   */
   const party = (x: number, drift: number): void => {
     confetti({
       particleCount: 25,
@@ -33,6 +42,9 @@ export function useHolidays(): UseHolidays {
     })
   }
 
+  /**
+   * Triggers a snow-like confetti effect at a random position.
+   */
   const snow = () => {
     confetti({
       particleCount: 5,
@@ -50,6 +62,9 @@ export function useHolidays(): UseHolidays {
     })
   }
 
+  /**
+   * Starts holiday effects based on the current date.
+   */
   const startHolidays = (): void => {
     const today = date.value
     const month = today.getMonth()
@@ -77,6 +92,9 @@ export function useHolidays(): UseHolidays {
     }
   }
 
+  /**
+   * Stops all holiday effects and clears intervals.
+   */
   const stopHolidays = (): void => {
     if (partyInterval.value) {
       clearInterval(partyInterval.value)
