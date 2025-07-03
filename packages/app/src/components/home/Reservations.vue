@@ -25,9 +25,11 @@ const countOutdatedReservations = computed(() => {
   </BContainer>
 
   <BContainer size="m">
-    <div class="flex-gap">
+    <div class="reservations">
       <div class="card">
-        <div class="card_number"><BMaterialIcon :size="50">storefront</BMaterialIcon></div>
+        <div class="card_number">
+          <BMaterialIcon :size="50">storefront</BMaterialIcon>
+        </div>
       </div>
       <div class="card">
         <div class="card_number">{{ reservationsCount }} in total</div>
@@ -50,19 +52,23 @@ const countOutdatedReservations = computed(() => {
   padding: 20px;
   text-align: center;
 }
+
 .card_number {
   font-size: 2rem;
   font-weight: bold;
 }
+
 .card_number.isHighlighted {
   color: var(--color-primary-10);
 }
+
 .card_title {
   margin-top: 5px;
   color: var(--color-neutral-08);
   font-size: 0.9rem;
 }
-.flex-gap {
+
+.reservations {
   display: flex;
   gap: 20px;
 }
