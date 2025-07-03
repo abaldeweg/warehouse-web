@@ -1,11 +1,14 @@
 /**
- * Provides utility functions for date manipulation.
+ * Interface for the date manipulation methods.
  */
 export interface UseDate {
   toLocaleDateString: (timestamp: number) => string
   isOlderThan: (days: number, timestamp: number) => boolean
 }
 
+/**
+ * useDate composable for date manipulation logic.
+ */
 export function useDate(): UseDate {
   /**
    * Converts a Unix timestamp to a locale date string.
