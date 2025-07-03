@@ -3,6 +3,9 @@ import { apiClient } from '@/api/apiClient'
 import type { Reservation } from '@/types/reservation'
 import type { Book } from '@/types/book'
 
+/**
+ * Interface for the useReservation composable.
+ */
 interface UseReservation {
   reservation: Ref<Reservation | null>
   fetchReservation: (id: string) => Promise<void>
@@ -10,11 +13,15 @@ interface UseReservation {
   removeReservation: () => Promise<void>
 }
 
-// Define the useReservation composable function to manage reservation data
+/**
+ * useReservation composable for managing a single reservation.
+ */
 export function useReservation(reservationId: string): UseReservation {
   const reservation = ref<Reservation | null>(null)
 
-  // Function to fetch reservation data by ID
+  /**
+   * Function to fetch reservation data by ID
+   */
   const fetchReservation = async (id: string) => {
     try {
       const response = await apiClient.get(`/api/reservation/${id}`)
@@ -24,7 +31,9 @@ export function useReservation(reservationId: string): UseReservation {
     }
   }
 
-  // Function to update the reservation data
+  /**
+   * Function to update the reservation data
+   */
   const updateReservation = async () => {
     try {
       let reservationData = { ...reservation.value }
@@ -41,7 +50,9 @@ export function useReservation(reservationId: string): UseReservation {
     }
   }
 
-  // Function to remove the reservation
+  /**
+   * Function to remove the reservation
+   */
   const removeReservation = async () => {
     try {
       if (reservation.value && 'id' in reservation.value) {
