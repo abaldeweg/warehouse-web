@@ -2,6 +2,9 @@ import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
 
+/**
+ * Interface for the usePassword composable.
+ */
 export interface UsePassword {
   password: Ref<string | null>
   isChangingPassword: Ref<boolean>
@@ -10,6 +13,9 @@ export interface UsePassword {
   changePassword: () => Promise<void>
 }
 
+/**
+ * usePassword composable for managing password changes.
+ */
 export function usePassword(): UsePassword {
   const password: Ref<string | null> = ref(null)
   const isChangingPassword: Ref<boolean> = ref(false)
