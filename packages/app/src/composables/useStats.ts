@@ -3,6 +3,9 @@ import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
 import type { Stats } from '@/types/stats'
 
+/**
+ * Interface for the useStats composable.
+ */
 export interface UseStats {
   stats: Ref<Stats | null>
   fetchStats: () => Promise<void>
