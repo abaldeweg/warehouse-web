@@ -14,7 +14,7 @@ fetchStats()
   </BContainer>
 
   <BContainer size="m" v-if="stats">
-    <BFlex justify="space-between" gap="20px">
+    <div class="flex-between-gap">
       <div class="card">
         <div class="card_number isHighlighted">{{ (stats.storage / 1024).toFixed(2) }} GB</div>
         <div class="card_title">Storage Usage (Cover)</div>
@@ -39,7 +39,7 @@ fetchStats()
         <div class="card_number">{{ stats.removed }}</div>
         <div class="card_title">Removed Products</div>
       </div>
-    </BFlex>
+    </div>
   </BContainer>
 </template>
 
@@ -62,5 +62,10 @@ fetchStats()
   margin-top: 5px;
   color: var(--color-neutral-08);
   font-size: 0.9rem;
+}
+.flex-between-gap {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
 </style>

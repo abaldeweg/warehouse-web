@@ -31,12 +31,12 @@ const sum = computed(() => {
   <h2>{{ $t('products') }}</h2>
 
   <BAlert v-if="products.length === 0" type="warning">
-    <BFlex justify="space-between" :align="'center'">
+    <div class="flex-between-center">
       {{ $t('no_products_in_reservation_found') }}
       <BButton design="text_danger" @click="emit('remove')" :style="{ float: 'right' }">{{
         t('delete_reservation')
       }}</BButton>
-    </BFlex>
+    </div>
   </BAlert>
 
   <BTable v-else>
@@ -84,5 +84,11 @@ const sum = computed(() => {
 
 .alignRight {
   text-align: right;
+}
+
+.flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

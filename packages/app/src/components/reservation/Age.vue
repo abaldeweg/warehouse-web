@@ -13,12 +13,20 @@ const { isOlderThan } = useDate()
 </script>
 
 <template>
-  <BAlert type="error" v-if="isOlderThan(14, reservation.createdAt)">
-    <BFlex justify="space-between" :align="'center'">
+  <BAlert type="danger" v-if="isOlderThan(14, reservation.createdAt)">
+    <div class="flex-between-center">
       {{ $t('old_reservation') }}
       <BButton design="primary_danger" @click="emit('remove')" :style="{ float: 'right' }">{{
         t('delete_reservation')
       }}</BButton>
-    </BFlex>
+    </div>
   </BAlert>
 </template>
+
+<style scoped>
+.flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+</style>

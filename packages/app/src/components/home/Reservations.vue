@@ -25,7 +25,7 @@ const countOutdatedReservations = computed(() => {
   </BContainer>
 
   <BContainer size="m">
-    <BFlex gap="20px">
+    <div class="flex-gap">
       <div class="card">
         <div class="card_number"><BMaterialIcon :size="50">storefront</BMaterialIcon></div>
       </div>
@@ -38,7 +38,7 @@ const countOutdatedReservations = computed(() => {
       <div class="card">
         <div class="card_number isHighlighted">{{ countOutdatedReservations }} outdated</div>
       </div>
-    </BFlex>
+    </div>
   </BContainer>
 </template>
 
@@ -61,5 +61,9 @@ const countOutdatedReservations = computed(() => {
   margin-top: 5px;
   color: var(--color-neutral-08);
   font-size: 0.9rem;
+}
+.flex-gap {
+  display: flex;
+  gap: 20px;
 }
 </style>

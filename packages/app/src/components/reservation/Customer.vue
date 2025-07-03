@@ -21,70 +21,29 @@ const handleUpdate = () => {
   <h2>{{ $t('customer') }}</h2>
 
   <BForm @submit.prevent="handleUpdate">
-    <BSelect
-      type="options"
-      name="salutation"
-      id="salutation"
-      :label="$t('salutation')"
-      :options="[
-        { key: 'm', value: $t('mr') },
-        { key: 'f', value: $t('mrs') },
-        { key: 'd', value: $t('none_diverse') },
-      ]"
-      optionsKeyName="key"
-      optionsValueName="value"
-      v-model="props.reservation.salutation"
-    />
+    <BSelect type="options" name="salutation" id="salutation" :label="$t('salutation')" :options="[
+      { key: 'm', value: $t('mr') },
+      { key: 'f', value: $t('mrs') },
+      { key: 'd', value: $t('none_diverse') },
+    ]" optionsKeyName="key" optionsValueName="value" v-model="props.reservation.salutation" />
 
-    <BInput
-      type="text"
-      name="firstname"
-      id="firstname"
-      :placeholder="$t('firstname')"
-      :label="$t('firstname')"
-      v-model="props.reservation.firstname"
-    />
+    <BInput type="text" name="firstname" id="firstname" :placeholder="$t('firstname')" :label="$t('firstname')"
+      v-model="props.reservation.firstname" />
 
-    <BInput
-      type="text"
-      name="surname"
-      id="surname"
-      :placeholder="$t('surname')"
-      :label="$t('surname')"
-      v-model="props.reservation.surname"
-    />
+    <BInput type="text" name="surname" id="surname" :placeholder="$t('surname')" :label="$t('surname')"
+      v-model="props.reservation.surname" />
 
-    <BInput
-      type="email"
-      name="mail"
-      id="mail"
-      :placeholder="$t('mail')"
-      :label="$t('mail')"
-      v-model="props.reservation.mail"
-    />
+    <BInput type="email" name="mail" id="mail" :placeholder="$t('mail')" :label="$t('mail')"
+      v-model="props.reservation.mail" />
 
-    <BInput
-      type="tel"
-      name="phone"
-      id="phone"
-      :placeholder="$t('phone')"
-      :label="$t('phone')"
-      v-model="props.reservation.phone"
-    />
+    <BInput type="tel" name="phone" id="phone" :placeholder="$t('phone')" :label="$t('phone')"
+      v-model="props.reservation.phone" />
 
-    <BTextarea
-      type="text"
-      name="notes"
-      id="notes"
-      :placeholder="$t('notes')"
-      :label="$t('notes')"
-      v-model="props.reservation.notes"
-    />
+    <BTextarea type="text" name="notes" id="notes" :placeholder="$t('notes')" :label="$t('notes')"
+      v-model="props.reservation.notes" />
 
-    <BFormGroup buttons>
-      <BFormItem>
-        <BButton design="primary_wide">{{ $t('save') }}</BButton>
-      </BFormItem>
-    </BFormGroup>
+    <template #buttons>
+      <BButton design="primary_wide">{{ $t('save') }}</BButton>
+    </template>
   </BForm>
 </template>
