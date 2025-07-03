@@ -12,7 +12,6 @@ const theme = () => {
   document.documentElement.innerHTML +=
     '<style>@import "' + import.meta.env.VITE_THEME + '";</style>'
 }
-
 theme()
 
 const ui = createUi()
@@ -21,7 +20,7 @@ const head = createHead({
   init: [
     {
       title: 'Home',
-      titleTemplate: '%s - js-monorepo-template',
+      titleTemplate: '%s - Warehouse',
       htmlAttrs: { lang: navigator.language },
     },
   ],
