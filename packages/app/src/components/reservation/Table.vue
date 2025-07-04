@@ -31,7 +31,7 @@ const sum = computed(() => {
   <h2>{{ $t('products') }}</h2>
 
   <BAlert v-if="products.length === 0" type="warning">
-    <div class="flex-between-center">
+    <div class="alert">
       {{ $t('no_products_in_reservation_found') }}
       <BButton design="text_danger" @click="emit('remove')" :style="{ float: 'right' }">{{
         t('delete_reservation')
@@ -86,7 +86,7 @@ const sum = computed(() => {
   text-align: right;
 }
 
-.flex-between-center {
+.alert {
   display: flex;
   justify-content: space-between;
   align-items: center;
