@@ -1,12 +1,5 @@
 <script setup lang="ts">
-interface Reservation {
-  salutation: string
-  firstname: string
-  surname: string
-  mail: string
-  phone: string
-  notes: string
-}
+import type { Reservation } from '@/types/reservation'
 
 const props = defineProps<{ reservation: Reservation }>()
 
