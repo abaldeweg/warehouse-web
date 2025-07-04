@@ -25,5 +25,6 @@ export function useProduct(): UseProduct {
 
   return {
     sellAll,
+    sell,
   }
 }

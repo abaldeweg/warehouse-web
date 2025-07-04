@@ -1,4 +1,4 @@
-import { computed, ref, watchEffect } from 'vue'
+import { computed, readonly, ref, watchEffect } from 'vue'
 import { apiClient } from '@/api/apiClient'
 import type { Reservation } from '@/types/model/reservation'
 import type { UseReservations } from '@/types/composables'
@@ -33,7 +33,7 @@ export function useReservations(): UseReservations {
 
   return {
     reservations,
-    reservationsCount,
+    reservationsCount: readonly(reservationsCount),
     fetchReservations,
   }
 }

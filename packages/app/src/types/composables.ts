@@ -3,10 +3,12 @@ import type { User } from './model/user'
 import type { Stats } from './model/stats'
 import type { Book } from './model/book'
 import type { Reservation } from './model/reservation'
+import type { AxiosResponse } from 'axios'
 
 export interface UseAuth {
   isAuthenticated: Ref<boolean>
   user: Ref<User | null>
+  readonly lastCheck: Ref<number | null>
   checkAuthenticationStatus: () => Promise<boolean>
 }
 
@@ -56,6 +58,7 @@ export interface UseStats {
 
 export interface UseProduct {
   sellAll: (products: Book[]) => void
+  sell: (id: string) => Promise<AxiosResponse>
 }
 
 export interface UseReservation {
@@ -67,6 +70,6 @@ export interface UseReservation {
 
 export interface UseReservations {
   reservations: Ref<Reservation[]>
-  reservationsCount: Ref<number>
+  readonly reservationsCount: Ref<number>
   fetchReservations: () => Promise<void>
 }

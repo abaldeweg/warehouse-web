@@ -99,9 +99,9 @@ export function useHolidays(): UseHolidays {
 
   return {
     date,
-    showPride,
     hasParty: readonly(hasParty),
     hasSnow: readonly(hasSnow),
+    showPride,
     startHolidays,
     stopHolidays,
   }

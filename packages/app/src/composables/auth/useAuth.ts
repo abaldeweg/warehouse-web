@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { readonly, ref } from 'vue'
 import Cookies from 'js-cookie'
 import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
@@ -105,6 +105,7 @@ export function useAuth(): UseAuth {
   return {
     isAuthenticated,
     user,
+    lastCheck: readonly(lastCheck),
     checkAuthenticationStatus,
   }
 }
