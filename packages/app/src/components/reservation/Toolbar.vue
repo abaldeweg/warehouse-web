@@ -2,23 +2,7 @@
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { useProduct } from '@/composables/useProduct.js'
-import type { Branch } from '@/types/branch'
-import type { Book } from '@/types/book'
-
-export interface Reservation {
-  id: string
-  branch_id: number
-  branch: Branch
-  createdAt: number
-  notes: string
-  books: Book[]
-  salutation: string
-  firstname: string
-  surname: string
-  mail: string
-  phone: string
-  open: boolean
-}
+import type { Reservation } from '@/types/reservation'
 
 const props = defineProps<{ reservation: Reservation }>()
 
@@ -34,19 +18,18 @@ useHead({ title: t('reservation') })
 
 const { sellAll } = useProduct()
 
-// Print function to print the current page
+/**
+ * Print function to print the current page
+ */
 const print = (): void => {
   window.print()
 }
 
-// Function to compose an email
+/**
+ * Function to compose an email
+ */
 const mail = (): void => {
   window.location.href = `mailto:${props.reservation.mail}?subject=${t('your_reservation')}&body=${t('reservation_mail_body', { surname: props.reservation.surname })}`
-}
-
-const sellAllProductsFromReservation = (products: Book[]): void => {
-  sellAll(products)
-  props.reservation.books = []
 }
 </script>
 
@@ -68,11 +51,8 @@ const sellAllProductsFromReservation = (products: Book[]): void => {
       <BTooltip :text="t('print')" position="bottom">
         <BMaterialIcon @click="print" hover>print</BMaterialIcon>
       </BTooltip>
-      <BSwitch
-        v-model="reservation.open"
-        @update:modelValue="$emit('update', props.reservation.open)"
-        :label="$t('is_new')"
-      />
+      <BSwitch v-model="reservation.open" @update:modelValue="$emit('update', props.reservation.open)"
+        :label="$t('is_new')" />
     </div>
   </div>
 </template>
@@ -85,11 +65,13 @@ const sellAllProductsFromReservation = (products: Book[]): void => {
   border-radius: 20px;
   padding: 20px;
 }
+
 .toolbar_group {
   display: flex;
   gap: 20px;
   align-items: center;
 }
+
 @media print {
   .toolbar {
     display: none;
