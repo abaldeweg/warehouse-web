@@ -2,7 +2,7 @@
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { useDate } from '@/composables/useDate.ts'
-import { useReservations } from '@/composables/useReservations'
+import { useReservations } from '@/composables/reservations/useReservations'
 
 const { t } = useI18n()
 

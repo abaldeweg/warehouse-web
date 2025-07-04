@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useLogin } from '@/composables/useLogin'
+import { useLogin } from '@/composables/auth/useLogin'
 
 const { username, password, isLoggingIn, invalidCredentials, login } = useLogin()
 </script>

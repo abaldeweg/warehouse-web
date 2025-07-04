@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useDate } from '@/composables/useDate'
-import { useReservations } from '@/composables/useReservations'
+import { useReservations } from '@/composables/reservations/useReservations'
 
 const { t } = useI18n()
 

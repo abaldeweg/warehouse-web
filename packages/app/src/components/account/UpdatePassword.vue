@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePassword } from '@/composables/usePassword.ts'
+import { usePassword } from '@/composables/auth/usePassword'
 
 const { changePassword, password, passwordSuccessful, passwordError, isChangingPassword } =
   usePassword()

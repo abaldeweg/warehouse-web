@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
-import { useProduct } from '@/composables/useProduct.js'
+import { useProduct } from '@/composables/products/useProduct.js'
 import type { Reservation } from '@/types/reservation'
 
 const props = defineProps<{ reservation: Reservation }>()

@@ -7,8 +7,8 @@ import OrderTable from '@/components/reservation/Table.vue'
 import OrderCustomer from '@/components/reservation/Customer.vue'
 import OrderToolbar from '@/components/reservation/Toolbar.vue'
 import { useDate } from '@/composables/useDate.ts'
-import { useReservation } from '@/composables/useReservation'
-import { useProduct } from '@/composables/useProduct.js'
+import { useReservation } from '@/composables/reservations/useReservation'
+import { useProduct } from '@/composables/products/useProduct.js'
 
 const props = defineProps<{ id: string }>()
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useToken } from '@/composables/useToken.ts'
-import { useLogout } from '@/composables/useLogout.ts'
+import { useToken } from '@/composables/auth/useToken'
+import { useLogout } from '@/composables/auth/useLogout'
 import { onMounted } from 'vue'
 
 const { t } = useI18n()

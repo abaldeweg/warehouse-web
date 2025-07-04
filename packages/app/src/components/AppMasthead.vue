@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import AppLogo from '@/components/AppLogo.vue'
-import { useAuth } from '@/composables/useAuth'
-import { useLogout } from '@/composables/useLogout'
+import { useAuth } from '@/composables/auth/useAuth'
+import { useLogout } from '@/composables/auth/useLogout'
 import { onMounted, onUnmounted } from 'vue'
-import { useReservations } from '@/composables/useReservations'
+import { useReservations } from '@/composables/reservations/useReservations'
 
 const { isAuthenticated, user, checkAuthenticationStatus } = useAuth()
 onMounted(checkAuthenticationStatus)
