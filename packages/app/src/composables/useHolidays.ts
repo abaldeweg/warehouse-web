@@ -1,5 +1,5 @@
 import confetti from 'canvas-confetti'
-import { ref } from 'vue'
+import { ref, readonly } from 'vue'
 import type { Ref } from 'vue'
 
 /**
@@ -8,6 +8,8 @@ import type { Ref } from 'vue'
 export interface UseHolidays {
   date: Ref<Date>
   showPride: Ref<boolean>
+  hasParty: Ref<boolean>
+  hasSnow: Ref<boolean>
   startHolidays: () => void
   stopHolidays: () => void
 }
@@ -107,5 +109,5 @@ export function useHolidays(): UseHolidays {
     showPride.value = false
   }
 
-  return { date, showPride, startHolidays, stopHolidays }
+  return { date, showPride, hasParty: readonly(hasParty), hasSnow: readonly(hasSnow), startHolidays, stopHolidays }
 }
