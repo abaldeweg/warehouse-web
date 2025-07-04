@@ -1,12 +1,6 @@
 import Cookies from 'js-cookie'
 import { useRouter } from 'vue-router'
-
-/**
- * Interface for the useLogout composable.
- */
-export interface UseLogout {
-  logout: () => void
-}
+import type { UseLogout } from '@/types/composables'
 
 /**
  * Composable for handling user logout.

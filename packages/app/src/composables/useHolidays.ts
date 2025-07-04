@@ -1,18 +1,6 @@
 import confetti from 'canvas-confetti'
 import { ref, readonly } from 'vue'
-import type { Ref } from 'vue'
-
-/**
- * Interface for the holidays composable.
- */
-export interface UseHolidays {
-  date: Ref<Date>
-  showPride: Ref<boolean>
-  hasParty: Ref<boolean>
-  hasSnow: Ref<boolean>
-  startHolidays: () => void
-  stopHolidays: () => void
-}
+import type { UseHolidays } from '../types/composables'
 
 /**
  * useHolidays composable for managing holiday effects like confetti and snow.
@@ -109,5 +97,12 @@ export function useHolidays(): UseHolidays {
     showPride.value = false
   }
 
-  return { date, showPride, hasParty: readonly(hasParty), hasSnow: readonly(hasSnow), startHolidays, stopHolidays }
+  return {
+    date,
+    showPride,
+    hasParty: readonly(hasParty),
+    hasSnow: readonly(hasSnow),
+    startHolidays,
+    stopHolidays,
+  }
 }

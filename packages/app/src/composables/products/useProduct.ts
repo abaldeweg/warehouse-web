@@ -1,13 +1,7 @@
 import type { AxiosResponse } from 'axios'
 import { apiClient } from '@/api/apiClient'
 import type { Book } from '@/types/book'
-
-/**
- * Interface for the useProduct composable.
- */
-export interface UseProduct {
-  sellAll: (products: Book[]) => void
-}
+import type { UseProduct } from '@/types/composables'
 
 /**
  * useProduct composable for managing product sales.

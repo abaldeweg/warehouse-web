@@ -2,16 +2,8 @@ import { ref } from 'vue'
 import Cookies from 'js-cookie'
 import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
+import type { UseAuth } from '@/types/composables'
 import type { User } from '@/types/user'
-
-/**
- * Interface for the authentication state and methods.
- */
-export interface UseAuth {
-  isAuthenticated: Ref<boolean>
-  user: Ref<User | null>
-  checkAuthenticationStatus: () => Promise<boolean>
-}
 
 const isAuthenticated: Ref<boolean> = ref(false)
 const user: Ref<User | null> = ref(null)

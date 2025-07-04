@@ -1,21 +1,12 @@
 import { computed, ref, watchEffect } from 'vue'
-import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
 import type { Reservation } from '@/types/reservation'
-
-/**
- * Interface for the useReservations composable.
- */
-interface UseReservation {
-  reservations: Ref<Reservation[]>
-  reservationsCount: Ref<number>
-  fetchReservations: () => Promise<void>
-}
+import type { UseReservations } from '@/types/composables'
 
 /**
  * A composable to manage reservations.
  */
-export function useReservations(): UseReservation {
+export function useReservations(): UseReservations {
   const reservations = ref<Reservation[]>([])
 
   const reservationsCount = computed(() => {
