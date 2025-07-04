@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useDate } from '@/composables/useDate'
+import { useDate } from '@/composables/holidays/useDate'
 import { useReservations } from '@/composables/reservations/useReservations'
 
 const { t } = useI18n()

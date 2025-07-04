@@ -1,6 +1,6 @@
 import confetti from 'canvas-confetti'
 import { ref, readonly } from 'vue'
-import type { UseHolidays } from '../types/composables'
+import type { UseHolidays } from '../../types/composables'
 
 /**
  * useHolidays composable for managing holiday effects like confetti and snow.

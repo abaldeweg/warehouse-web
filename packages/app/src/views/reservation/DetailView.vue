@@ -6,7 +6,7 @@ import OrderAge from '@/components/reservation/Age.vue'
 import OrderTable from '@/components/reservation/Table.vue'
 import OrderCustomer from '@/components/reservation/Customer.vue'
 import OrderToolbar from '@/components/reservation/Toolbar.vue'
-import { useDate } from '@/composables/useDate.ts'
+import { useDate } from '@/composables/holidays/useDate'
 import { useReservation } from '@/composables/reservations/useReservation'
 import { useProduct } from '@/composables/products/useProduct.js'
 

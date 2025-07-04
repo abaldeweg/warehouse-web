@@ -1,4 +1,4 @@
-import type { UseDate } from '../types/composables'
+import type { UseDate } from '../../types/composables'
 
 /**
  * useDate composable for date manipulation logic.

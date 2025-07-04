@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDate } from '@/composables/useDate'
+import { useDate } from '@/composables/holidays/useDate'
 import { useI18n } from 'vue-i18n'
 import type { Reservation } from '@/types/model/reservation'
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useHolidays } from '@/composables/useHolidays'
+import { useHolidays } from '@/composables/holidays/useHolidays'
 import { onMounted, onUnmounted, watch } from 'vue'
 
 const { date, showPride, startHolidays, stopHolidays } = useHolidays()
