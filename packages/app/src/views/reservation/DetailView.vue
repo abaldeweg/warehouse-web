@@ -20,6 +20,9 @@ const isDeleteDialogVisible = ref(false)
 
 const { reservation, updateReservation, removeReservation } = useReservation(props.id)
 
+/**
+ * Updates the reservation status.
+ */
 const updateStatus = (status?: boolean): void => {
   if (status && reservation.value) {
     reservation.value.open = status
@@ -27,6 +30,9 @@ const updateStatus = (status?: boolean): void => {
   updateReservation()
 }
 
+/**
+ * Updates the customer information in the reservation.
+ */
 const updateCustomer = (fields: {
   salutation: string
   firstname: string
@@ -45,7 +51,9 @@ const { toLocaleDateString } = useDate()
 
 const { sellAll } = useProduct()
 
-// Function to sell all products in the reservation
+/**
+ * Function to sell all products in the reservation
+ */
 const sellProducts = (): void => {
   if (reservation.value) {
     sellAll(reservation.value.books)
@@ -53,6 +61,9 @@ const sellProducts = (): void => {
   }
 }
 
+/**
+ * Function to remove the reservation
+ */
 const remove = (): void => {
   if (reservation.value && reservation.value.books.length > 0) {
     isDeleteDialogVisible.value = true
@@ -61,6 +72,9 @@ const remove = (): void => {
   }
 }
 
+/**
+ * Function to sell products and then delete the reservation
+ */
 const sellAndDelete = (): void => {
   sellProducts()
   removeReservation()
@@ -71,12 +85,7 @@ const sellAndDelete = (): void => {
 <template>
   <div v-if="reservation">
     <BContainer size="m">
-      <OrderToolbar
-        :reservation="reservation"
-        @remove="remove"
-        @update="updateStatus"
-        @sellProducts="sellProducts"
-      />
+      <OrderToolbar :reservation="reservation" @remove="remove" @update="updateStatus" @sellProducts="sellProducts" />
     </BContainer>
 
     <BContainer size="m">
