@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useDate } from '@/composables/useDate'
 import { useI18n } from 'vue-i18n'
-import type { Reservation } from '@/composables/useReservation'
+import type { Reservation } from '@/types/reservation'
 
 defineProps<{ reservation: Reservation }>()
 
@@ -14,7 +14,7 @@ const { isOlderThan } = useDate()
 
 <template>
   <BAlert type="danger" v-if="isOlderThan(14, reservation.createdAt)">
-    <div class="flex-between-center">
+    <div class="alert">
       {{ $t('old_reservation') }}
       <BButton design="primary_danger" @click="emit('remove')" :style="{ float: 'right' }">{{
         t('delete_reservation')
@@ -24,7 +24,7 @@ const { isOlderThan } = useDate()
 </template>
 
 <style scoped>
-.flex-between-center {
+.alert {
   display: flex;
   justify-content: space-between;
   align-items: center;
