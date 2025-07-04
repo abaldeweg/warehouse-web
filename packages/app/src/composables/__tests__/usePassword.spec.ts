@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, type Mock } from 'vitest'
 import { usePassword } from '../usePassword'
 import { apiClient } from '@/api/apiClient'
 
@@ -11,7 +11,7 @@ vi.mock('@/api/apiClient', () => ({
 describe('usePassword', () => {
   it('should set isChangingPassword to true when changePassword is called', async () => {
     const { changePassword, isChangingPassword } = usePassword()
-    apiClient.put.mockResolvedValueOnce({ status: 200 })
+    ;(apiClient.put as Mock).mockResolvedValueOnce({ status: 200 })
 
     const promise = changePassword()
 
@@ -22,7 +22,7 @@ describe('usePassword', () => {
 
   it('should set passwordSuccessful to true on successful password change', async () => {
     const { changePassword, passwordSuccessful } = usePassword()
-    apiClient.put.mockResolvedValueOnce({ status: 200 })
+    ;(apiClient.put as Mock).mockResolvedValueOnce({ status: 200 })
 
     await changePassword()
 
@@ -31,7 +31,7 @@ describe('usePassword', () => {
 
   it('should set passwordError to true on failed password change', async () => {
     const { changePassword, passwordError } = usePassword()
-    apiClient.put.mockResolvedValueOnce({ status: 400 })
+    ;(apiClient.put as Mock).mockResolvedValueOnce({ status: 400 })
 
     await changePassword()
 
@@ -40,7 +40,7 @@ describe('usePassword', () => {
 
   it('should set isChangingPassword to false after changePassword is called', async () => {
     const { changePassword, isChangingPassword } = usePassword()
-    apiClient.put.mockResolvedValueOnce({ status: 200 })
+    ;(apiClient.put as Mock).mockResolvedValueOnce({ status: 200 })
 
     await changePassword()
 

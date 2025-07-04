@@ -1,6 +1,5 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, type Mock } from 'vitest'
 import { useLogin } from '../useLogin'
-import { useRouter } from 'vue-router'
 import Cookies from 'js-cookie'
 import { apiClient } from '@/api/apiClient'
 
@@ -33,8 +32,7 @@ describe('useLogin', () => {
 
     username.value = 'testuser'
     password.value = 'testpassword'
-
-    apiClient.post.mockResolvedValue(mockResponse)
+    ;(apiClient.post as Mock).mockResolvedValue(mockResponse)
 
     await login()
 
@@ -53,8 +51,7 @@ describe('useLogin', () => {
 
     username.value = 'testuser'
     password.value = 'wrongpassword'
-
-    apiClient.post.mockResolvedValue(mockResponse)
+    ;(apiClient.post as Mock).mockResolvedValue(mockResponse)
 
     await login()
 
