@@ -1,7 +1,7 @@
 import { ref, watch } from 'vue'
 import { apiClient } from '@/api/apiClient'
-import type { Reservation } from '@/types/reservation'
-import type { Book } from '@/types/book'
+import type { Reservation } from '@/types/model/reservation'
+import type { Book } from '@/types/model/book'
 import type { UseReservation } from '@/types/composables'
 
 /**

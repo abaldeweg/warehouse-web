@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
 import type { UseAuth } from '@/types/composables'
-import type { User } from '@/types/user'
+import type { User } from '@/types/model/user'
 
 const isAuthenticated: Ref<boolean> = ref(false)
 const user: Ref<User | null> = ref(null)

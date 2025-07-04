@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useDate } from '@/composables/useDate'
 import { useI18n } from 'vue-i18n'
-import type { Reservation } from '@/types/reservation'
+import type { Reservation } from '@/types/model/reservation'
 
 defineProps<{ reservation: Reservation }>()
 

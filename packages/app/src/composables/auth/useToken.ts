@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
-import type { User } from '@/types/user'
+import type { User } from '@/types/model/user'
 import type { UseToken } from '@/types/composables'
 
 /**

@@ -1,6 +1,6 @@
 import type { AxiosResponse } from 'axios'
 import { apiClient } from '@/api/apiClient'
-import type { Book } from '@/types/book'
+import type { Book } from '@/types/model/book'
 import type { UseProduct } from '@/types/composables'
 
 /**

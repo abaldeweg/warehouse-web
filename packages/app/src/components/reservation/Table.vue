@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Book } from '@/types/book'
+import type { Book } from '@/types/model/book'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 

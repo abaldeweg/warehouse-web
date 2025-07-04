@@ -1,8 +1,8 @@
 import type { Ref } from 'vue'
-import type { User } from './user'
-import type { Stats } from './stats'
-import type { Book } from './book'
-import type { Reservation } from './reservation'
+import type { User } from './model/user'
+import type { Stats } from './model/stats'
+import type { Book } from './model/book'
+import type { Reservation } from './model/reservation'
 
 export interface UseAuth {
   isAuthenticated: Ref<boolean>
