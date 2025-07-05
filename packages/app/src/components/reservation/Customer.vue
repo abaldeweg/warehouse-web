@@ -40,3 +40,24 @@ const handleUpdate = () => {
     </template>
   </BForm>
 </template>
+
+<style>
+@media print {
+  .btn {
+    display: none;
+  }
+
+  .input_input,
+  .select_input,
+  .textarea_input {
+    border: 0;
+    padding: 0 20px;
+  }
+
+  .input_group,
+  .select_group,
+  .textarea_group {
+    display: flex;
+  }
+}
+</style>

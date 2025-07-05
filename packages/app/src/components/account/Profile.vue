@@ -25,7 +25,7 @@ const { logout } = useLogout()
     <RouterLink :to="{ name: 'account.password' }">
       {{ t('update_password') }}
     </RouterLink>
-    <BButton design="outline" @click.prevent="logout">
+    <BButton design="outline" @click="logout">
       {{ $t('logout') }}
     </BButton>
   </div>
@@ -39,13 +39,16 @@ const { logout } = useLogout()
   height: 10px;
   margin-bottom: 20px;
 }
+
 .branch {
   color: var(--color-neutral-06);
 }
+
 .actions {
   margin-top: 20px;
   text-align: right;
 }
+
 .actions button {
   margin-left: 20px;
 }
