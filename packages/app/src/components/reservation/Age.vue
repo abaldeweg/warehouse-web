@@ -14,7 +14,7 @@ const { isOlderThan } = useDate()
 
 <template>
   <BAlert type="danger" v-if="isOlderThan(14, reservation.createdAt)">
-    <div class="alert">
+    <div class="age_alert">
       {{ $t('old_reservation') }}
       <BButton design="primary_danger" @click="emit('remove')" :style="{ float: 'right' }">{{
         t('delete_reservation')
@@ -24,7 +24,7 @@ const { isOlderThan } = useDate()
 </template>
 
 <style scoped>
-.alert {
+.age_alert {
   display: flex;
   justify-content: space-between;
   align-items: center;
