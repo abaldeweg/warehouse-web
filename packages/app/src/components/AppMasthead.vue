@@ -37,17 +37,14 @@ onUnmounted(() => {
     </BMastheadItem> -->
 
     <BMastheadItem position="end" v-if="isAuthenticated" class="actions">
-      <BBadge
-        variant="inline"
-        :content="reservationsCount"
-        background="primary"
-        :action="{ name: 'reservation' }"
-        v-if="reservationsCount > 0"
-      >
-        <RouterLink :to="{ name: 'reservation' }">
-          <BMaterialIcon>euro</BMaterialIcon>
-        </RouterLink>
-      </BBadge>
+      <RouterLink :to="{ name: 'reservation' }">
+        <BBadge variant="inline" background="primary" :action="{ name: 'reservation' }" v-if="reservationsCount > 0">
+          <template #icon>
+            <BMaterialIcon size="16">euro</BMaterialIcon>
+          </template>
+          ({{ reservationsCount }})
+        </BBadge>
+      </RouterLink>
       <BMaterialIcon v-if="reservationsCount === 0">euro</BMaterialIcon>
       <BDropdown position="bottom" class="action">
         <template #selector>
@@ -72,10 +69,15 @@ onUnmounted(() => {
 body {
   --masthead-top-height: 60px;
 }
+
 @media print {
   body {
     --masthead-top-height: 0px;
   }
+}
+
+.badge_content {
+  display: none;
 }
 </style>
 
