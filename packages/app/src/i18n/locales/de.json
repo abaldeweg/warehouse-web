@@ -53,5 +53,6 @@
   "remove_books_before_delete": "Bitte entferne alle Bücher aus der Reservierung, bevor du sie löschst.",
   "ok": "OK",
   "sell_products_and_delete_reservation": "Verkaufen und Löschen",
-  "close": "Schließen"
+  "close": "Schließen",
+  "remove_from_reservation": "Aus Reservierung entfernen"
 }

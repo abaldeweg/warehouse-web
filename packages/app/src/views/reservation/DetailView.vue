@@ -8,7 +8,7 @@ import OrderCustomer from '@/components/reservation/Customer.vue'
 import OrderToolbar from '@/components/reservation/Toolbar.vue'
 import { useDate } from '@/composables/holidays/useDate'
 import { useReservation } from '@/composables/reservations/useReservation'
-import { useProduct } from '@/composables/products/useProduct.js'
+import { useProduct } from '@/composables/products/useProduct'
 
 const props = defineProps<{ id: string }>()
 
@@ -80,6 +80,22 @@ const sellAndDelete = (): void => {
   removeReservation()
   isDeleteDialogVisible.value = false
 }
+
+const { book, show, update } = useProduct()
+
+/**
+ * Removes a product from the reservation by id.
+ */
+const removeProduct = async (productId: string): Promise<void> => {
+  await show(productId)
+  if (!book.value) return
+  book.value.reserved = false
+  book.value.reservedAt = null
+  await update(book.value)
+  if (reservation.value) {
+    reservation.value.books = reservation.value.books.filter((book: any) => book.id !== productId)
+  }
+}
 </script>
 
 <template>
@@ -97,7 +113,7 @@ const sellAndDelete = (): void => {
     </BContainer>
 
     <BContainer size="m">
-      <OrderTable :products="reservation.books" @remove="removeReservation" />
+      <OrderTable :products="reservation.books" @remove="removeReservation" @remove-product="removeProduct" />
     </BContainer>
 
     <BContainer size="m">

@@ -57,6 +57,9 @@ export interface UseStats {
 }
 
 export interface UseProduct {
+  book: Ref<Book | null>
+  show: (id: string) => Promise<void>
+  update: (data: any) => Promise<void>
   sellAll: (products: Book[]) => void
   sell: (id: string) => Promise<AxiosResponse>
 }

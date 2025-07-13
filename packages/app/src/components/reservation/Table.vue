@@ -7,6 +7,7 @@ const props = defineProps<{ products: Book[] }>()
 
 const emit = defineEmits<{
   (event: 'remove'): void
+  (event: 'remove-product', productId: string): void
 }>()
 
 const { t } = useI18n()
@@ -47,6 +48,7 @@ const sum = computed(() => {
           <th>{{ $t('author') }}</th>
           <th>{{ $t('genre') }}</th>
           <th class="alignRight">{{ $t('price') }}</th>
+          <th class="alignRight actions" width="24"></th>
         </tr>
       </thead>
 
@@ -62,6 +64,12 @@ const sum = computed(() => {
           <td>{{ product.author.surname }}, {{ product.author.firstname }}</td>
           <td>{{ product.genre.name }}</td>
           <td class="alignRight">{{ currency(product.price) }}</td>
+          <td class="alignRight actions">
+            <BTooltip position="left" :text="t('remove_from_reservation')">
+              <BMaterialIcon @click="emit('remove-product', product.id)" hover color="var(--color-accent-red-10)">cancel
+              </BMaterialIcon>
+            </BTooltip>
+          </td>
         </tr>
       </tbody>
 
@@ -71,6 +79,7 @@ const sum = computed(() => {
             {{ $t('grand_total') }}
           </td>
           <td class="alignRight">{{ currency(sum) }}</td>
+          <td class="actions"></td>
         </tr>
       </tfoot>
     </table>
@@ -90,5 +99,11 @@ const sum = computed(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media print {
+  .actions {
+    display: none;
+  }
 }
 </style>

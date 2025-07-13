@@ -43,6 +43,20 @@ export const handlers = [
           price: 2.5,
           subtitle: null,
         },
+        {
+          id: '1caw72bf-eb59-11ee-a9bb-02d2ac140010',
+          added: 1711411200,
+          title: 'Book',
+          author: {
+            firstname: 'Jane',
+            surname: 'Doe',
+          },
+          genre: {
+            name: 'Thriller',
+          },
+          price: 2.5,
+          subtitle: null,
+        },
       ],
       salutation: 'f',
       firstname: 'Jane',
@@ -129,6 +143,99 @@ export const handlers = [
     })
   }),
   http.put('*/api/book/sell/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.get('*/api/book/1ca572bf-eb59-11ee-a9bb-02d2ac140010', () => {
+    return HttpResponse.json({
+      id: '1ca572bf-eb59-11ee-a9bb-02d2ac140010',
+      branch: {
+        id: 1,
+        name: 'Branch 1',
+        steps: '0',
+        currency: 'EUR',
+        ordering: '',
+        public: true,
+        pricelist: '',
+        cart: true,
+        content: '',
+      },
+      added: 1705881600,
+      title: 'Title',
+      shortDescription: 'Short Description',
+      author: {
+        id: 1,
+        firstname: 'Jane',
+        surname: 'Doe',
+      },
+      genre: {
+        id: 1,
+        name: 'Thriller',
+        branch: {
+          id: 1,
+          name: 'Branch 1',
+          steps: '0',
+          currency: 'EUR',
+          ordering: '',
+          public: true,
+          pricelist: '',
+          cart: true,
+          content: '',
+        },
+        books: 1,
+      },
+      price: 0,
+      sold: false,
+      soldOn: null,
+      removed: false,
+      removedOn: null,
+      reserved: false,
+      reservedAt: null,
+      releaseYear: 2021,
+      condition: {
+        id: 1,
+        name: 'New',
+      },
+      tags: [
+        {
+          id: 1,
+          name: 'Thriller',
+          branch: {
+            id: 1,
+            name: 'Branch 1',
+            steps: '0',
+            currency: 'EUR',
+            ordering: '',
+            public: true,
+            pricelist: '',
+            cart: true,
+            content: '',
+          },
+          books: 1,
+        },
+      ],
+      reservation_id: null,
+      recommendation: false,
+      inventory: null,
+      format: {
+        id: 1,
+        name: 'Hardcover',
+        branch: {
+          id: 1,
+          name: 'Branch 1',
+          steps: '0',
+          currency: 'EUR',
+          ordering: '',
+          public: true,
+          pricelist: '',
+          cart: true,
+          content: '',
+        },
+      },
+      subtitle: 'Subtitle',
+      duplicate: false,
+    })
+  }),
+  http.put('*/api/book/1ca572bf-eb59-11ee-a9bb-02d2ac140010', () => {
     return HttpResponse.json({})
   }),
 ]
