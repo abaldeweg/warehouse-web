@@ -55,7 +55,7 @@ const sum = computed(() => {
       <tbody>
         <tr v-for="(product, index) in products" :key="index">
           <td>
-            <a :href="catalog + '/search/book/' + product.id">
+            <a :href="catalog + '/book/' + product.id">
               {{ product.title }}
             </a>
             <span v-if="product.sold"> - {{ $t('sold') }}</span>
