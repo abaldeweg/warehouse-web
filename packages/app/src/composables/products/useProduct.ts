@@ -32,7 +32,7 @@ export function useProduct(): UseProduct {
       removed: data.removed,
       reserved: data.reserved,
       releaseYear: data.releaseYear !== '' ? data.releaseYear : 0,
-      cond: data.condition.id,
+      cond: data.condition?.id,
       tags: tags,
       recommendation: data.recommendation,
       format: data.format.id,
