@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
+import { ref } from 'vue'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import OrderAge from '@/components/reservation/Age.vue'
@@ -19,13 +19,7 @@ useHead({ title: t('reservation') })
 
 const isDeleteDialogVisible = ref(false)
 
-const { reservation, is404, updateReservation, removeReservation } = useReservation(props.id)
-
-watchEffect(() => {
-  if (is404.value) {
-    router.push({ name: 'reservation' })
-  }
-})
+const { reservation, updateReservation, removeReservation } = useReservation(props.id)
 
 const router = useRouter()
 
@@ -109,7 +103,6 @@ const removeProduct = async (productId: string): Promise<void> => {
 </script>
 
 <template>
-  {{ is404 }}
   <div v-if="reservation">
     <BContainer size="m">
       <OrderToolbar :reservation="reservation" @remove="remove" @update="updateStatus" @sellProducts="sellProducts" />
