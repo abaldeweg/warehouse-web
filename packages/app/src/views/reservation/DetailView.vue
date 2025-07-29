@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import OrderAge from '@/components/reservation/Age.vue'
@@ -9,6 +9,7 @@ import OrderToolbar from '@/components/reservation/Toolbar.vue'
 import { useDate } from '@/composables/holidays/useDate'
 import { useReservation } from '@/composables/reservations/useReservation'
 import { useProduct } from '@/composables/products/useProduct'
+import { useRouter } from 'vue-router'
 
 const props = defineProps<{ id: string }>()
 
@@ -18,7 +19,15 @@ useHead({ title: t('reservation') })
 
 const isDeleteDialogVisible = ref(false)
 
-const { reservation, updateReservation, removeReservation } = useReservation(props.id)
+const { reservation, is404, updateReservation, removeReservation } = useReservation(props.id)
+
+watchEffect(() => {
+  if (is404.value) {
+    router.push({ name: 'reservation' })
+  }
+})
+
+const router = useRouter()
 
 /**
  * Updates the reservation status.
@@ -69,6 +78,7 @@ const remove = (): void => {
     isDeleteDialogVisible.value = true
   } else {
     removeReservation()
+    router.push({ name: 'reservation' })
   }
 }
 
@@ -99,6 +109,7 @@ const removeProduct = async (productId: string): Promise<void> => {
 </script>
 
 <template>
+  {{ is404 }}
   <div v-if="reservation">
     <BContainer size="m">
       <OrderToolbar :reservation="reservation" @remove="remove" @update="updateStatus" @sellProducts="sellProducts" />
@@ -113,7 +124,7 @@ const removeProduct = async (productId: string): Promise<void> => {
     </BContainer>
 
     <BContainer size="m">
-      <OrderTable :products="reservation.books" @remove="removeReservation" @remove-product="removeProduct" />
+      <OrderTable :products="reservation.books" @remove="remove" @remove-product="removeProduct" />
     </BContainer>
 
     <BContainer size="m">
