@@ -103,7 +103,7 @@ const removeProduct = async (productId: string): Promise<void> => {
 </script>
 
 <template>
-  <div v-if="reservation">
+  <div v-if="reservation" class="reservation_order">
     <BContainer size="m">
       <OrderToolbar :reservation="reservation" @remove="remove" @update="updateStatus" @sellProducts="sellProducts" />
     </BContainer>
@@ -116,11 +116,11 @@ const removeProduct = async (productId: string): Promise<void> => {
       <h1>{{ $t('reservation_from') }} {{ toLocaleDateString(reservation.createdAt) }}</h1>
     </BContainer>
 
-    <BContainer size="m">
+    <BContainer size="m" class="products">
       <OrderTable :products="reservation.books" @remove="remove" @remove-product="removeProduct" />
     </BContainer>
 
-    <BContainer size="m">
+    <BContainer size="m" class="customer">
       <OrderCustomer :reservation="reservation" @update="updateCustomer" />
     </BContainer>
   </div>
@@ -135,3 +135,24 @@ const removeProduct = async (productId: string): Promise<void> => {
     </template>
   </BDialog>
 </template>
+
+<style scoped>
+@media print {
+  .reservation_order {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container.container_size_m {
+    width: 100%;
+  }
+
+  .products {
+    order: 2;
+  }
+
+  .customer {
+    order: 1;
+  }
+}
+</style>
