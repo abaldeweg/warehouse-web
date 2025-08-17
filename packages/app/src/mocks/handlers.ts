@@ -238,4 +238,18 @@ export const handlers = [
   http.put('*/api/book/1ca572bf-eb59-11ee-a9bb-02d2ac140010', () => {
     return HttpResponse.json({})
   }),
+  http.get('*/apis/core/1/api/branch/*', () => {
+    return HttpResponse.json({
+      "id": 1,
+      "name": "Branch",
+      "steps": 0,
+      "currency": "EUR",
+      "ordering": "",
+      "public": true,
+      "pricelist": "",
+      "cart": true,
+      "content": "",
+      "mail_reservation": "Dear customer,\n\nYour reserved books are ready for pickup."
+    })
+  })
 ]

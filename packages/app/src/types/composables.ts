@@ -4,6 +4,7 @@ import type { Stats } from './model/stats'
 import type { Book } from './model/book'
 import type { Reservation } from './model/reservation'
 import type { AxiosResponse } from 'axios'
+import type { Branch } from './model/branch'
 
 export interface UseAuth {
   isAuthenticated: Ref<boolean>
@@ -75,4 +76,9 @@ export interface UseReservations {
   reservations: Ref<Reservation[]>
   readonly reservationsCount: Ref<number>
   fetchReservations: () => Promise<void>
+}
+
+export interface UseBranch {
+  branch: Ref<Branch | null>
+  fetchBranch: (id: number) => Promise<void>
 }

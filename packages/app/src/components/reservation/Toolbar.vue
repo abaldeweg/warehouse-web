@@ -3,6 +3,8 @@ import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { useProduct } from '@/composables/products/useProduct.js'
 import type { Reservation } from '@/types/model/reservation'
+import { useToken } from '@/composables/auth/useToken.js'
+import { useBranch } from '@/composables/branch/useBranch'
 
 const props = defineProps<{ reservation: Reservation }>()
 
@@ -18,6 +20,15 @@ useHead({ title: t('reservation') })
 
 const { sellAll } = useProduct()
 
+const { user, fetchUser } = useToken()
+const { branch, fetchBranch } = useBranch()
+fetchUser().then(() => {
+  if (user.value && user.value.branch.id) {
+    fetchBranch(user.value.branch.id)
+  }
+})
+
+
 /**
  * Print function to print the current page
  */
@@ -29,7 +40,8 @@ const print = (): void => {
  * Function to compose an email
  */
 const mail = (): void => {
-  window.location.href = `mailto:${props.reservation.mail}?subject=${t('your_reservation')}&body=${t('reservation_mail_body', { surname: props.reservation.surname })}`
+  const body = branch.value?.mail_reservation ? branch.value?.mail_reservation : t('reservation_mail_body', { surname: props.reservation.surname })
+  window.location.href = `mailto:${props.reservation.mail}?subject=${t('your_reservation')}&body=${encodeURIComponent(body)}`
 }
 </script>
 

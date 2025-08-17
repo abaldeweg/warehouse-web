@@ -8,4 +8,5 @@ export type Branch = {
   pricelist: string
   cart: boolean
   content: string | null
+  mail_reservation: string | null
 }
