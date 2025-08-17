@@ -10,7 +10,7 @@ export function useBranch(): UseBranch {
   const branch = ref<Branch | null>(null)
 
   const fetchBranch = async (id: number): Promise<void> => {
-    const response = await apiClient.get(`/apis/core/1/api/branch/${id}`)
+    const response = await apiClient.get(`/api/branch/${id}`)
     branch.value = response.data
   }
 
