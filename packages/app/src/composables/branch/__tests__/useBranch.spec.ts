@@ -41,7 +41,7 @@ describe('useBranch', () => {
 
     await fetchBranch(1)
 
-    expect(apiClient.get).toHaveBeenCalledWith('/apis/core/1/api/branch/1')
+    expect(apiClient.get).toHaveBeenCalledWith('/api/branch/1')
     expect(branch.value).toEqual(mockBranch)
   })
 })
