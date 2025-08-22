@@ -5,23 +5,21 @@ import { useRouter } from 'vue-router'
 import AppPanel from '@/components/AppPanel.vue'
 import AppFooter from '@/components/AppFooter.vue'
 
-const isDrawerActive = ref(true)
+const isDrawerActive = ref(false)
 const router = useRouter()
 
 onMounted(() => {
   router.beforeEach(() => {
-    isDrawerActive.value = true
+    isDrawerActive.value = false
   })
 })
 </script>
 
 <template>
   <BApp>
-    <div :style="{ marginLeft: isDrawerActive ? '300px' : '0px' }">
-      <AppMasthead @open-drawer="isDrawerActive = true" />
-      <slot />
-      <AppFooter />
-    </div>
+    <AppMasthead @open-drawer="isDrawerActive = true" />
+    <slot />
+    <AppFooter />
   </BApp>
-  <AppPanel v-model:isDrawerActive="isDrawerActive" permanent @close-drawer="isDrawerActive = false" />
+  <AppPanel v-model:isDrawerActive="isDrawerActive" />
 </template>
