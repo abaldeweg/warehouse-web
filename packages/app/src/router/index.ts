@@ -23,6 +23,13 @@ const router = createRouter({
       props: true,
     },
     {
+      path: '/reservation/print/:id',
+      name: 'reservation.print',
+      component: () => import('../views/reservation/PrintView.vue'),
+      props: true,
+      meta: { layout: 'print' },
+    },
+    {
       path: '/account',
       name: 'account',
       component: () => import('../views/account/AccountView.vue'),

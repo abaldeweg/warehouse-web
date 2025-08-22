@@ -135,24 +135,3 @@ const removeProduct = async (productId: string): Promise<void> => {
     </template>
   </BDialog>
 </template>
-
-<style scoped>
-@media print {
-  .reservation_order {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .container.container_size_m {
-    width: 100%;
-  }
-
-  .products {
-    order: 2;
-  }
-
-  .customer {
-    order: 1;
-  }
-}
-</style>

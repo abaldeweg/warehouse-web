@@ -5,6 +5,7 @@ import { useProduct } from '@/composables/products/useProduct.js'
 import type { Reservation } from '@/types/model/reservation'
 import { useToken } from '@/composables/auth/useToken.js'
 import { useBranch } from '@/composables/branch/useBranch'
+import { useRouter } from 'vue-router'
 
 const props = defineProps<{ reservation: Reservation }>()
 
@@ -30,10 +31,13 @@ fetchUser().then(() => {
 
 
 /**
- * Print function to print the current page
+ * Print function to navigate to the print route for the current reservation
  */
+const router = useRouter()
 const print = (): void => {
-  window.print()
+  if (props.reservation?.id) {
+    router.push({ name: 'reservation.print', params: { id: props.reservation.id } })
+  }
 }
 
 /**
