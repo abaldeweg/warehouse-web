@@ -32,9 +32,9 @@ onUnmounted(() => {
       </span>
     </BMastheadItem>
 
-    <!-- <BMastheadItem position="center">
+    <BMastheadItem position="center">
       <AppLogo />
-    </BMastheadItem> -->
+    </BMastheadItem>
 
     <BMastheadItem position="end" v-if="isAuthenticated" class="actions">
       <RouterLink :to="{ name: 'reservation' }">
