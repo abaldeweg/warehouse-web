@@ -54,5 +54,6 @@
   "ok": "OK",
   "sell_products_and_delete_reservation": "Sell and Delete",
   "close": "Close",
-  "remove_from_reservation": "Remove from reservation"
+  "remove_from_reservation": "Remove from reservation",
+  "hide_panel": "Hide Panel"
 }
