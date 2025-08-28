@@ -22,7 +22,7 @@ export function useProduct(): UseProduct {
     })
 
     const book = {
-      added: new Date(data.added).getTime() / 1000,
+      added: new Date(data.added).getTime(),
       title: data.title,
       shortDescription: data.shortDescription,
       author: data.author.surname + ',' + data.author.firstname,
