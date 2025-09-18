@@ -1,0 +1,49 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '--no-cache'
+      - '-t'
+      - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$_TAG'
+      - '-t'
+      - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$BUILD_ID'
+      - '-f'
+      - Dockerfile.app
+      - '--build-arg'
+      - VITE_API=$_VITE_API
+      - '--build-arg'
+      - VITE_BASE_URL=$_VITE_BASE_URL
+      - '--build-arg'
+      - VITE_THEME=$_VITE_THEME
+      - '--build-arg'
+      - VITE_LOGO=$_VITE_LOGO
+      - '--build-arg'
+      - VITE_ABOUT=$_VITE_ABOUT
+      - '--build-arg'
+      - VITE_CATALOG=$_VITE_CATALOG
+      - '--build-arg'
+      - VITE_SETTINGS=$_VITE_SETTINGS
+      - '--build-arg'
+      - VITE_SHOP=$_VITE_SHOP
+      - .
+    id: Build
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$_TAG'
+    id: Push
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$BUILD_ID'
+    id: Push2
+images:
+  - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$_TAG'
+  - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$BUILD_ID'
+options:
+  substitutionOption: ALLOW_LOOSE
+substitutions:
+  _GCR_HOSTNAME: eu.gcr.io
+  _TAG: latest
+tags:
+  - $_SERVICE_NAME
