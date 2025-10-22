@@ -37,6 +37,7 @@ const shop: string = import.meta.env.VITE_SHOP
         { route: { name: 'reservation' }, title: $t('reservations') },
         { route: settings, title: $t('settings') },
         { route: shop, title: $t('shop') },
+        { route: '/help', title: $t('help') },
       ]" />
     </BContainer>
   </BPanel>
