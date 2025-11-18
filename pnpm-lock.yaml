@@ -25,8 +25,8 @@ importers:
         specifier: 0.18.1
         version: 0.18.1(typescript@5.9.3)
       '@tsconfig/node22':
-        specifier: 22.0.4
-        version: 22.0.4
+        specifier: 22.0.5
+        version: 22.0.5
       '@types/canvas-confetti':
         specifier: 1.9.0
         version: 1.9.0
@@ -1145,8 +1145,8 @@ packages:
   '@surma/rollup-plugin-off-main-thread@2.2.3':
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}
 
-  '@tsconfig/node22@22.0.4':
-    resolution: {integrity: sha512-GI0gtqW+8Bz9UMOsOO1z3w1ebspOkVjSyeJ18r96LW82OOZenpzWXti/+f/MgPy1hqXTIRXn8QpGIOYHgKkTnQ==}
+  '@tsconfig/node22@22.0.5':
+    resolution: {integrity: sha512-hLf2ld+sYN/BtOJjHUWOk568dvjFQkHnLNa6zce25GIH+vxKfvTgm3qpaH6ToF5tu/NN0IH66s+Bb5wElHrLcw==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -4411,7 +4411,7 @@ snapshots:
       magic-string: 0.25.9
       string.prototype.matchall: 4.0.12
 
-  '@tsconfig/node22@22.0.4': {}
+  '@tsconfig/node22@22.0.5': {}
 
   '@types/babel__core@7.20.5':
     dependencies:
