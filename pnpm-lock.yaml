@@ -46,8 +46,8 @@ importers:
         specifier: 6.0.2
         version: 6.0.2(vite@7.2.4(@types/node@24.9.2)(jiti@2.6.1)(terser@5.44.0))(vue@3.5.25(typescript@5.9.3))
       '@vitest/eslint-plugin':
-        specifier: 1.4.4
-        version: 1.4.4(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)(vitest@4.0.13(@types/node@24.9.2)(jiti@2.6.1)(jsdom@27.2.0(postcss@8.5.6))(msw@2.12.3(@types/node@24.9.2)(typescript@5.9.3))(terser@5.44.0))
+        specifier: 1.5.0
+        version: 1.5.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)(vitest@4.0.13(@types/node@24.9.2)(jiti@2.6.1)(jsdom@27.2.0(postcss@8.5.6))(msw@2.12.3(@types/node@24.9.2)(typescript@5.9.3))(terser@5.44.0))
       '@vue/eslint-config-prettier':
         specifier: 10.2.0
         version: 10.2.0(eslint@9.39.1(jiti@2.6.1))(prettier@3.6.2)
@@ -1307,8 +1307,8 @@ packages:
       vite: ^5.0.0 || ^6.0.0 || ^7.0.0
       vue: ^3.2.25
 
-  '@vitest/eslint-plugin@1.4.4':
-    resolution: {integrity: sha512-oSOGG1DhYl2N3hLiEOJpbkv51POiL52rtZF2Q2NCpIXk3aOCsKqgLlk1/oUdZ2FWnl6hNP3ckWxAVYSrk4SN/A==}
+  '@vitest/eslint-plugin@1.5.0':
+    resolution: {integrity: sha512-j3uuIAPTYWYnSit9lspb08/EKsxEmGqjQf+Wpb1DQkxc+mMkhL58ZknDCgjYhY4Zu76oxZ0hVWTHlmRW0mJq5w==}
     engines: {node: '>=18'}
     peerDependencies:
       eslint: '>=8.57.0'
@@ -4644,7 +4644,7 @@ snapshots:
       vite: 7.2.4(@types/node@24.9.2)(jiti@2.6.1)(terser@5.44.0)
       vue: 3.5.25(typescript@5.9.3)
 
-  '@vitest/eslint-plugin@1.4.4(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)(vitest@4.0.13(@types/node@24.9.2)(jiti@2.6.1)(jsdom@27.2.0(postcss@8.5.6))(msw@2.12.3(@types/node@24.9.2)(typescript@5.9.3))(terser@5.44.0))':
+  '@vitest/eslint-plugin@1.5.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)(vitest@4.0.13(@types/node@24.9.2)(jiti@2.6.1)(jsdom@27.2.0(postcss@8.5.6))(msw@2.12.3(@types/node@24.9.2)(typescript@5.9.3))(terser@5.44.0))':
     dependencies:
       '@typescript-eslint/scope-manager': 8.46.1
       '@typescript-eslint/utils': 8.46.1(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)
