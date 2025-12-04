@@ -4,7 +4,7 @@ import { useHead } from '@unhead/vue'
 import Stats from '@/components/home/BookStats.vue'
 import Reservations from '@/components/home/ReservationsStats.vue'
 import Storage from '@/components/home/StorageStats.vue'
-import Holidays from '@/components/home/Holidays.vue'
+import Holidays from '@/components/home/ShowHolidays.vue'
 import { useStats } from '@/composables/stats/useStats'
 import { useReservations } from '@/composables/reservations/useReservations'
 
@@ -29,11 +29,11 @@ const { countAllReservations, countOpenReservations, countOutdatedReservations }
     <div class="dashboard">
       <div class="widget">
         <Stats :stats="stats" />
-        <Storage :stats="stats" />
       </div>
       <div class="widget">
         <Reservations :countAllReservations="countAllReservations" :countOpenReservations="countOpenReservations"
           :countOutdatedReservations="countOutdatedReservations" />
+        <Storage :stats="stats" />
       </div>
     </div>
 
