@@ -1,15 +1,23 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { useHead } from '@unhead/vue'
-import Stats from '@/components/home/Stats.vue'
-import Reservations from '@/components/home/Reservations.vue'
+import Stats from '@/components/home/BookStats.vue'
+import Reservations from '@/components/home/ReservationsStats.vue'
+import Storage from '@/components/home/StorageStats.vue'
 import Holidays from '@/components/home/Holidays.vue'
+import { useStats } from '@/composables/stats/useStats'
+import { useReservations } from '@/composables/reservations/useReservations'
 
 const { t } = useI18n()
 
 useHead({
-  title: t('Welcome'),
+  title: t('welcome'),
 })
+
+const { stats, fetchStats } = useStats()
+fetchStats()
+
+const { countAllReservations, countOpenReservations, countOutdatedReservations } = useReservations()
 </script>
 
 <template>
@@ -17,7 +25,31 @@ useHead({
     <h1>{{ t('welcome_to_warehouse') }}</h1>
   </BContainer>
 
-  <Reservations />
-  <Stats />
-  <Holidays />
+  <BContainer size="m">
+    <div class="dashboard">
+      <div class="widget">
+        <Stats :stats="stats" />
+        <Storage :stats="stats" />
+      </div>
+      <div class="widget">
+        <Reservations :countAllReservations="countAllReservations" :countOpenReservations="countOpenReservations"
+          :countOutdatedReservations="countOutdatedReservations" />
+      </div>
+    </div>
+
+    <Holidays />
+  </BContainer>
 </template>
+
+<style scoped>
+@media (min-width: 600px) {
+  .dashboard {
+    display: flex;
+    gap: 20px;
+  }
+
+  .widget {
+    flex-grow: 1;
+  }
+}
+</style>

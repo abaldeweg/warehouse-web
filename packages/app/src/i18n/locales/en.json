@@ -56,5 +56,19 @@
   "close": "Close",
   "remove_from_reservation": "Remove from reservation",
   "hide_panel": "Hide Panel",
-  "help": "Help"
+  "help": "Help",
+  "total": "Total",
+  "new": "New",
+  "outdated": "Outdated",
+  "view_all_reservations": "View all reservations",
+  "welcome": "Welcome",
+  "storage": "Storage",
+  "storage_statistics_desc": "Show storage stats for book covers in GB.",
+  "storage_usage_cover": "Storage Usage (Cover)",
+  "book_statistics_desc": "Show book statistics.",
+  "available_products": "Available Products",
+  "reserved_products": "Reserved Products",
+  "sold_products": "Sold Products",
+  "removed_products": "Removed Products",
+  "reservations_statistics_desc": "Show reservation statistics."
 }

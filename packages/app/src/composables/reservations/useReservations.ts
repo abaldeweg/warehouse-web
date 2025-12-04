@@ -1,5 +1,6 @@
 import { computed, readonly, ref, watchEffect } from 'vue'
 import { apiClient } from '@/api/apiClient'
+import { useDate } from '@/composables/holidays/useDate'
 import type { Reservation } from '@/types/model/reservation'
 import type { UseReservations } from '@/types/composables'
 
@@ -7,10 +8,22 @@ import type { UseReservations } from '@/types/composables'
  * A composable to manage reservations.
  */
 export function useReservations(): UseReservations {
+  const { isOlderThan } = useDate()
+
   const reservations = ref<Reservation[]>([])
 
-  const reservationsCount = computed(() => {
+  const countAllReservations = computed(() => {
     return reservations.value?.length || 0
+  })
+
+  const countOpenReservations = computed(() => {
+    return reservations.value.filter((order) => order.open === true).length
+  })
+
+  const countOutdatedReservations = computed(() => {
+    return (
+      reservations.value.filter((order) => isOlderThan(14, order.createdAt)).length || 0
+    )
   })
 
   /**
@@ -33,7 +46,9 @@ export function useReservations(): UseReservations {
 
   return {
     reservations,
-    reservationsCount: readonly(reservationsCount),
+    countAllReservations: readonly(countAllReservations),
+    countOpenReservations: readonly(countOpenReservations),
+    countOutdatedReservations: readonly(countOutdatedReservations),
     fetchReservations,
   }
 }

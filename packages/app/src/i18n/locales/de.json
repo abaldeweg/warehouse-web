@@ -56,5 +56,19 @@
   "close": "Schließen",
   "remove_from_reservation": "Aus Reservierung entfernen",
   "hide_panel": "Panel ausblenden",
-  "help": "Hilfe"
+  "help": "Hilfe",
+  "total": "Gesamt",
+  "new": "Neu",
+  "outdated": "Veraltet",
+  "view_all_reservations": "Alle Reservierungen anzeigen",
+  "welcome": "Willkommen",
+  "storage": "Speicher",
+  "storage_statistics_desc": "Zeigt Speicherstatistiken für Buchcover in GB an.",
+  "storage_usage_cover": "Speicherverbrauch (Cover)",
+  "book_statistics_desc": "Zeigt Buchstatistiken an.",
+  "available_products": "Verfügbare Produkte",
+  "reserved_products": "Reservierte Produkte",
+  "sold_products": "Verkaufte Produkte",
+  "removed_products": "Entfernte Produkte",
+  "reservations_statistics_desc": "Zeigt Reservierungsstatistiken an."
 }

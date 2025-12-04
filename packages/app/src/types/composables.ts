@@ -74,7 +74,9 @@ export interface UseReservation {
 
 export interface UseReservations {
   reservations: Ref<Reservation[]>
-  readonly reservationsCount: Ref<number>
+  readonly countAllReservations: Ref<number>
+  readonly countOpenReservations: Ref<number>
+  readonly countOutdatedReservations: Ref<number>
   fetchReservations: () => Promise<void>
 }
 

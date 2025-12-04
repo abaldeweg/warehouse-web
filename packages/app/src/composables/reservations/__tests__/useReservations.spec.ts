@@ -36,7 +36,7 @@ describe('useReservations', () => {
     expect(reservations.value).toEqual(mockData)
   })
 
-  it('fetchReservations sets reservations and updates reservationsCount', async () => {
+  it('fetchReservations sets reservations and updates countAllReservations', async () => {
     const mockData = [
       {
         id: '1',
@@ -56,9 +56,9 @@ describe('useReservations', () => {
     ]
     ;(apiClient.get as Mock).mockResolvedValueOnce({ data: mockData })
 
-    const { reservationsCount, fetchReservations } = useReservations()
+    const { countAllReservations, fetchReservations } = useReservations()
     await fetchReservations()
 
-    expect(reservationsCount.value).toBe(mockData.length)
+    expect(countAllReservations.value).toBe(mockData.length)
   })
 })
