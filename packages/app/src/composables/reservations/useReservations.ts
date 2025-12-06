@@ -1,6 +1,6 @@
 import { computed, readonly, ref, watchEffect } from 'vue'
 import { apiClient } from '@/api/apiClient'
-import { useDate } from '@/composables/holidays/useDate'
+import { useDate } from '@/composables/reservations/useDate'
 import type { Reservation } from '@/types/model/reservation'
 import type { UseReservations } from '@/types/composables'
 

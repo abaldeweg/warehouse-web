@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { watchEffect, nextTick } from 'vue'
 import OrderPrintTable from '@/components/reservation/PrintTable.vue'
 import OrderPrintCustomer from '@/components/reservation/PrintCustomer.vue'
-import { useDate } from '@/composables/holidays/useDate'
+import { useDate } from '@/composables/reservations/useDate'
 import { useReservation } from '@/composables/reservations/useReservation'
 import { useRouter } from 'vue-router'
 

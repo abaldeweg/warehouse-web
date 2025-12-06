@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
-import { useDate } from '@/composables/holidays/useDate'
+import { useDate } from '@/composables/reservations/useDate'
 import { useReservations } from '@/composables/reservations/useReservations'
 
 const { t } = useI18n()
@@ -19,12 +19,8 @@ const { toLocaleDateString, isOlderThan } = useDate()
   </BContainer>
 
   <BContainer size="m" v-if="reservations">
-    <BList
-      v-for="reservation in reservations"
-      :key="reservation.id"
-      :route="{ name: 'reservation.detail', params: { id: reservation.id } }"
-      divider
-    >
+    <BList v-for="reservation in reservations" :key="reservation.id"
+      :route="{ name: 'reservation.detail', params: { id: reservation.id } }" divider>
       <template #title>
         {{ $t('reservation_from') }} {{ toLocaleDateString(reservation.createdAt) }}
       </template>
