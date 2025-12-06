@@ -4,7 +4,6 @@ import { useHead } from '@unhead/vue'
 import Stats from '@/components/home/BookStats.vue'
 import Reservations from '@/components/home/ReservationsStats.vue'
 import Storage from '@/components/home/StorageStats.vue'
-import Holidays from '@/components/home/ShowHolidays.vue'
 import { useStats } from '@/composables/stats/useStats'
 import { useReservations } from '@/composables/reservations/useReservations'
 
@@ -37,7 +36,6 @@ const { countAllReservations, countOpenReservations, countOutdatedReservations }
       </div>
     </div>
 
-    <Holidays />
   </BContainer>
 </template>
 
