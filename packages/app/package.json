@@ -20,7 +20,7 @@
     "@types/js-cookie": "3.0.6",
     "@types/jsdom": "27.0.0",
     "@types/node": "24.10.4",
-    "@unhead/vue": "2.0.19",
+    "@unhead/vue": "2.1.1",
     "@vitejs/plugin-vue": "6.0.3",
     "@vitest/eslint-plugin": "1.5.4",
     "@vue/eslint-config-prettier": "10.2.0",
