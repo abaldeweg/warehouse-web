@@ -19,7 +19,7 @@
     "@types/canvas-confetti": "1.9.0",
     "@types/js-cookie": "3.0.6",
     "@types/jsdom": "27.0.0",
-    "@types/node": "24.10.11",
+    "@types/node": "24.10.12",
     "@unhead/vue": "2.1.3",
     "@vitejs/plugin-vue": "6.0.4",
     "@vitest/eslint-plugin": "1.6.6",
