@@ -70,5 +70,11 @@
   "reserved_products": "Reserved Products",
   "sold_products": "Sold Products",
   "removed_products": "Removed Products",
-  "reservations_statistics_desc": "Show reservation statistics."
+  "reservations_statistics_desc": "Show reservation statistics.",
+  "shop_search": "Shop Search",
+  "no_analyze_data": "No data available.",
+  "date": "Date",
+  "term": "Term",
+  "page": "Page",
+  "shop_search_description": "Show shop search data for the last 30 days."
 }

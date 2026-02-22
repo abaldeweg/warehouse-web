@@ -70,5 +70,11 @@
   "reserved_products": "Reservierte Produkte",
   "sold_products": "Verkaufte Produkte",
   "removed_products": "Entfernte Produkte",
-  "reservations_statistics_desc": "Zeigt Reservierungsstatistiken an."
+  "reservations_statistics_desc": "Zeigt Reservierungsstatistiken an.",
+  "shop_search": "Shop Suche",
+  "no_analyze_data": "Keine Daten verfügbar.",
+  "date": "Datum",
+  "term": "Suchbegriff",
+  "page": "Seite",
+  "shop_search_description": "Zeigt Suchdaten der letzten 30 Tage an."
 }

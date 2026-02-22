@@ -5,6 +5,8 @@ import type { Book } from './model/book'
 import type { Reservation } from './model/reservation'
 import type { AxiosResponse } from 'axios'
 import type { Branch } from './model/branch'
+import type { Analyze } from './model/analyze'
+import type { Genre } from './model/genre'
 
 export interface UseAuth {
   isAuthenticated: Ref<boolean>
@@ -83,4 +85,14 @@ export interface UseReservations {
 export interface UseBranch {
   branch: Ref<Branch | null>
   fetchBranch: (id: number) => Promise<void>
+}
+
+export interface UseAnalyze {
+  analyze: Ref<Analyze[] | null>
+  fetchShopSearch: (start?: string, end?: string) => Promise<void>
+}
+
+export interface UseGenres {
+  genres: Ref<Genre[] | null>
+  fetchGenres: () => Promise<void>
 }

@@ -252,4 +252,109 @@ export const handlers = [
       "mail_reservation": "Dear customer,\n\nYour reserved books are ready for pickup."
     })
   })
+  ,
+  http.get('*/api/analyze/shop-search', ({ request }) => {
+    const enties = [
+      {
+        id: '69970a2d14540d40be2e3284',
+        branch: 1,
+        date: '2026-01-19 13:03:41',
+        term: 'test',
+        page: 2,
+        genre: 1,
+      },
+      {
+        id: '6999817355589b21b1efb9e2',
+        branch: 1,
+        date: '2026-01-25 09:57:07',
+        term: 'test',
+        page: 2,
+        genre: 2,
+      },
+      {
+        id: '69970a2d14540d40be9e3284',
+        branch: 1,
+        date: '2026-02-19 13:03:41',
+        term: 'test',
+        page: 2,
+        genre: 1,
+      },
+    ]
+    const url = new URL(request.url)
+    const startParam = url.searchParams.get('start')
+    const endParam = url.searchParams.get('end')
+
+    let results = enties
+
+    if (startParam) {
+      const startTime = new Date(startParam).getTime()
+      if (!Number.isNaN(startTime)) {
+        results = results.filter((e) => new Date(e.date).getTime() >= startTime)
+      }
+    }
+
+    if (endParam) {
+      const endTime = new Date(endParam).getTime()
+      if (!Number.isNaN(endTime)) {
+        results = results.filter((e) => new Date(e.date).getTime() <= endTime)
+      }
+    }
+
+    return HttpResponse.json(results)
+  }),
+  http.get('*/api/genre', () => {
+    return HttpResponse.json([
+      {
+        id: 1,
+        name: 'Crime',
+        branch_id: 1,
+        branch: {
+          id: 1,
+          name: 'Name',
+          steps: 0,
+          currency: 'EUR',
+          ordering: '',
+          public: true,
+          pricelist: '',
+          cart: true,
+          content: '',
+          mail_reservation: '',
+        },
+      },
+      {
+        id: 2,
+        name: 'Thriller',
+        branch_id: 1,
+        branch: {
+          id: 1,
+          name: 'Name',
+          steps: 0,
+          currency: 'EUR',
+          ordering: '',
+          public: true,
+          pricelist: '',
+          cart: true,
+          content: '',
+          mail_reservation: '',
+        },
+      },
+      {
+        id: 3,
+        name: 'Novels',
+        branch_id: 1,
+        branch: {
+          id: 1,
+          name: 'Name',
+          steps: 0,
+          currency: 'EUR',
+          ordering: '',
+          public: true,
+          pricelist: '',
+          cart: true,
+          content: '',
+          mail_reservation: '',
+        },
+      },
+    ])
+  })
 ]

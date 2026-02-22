@@ -6,6 +6,9 @@ import Reservations from '@/components/home/ReservationsStats.vue'
 import Storage from '@/components/home/StorageStats.vue'
 import { useStats } from '@/composables/stats/useStats'
 import { useReservations } from '@/composables/reservations/useReservations'
+import { useAnalyze } from '@/composables/analyze/useAnalyze'
+import ShopSearch from '@/components/home/ShopSearch.vue'
+import { useGenres } from '@/composables/genre/useGenres'
 
 const { t } = useI18n()
 
@@ -17,6 +20,11 @@ const { stats, fetchStats } = useStats()
 fetchStats()
 
 const { countAllReservations, countOpenReservations, countOutdatedReservations } = useReservations()
+const { analyze, fetchShopSearch } = useAnalyze()
+fetchShopSearch()
+
+const { genres, fetchGenres } = useGenres()
+fetchGenres()
 </script>
 
 <template>
@@ -28,6 +36,7 @@ const { countAllReservations, countOpenReservations, countOutdatedReservations }
     <div class="dashboard">
       <div class="widget">
         <Stats :stats="stats" />
+        <ShopSearch :analyze="analyze" :genres="genres" />
       </div>
       <div class="widget">
         <Reservations :countAllReservations="countAllReservations" :countOpenReservations="countOpenReservations"
