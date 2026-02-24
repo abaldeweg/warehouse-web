@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "dependencies": {
-    "vue": "3.5.28"
+    "vue": "3.5.29"
   },
   "devDependencies": {},
   "author": "André Baldeweg <a@baldeweg.org>",
