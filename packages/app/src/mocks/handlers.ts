@@ -261,7 +261,7 @@ export const handlers = [
         date: '2026-01-19 13:03:41',
         term: 'test',
         page: 2,
-        genre: 1,
+        genre: "Crime",
       },
       {
         id: '6999817355589b21b1efb9e2',
@@ -269,7 +269,7 @@ export const handlers = [
         date: '2026-01-25 09:57:07',
         term: 'test',
         page: 2,
-        genre: 2,
+        genre: "Thriller",
       },
       {
         id: '69970a2d14540d40be9e3284',
@@ -277,7 +277,7 @@ export const handlers = [
         date: '2026-02-19 13:03:41',
         term: 'test',
         page: 2,
-        genre: 1,
+        genre: "Novels",
       },
     ]
     const url = new URL(request.url)

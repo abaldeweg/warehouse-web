@@ -9,13 +9,6 @@ const props = defineProps<{
 }>()
 
 const { t } = useI18n()
-
-/**
- * Get genre name by id
- */
-const genreName = (id: Genre['id'] | null | undefined) => {
-  return props.genres?.find(genre => genre.id === id)?.name || ''
-}
 </script>
 
 <template>
@@ -35,7 +28,7 @@ const genreName = (id: Genre['id'] | null | undefined) => {
         <td>{{ item.date }}</td>
         <td>{{ item.term }}</td>
         <td>{{ item.page }}</td>
-        <td>{{ genreName(item.genre) }}</td>
+        <td>{{ item.genre }}</td>
       </tr>
     </tbody>
   </table>
