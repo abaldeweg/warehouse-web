@@ -3,5 +3,5 @@ export type Analyze = {
   date?: string
   term?: string
   page?: number
-  genre?: number
+  genre?: number | null
 }
