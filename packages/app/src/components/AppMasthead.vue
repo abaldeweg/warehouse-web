@@ -38,12 +38,7 @@ onUnmounted(() => {
 
     <BMastheadItem position="end" v-if="isAuthenticated" class="actions">
       <RouterLink :to="{ name: 'reservation' }">
-        <BBadge variant="inline" background="primary" :action="{ name: 'reservation' }" v-if="countAllReservations > 0">
-          <template #icon>
-            <BMaterialIcon size="16">euro</BMaterialIcon>
-          </template>
-          ({{ countAllReservations }})
-        </BBadge>
+        <BMaterialIcon>euro</BMaterialIcon>{{ countAllReservations > 0 ? ('(' + countAllReservations + ')') : '' }}
       </RouterLink>
       <BMaterialIcon v-if="countAllReservations === 0">euro</BMaterialIcon>
       <BDropdown position="bottom" class="action">
