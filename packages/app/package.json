@@ -40,7 +40,7 @@
     "vite": "8.0.3",
     "vite-plugin-pwa": "1.2.0",
     "vite-plugin-webfont-dl": "3.12.0",
-    "vitest": "4.1.1",
+    "vitest": "4.1.2",
     "vue-i18n": "11.3.0",
     "vue-tsc": "3.2.6"
   },
