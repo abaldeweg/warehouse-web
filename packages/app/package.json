@@ -14,7 +14,7 @@
     "vue-router": "5.0.4"
   },
   "devDependencies": {
-    "@baldeweg/ui": "0.18.1",
+    "@baldeweg/ui": "0.19.2",
     "@tsconfig/node24": "24.0.4",
     "@types/canvas-confetti": "1.9.0",
     "@types/js-cookie": "3.0.6",

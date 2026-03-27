@@ -46,9 +46,9 @@ async function enableMocking() {
 }
 
 enableMocking().then(() => {
+  app.use(router)
   app.use(ui)
   app.use(i18n)
-  app.use(router)
   app.use(head)
 
   app.mount('#app')

@@ -30,15 +30,13 @@ const shop: string = import.meta.env.VITE_SHOP
       </BButton>
     </template>
 
-    <BContainer size="m">
-      <BNav :nav="[
-        { route: { name: 'home' }, title: $t('home') },
-        { route: catalog, title: $t('catalog') },
-        { route: { name: 'reservation' }, title: $t('reservations') },
-        { route: settings, title: $t('settings') },
-        { route: shop, title: $t('shop') },
-        { route: '/help', title: $t('help') },
-      ]" />
-    </BContainer>
+      <BNavigation>
+        <BNavigationItem :route="{ name: 'home' }" icon="home">{{ $t('home') }}</BNavigationItem>
+        <BNavigationItem :route="catalog" icon="menu_book">{{ $t('catalog') }}</BNavigationItem>
+        <BNavigationItem :route="{ name: 'reservation' }" icon="shopping_cart">{{ $t('reservations') }}</BNavigationItem>
+        <BNavigationItem :route="settings" icon="settings">{{ $t('settings') }}</BNavigationItem>
+        <BNavigationItem :route="shop" icon="store">{{ $t('shop') }}</BNavigationItem>
+        <BNavigationItem :route="'/help'" icon="help">{{ $t('help') }}</BNavigationItem>
+      </BNavigation>
   </BPanel>
 </template>
