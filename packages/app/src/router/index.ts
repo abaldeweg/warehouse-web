@@ -30,6 +30,48 @@ const router = createRouter({
       meta: { layout: 'print' },
     },
     {
+      path: '/settings/',
+      name: 'settings',
+      component: () => import('../views/settings/SettingsView.vue'),
+      props: true,
+    },
+    {
+      path: '/settings/branch',
+      name: 'settings.branch',
+      component: () => import('../views/settings/BranchView.vue'),
+      props: true,
+    },
+    {
+      path: '/settings/inventory',
+      name: 'settings.inventory',
+      component: () => import('../views/settings/InventoryView.vue'),
+      props: true,
+    },
+    {
+      path: '/settings/condition',
+      name: 'settings.condition',
+      component: () => import('../views/settings/ConditionView.vue'),
+      props: true,
+    },
+    {
+      path: '/settings/format',
+      name: 'settings.format',
+      component: () => import('../views/settings/FormatView.vue'),
+      props: true,
+    },
+    {
+      path: '/settings/genre',
+      name: 'settings.genre',
+      component: () => import('../views/settings/GenreView.vue'),
+      props: true,
+    },
+    {
+      path: '/settings/tag',
+      name: 'settings.tag',
+      component: () => import('../views/settings/TagView.vue'),
+      props: true,
+    },
+    {
       path: '/account',
       name: 'account',
       component: () => import('../views/account/AccountView.vue'),

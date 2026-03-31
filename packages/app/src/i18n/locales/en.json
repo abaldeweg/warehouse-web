@@ -76,5 +76,11 @@
   "date": "Date",
   "term": "Term",
   "page": "Page",
-  "shop_search_description": "Show shop search data for the last 30 days."
+  "shop_search_description": "Show shop search data for the last 30 days.",
+  "settings_for_branch": "Settings for Branch",
+  "branch": "Branch",
+  "inventory": "Inventory",
+  "condition": "Condition",
+  "format": "Format",
+  "tags": "Tags"
 }
