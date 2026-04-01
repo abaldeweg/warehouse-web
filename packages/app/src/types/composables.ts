@@ -7,6 +7,10 @@ import type { AxiosResponse } from 'axios'
 import type { Branch } from './model/branch'
 import type { Analyze } from './model/analyze'
 import type { Genre } from './model/genre'
+import type { Tag } from './model/tag'
+import type { Condition } from './model/condition'
+import type { Format } from './model/format'
+import type { Inventory } from './model/inventory'
 
 export interface UseAuth {
   isAuthenticated: Ref<boolean>
@@ -95,4 +99,51 @@ export interface UseAnalyze {
 export interface UseGenres {
   genres: Ref<Genre[] | null>
   fetchGenres: () => Promise<void>
+}
+
+export interface UseGenre {
+  createGenre: (name: string) => Promise<number>
+  updateGenre: (id: number, name: string) => Promise<void>
+  removeGenre: (id: number) => Promise<void>
+}
+
+export interface UseTags {
+  tags: Ref<Tag[] | null>
+  listTags: () => Promise<void>
+}
+
+export interface UseTag {
+  createTag: (name: string) => Promise<number>
+  updateTag: (id: number, name: string) => Promise<void>
+  removeTag: (id: number) => Promise<void>
+}
+
+export interface UseConditions {
+  conditions: Ref<Condition[] | null>
+  listConditions: () => Promise<void>
+}
+
+export interface UseCondition {
+  createCondition: (name: string) => Promise<number>
+  updateCondition: (id: number, name: string) => Promise<void>
+  removeCondition: (id: number) => Promise<void>
+}
+
+export interface UseFormats {
+  formats: Ref<Format[] | null>
+  listFormats: () => Promise<void>
+}
+
+export interface UseFormat {
+  createFormat: (name: string) => Promise<number>
+  updateFormat: (id: number, name: string) => Promise<void>
+  removeFormat: (id: number) => Promise<void>
+}
+
+export interface UseInventory {
+  inventories: Ref<Inventory[] | null>
+  hasActiveInventory: Ref<boolean>
+  listInventories: () => Promise<void>
+  createInventory: () => Promise<void>
+  endInventory: (id: number) => Promise<void>
 }
