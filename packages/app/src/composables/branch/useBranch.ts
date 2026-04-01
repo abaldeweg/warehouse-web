@@ -14,8 +14,18 @@ export function useBranch(): UseBranch {
     branch.value = response.data
   }
 
+  const updateBranch = async (data: { id: number; params: Branch }): Promise<void> => {
+    return await apiClient.put(`/api/branch/${data.id}`, data.params)
+  }
+
+  const cleanBooks = async (): Promise<void> => {
+    return await apiClient.delete('/api/book/clean')
+  }
+
   return {
     branch,
     fetchBranch,
+    updateBranch,
+    cleanBooks,
   }
 }

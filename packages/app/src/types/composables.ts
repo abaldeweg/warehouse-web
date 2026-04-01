@@ -89,6 +89,8 @@ export interface UseReservations {
 export interface UseBranch {
   branch: Ref<Branch | null>
   fetchBranch: (id: number) => Promise<void>
+  updateBranch: (data: any) => Promise<void>
+  cleanBooks: () => Promise<void>
 }
 
 export interface UseAnalyze {
