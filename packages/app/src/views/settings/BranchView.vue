@@ -40,7 +40,7 @@ onMounted(() => {
 
   <BContainer size="m">
     <h3>{{ $t('pricelist') }}</h3>
-    <p>{{ $t('pricelistDesc') }}</p>
+    <p>{{ $t('pricelist_desc') }}</p>
     <BranchPriceCalculator :branch="branch" :user="user" @update="updateBranch" v-if="user" />
   </BContainer>
 </template>

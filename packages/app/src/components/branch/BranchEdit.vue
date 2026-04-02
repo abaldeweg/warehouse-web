@@ -53,7 +53,7 @@ const update = () => {
       name="name"
       id="name"
       :label="t('name_of_branch')"
-      :help="t('branchNameHelp')"
+      :help="t('branch_name_help')"
       v-model="state.name"
     />
 
@@ -62,7 +62,7 @@ const update = () => {
       name="steps"
       id="steps"
       :label="t('price_steps')"
-      :help="t('branchStepsHelp')"
+      :help="t('branch_steps_help')"
       min="0.00"
       max="100.00"
       step="0.01"
@@ -85,27 +85,10 @@ const update = () => {
     <BTextarea
       name="ordering"
       id="ordering"
-      :label="t('bookOrdering')"
-      :help="t('branchOrderingHelp')"
+      :label="t('book_ordering')"
+      :help="t('branch_ordering_help')"
       :rows="5"
       v-model="state.ordering"
-    />
-
-    <BAlert type="warning">
-      Deprecation: This setting will be removed soon. "Name - Ascending" will become the default.
-      Diese Einstellung wird bald entfernt. "Name - Aufsteigend" wird der Standard.
-    </BAlert>
-    <BSelect
-      type="options"
-      name="orderBy"
-      id="orderBy"
-      :label="t('orderBy')"
-      :help="t('branchOrderByHelp')"
-      :options="[
-        { key: 'name', value: $t('orderByNameAsc') },
-        { key: 'books', value: $t('orderByBookcountDesc') },
-      ]"
-      v-model="state.orderBy"
     />
 
     <BSelect
@@ -122,9 +105,9 @@ const update = () => {
       type="checkbox"
       name="cart"
       id="cart"
-      :label="t('activateCart')"
-      :help="t('activateCartHelp')"
-      :options="[{ key: '1', value: $t('activateCart') }]"
+      :label="t('activate_cart')"
+      :help="t('activate_cart_help')"
+      :options="[{ key: '1', value: $t('activate_cart') }]"
       v-model="state.cart"
     />
 

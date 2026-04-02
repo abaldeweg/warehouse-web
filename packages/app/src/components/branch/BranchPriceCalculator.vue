@@ -36,7 +36,6 @@ const toString = (id: string): string => {
     elements += key + ':' + pricelist[key] + '\n'
   }
 
-  // state[id] = elements
   return elements
 }
 
@@ -53,7 +52,6 @@ const toArray = (value: string | null) => {
     prices[item[0]] = item[1]
   })
 
-  // state.pricelist[id] = prices
   return prices
 }
 
@@ -100,18 +98,18 @@ const update = () => {
     <BInput type="number" name="baseprice" id="baseprice" v-model="base" />
     <BTextarea
       rows="5"
-      name="releaseYear"
+      name="release_year"
       id="releaseYear"
-      :label="t('priceCalcReleaseYear')"
-      :help="t('priceCalcReleaseYearHelp')"
+      :label="t('price_calc_release_year')"
+      :help="t('price_calc_release_year_help')"
       v-model="releaseYear"
     />
     <BTextarea
       rows="5"
       name="condition"
       id="condition"
-      :label="t('priceCalcCondition')"
-      :help="t('priceCalcConditionHelp')"
+      :label="t('price_calc_condition')"
+      :help="t('price_calc_condition_help')"
       v-model="condition"
     />
 
