@@ -10,12 +10,18 @@ export function useFormats(): UseFormats {
   const formats = ref<Format[] | null>(null)
 
   const criteria = ref<string | null>(null)
-  const filteredFormats = computed<Format[] | null>(() => {
-    if (!formats.value) return null
-    if (!criteria.value) return formats.value
-    const needle = criteria.value.toLowerCase().trim()
-    return formats.value.filter((f) => f.name.toLowerCase().includes(needle))
-  })
+    const sort = ref<'asc' | 'desc' | null>(null)
+    const processedFormats = computed<Format[] | null>((): Format[] | null => {
+      if (!formats.value) return null
+      let result: Format[] = formats.value
+      if (criteria.value) {
+        const needle = criteria.value.toLowerCase().trim()
+        result = formats.value.filter((f) => f.name.toLowerCase().includes(needle))
+      }
+      if (!sort.value) return result
+      const sorted = [...result].sort((a, b) => a.name.localeCompare(b.name))
+      return sort.value === 'asc' ? sorted : sorted.reverse()
+    })
 
   const listFormats = async (): Promise<void> => {
     const response = await apiClient.get('/api/format/')
@@ -25,7 +31,8 @@ export function useFormats(): UseFormats {
   return {
     formats,
     criteria,
-    filteredFormats,
+    sort,
+    processedFormats,
     listFormats,
   }
 }

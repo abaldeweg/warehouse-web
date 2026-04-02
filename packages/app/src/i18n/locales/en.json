@@ -134,5 +134,9 @@
   "create_condition": "Create Condition",
   "all_conditions": "All Conditions",
   "tag": "Tag",
-  "filter_by_name": "Filter by Name"
+  "filter_by_name": "Filter by Name",
+  "sort_direction": "Sort Direction",
+  "sort_none": "No Sorting",
+  "sort_asc": "Ascending",
+  "sort_desc": "Descending"
 }

@@ -10,11 +10,17 @@ export function useConditions(): UseConditions {
   const conditions = ref<Condition[] | null>(null)
 
   const criteria = ref<string | null>(null)
-  const filteredConditions = computed<Condition[] | null>(() => {
+  const sort = ref<'asc' | 'desc' | null>(null)
+  const processedConditions = computed<Condition[] | null>((): Condition[] | null => {
     if (!conditions.value) return null
-    if (!criteria.value) return conditions.value
-    const needle = criteria.value.toLowerCase().trim()
-    return conditions.value.filter((c) => c.name.toLowerCase().includes(needle))
+    let result: Condition[] = conditions.value
+    if (criteria.value) {
+      const needle = criteria.value.toLowerCase().trim()
+      result = conditions.value.filter((c) => c.name.toLowerCase().includes(needle))
+    }
+    if (!sort.value) return result
+    const sorted = [...result].sort((a, b) => a.name.localeCompare(b.name))
+    return sort.value === 'asc' ? sorted : sorted.reverse()
   })
 
   const listConditions = async (): Promise<void> => {
@@ -25,7 +31,8 @@ export function useConditions(): UseConditions {
   return {
     conditions,
     criteria,
-    filteredConditions,
+    sort,
+    processedConditions,
     listConditions,
   }
 }

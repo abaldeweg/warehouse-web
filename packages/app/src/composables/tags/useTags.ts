@@ -10,11 +10,17 @@ export function useTags(): UseTags {
   const tags = ref<Tag[] | null>(null)
 
   const criteria = ref<string | null>(null)
-  const filteredTags = computed<Tag[] | null>(() => {
+  const sort = ref<'asc' | 'desc' | null>(null)
+  const processedTags = computed<Tag[] | null>((): Tag[] | null => {
     if (!tags.value) return null
-    if (!criteria.value) return tags.value
-    const needle = criteria.value.toLowerCase().trim()
-    return tags.value.filter((t) => t.name.toLowerCase().includes(needle))
+    let result: Tag[] = tags.value
+    if (criteria.value) {
+      const needle = criteria.value.toLowerCase().trim()
+      result = tags.value.filter((t) => t.name.toLowerCase().includes(needle))
+    }
+    if (!sort.value) return result
+    const sorted = [...result].sort((a, b) => a.name.localeCompare(b.name))
+    return sort.value === 'asc' ? sorted : sorted.reverse()
   })
 
   const listTags = async (): Promise<void> => {
@@ -25,7 +31,8 @@ export function useTags(): UseTags {
   return {
     tags,
     criteria,
-    filteredTags,
+    sort,
+    processedTags,
     listTags,
   }
 }

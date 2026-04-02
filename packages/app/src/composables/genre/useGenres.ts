@@ -10,12 +10,18 @@ export function useGenres(): UseGenres {
   const genres = ref<Genre[] | null>(null)
 
   const criteria = ref<string | null>(null)
-  const filteredGenres = computed<Genre[] | null>(() => {
-    if (!genres.value) return null
-    if (!criteria.value) return genres.value
-    const needle = criteria.value.toLowerCase().trim()
-    return genres.value.filter((g) => g.name.toLowerCase().includes(needle))
-  })
+    const sort = ref<'asc' | 'desc' | null>(null)
+    const processedGenres = computed<Genre[] | null>((): Genre[] | null => {
+      if (!genres.value) return null
+      let result: Genre[] = genres.value
+      if (criteria.value) {
+        const needle = criteria.value.toLowerCase().trim()
+        result = genres.value.filter((g) => g.name.toLowerCase().includes(needle))
+      }
+      if (!sort.value) return result
+      const sorted = [...result].sort((a, b) => a.name.localeCompare(b.name))
+      return sort.value === 'asc' ? sorted : sorted.reverse()
+    })
 
   /**
    * Fetch genres from the API and update the genres ref.
@@ -28,7 +34,8 @@ export function useGenres(): UseGenres {
   return {
     genres,
     criteria,
-    filteredGenres,
+    sort,
+    processedGenres,
     fetchGenres,
   }
 }

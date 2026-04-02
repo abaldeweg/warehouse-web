@@ -17,7 +17,7 @@ onMounted(() => {
   fetchUser()
 })
 
-const { genres, criteria, filteredGenres, fetchGenres } = useGenres()
+const { genres, criteria, sort, processedGenres, fetchGenres } = useGenres()
 onMounted(() => {
   fetchGenres()
 })
@@ -44,12 +44,82 @@ onMounted(() => {
 
   <BContainer size="m" v-if="genres && genres.length > 0">
     <h2>{{ $t('all_genres') }}</h2>
-    <BInput type="search" v-model="criteria" :placeholder="$t('filter_by_name')" />
+    <div class="options">
+      <div class="option filter">
+        <div class="icon">
+          <BMaterialIcon>filter_alt</BMaterialIcon>
+        </div>
+        <div class="form">
+          <BInput
+            type="search"
+            v-model="criteria"
+            name="criteria"
+            id="criteria"
+            :label="$t('filter_by_name')"
+            hideLabel
+            :placeholder="$t('filter_by_name')"
+          />
+        </div>
+      </div>
+      <div class="option sort">
+        <div class="icon">
+          <BMaterialIcon>sort_by_alpha</BMaterialIcon>
+        </div>
+        <div class="form">
+          <BSelect
+            v-model="sort"
+            type="options"
+            name="sort"
+            id="sort"
+            :label="$t('sort_direction')"
+            hideLabel
+            :options="[
+              { key: null, value: $t('sort_none') },
+              { key: 'asc', value: $t('sort_asc') },
+              { key: 'desc', value: $t('sort_desc') },
+            ]"
+          />
+        </div>
+      </div>
+    </div>
+
     <GenreShow
-      v-for="item in filteredGenres"
+      v-for="item in processedGenres"
       :key="item.id"
       :item="item"
       :isAdmin="user?.isAdmin ?? false"
     />
   </BContainer>
 </template>
+
+<style scoped>
+.options {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+.option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.filter {
+  flex: 1;
+}
+.option .icon {
+  display: flex;
+  align-items: center;
+}
+.option .form {
+  flex: 1;
+}
+
+@media (min-width: 600px) {
+  .options {
+    flex-direction: row;
+  }
+  .sort {
+    width: 200px;
+  }
+}
+</style>

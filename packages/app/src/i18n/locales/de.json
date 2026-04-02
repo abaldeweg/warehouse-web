@@ -129,5 +129,9 @@
   "create_condition": "Zustand erstellen",
   "all_conditions": "Alle Zustände",
   "tag": "Schlagwort",
-  "filter_by_name": "Nach Name filtern"
+  "filter_by_name": "Nach Name filtern",
+  "sort_direction": "Sortierrichtung",
+  "sort_none": "Keine Sortierung",
+  "sort_asc": "Aufsteigend",
+  "sort_desc": "Absteigend"
 }
