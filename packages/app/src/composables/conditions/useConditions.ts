@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
 import type { UseConditions } from '@/types/composables'
 import type { Condition } from '@/types/model/condition'
@@ -9,6 +9,14 @@ import type { Condition } from '@/types/model/condition'
 export function useConditions(): UseConditions {
   const conditions = ref<Condition[] | null>(null)
 
+  const criteria = ref<string | null>(null)
+  const filteredConditions = computed<Condition[] | null>(() => {
+    if (!conditions.value) return null
+    if (!criteria.value) return conditions.value
+    const needle = criteria.value.toLowerCase().trim()
+    return conditions.value.filter((c) => c.name.toLowerCase().includes(needle))
+  })
+
   const listConditions = async (): Promise<void> => {
     const response = await apiClient.get('/api/condition/')
     conditions.value = response.data
@@ -16,6 +24,8 @@ export function useConditions(): UseConditions {
 
   return {
     conditions,
+    criteria,
+    filteredConditions,
     listConditions,
   }
 }

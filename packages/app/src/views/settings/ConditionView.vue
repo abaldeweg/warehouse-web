@@ -17,7 +17,7 @@ onMounted(() => {
   fetchUser()
 })
 
-const { conditions, listConditions } = useConditions()
+const { conditions, criteria, filteredConditions, listConditions } = useConditions()
 onMounted(() => {
   listConditions()
 })
@@ -44,8 +44,9 @@ onMounted(() => {
 
   <BContainer size="m" v-if="conditions && conditions.length > 0">
     <h2>{{ $t('all_conditions') }}</h2>
+    <BInput type="search" v-model="criteria" :placeholder="$t('filter_by_name')" />
     <ConditionShow
-      v-for="item in conditions"
+      v-for="item in filteredConditions"
       :key="item.id"
       :item="item"
       :isAdmin="user?.isAdmin ?? false"

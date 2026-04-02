@@ -17,7 +17,7 @@ onMounted(() => {
   fetchUser()
 })
 
-const { tags, listTags } = useTags()
+const { tags, filteredTags, criteria, listTags } = useTags()
 onMounted(() => {
   listTags()
 })
@@ -44,6 +44,12 @@ onMounted(() => {
 
   <BContainer size="m" v-if="tags && tags.length > 0">
     <h2>{{ $t('all_tags') }}</h2>
-    <TagShow v-for="item in tags" :key="item.id" :item="item" :isAdmin="user?.isAdmin ?? false" />
+    <BInput type="search" v-model="criteria" :placeholder="$t('filter_by_name')" />
+    <TagShow
+      v-for="item in filteredTags"
+      :key="item.id"
+      :item="item"
+      :isAdmin="user?.isAdmin ?? false"
+    />
   </BContainer>
 </template>

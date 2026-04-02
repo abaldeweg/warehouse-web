@@ -133,5 +133,6 @@
   "all_formats": "All Formats",
   "create_condition": "Create Condition",
   "all_conditions": "All Conditions",
-  "tag": "Tag"
+  "tag": "Tag",
+  "filter_by_name": "Filter by Name"
 }

@@ -17,7 +17,7 @@ onMounted(() => {
   fetchUser()
 })
 
-const { genres, fetchGenres } = useGenres()
+const { genres, criteria, filteredGenres, fetchGenres } = useGenres()
 onMounted(() => {
   fetchGenres()
 })
@@ -44,8 +44,9 @@ onMounted(() => {
 
   <BContainer size="m" v-if="genres && genres.length > 0">
     <h2>{{ $t('all_genres') }}</h2>
+    <BInput type="search" v-model="criteria" :placeholder="$t('filter_by_name')" />
     <GenreShow
-      v-for="item in genres"
+      v-for="item in filteredGenres"
       :key="item.id"
       :item="item"
       :isAdmin="user?.isAdmin ?? false"

@@ -17,7 +17,7 @@ onMounted(() => {
   fetchUser()
 })
 
-const { formats, listFormats } = useFormats()
+const { formats, criteria, filteredFormats, listFormats } = useFormats()
 onMounted(() => {
   listFormats()
 })
@@ -44,8 +44,9 @@ onMounted(() => {
 
   <BContainer size="m" v-if="formats && formats.length > 0">
     <h2>{{ $t('all_formats') }}</h2>
+    <BInput type="search" v-model="criteria" :placeholder="$t('filter_by_name')" />
     <FormatShow
-      v-for="item in formats"
+      v-for="item in filteredFormats"
       :key="item.id"
       :item="item"
       :isAdmin="user?.isAdmin ?? false"

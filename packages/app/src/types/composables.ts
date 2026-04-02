@@ -100,6 +100,8 @@ export interface UseAnalyze {
 
 export interface UseGenres {
   genres: Ref<Genre[] | null>
+  criteria: Ref<string | null>
+  readonly filteredGenres: Ref<Genre[] | null>
   fetchGenres: () => Promise<void>
 }
 
@@ -111,6 +113,8 @@ export interface UseGenre {
 
 export interface UseTags {
   tags: Ref<Tag[] | null>
+  criteria: Ref<string | null>
+  readonly filteredTags: Ref<Tag[] | null>
   listTags: () => Promise<void>
 }
 
@@ -122,6 +126,8 @@ export interface UseTag {
 
 export interface UseConditions {
   conditions: Ref<Condition[] | null>
+  criteria: Ref<string | null>
+  readonly filteredConditions: Ref<Condition[] | null>
   listConditions: () => Promise<void>
 }
 
@@ -133,6 +139,8 @@ export interface UseCondition {
 
 export interface UseFormats {
   formats: Ref<Format[] | null>
+  criteria: Ref<string | null>
+  readonly filteredFormats: Ref<Format[] | null>
   listFormats: () => Promise<void>
 }
 

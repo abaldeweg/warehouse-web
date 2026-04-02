@@ -128,5 +128,6 @@
   "all_formats": "Alle Typen",
   "create_condition": "Zustand erstellen",
   "all_conditions": "Alle Zustände",
-  "tag": "Schlagwort"
+  "tag": "Schlagwort",
+  "filter_by_name": "Nach Name filtern"
 }
