@@ -20,7 +20,7 @@ onMounted(() => {
   </BContainer>
 
   <BContainer size="m">
-    <BList :route="{ name: 'settings.branch' }" mediaSize="avatar" divider>
+    <BList :route="{ name: 'settings.branch' }" mediaSize="avatar" divider hover>
       <template #title>{{ $t('branch') }}</template>
       <template #media>
         <RouterLink :to="{ name: 'settings.branch' }">
@@ -34,7 +34,7 @@ onMounted(() => {
       </template>
     </BList>
 
-    <BList :route="{ name: 'settings.inventory' }" mediaSize="avatar" divider>
+    <BList :route="{ name: 'settings.inventory' }" mediaSize="avatar" divider hover>
       <template #title>{{ $t('inventory') }}</template>
       <template #media>
         <RouterLink :to="{ name: 'settings.branch' }">
@@ -48,7 +48,7 @@ onMounted(() => {
       </template>
     </BList>
 
-    <BList :route="{ name: 'settings.condition' }" mediaSize="avatar" divider>
+    <BList :route="{ name: 'settings.condition' }" mediaSize="avatar" divider hover>
       <template #title>{{ $t('condition') }}</template>
       <template #media>
         <RouterLink :to="{ name: 'settings.branch' }">
@@ -62,7 +62,7 @@ onMounted(() => {
       </template>
     </BList>
 
-    <BList :route="{ name: 'settings.format' }" mediaSize="avatar" divider>
+    <BList :route="{ name: 'settings.format' }" mediaSize="avatar" divider hover>
       <template #title>{{ $t('format') }}</template>
       <template #media>
         <RouterLink :to="{ name: 'settings.branch' }">
@@ -76,7 +76,7 @@ onMounted(() => {
       </template>
     </BList>
 
-    <BList :route="{ name: 'settings.genre' }" mediaSize="avatar" divider>
+    <BList :route="{ name: 'settings.genre' }" mediaSize="avatar" divider hover>
       <template #title>{{ $t('genre') }}</template>
       <template #media>
         <RouterLink :to="{ name: 'settings.branch' }">
@@ -90,7 +90,7 @@ onMounted(() => {
       </template>
     </BList>
 
-    <BList :route="{ name: 'settings.tag' }" mediaSize="avatar" divider>
+    <BList :route="{ name: 'settings.tag' }" mediaSize="avatar" divider hover>
       <template #title>{{ $t('tags') }}</template>
       <template #media>
         <RouterLink :to="{ name: 'settings.branch' }">
