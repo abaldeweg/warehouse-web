@@ -99,7 +99,6 @@ onMounted(() => {
       </template>
       <template #controls>
         <RouterLink :to="{ name: 'settings.tag' }">
-          >
           <BMaterialIcon>keyboard_arrow_right</BMaterialIcon>
         </RouterLink>
       </template>
