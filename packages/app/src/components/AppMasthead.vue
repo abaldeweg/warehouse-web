@@ -4,6 +4,7 @@ import { useAuth } from '@/composables/auth/useAuth'
 import { useLogout } from '@/composables/auth/useLogout'
 import { onMounted, onUnmounted } from 'vue'
 import { useReservations } from '@/composables/reservations/useReservations'
+const emit = defineEmits(['open-drawer'])
 
 const { isAuthenticated, user, checkAuthenticationStatus } = useAuth()
 onMounted(checkAuthenticationStatus)
@@ -25,25 +26,20 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <BMasthead>
-    <BMastheadItem position="start" v-if="isAuthenticated">
-      <span @click="$emit('open-drawer')">
+  <header class="masthead">
+    <div class="masthead_start" v-if="isAuthenticated">
+      <span @click="emit('open-drawer')">
         <BMaterialIcon hover>menu</BMaterialIcon>
       </span>
-    </BMastheadItem>
+    </div>
 
-    <BMastheadItem position="center">
+    <div class="masthead_center">
       <AppLogo />
-    </BMastheadItem>
+    </div>
 
-    <BMastheadItem position="end" v-if="isAuthenticated" class="actions">
+    <div class="masthead_end actions" v-if="isAuthenticated">
       <RouterLink :to="{ name: 'reservation' }">
-        <BBadge variant="inline" background="primary" :action="{ name: 'reservation' }" v-if="countAllReservations > 0">
-          <template #icon>
-            <BMaterialIcon size="16">euro</BMaterialIcon>
-          </template>
-          ({{ countAllReservations }})
-        </BBadge>
+        <BMaterialIcon>euro</BMaterialIcon>{{ countAllReservations > 0 ? ('(' + countAllReservations + ')') : '' }}
       </RouterLink>
       <BMaterialIcon v-if="countAllReservations === 0">euro</BMaterialIcon>
       <BDropdown position="bottom" class="action">
@@ -61,8 +57,8 @@ onUnmounted(() => {
           {{ $t('logout') }}
         </BDropdownItem>
       </BDropdown>
-    </BMastheadItem>
-  </BMasthead>
+    </div>
+  </header>
 </template>
 
 <style>
@@ -79,13 +75,40 @@ body {
 .badge_content {
   display: none;
 }
-</style>
 
-<style scoped>
 .actions {
   display: flex;
   gap: 10px;
   justify-content: flex-end;
   align-items: center;
+}
+
+.masthead {
+  height: var(--masthead-top-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+}
+
+.masthead_start,
+.masthead_center,
+.masthead_end {
+  display: flex;
+  align-items: center;
+}
+
+.masthead_center {
+  justify-content: center;
+  flex: 1;
+}
+
+.masthead_start {
+  min-width: 160px;
+}
+
+.masthead_end {
+  min-width: 160px;
+  justify-content: flex-end;
 }
 </style>
