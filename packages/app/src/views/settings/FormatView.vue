@@ -6,6 +6,7 @@ import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { useToken } from '@/composables/auth/useToken'
 import { onMounted } from 'vue'
+import AppToolbar from '@/components/AppToolbar.vue'
 
 const { t } = useI18n()
 
@@ -24,7 +25,11 @@ onMounted(() => {
 
 <template>
   <BContainer size="m">
-    <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
+    <AppToolbar>
+      <template #left>
+        <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
+      </template>
+    </AppToolbar>
   </BContainer>
 
   <BContainer size="m">
@@ -32,16 +37,18 @@ onMounted(() => {
     <p>{{ $t('formats_desc') }}</p>
   </BContainer>
 
+  <BContainer size="m" v-if="user?.isAdmin ?? false">
+    <h2>{{ $t('create_format') }}</h2>
+    <FormatCreate @created="listFormats" />
+  </BContainer>
+
   <BContainer size="m" v-if="formats && formats.length > 0">
+    <h2>{{ $t('all_formats') }}</h2>
     <FormatShow
       v-for="item in formats"
       :key="item.id"
       :item="item"
       :isAdmin="user?.isAdmin ?? false"
     />
-  </BContainer>
-
-  <BContainer size="m" v-if="user?.isAdmin ?? false">
-    <FormatCreate @created="listFormats" />
   </BContainer>
 </template>

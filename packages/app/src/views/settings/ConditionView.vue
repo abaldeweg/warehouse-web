@@ -6,6 +6,7 @@ import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { useToken } from '@/composables/auth/useToken'
 import { onMounted } from 'vue'
+import AppToolbar from '@/components/AppToolbar.vue'
 
 const { t } = useI18n()
 
@@ -24,7 +25,11 @@ onMounted(() => {
 
 <template>
   <BContainer size="m">
-    <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
+    <AppToolbar>
+      <template #left>
+        <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
+      </template>
+    </AppToolbar>
   </BContainer>
 
   <BContainer size="m">
@@ -32,16 +37,18 @@ onMounted(() => {
     <p>{{ $t('conditions_desc') }}</p>
   </BContainer>
 
+  <BContainer size="m" v-if="user?.isAdmin ?? false">
+    <h2>{{ $t('create_condition') }}</h2>
+    <ConditionCreate @created="listConditions" />
+  </BContainer>
+
   <BContainer size="m" v-if="conditions && conditions.length > 0">
+    <h2>{{ $t('all_conditions') }}</h2>
     <ConditionShow
       v-for="item in conditions"
       :key="item.id"
       :item="item"
       :isAdmin="user?.isAdmin ?? false"
     />
-  </BContainer>
-
-  <BContainer size="m" v-if="user?.isAdmin ?? false">
-    <ConditionCreate @created="listConditions" />
   </BContainer>
 </template>

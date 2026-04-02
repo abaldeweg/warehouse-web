@@ -357,6 +357,13 @@ export const handlers = [
       },
     ])
   }),
+  http.post('*/api/genre/new', () => {
+    return HttpResponse.json([
+      {
+        id: 1,
+      },
+    ])
+  }),
   http.put('*/api/genre/*', () => {
     return HttpResponse.json({})
   }),

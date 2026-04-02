@@ -7,6 +7,7 @@ import { useBranch } from '@/composables/branch/useBranch'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { useToken } from '@/composables/auth/useToken'
+import AppToolbar from '@/components/AppToolbar.vue'
 
 const { t } = useI18n()
 
@@ -24,7 +25,11 @@ onMounted(() => {
 
 <template>
   <BContainer size="m">
-    <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
+    <AppToolbar>
+      <template #left>
+        <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
+      </template>
+    </AppToolbar>
   </BContainer>
 
   <BContainer size="m">

@@ -25,9 +25,9 @@ const create = () => {
       type="text"
       name="name"
       id="name"
-      :label="t('new_genre')"
-      hideLabel
-      :placeholder="t('enter_genre_and_hit_enter')"
+      :label="t('name')"
+      :placeholder="t('genre')"
     />
+    <BButton type="submit" :style="{ float: 'right' }">{{ t('save') }}</BButton>
   </BForm>
 </template>

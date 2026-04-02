@@ -25,9 +25,9 @@ const create = () => {
       type="text"
       name="name"
       id="name"
-      :label="t('new_condition')"
-      hideLabel
-      :placeholder="t('enter_condition_and_hit_enter')"
+      :label="t('name')"
+      :placeholder="t('condition')"
     />
+    <BButton type="submit" :style="{ float: 'right' }">{{ t('save') }}</BButton>
   </BForm>
 </template>
