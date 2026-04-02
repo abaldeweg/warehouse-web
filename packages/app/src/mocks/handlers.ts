@@ -357,11 +357,53 @@ export const handlers = [
       },
     ])
   }),
+  http.put('*/api/genre/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.delete('*/api/genre/*', () => {
+    return HttpResponse.json({})
+  }),
   http.get('*/api/tag', () => {
     return HttpResponse.json([
       {
         "id": 1,
         "name": "Crime",
+        "branch_id": 1,
+        "branch": {
+          "id": 0,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": false,
+          "pricelist": "",
+          "cart": false,
+          "content": "",
+          "mail_reservation": ""
+        },
+        "books": null
+      },
+      {
+        "id": 2,
+        "name": "Thriller",
+        "branch_id": 1,
+        "branch": {
+          "id": 0,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": false,
+          "pricelist": "",
+          "cart": false,
+          "content": "",
+          "mail_reservation": ""
+        },
+        "books": null
+      },
+      {
+        "id": 3,
+        "name": "Novels",
         "branch_id": 1,
         "branch": {
           "id": 0,

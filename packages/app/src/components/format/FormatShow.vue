@@ -18,18 +18,22 @@ const { updateFormat, removeFormat } = useFormat()
 <template>
   <BList divider v-if="item">
     <template #title>
-      <span v-if="!isAdmin">{{ item.name }}</span>
+      <span v-if="!isAdmin" >{{ item.name }}</span>
 
-      <BForm @submit.prevent v-if="isAdmin">
-        <BInput
-          v-model="name"
-          type="text"
-          name="name"
-          id="name"
-          :label="t('name')"
-          hideLabel
-          @input="updateFormat(item.id, name.value)"
-        />
+      <BForm @submit.prevent="updateFormat(item.id, name)" v-if="isAdmin" class="editForm">
+        <div class="editForm_input">
+          <BInput
+            v-model="name"
+            type="text"
+            name="name"
+            id="name"
+            :label="t('name')"
+            hideLabel
+          />
+        </div>
+        <BButton design="text" type="submit" :style="{ paddingTop: '0', paddingBottom: '0' }">
+          <BMaterialIcon>save</BMaterialIcon>
+        </BButton>
       </BForm>
     </template>
 
@@ -45,3 +49,13 @@ const { updateFormat, removeFormat } = useFormat()
     </template>
   </BList>
 </template>
+
+<style scoped>
+.editForm {
+  display: flex;
+}
+.editForm_input {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+</style>

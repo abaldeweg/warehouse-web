@@ -20,23 +20,28 @@ const { updateTag, removeTag } = useTag()
     <template #title>
       <span v-if="!isAdmin">{{ item.name }}</span>
 
-      <BForm @submit.prevent v-if="isAdmin">
-        <BInput
-          v-model="name"
-          type="text"
-          name="name"
-          id="name"
-          :label="t('name')"
-          hideLabel
-          @input="updateTag(item.id, name.value)"
-        />
+      <BForm @submit.prevent="updateTag(item.id, name)" v-if="isAdmin" class="editForm">
+        <div class="editForm_input">
+          <BInput
+            v-model="name"
+            type="text"
+            name="name"
+            id="name"
+            :label="t('name')"
+            hideLabel
+            class="editForm_input"
+          />
+        </div>
+        <BButton design="text" type="submit" :style="{ paddingTop: '0', paddingBottom: '0' }">
+          <BMaterialIcon>save</BMaterialIcon>
+        </BButton>
       </BForm>
     </template>
 
     <template #controls>
       <BDropdown v-if="isAdmin">
         <template #selector>
-          <BMaterialIcon>more_vert</BMaterialIcon>
+          <BMaterialIcon :style="{ cursor: 'pointer' }">more_vert</BMaterialIcon>
         </template>
         <BDropdownItem icon="delete" @click="removeTag(item.id)">
           {{ $t('delete_item') }}
@@ -45,3 +50,13 @@ const { updateTag, removeTag } = useTag()
     </template>
   </BList>
 </template>
+
+<style scoped>
+.editForm {
+  display: flex;
+}
+.editForm_input {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+</style>
