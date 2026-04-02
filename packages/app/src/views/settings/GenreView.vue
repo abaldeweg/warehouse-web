@@ -24,6 +24,10 @@ onMounted(() => {
 
 <template>
   <BContainer size="m">
+    <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
+  </BContainer>
+
+  <BContainer size="m">
     <h1>{{ $t('genres') }}</h1>
     <p>{{ $t('genres_desc') }}</p>
   </BContainer>

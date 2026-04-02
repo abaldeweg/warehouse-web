@@ -24,6 +24,10 @@ onMounted(() => {
 
 <template>
   <BContainer size="m">
+    <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
+  </BContainer>
+
+  <BContainer size="m">
     <BButton
       :style="{ float: 'right' }"
       design="outline"
