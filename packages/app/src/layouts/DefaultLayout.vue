@@ -21,5 +21,5 @@ onMounted(() => {
     <slot />
     <AppFooter />
   </BApp>
-  <AppPanel v-model:isDrawerActive="isDrawerActive" />
+  <AppPanel v-model:isDrawerActive="isDrawerActive" @close-drawer="isDrawerActive = false" />
 </template>
