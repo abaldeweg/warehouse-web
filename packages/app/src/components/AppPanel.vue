@@ -34,7 +34,7 @@ const shop: string = import.meta.env.VITE_SHOP
         <BNavigationItem :route="{ name: 'home' }" icon="home">{{ $t('home') }}</BNavigationItem>
         <BNavigationItem :route="catalog" icon="menu_book">{{ $t('catalog') }}</BNavigationItem>
         <BNavigationItem :route="{ name: 'reservation' }" icon="shopping_cart">{{ $t('reservations') }}</BNavigationItem>
-        <BNavigationItem :route="settings" icon="settings">{{ $t('settings') }}</BNavigationItem>
+        <BNavigationItem :route="{ name: 'settings' }" icon="settings">{{ $t('settings') }}</BNavigationItem>
         <BNavigationItem :route="shop" icon="store">{{ $t('shop') }}</BNavigationItem>
         <BNavigationItem :route="'/help'" icon="help">{{ $t('help') }}</BNavigationItem>
       </BNavigation>
