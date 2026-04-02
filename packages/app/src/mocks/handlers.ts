@@ -356,5 +356,158 @@ export const handlers = [
         },
       },
     ])
-  })
+  }),
+  http.get('*/api/tag', () => {
+    return HttpResponse.json([
+      {
+        "id": 1,
+        "name": "Crime",
+        "branch_id": 1,
+        "branch": {
+          "id": 0,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": false,
+          "pricelist": "",
+          "cart": false,
+          "content": "",
+          "mail_reservation": ""
+        },
+        "books": null
+      },
+    ])
+  }),
+  http.post('*/api/tag/new', () => {
+    return HttpResponse.json([
+      {
+        id: 1,
+      },
+    ])
+  }),
+  http.put('*/api/tag/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.delete('*/api/tag/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.get('*/api/condition', () => {
+    return HttpResponse.json([
+      {
+        "id": 1,
+        "name": "Good",
+        "branch_id": 1,
+        "branch": {
+          "id": 0,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": false,
+          "pricelist": "",
+          "cart": false,
+          "content": "",
+          "mail_reservation": ""
+        }
+      },
+    ])
+  }),
+  http.post('*/api/condition/new', () => {
+    return HttpResponse.json([
+      {
+        id: 1,
+      },
+    ])
+  }),
+  http.put('*/api/condition/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.delete('*/api/condition/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.get('*/api/format', () => {
+    return HttpResponse.json([
+      {
+        "id": 1,
+        "name": "Paperback",
+        "branch_id": 1,
+        "branch": {
+          "id": 1,
+          "name": "",
+          "steps": 0,
+          "currency": "EUR",
+          "ordering": "",
+          "public": true,
+          "pricelist": "",
+          "cart": true,
+          "content": "",
+          "mail_reservation": ""
+        }
+      },
+    ])
+  }),
+  http.post('*/api/format/new', () => {
+    return HttpResponse.json([
+      {
+        id: 1,
+      },
+    ])
+  }),
+  http.put('*/api/format/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.delete('*/api/format/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.get('*/api/inventory/', () => {
+    return HttpResponse.json([
+      {
+        "id": 1,
+        "branch_id": 1,
+        "branch": {
+          "id": 1,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": true,
+          "pricelist": "",
+          "cart": true,
+          "content": "",
+          "mail_reservation": ""
+        },
+        "startedAt": 1635768232,
+        "endedAt": 1635768242,
+        "found": 0,
+        "notFound": 0
+      }
+    ])
+  }),
+  http.post('*/api/inventory/new', () => {
+    return HttpResponse.json({})
+  }),
+  http.put('*/api/inventory/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.get('*/api/branch/*', () => {
+    return HttpResponse.json({
+      "id": 1,
+      "name": "Branch",
+      "steps": "0",
+      "currency": "EUR",
+      "ordering": "",
+      "public": true,
+      "pricelist": "{\"base\":0,\"releaseYear\":{\"2001-2002\":\"1,00\",\"2003-2004\":\"2,00\"},\"condition\":{\"Good\":\"+1,00\",\"Bad\":\"-1,00\"}}",
+      "cart": true,
+      "content": "",
+      "mail_reservation": ""
+    })
+  }),
+  http.put('*/api/branch/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.delete('*/api/book/clean', () => {
+    return HttpResponse.json({})
+  }),
 ]
