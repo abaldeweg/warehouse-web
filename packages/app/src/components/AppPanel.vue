@@ -11,13 +11,15 @@ const emit = defineEmits<{
 }>()
 
 const catalog: string = import.meta.env.VITE_CATALOG
-const settings: string = import.meta.env.VITE_SETTINGS
 const shop: string = import.meta.env.VITE_SHOP
 </script>
 
 <template>
-  <BPanel :model-value="isDrawerActive" @update:model-value="emit('update:isDrawerActive', $event)"
-    @close="emit('close-drawer')">
+  <BPanel
+    :model-value="isDrawerActive"
+    @update:model-value="emit('update:isDrawerActive', $event)"
+    @close="emit('close-drawer')"
+  >
     <template #header>
       <BContainer>
         <AppLogo />
@@ -30,13 +32,17 @@ const shop: string = import.meta.env.VITE_SHOP
       </BButton>
     </template>
 
-      <BNavigation>
-        <BNavigationItem :route="{ name: 'home' }" icon="home">{{ $t('home') }}</BNavigationItem>
-        <BNavigationItem :route="catalog" icon="menu_book">{{ $t('catalog') }}</BNavigationItem>
-        <BNavigationItem :route="{ name: 'reservation' }" icon="shopping_cart">{{ $t('reservations') }}</BNavigationItem>
-        <BNavigationItem :route="settings" icon="settings">{{ $t('settings') }}</BNavigationItem>
-        <BNavigationItem :route="shop" icon="store">{{ $t('shop') }}</BNavigationItem>
-        <BNavigationItem :route="'/help'" icon="help">{{ $t('help') }}</BNavigationItem>
-      </BNavigation>
+    <BNavigation>
+      <BNavigationItem :route="{ name: 'home' }" icon="home">{{ $t('home') }}</BNavigationItem>
+      <BNavigationItem :route="catalog" icon="menu_book">{{ $t('catalog') }}</BNavigationItem>
+      <BNavigationItem :route="{ name: 'reservation' }" icon="shopping_cart">{{
+        $t('reservations')
+      }}</BNavigationItem>
+      <BNavigationItem :route="{ name: 'settings' }" icon="settings">{{
+        $t('settings')
+      }}</BNavigationItem>
+      <BNavigationItem :route="shop" icon="store">{{ $t('shop') }}</BNavigationItem>
+      <BNavigationItem :route="'/help'" icon="help">{{ $t('help') }}</BNavigationItem>
+    </BNavigation>
   </BPanel>
 </template>
