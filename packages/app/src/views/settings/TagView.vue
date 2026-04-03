@@ -42,53 +42,60 @@ onMounted(() => {
     <TagCreate @created="listTags" />
   </BContainer>
 
-  <BContainer size="m" v-if="tags && tags.length > 0">
+  <BContainer size="m">
     <h2>{{ $t('all_tags') }}</h2>
-    <div class="options">
-      <div class="option filter">
-        <div class="icon">
-          <BMaterialIcon>filter_alt</BMaterialIcon>
-        </div>
-        <div class="form">
-          <BInput
-            type="search"
-            v-model="criteria"
-            name="criteria"
-            id="criteria"
-            :label="$t('filter_by_name')"
-            hideLabel
-            :placeholder="$t('filter_by_name')"
-          />
-        </div>
-      </div>
-      <div class="option sort">
-        <div class="icon">
-          <BMaterialIcon>sort_by_alpha</BMaterialIcon>
-        </div>
-        <div class="form">
-          <BSelect
-            v-model="sort"
-            type="options"
-            name="sort"
-            id="sort"
-            :label="$t('sort_direction')"
-            hideLabel
-            :options="[
-              { key: null, value: $t('sort_none') },
-              { key: 'asc', value: $t('sort_asc') },
-              { key: 'desc', value: $t('sort_desc') },
-            ]"
-          />
-        </div>
-      </div>
-    </div>
 
-    <TagShow
-      v-for="item in processedTags"
-      :key="item.id"
-      :item="item"
-      :isAdmin="user?.isAdmin ?? false"
-    />
+    <BAlert variant="info" v-if="!tags || tags.length === 0">
+      <p>{{ $t('no_tags_available') }}</p>
+    </BAlert>
+
+    <div v-if="tags && tags.length > 0">
+      <div class="options">
+        <div class="option filter">
+          <div class="icon">
+            <BMaterialIcon>filter_alt</BMaterialIcon>
+          </div>
+          <div class="form">
+            <BInput
+              type="search"
+              v-model="criteria"
+              name="criteria"
+              id="criteria"
+              :label="$t('filter_by_name')"
+              hideLabel
+              :placeholder="$t('filter_by_name')"
+            />
+          </div>
+        </div>
+        <div class="option sort">
+          <div class="icon">
+            <BMaterialIcon>sort_by_alpha</BMaterialIcon>
+          </div>
+          <div class="form">
+            <BSelect
+              v-model="sort"
+              type="options"
+              name="sort"
+              id="sort"
+              :label="$t('sort_direction')"
+              hideLabel
+              :options="[
+                { key: null, value: $t('sort_none') },
+                { key: 'asc', value: $t('sort_asc') },
+                { key: 'desc', value: $t('sort_desc') },
+              ]"
+            />
+          </div>
+        </div>
+      </div>
+
+      <TagShow
+        v-for="tag in processedTags"
+        :key="tag.id"
+        :tag="tag"
+        :isAdmin="user?.isAdmin ?? false"
+      />
+    </div>
   </BContainer>
 </template>
 

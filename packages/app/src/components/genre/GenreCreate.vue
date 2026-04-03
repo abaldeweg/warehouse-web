@@ -11,6 +11,9 @@ const name = ref('')
 
 const { createGenre } = useGenre()
 
+/**
+ * create creates a new genre.
+ */
 const create = () => {
   createGenre(name.value)
   name.value = ''
@@ -25,7 +28,7 @@ const create = () => {
       type="text"
       name="name"
       id="name"
-      :label="t('name')"
+      :label="t('genre_name')"
       :placeholder="t('genre')"
     />
     <BButton type="submit" :style="{ float: 'right' }">{{ t('save') }}</BButton>

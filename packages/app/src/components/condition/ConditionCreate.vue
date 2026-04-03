@@ -11,6 +11,9 @@ const name = ref('')
 
 const { createCondition } = useCondition()
 
+/**
+ * create creates a new condition.
+ */
 const create = () => {
   createCondition(name.value)
   name.value = ''
@@ -25,7 +28,7 @@ const create = () => {
       type="text"
       name="name"
       id="name"
-      :label="t('name')"
+      :label="t('condition_name')"
       :placeholder="t('condition')"
     />
     <BButton type="submit" :style="{ float: 'right' }">{{ t('save') }}</BButton>

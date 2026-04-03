@@ -11,6 +11,9 @@ const name = ref('')
 
 const { createTag } = useTag()
 
+/**
+ * create creates a new tag.
+ */
 const create = () => {
   createTag(name.value)
   name.value = ''
@@ -25,7 +28,7 @@ const create = () => {
       type="text"
       name="name"
       id="name"
-      :label="t('name')"
+      :label="t('tag_name')"
       :placeholder="t('tag')"
     />
     <BButton type="submit" :style="{ float: 'right' }">{{ t('save') }}</BButton>

@@ -2,38 +2,39 @@
 import { useFormat } from '@/composables/formats/useFormat.js'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import type { Format } from '@/types/model/format'
 
-const props = defineProps({
-  item: Object,
-  isAdmin: Boolean,
+interface Props {
+  format: Format
+  isAdmin?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  isAdmin: false,
 })
 
 const { t } = useI18n()
 
-const name = ref(props.item?.name || '')
+const name = ref(props.format.name)
 
 const { updateFormat, removeFormat } = useFormat()
 </script>
 
 <template>
-  <BList divider v-if="item">
+  <BList divider v-if="format">
     <template #title>
-      <span v-if="!isAdmin" >{{ item.name }}</span>
+      <span v-if="!isAdmin">{{ format.name }}</span>
 
-      <BForm @submit.prevent="updateFormat(item.id, name)" v-if="isAdmin" class="editForm">
-        <div class="editForm_input">
-          <BInput
-            v-model="name"
-            type="text"
-            name="name"
-            id="name"
-            :label="t('name')"
-            hideLabel
-          />
-        </div>
-        <BButton design="text" type="submit" :style="{ paddingTop: '0', paddingBottom: '0' }">
-          <BMaterialIcon>save</BMaterialIcon>
-        </BButton>
+      <BForm @submit.prevent="updateFormat(format.id, name)" v-if="isAdmin">
+        <BInput
+          v-model="name"
+          type="text"
+          name="name"
+          id="name"
+          :label="t('format_name')"
+          hideLabel
+          @input="updateFormat(format.id, name)"
+        />
       </BForm>
     </template>
 
@@ -42,20 +43,10 @@ const { updateFormat, removeFormat } = useFormat()
         <template #selector>
           <BMaterialIcon>more_vert</BMaterialIcon>
         </template>
-        <BDropdownItem icon="delete" @click="removeFormat(item.id)">
+        <BDropdownItem icon="delete" @click="removeFormat(format.id)">
           {{ $t('delete_item') }}
         </BDropdownItem>
       </BDropdown>
     </template>
   </BList>
 </template>
-
-<style scoped>
-.editForm {
-  display: flex;
-}
-.editForm_input {
-  flex-grow: 1;
-  flex-shrink: 1;
-}
-</style>

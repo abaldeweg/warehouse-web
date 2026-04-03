@@ -2,38 +2,39 @@
 import { useGenre } from '@/composables/genre/useGenre'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import type { Genre } from '@/types/model/genre'
 
-const props = defineProps({
-  item: Object,
-  isAdmin: Boolean,
+interface Props {
+  genre: Genre
+  isAdmin?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  isAdmin: false,
 })
 
 const { t } = useI18n()
 
-const name = ref(props.item?.name || '')
+const name = ref(props.genre.name)
 
 const { updateGenre, removeGenre } = useGenre()
 </script>
 
 <template>
-  <BList divider v-if="item">
+  <BList divider v-if="genre">
     <template #title>
-      <span v-if="!isAdmin" >{{ item.name }}</span>
+      <span v-if="!isAdmin">{{ genre.name }}</span>
 
-      <BForm @submit.prevent="updateGenre(item.id, name)" v-if="isAdmin" class="editForm">
-        <div class="editForm_input">
-          <BInput
-            v-model="name"
-            type="text"
-            name="name"
-            id="name"
-            :label="t('name')"
-            hideLabel
-          />
-        </div>
-        <BButton design="text" type="submit" :style="{ paddingTop: '0', paddingBottom: '0' }">
-          <BMaterialIcon>save</BMaterialIcon>
-        </BButton>
+      <BForm @submit.prevent="updateGenre(genre.id, name)" v-if="isAdmin">
+        <BInput
+          v-model="name"
+          type="text"
+          name="name"
+          id="name"
+          :label="t('genre_name')"
+          hideLabel
+          @input="updateGenre(genre.id, name)"
+        />
       </BForm>
     </template>
 
@@ -42,20 +43,10 @@ const { updateGenre, removeGenre } = useGenre()
         <template #selector>
           <BMaterialIcon>more_vert</BMaterialIcon>
         </template>
-        <BDropdownItem icon="delete" @click="removeGenre(item.id)">
+        <BDropdownItem icon="delete" @click="removeGenre(genre.id)">
           {{ $t('delete_item') }}
         </BDropdownItem>
       </BDropdown>
     </template>
   </BList>
 </template>
-
-<style scoped>
-.editForm {
-  display: flex;
-}
-.editForm_input {
-  flex-grow: 1;
-  flex-shrink: 1;
-}
-</style>

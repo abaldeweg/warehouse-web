@@ -11,6 +11,9 @@ const name = ref('')
 
 const { createFormat } = useFormat()
 
+/**
+ * create creates a new format.
+ */
 const create = () => {
   createFormat(name.value)
   name.value = ''
@@ -25,7 +28,7 @@ const create = () => {
       type="text"
       name="name"
       id="name"
-      :label="t('name')"
+      :label="t('format_name')"
       :placeholder="t('format')"
     />
     <BButton type="submit" :style="{ float: 'right' }">{{ t('save') }}</BButton>

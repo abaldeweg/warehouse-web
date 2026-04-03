@@ -37,58 +37,70 @@ onMounted(() => {
     <p>{{ $t('formats_desc') }}</p>
   </BContainer>
 
-  <BContainer size="m" v-if="user?.isAdmin ?? false">
+  <BContainer size="m">
     <h2>{{ $t('create_format') }}</h2>
-    <FormatCreate @created="listFormats" />
+
+    <BAlert variant="info" v-if="!user?.isAdmin">
+      <p>{{ $t('only_admin_can_create_formats') }}</p>
+    </BAlert>
+
+    <FormatCreate @created="listFormats" v-if="user?.isAdmin" />
   </BContainer>
 
-  <BContainer size="m" v-if="formats && formats.length > 0">
+  <BContainer size="m">
     <h2>{{ $t('all_formats') }}</h2>
-    <div class="options">
-      <div class="option filter">
-        <div class="icon">
-          <BMaterialIcon>filter_alt</BMaterialIcon>
-        </div>
-        <div class="form">
-          <BInput
-            type="search"
-            v-model="criteria"
-            name="criteria"
-            id="criteria"
-            :label="$t('filter_by_name')"
-            hideLabel
-            :placeholder="$t('filter_by_name')"
-          />
-        </div>
-      </div>
-      <div class="option sort">
-        <div class="icon">
-          <BMaterialIcon>sort_by_alpha</BMaterialIcon>
-        </div>
-        <div class="form">
-          <BSelect
-            v-model="sort"
-            type="options"
-            name="sort"
-            id="sort"
-            :label="$t('sort_direction')"
-            hideLabel
-            :options="[
-              { key: null, value: $t('sort_none') },
-              { key: 'asc', value: $t('sort_asc') },
-              { key: 'desc', value: $t('sort_desc') },
-            ]"
-          />
-        </div>
-      </div>
-    </div>
 
-    <FormatShow
-      v-for="item in processedFormats"
-      :key="item.id"
-      :item="item"
-      :isAdmin="user?.isAdmin ?? false"
-    />
+    <BAlert variant="info" v-if="!formats || formats.length === 0">
+      <p>{{ $t('no_formats_available') }}</p>
+    </BAlert>
+
+    <div v-if="formats && formats.length > 0">
+      <div class="options">
+        <div class="option filter">
+          <div class="icon">
+            <BMaterialIcon>filter_alt</BMaterialIcon>
+          </div>
+          <div class="form">
+            <BInput
+              type="search"
+              v-model="criteria"
+              name="criteria"
+              id="criteria"
+              :label="$t('filter_by_name')"
+              hideLabel
+              :placeholder="$t('filter_by_name')"
+            />
+          </div>
+        </div>
+        <div class="option sort">
+          <div class="icon">
+            <BMaterialIcon>sort_by_alpha</BMaterialIcon>
+          </div>
+          <div class="form">
+            <BSelect
+              v-model="sort"
+              type="options"
+              name="sort"
+              id="sort"
+              :label="$t('sort_direction')"
+              hideLabel
+              :options="[
+                { key: null, value: $t('sort_none') },
+                { key: 'asc', value: $t('sort_asc') },
+                { key: 'desc', value: $t('sort_desc') },
+              ]"
+            />
+          </div>
+        </div>
+      </div>
+
+      <FormatShow
+        v-for="format in processedFormats"
+        :key="format.id"
+        :format="format"
+        :isAdmin="user?.isAdmin ?? false"
+      />
+    </div>
   </BContainer>
 </template>
 

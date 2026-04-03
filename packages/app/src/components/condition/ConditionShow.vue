@@ -2,38 +2,39 @@
 import { useCondition } from '@/composables/conditions/useCondition'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import type { Condition } from '@/types/model/condition'
 
-const props = defineProps({
-  item: Object,
-  isAdmin: Boolean,
+interface Props {
+  condition: Condition
+  isAdmin?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  isAdmin: false,
 })
 
 const { t } = useI18n()
 
-const name = ref(props.item?.name || '')
+const name = ref(props.condition.name)
 
 const { updateCondition, removeCondition } = useCondition()
 </script>
 
 <template>
-  <BList divider v-if="item">
+  <BList divider v-if="condition">
     <template #title>
-      <span v-if="!isAdmin" >{{ item.name }}</span>
+      <span v-if="!isAdmin">{{ condition.name }}</span>
 
-      <BForm @submit.prevent="updateCondition(item.id, name)" v-if="isAdmin" class="editForm">
-        <div class="editForm_input">
-          <BInput
-            v-model="name"
-            type="text"
-            name="name"
-            id="name"
-            :label="t('name')"
-            hideLabel
-          />
-        </div>
-        <BButton design="text" type="submit" :style="{ paddingTop: '0', paddingBottom: '0' }">
-          <BMaterialIcon>save</BMaterialIcon>
-        </BButton>
+      <BForm @submit.prevent="updateCondition(condition.id, name)" v-if="isAdmin">
+        <BInput
+          v-model="name"
+          type="text"
+          name="name"
+          id="name"
+          :label="t('condition_name')"
+          hideLabel
+          @input="updateCondition(condition.id, name)"
+        />
       </BForm>
     </template>
 
@@ -42,20 +43,10 @@ const { updateCondition, removeCondition } = useCondition()
         <template #selector>
           <BMaterialIcon>more_vert</BMaterialIcon>
         </template>
-        <BDropdownItem icon="delete" @click="removeCondition(item.id)">
+        <BDropdownItem icon="delete" @click="removeCondition(condition.id)">
           {{ $t('delete_item') }}
         </BDropdownItem>
       </BDropdown>
     </template>
   </BList>
 </template>
-
-<style scoped>
-.editForm {
-  display: flex;
-}
-.editForm_input {
-  flex-grow: 1;
-  flex-shrink: 1;
-}
-</style>
