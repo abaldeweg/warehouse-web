@@ -563,7 +563,27 @@ export const handlers = [
   http.get('*/api/inventory/', () => {
     return HttpResponse.json([
       {
-        "id": 1,
+        "id": 2,
+        "branch_id": 1,
+        "branch": {
+          "id": 1,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": true,
+          "pricelist": "",
+          "cart": true,
+          "content": "",
+          "mail_reservation": ""
+        },
+        "startedAt": 1635718232,
+        "endedAt": 1635766242,
+        "found": 0,
+        "notFound": 0
+      },
+      {
+        "id": 2,
         "branch_id": 1,
         "branch": {
           "id": 1,

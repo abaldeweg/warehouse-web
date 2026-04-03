@@ -8,7 +8,6 @@ import type { UseTags } from '@/types/composables'
  */
 export function useTags(): UseTags {
   const tags = ref<Tag[] | null>(null)
-
   const criteria = ref<string | null>(null)
   const sort = ref<'asc' | 'desc' | null>(null)
   const processedTags = computed<Tag[] | null>((): Tag[] | null => {
@@ -23,6 +22,9 @@ export function useTags(): UseTags {
     return sort.value === 'asc' ? sorted : sorted.reverse()
   })
 
+  /**
+   * Fetches the list of tags from the API and updates the `tags` ref.
+   */
   const listTags = async (): Promise<void> => {
     const response = await apiClient.get('/api/tag/')
     tags.value = response.data

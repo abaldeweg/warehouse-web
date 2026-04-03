@@ -8,7 +8,6 @@ import type { Genre } from '@/types/model/genre'
  */
 export function useGenres(): UseGenres {
   const genres = ref<Genre[] | null>(null)
-
   const criteria = ref<string | null>(null)
     const sort = ref<'asc' | 'desc' | null>(null)
     const processedGenres = computed<Genre[] | null>((): Genre[] | null => {

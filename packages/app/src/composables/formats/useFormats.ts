@@ -8,7 +8,6 @@ import type { Format } from '@/types/model/format'
  */
 export function useFormats(): UseFormats {
   const formats = ref<Format[] | null>(null)
-
   const criteria = ref<string | null>(null)
     const sort = ref<'asc' | 'desc' | null>(null)
     const processedFormats = computed<Format[] | null>((): Format[] | null => {
@@ -23,6 +22,9 @@ export function useFormats(): UseFormats {
       return sort.value === 'asc' ? sorted : sorted.reverse()
     })
 
+    /**
+     * Fetch formats from the API and update the formats ref.
+     */
   const listFormats = async (): Promise<void> => {
     const response = await apiClient.get('/api/format/')
     formats.value = response.data
