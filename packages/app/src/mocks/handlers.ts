@@ -129,7 +129,7 @@ export const handlers = [
         content: null,
       },
       isUser: true,
-      isAdmin: false,
+      isAdmin: true,
     })
   }),
   http.get('*/api/book/stats', () => {
