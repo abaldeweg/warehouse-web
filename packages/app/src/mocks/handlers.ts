@@ -460,6 +460,40 @@ export const handlers = [
           "mail_reservation": ""
         }
       },
+      {
+        "id": 2,
+        "name": "Mediocre",
+        "branch_id": 1,
+        "branch": {
+          "id": 0,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": false,
+          "pricelist": "",
+          "cart": false,
+          "content": "",
+          "mail_reservation": ""
+        }
+      },
+      {
+        "id": 3,
+        "name": "Bad",
+        "branch_id": 1,
+        "branch": {
+          "id": 0,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": false,
+          "pricelist": "",
+          "cart": false,
+          "content": "",
+          "mail_reservation": ""
+        }
+      },
     ])
   }),
   http.post('*/api/condition/new', () => {
@@ -480,6 +514,23 @@ export const handlers = [
       {
         "id": 1,
         "name": "Paperback",
+        "branch_id": 1,
+        "branch": {
+          "id": 1,
+          "name": "",
+          "steps": 0,
+          "currency": "EUR",
+          "ordering": "",
+          "public": true,
+          "pricelist": "",
+          "cart": true,
+          "content": "",
+          "mail_reservation": ""
+        }
+      },
+      {
+        "id": 2,
+        "name": "Hardcover",
         "branch_id": 1,
         "branch": {
           "id": 1,
