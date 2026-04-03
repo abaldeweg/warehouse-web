@@ -579,8 +579,8 @@ export const handlers = [
         },
         "startedAt": 1635718232,
         "endedAt": 1635766242,
-        "found": 0,
-        "notFound": 0
+        "found": 10,
+        "notFound": 20
       },
       {
         "id": 2,
@@ -599,8 +599,28 @@ export const handlers = [
         },
         "startedAt": 1635768232,
         "endedAt": 1635768242,
-        "found": 0,
-        "notFound": 0
+        "found": 30,
+        "notFound": 40
+      },
+      {
+        "id": 3,
+        "branch_id": 1,
+        "branch": {
+          "id": 1,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": true,
+          "pricelist": "",
+          "cart": true,
+          "content": "",
+          "mail_reservation": ""
+        },
+        "startedAt": 1775245507,
+        "endedAt": null,
+        "found": 50,
+        "notFound": 60
       }
     ])
   }),

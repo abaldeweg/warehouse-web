@@ -144,5 +144,6 @@
   "no_tags_available": "No tags available.",
   "no_genres_available": "Keine Rubriken verfügbar.",
   "no_formats_available": "Keine Typen verfügbar.",
-  "no_conditions_available": "Keine Zustände verfügbar."
+  "no_conditions_available": "Keine Zustände verfügbar.",
+  "no_inventories_found": "Keine Inventuren gefunden."
 }

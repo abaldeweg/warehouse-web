@@ -149,5 +149,6 @@
   "no_tags_available": "No tags available.",
   "no_genres_available": "No genres available.",
   "no_formats_available": "No formats available.",
-  "no_conditions_available": "No conditions available."
+  "no_conditions_available": "No conditions available.",
+  "no_inventories_found": "No inventories found."
 }

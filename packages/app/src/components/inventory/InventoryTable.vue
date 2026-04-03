@@ -1,14 +1,28 @@
 <script setup lang="ts">
+import { useInventory } from '@/composables/inventory/useInventory'
 import type { Inventory } from '@/types/model/inventory'
 
-defineProps<{
-  inventories: Inventory[]
+interface Props {
+  inventories: Inventory[] | null
   isAdmin: boolean
-}>()
+}
 
-const formatDate = (data: number) => {
+withDefaults(defineProps<Props>(), {
+  isAdmin: false,
+})
+
+const emits = defineEmits(['end'])
+
+const formatDate = (data: number): string => {
   const date = new Date(data * 1000)
   return date.toLocaleString()
+}
+
+const { endInventory } = useInventory()
+
+const end = async (id: number): Promise<void> => {
+  await endInventory(id)
+  emits('end')
 }
 </script>
 
@@ -28,13 +42,13 @@ const formatDate = (data: number) => {
 
       <tbody>
         <tr v-for="inventory in inventories" :key="inventory.id">
-          <td>{{ formatDate(inventory?.startedAt ?? 0) }}</td>
+          <td>{{ inventory.startedAt ? formatDate(inventory.startedAt) : null }}</td>
           <td>
             {{ inventory.endedAt ? formatDate(inventory.endedAt) : null }}
             <BButton
               design="text"
-              @click="$emit('end', inventory.id)"
-              v-if="!inventory.endedAt === null && isAdmin"
+              @click="end(inventory.id)"
+              v-if="inventory.endedAt === null && isAdmin"
             >
               {{ $t('end') }}
             </BButton>

@@ -6,6 +6,7 @@ import { useI18n } from 'vue-i18n'
 import { useToken } from '@/composables/auth/useToken'
 import { onMounted } from 'vue'
 import AppToolbar from '@/components/AppToolbar.vue'
+import { useInventories } from '@/composables/inventory/useInventories'
 
 const { t } = useI18n()
 
@@ -16,11 +17,17 @@ onMounted(() => {
   fetchUser()
 })
 
-const { inventories, hasActiveInventory, listInventories, createInventory, endInventory } =
-  useInventory()
+const { inventories, hasActiveInventory, listInventories } = useInventories()
 onMounted(() => {
   listInventories()
 })
+
+const { createInventory } = useInventory()
+
+const create = async (): Promise<void> => {
+  await createInventory()
+  await listInventories()
+}
 </script>
 
 <template>
@@ -29,29 +36,31 @@ onMounted(() => {
       <template #left>
         <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
       </template>
+      <template #right>
+        <BButton
+          design="outline"
+          @click="create"
+          v-if="!hasActiveInventory && user && user.isAdmin"
+        >
+          {{ $t('create_inventory') }}
+        </BButton>
+      </template>
     </AppToolbar>
   </BContainer>
 
   <BContainer size="m">
-    <BButton
-      :style="{ float: 'right' }"
-      design="outline"
-      @click.prevent="createInventory"
-      v-if="!hasActiveInventory && user && user.isAdmin"
-    >
-      {{ $t('create_inventory') }}
-    </BButton>
-
     <h1>{{ $t('inventory') }}</h1>
     <p>{{ $t('inventory_desc') }}</p>
   </BContainer>
 
-  <BContainer size="m" v-if="inventories">
+  <BContainer size="m">
+    <BAlert variant="info" v-if="!inventories">{{ t('no_inventories_found') }}</BAlert>
+
     <InventoryTable
-      v-if="user"
       :inventories="inventories"
-      :isAdmin="user.isAdmin"
-      @end="endInventory"
+      :isAdmin="user?.isAdmin"
+      @end="listInventories"
+      v-if="inventories && user"
     />
   </BContainer>
 </template>

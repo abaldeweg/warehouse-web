@@ -154,10 +154,13 @@ export interface UseFormat {
   removeFormat: (id: number) => Promise<void>
 }
 
-export interface UseInventory {
+export interface UseInventories {
   inventories: Ref<Inventory[] | null>
   hasActiveInventory: Ref<boolean>
   listInventories: () => Promise<void>
+}
+
+export interface UseInventory {
   createInventory: () => Promise<void>
   endInventory: (id: number) => Promise<void>
 }
