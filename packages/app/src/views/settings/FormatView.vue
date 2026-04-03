@@ -131,7 +131,7 @@ onMounted(() => {
     flex-direction: row;
   }
   .sort {
-    width: 200px;
+    width: 33%;
   }
 }
 </style>
