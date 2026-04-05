@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import BranchEdit from '@/components/branch/BranchEdit.vue'
 import { useBranch } from '@/composables/branch/useBranch'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
@@ -9,16 +8,14 @@ import AppToolbar from '@/components/AppToolbar.vue'
 
 const { t } = useI18n()
 
-useHead({ title: t('branch') })
+useHead({ title: t('cleanup') })
 
 const { user, fetchUser } = useToken()
-const { branch, fetchBranch, updateBranch } = useBranch()
-
-onMounted(async () => {
-  await fetchUser()
-  const id = user?.value?.branch?.id
-  if (id) await fetchBranch(id)
+onMounted(() => {
+  fetchUser()
 })
+
+const { cleanBooks } = useBranch()
 </script>
 
 <template>
@@ -31,10 +28,17 @@ onMounted(async () => {
   </BContainer>
 
   <BContainer size="m">
-    <h1>{{ $t('branch') }}</h1>
+    <h1>{{ $t('cleanup') }}</h1>
+    <p>{{ $t('cleanup_desc') }}</p>
   </BContainer>
 
-  <BContainer size="m" v-if="user">
-    <BranchEdit :branch="branch" :user="user" @update="updateBranch" v-if="branch && user" />
+  <BContainer size="m">
+    <BAlert variant="info" v-if="!user || !user.isAdmin">
+      {{ t('only_admins_can_cleanup') }}
+    </BAlert>
+
+    <BButton design="outline_danger" @click="cleanBooks" v-if="user && user.isAdmin">
+      {{ $t('clean_books') }}
+    </BButton>
   </BContainer>
 </template>

@@ -34,10 +34,24 @@ onMounted(() => {
       </template>
     </BList>
 
+    <BList :route="{ name: 'settings.cleanup' }" mediaSize="avatar" divider hover>
+      <template #title>{{ $t('cleanup') }}</template>
+      <template #media>
+        <RouterLink :to="{ name: 'settings.cleanup' }">
+          <BMaterialIcon>cleaning_services</BMaterialIcon>
+        </RouterLink>
+      </template>
+      <template #controls>
+        <RouterLink :to="{ name: 'settings.cleanup' }">
+          <BMaterialIcon>keyboard_arrow_right</BMaterialIcon>
+        </RouterLink>
+      </template>
+    </BList>
+
     <BList :route="{ name: 'settings.inventory' }" mediaSize="avatar" divider hover>
       <template #title>{{ $t('inventory') }}</template>
       <template #media>
-        <RouterLink :to="{ name: 'settings.branch' }">
+        <RouterLink :to="{ name: 'settings.inventory' }">
           <BMaterialIcon>inventory</BMaterialIcon>
         </RouterLink>
       </template>
@@ -51,7 +65,7 @@ onMounted(() => {
     <BList :route="{ name: 'settings.condition' }" mediaSize="avatar" divider hover>
       <template #title>{{ $t('condition') }}</template>
       <template #media>
-        <RouterLink :to="{ name: 'settings.branch' }">
+        <RouterLink :to="{ name: 'settings.condition' }">
           <BMaterialIcon>diagnosis</BMaterialIcon>
         </RouterLink>
       </template>
@@ -65,7 +79,7 @@ onMounted(() => {
     <BList :route="{ name: 'settings.format' }" mediaSize="avatar" divider hover>
       <template #title>{{ $t('format') }}</template>
       <template #media>
-        <RouterLink :to="{ name: 'settings.branch' }">
+        <RouterLink :to="{ name: 'settings.format' }">
           <BMaterialIcon>unknown_document</BMaterialIcon>
         </RouterLink>
       </template>
@@ -79,7 +93,7 @@ onMounted(() => {
     <BList :route="{ name: 'settings.genre' }" mediaSize="avatar" divider hover>
       <template #title>{{ $t('genre') }}</template>
       <template #media>
-        <RouterLink :to="{ name: 'settings.branch' }">
+        <RouterLink :to="{ name: 'settings.genre' }">
           <BMaterialIcon>category</BMaterialIcon>
         </RouterLink>
       </template>
@@ -93,7 +107,7 @@ onMounted(() => {
     <BList :route="{ name: 'settings.tag' }" mediaSize="avatar" divider hover>
       <template #title>{{ $t('tags') }}</template>
       <template #media>
-        <RouterLink :to="{ name: 'settings.branch' }">
+        <RouterLink :to="{ name: 'settings.tag' }">
           <BMaterialIcon>label</BMaterialIcon>
         </RouterLink>
       </template>

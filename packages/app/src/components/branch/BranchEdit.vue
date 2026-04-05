@@ -1,60 +1,60 @@
 <script setup lang="ts">
-import { reactive, toRefs } from 'vue'
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import type { Branch } from '@/types/model/branch'
+import type { User } from '@/types/model/user'
+import PricelistEditor from './PricelistEditor.vue'
+
+interface Props {
+  branch: Branch
+  user: User
+}
+
+const props = defineProps<Props>()
+
+const emit = defineEmits<{
+  update: [payload: { id: number; params: Omit<Branch, 'id'> }]
+}>()
 
 const { t } = useI18n()
 
-const props = defineProps({
-  branch: Object,
-  me: Object,
-})
+const name = ref(props.branch.name)
+const steps = ref(props.branch.steps)
+const ordering = ref(props.branch.ordering)
+const isPublic = ref(props.branch.public)
+const pricelist = ref(props.branch.pricelist)
+const cart = ref(props.branch.cart)
+const content = ref(props.branch.content)
+const mailReservation = ref(props.branch.mail_reservation)
 
-const emit = defineEmits(['update'])
-
-const { branch } = toRefs(props)
-
-const state = reactive({
-  name: branch?.value?.name,
-  steps: branch?.value?.steps,
-  currency: branch?.value?.currency,
-  ordering: branch?.value?.ordering,
-  isPublic: branch?.value?.public,
-  pricelist: branch?.value?.pricelist,
-  cart: branch?.value?.cart,
-  content: branch?.value?.content,
-  mail_reservation: branch?.value?.mail_reservation,
-  orderBy: branch?.value?.orderBy,
-})
-
-const update = () => {
-  if (!props.me || !props.me.isAdmin) return
-
+const update = (): void => {
+  if (!props.user?.isAdmin) return
   emit('update', {
-    id: branch?.value?.id,
+    id: props.branch.id,
     params: {
-      name: state.name,
-      steps: parseFloat(state.steps),
-      currency: state.currency,
-      ordering: state.ordering,
-      public: state.isPublic,
-      pricelist: state.pricelist,
-      cart: state.cart,
-      content: state.content,
-      mail_reservation: state.mail_reservation,
+      name: name.value,
+      steps: steps.value,
+      currency: 'EUR',
+      ordering: ordering.value,
+      public: isPublic.value,
+      pricelist: pricelist.value,
+      cart: cart.value,
+      content: content.value,
+      mail_reservation: mailReservation.value,
     },
   })
 }
 </script>
 
 <template>
-  <b-form @submit.prevent="update" v-if="branch">
+  <BForm @submit.prevent="update" v-if="branch">
     <BInput
       type="text"
       name="name"
       id="name"
       :label="t('name_of_branch')"
       :help="t('branch_name_help')"
-      v-model="state.name"
+      v-model="name"
     />
 
     <BInput
@@ -67,19 +67,7 @@ const update = () => {
       max="100.00"
       step="0.01"
       pattern="^\d+(\.|,)?\d{0,2}$"
-      v-model="state.steps"
-    />
-
-    <BSelect
-      type="options"
-      name="currency"
-      id="currency"
-      :label="t('currency')"
-      :options="[
-        { key: 'EUR', value: 'EUR' },
-        { key: 'USD', value: 'USD' },
-      ]"
-      v-model="state.currency"
+      v-model="steps"
     />
 
     <BTextarea
@@ -88,7 +76,7 @@ const update = () => {
       :label="t('book_ordering')"
       :help="t('branch_ordering_help')"
       :rows="5"
-      v-model="state.ordering"
+      v-model="ordering"
     />
 
     <BSelect
@@ -98,7 +86,7 @@ const update = () => {
       :label="t('is_public')"
       :help="t('is_public_help')"
       :options="[{ key: '1', value: $t('is_public') }]"
-      v-model="state.isPublic"
+      v-model="isPublic"
     />
 
     <BSelect
@@ -108,7 +96,7 @@ const update = () => {
       :label="t('activate_cart')"
       :help="t('activate_cart_help')"
       :options="[{ key: '1', value: $t('activate_cart') }]"
-      v-model="state.cart"
+      v-model="cart"
     />
 
     <BTextarea
@@ -116,8 +104,8 @@ const update = () => {
       id="content"
       :label="t('content')"
       :help="t('content_help')"
-      v-model="state.content"
       rows="5"
+      v-model="content"
     />
 
     <BTextarea
@@ -125,12 +113,14 @@ const update = () => {
       id="mail_reservation"
       :label="t('mail_reservation')"
       :help="t('mail_reservation_help')"
-      v-model="state.mail_reservation"
       rows="5"
+      v-model="mailReservation"
     />
 
+    <PricelistEditor v-model="pricelist" />
+
     <template #buttons>
-      <b-button design="outline">{{ $t('save') }}</b-button>
+      <BButton design="primary_wide">{{ $t('save') }}</BButton>
     </template>
-  </b-form>
+  </BForm>
 </template>

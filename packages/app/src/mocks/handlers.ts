@@ -238,21 +238,26 @@ export const handlers = [
   http.put('*/api/book/1ca572bf-eb59-11ee-a9bb-02d2ac140010', () => {
     return HttpResponse.json({})
   }),
-  http.get('*/apis/core/1/api/branch/*', () => {
+  http.get('*/api/branch/*', () => {
     return HttpResponse.json({
       "id": 1,
       "name": "Branch",
-      "steps": 0,
+      "steps": 0.5,
       "currency": "EUR",
-      "ordering": "",
+      "ordering": "Ordering",
       "public": true,
-      "pricelist": "",
+      "pricelist": "{\"base\":0,\"releaseYear\":{\"2001-2002\":\"1,00\",\"2003-2004\":\"2,00\"},\"condition\":{\"Good\":\"+1,00\",\"Bad\":\"-1,00\"}}",
       "cart": true,
-      "content": "",
+      "content": "Content",
       "mail_reservation": "Dear customer,\n\nYour reserved books are ready for pickup."
     })
-  })
-  ,
+  }),
+  http.post('*/api/branch/*', () => {
+    return HttpResponse.json()
+  }),
+  http.put('*/api/branch/*', () => {
+    return HttpResponse.json({})
+  }),
   http.get('*/api/analyze/shop-search', ({ request }) => {
     const enties = [
       {
@@ -628,23 +633,6 @@ export const handlers = [
     return HttpResponse.json({})
   }),
   http.put('*/api/inventory/*', () => {
-    return HttpResponse.json({})
-  }),
-  http.get('*/api/branch/*', () => {
-    return HttpResponse.json({
-      "id": 1,
-      "name": "Branch",
-      "steps": "0",
-      "currency": "EUR",
-      "ordering": "",
-      "public": true,
-      "pricelist": "{\"base\":0,\"releaseYear\":{\"2001-2002\":\"1,00\",\"2003-2004\":\"2,00\"},\"condition\":{\"Good\":\"+1,00\",\"Bad\":\"-1,00\"}}",
-      "cart": true,
-      "content": "",
-      "mail_reservation": ""
-    })
-  }),
-  http.put('*/api/branch/*', () => {
     return HttpResponse.json({})
   }),
   http.delete('*/api/book/clean', () => {

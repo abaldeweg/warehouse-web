@@ -100,10 +100,8 @@
   "not_found": "Not Found",
   "end": "End",
   "common": "Common",
-  "clean_up": "Clean Up",
-  "clean_up_desc": "Immediately deletes all books marked as sold or removed. Usually those books will be automatically deleted after a few days.",
-  "pricelist": "Pricelist",
-  "pricelist_desc": "Define a price and depending on properties you can increase or decrease the price.",
+  "cleanup": "Cleanup",
+  "cleanup_desc": "Immediately deletes all books marked as sold or removed. Usually those books will be automatically deleted after a few days.",
   "name_of_branch": "Name of Branch",
   "branch_name_help": "The name is shown in the filters, the public search and on other places.",
   "price_steps": "Price Steps",
@@ -150,5 +148,7 @@
   "no_genres_available": "No genres available.",
   "no_formats_available": "No formats available.",
   "no_conditions_available": "No conditions available.",
-  "no_inventories_found": "No inventories found."
+  "no_inventories_found": "No inventories found.",
+  "pricelist": "Pricelist",
+  "base_price": "Base Price"
 }

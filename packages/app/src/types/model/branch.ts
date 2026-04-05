@@ -1,7 +1,7 @@
 export type Branch = {
   id: number
   name: string
-  steps: string
+  steps: number
   currency: string
   ordering: string
   public: boolean

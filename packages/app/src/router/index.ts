@@ -40,6 +40,11 @@ const router = createRouter({
       component: () => import('../views/settings/BranchView.vue'),
     },
     {
+      path: '/settings/cleanup',
+      name: 'settings.cleanup',
+      component: () => import('../views/settings/CleanupView.vue'),
+    },
+    {
       path: '/settings/inventory',
       name: 'settings.inventory',
       component: () => import('../views/settings/InventoryView.vue'),

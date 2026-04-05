@@ -9,15 +9,24 @@ import type { UseBranch } from '@/types/composables'
 export function useBranch(): UseBranch {
   const branch = ref<Branch | null>(null)
 
+  /**
+   * Fetch a branch by its ID.
+   */
   const fetchBranch = async (id: number): Promise<void> => {
     const response = await apiClient.get(`/api/branch/${id}`)
     branch.value = response.data
   }
 
+  /**
+   * Update a branch by its ID.
+   */
   const updateBranch = async (data: { id: number; params: Branch }): Promise<void> => {
     return await apiClient.put(`/api/branch/${data.id}`, data.params)
   }
 
+  /**
+   * Clean books.
+   */
   const cleanBooks = async (): Promise<void> => {
     return await apiClient.delete('/api/book/clean')
   }

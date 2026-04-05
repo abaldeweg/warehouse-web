@@ -95,10 +95,8 @@
   "not_found": "Nicht gefunden",
   "end": "Ende",
   "common": "Allgemein",
-  "clean_up": "Aufräumen",
-  "clean_up_desc": "Löscht sofort alle Bücher, die als verkauft oder entfernt markiert sind. Normalerweise werden diese Bücher nach einigen Tagen automatisch gelöscht.",
-  "pricelist": "Preisliste",
-  "pricelist_desc": "Definiere einen Preis und abhängig von den Eigenschaften kannst du den Preis erhöhen oder verringern.",
+  "cleanup": "Aufräumen",
+  "cleanup_desc": "Löscht sofort alle Bücher, die als verkauft oder entfernt markiert sind. Normalerweise werden diese Bücher nach einigen Tagen automatisch gelöscht.",
   "name_of_branch": "Filialname",
   "branch_name_help": "Der Name wird in den Filtern, der öffentlichen Suche und an anderen Stellen angezeigt.",
   "price_steps": "Preisschritte",
@@ -145,5 +143,8 @@
   "no_genres_available": "Keine Rubriken verfügbar.",
   "no_formats_available": "Keine Typen verfügbar.",
   "no_conditions_available": "Keine Zustände verfügbar.",
-  "no_inventories_found": "Keine Inventuren gefunden."
+  "no_inventories_found": "Keine Inventuren gefunden.",
+  "only_admins_can_cleanup": "Nur Admins können die Bereinigung durchführen.",
+  "pricelist": "Preisliste",
+  "base_price": "Grundpreis"
 }
