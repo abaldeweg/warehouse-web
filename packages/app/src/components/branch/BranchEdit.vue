@@ -8,6 +8,7 @@ import PricelistEditor from './PricelistEditor.vue'
 interface Props {
   branch: Branch
   user: User
+  isSaving: boolean
 }
 
 const props = defineProps<Props>()
@@ -119,8 +120,9 @@ const update = (): void => {
 
     <PricelistEditor v-model="pricelist" />
 
-    <template #buttons>
-      <BButton design="primary_wide">{{ $t('save') }}</BButton>
+    <template #buttons v-if="user && user.isAdmin">
+      <BButton design="primary_wide" v-if="!isSaving">{{ $t('save') }}</BButton>
+      <BButton design="text" type="button" v-if="isSaving"><BSpinner size="s" /></BButton>
     </template>
   </BForm>
 </template>

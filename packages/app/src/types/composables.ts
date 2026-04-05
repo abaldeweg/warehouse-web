@@ -88,8 +88,11 @@ export interface UseReservations {
 
 export interface UseBranch {
   branch: Ref<Branch | null>
+  isSaving: Ref<boolean>
+  savedSuccess: Ref<boolean>
+  savedError: Ref<boolean>
   fetchBranch: (id: number) => Promise<void>
-  updateBranch: (data: any) => Promise<void>
+  updateBranch: (data: { id: number; params: Omit<Branch, 'id'> }) => Promise<void>
   cleanBooks: () => Promise<void>
 }
 

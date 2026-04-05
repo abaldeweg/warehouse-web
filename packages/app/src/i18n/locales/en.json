@@ -150,5 +150,8 @@
   "no_conditions_available": "No conditions available.",
   "no_inventories_found": "No inventories found.",
   "pricelist": "Pricelist",
-  "base_price": "Base Price"
+  "base_price": "Base Price",
+  "only_admins_can_edit_branch": "Only admins can edit branch settings.",
+  "branch_updated_successfully": "Branch updated successfully.",
+  "branch_update_failed": "Branch update failed. Please try again."
 }
