@@ -24,7 +24,10 @@ export function useInventories(): UseInventories {
    */
   const listInventories = async (): Promise<void> => {
     const response = await apiClient.get('/api/inventory/')
-    inventories.value = response.data
+    const data: Inventory[] = response.data ?? []
+    inventories.value = [...data].sort(
+      (a, b) => (b.startedAt ?? 0) - (a.startedAt ?? 0)
+    )
   }
 
   return {

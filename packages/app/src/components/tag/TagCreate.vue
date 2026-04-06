@@ -12,7 +12,7 @@ const name = ref('')
 const { createTag } = useTag()
 
 /**
- * create creates a new tag.
+ * Creates a new tag.
  */
 const create = () => {
   createTag(name.value)

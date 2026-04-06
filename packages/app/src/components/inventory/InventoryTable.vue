@@ -3,16 +3,17 @@ import { useInventory } from '@/composables/inventory/useInventory'
 import type { Inventory } from '@/types/model/inventory'
 
 interface Props {
-  inventories: Inventory[] | null
+  inventories: Inventory[]
   isAdmin: boolean
 }
 
-withDefaults(defineProps<Props>(), {
-  isAdmin: false,
-})
+defineProps<Props>()
 
 const emits = defineEmits(['end'])
 
+/**
+ * Formats a Unix timestamp into a localized date string.
+ */
 const formatDate = (data: number): string => {
   const date = new Date(data * 1000)
   return date.toLocaleString()

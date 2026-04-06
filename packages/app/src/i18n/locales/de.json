@@ -144,10 +144,10 @@
   "no_formats_available": "Keine Typen verfügbar.",
   "no_conditions_available": "Keine Zustände verfügbar.",
   "no_inventories_found": "Keine Inventuren gefunden.",
-  "only_admins_can_cleanup": "Nur Admins können die Bereinigung durchführen.",
   "pricelist": "Preisliste",
   "base_price": "Grundpreis",
   "only_admins_can_edit_branch": "Nur Admins können die Filialeinstellungen bearbeiten.",
   "branch_updated_successfully": "Filiale erfolgreich aktualisiert.",
-  "branch_update_failed": "Fehler beim Aktualisieren der Filiale. Bitte versuche es erneut."
+  "branch_update_failed": "Fehler beim Aktualisieren der Filiale. Bitte versuche es erneut.",
+  "only_admins_can_cleanup": "Nur Admins können die Bereinigung durchführen."
 }

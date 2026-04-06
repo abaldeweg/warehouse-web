@@ -12,7 +12,7 @@ const name = ref('')
 const { createFormat } = useFormat()
 
 /**
- * create creates a new format.
+ * Creates a new format.
  */
 const create = () => {
   createFormat(name.value)

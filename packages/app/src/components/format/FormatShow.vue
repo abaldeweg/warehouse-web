@@ -6,12 +6,10 @@ import type { Format } from '@/types/model/format'
 
 interface Props {
   format: Format
-  isAdmin?: boolean
+  isAdmin: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  isAdmin: false,
-})
+const props = defineProps<Props>()
 
 const { t } = useI18n()
 
@@ -41,7 +39,7 @@ const { updateFormat, removeFormat } = useFormat()
     <template #controls>
       <BDropdown v-if="isAdmin">
         <template #selector>
-          <BMaterialIcon>more_vert</BMaterialIcon>
+          <BMaterialIcon :style="{ cursor: 'pointer' }">more_vert</BMaterialIcon>
         </template>
         <BDropdownItem icon="delete" @click="removeFormat(format.id)">
           {{ $t('delete_item') }}

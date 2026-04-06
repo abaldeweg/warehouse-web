@@ -13,13 +13,12 @@ const { t } = useI18n()
 useHead({ title: t('genres') })
 
 const { user, fetchUser } = useToken()
-onMounted(() => {
-  fetchUser()
-})
-
 const { genres, criteria, sort, processedGenres, fetchGenres } = useGenres()
-onMounted(() => {
-  fetchGenres()
+
+onMounted(async () => {
+  await fetchUser()
+  if (!user.value) return
+  await fetchGenres()
 })
 </script>
 
@@ -54,7 +53,7 @@ onMounted(() => {
       <p>{{ $t('no_genres_available') }}</p>
     </BAlert>
 
-    <div v-if="genres && genres.length > 0">
+    <div v-if="user && genres && genres.length > 0">
       <div class="options">
         <div class="option filter">
           <div class="icon">
@@ -110,18 +109,22 @@ onMounted(() => {
   gap: 20px;
   flex-direction: column;
 }
+
 .option {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 .filter {
   flex: 1;
 }
+
 .option .icon {
   display: flex;
   align-items: center;
 }
+
 .option .form {
   flex: 1;
 }

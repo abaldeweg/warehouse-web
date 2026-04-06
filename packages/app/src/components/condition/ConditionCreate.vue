@@ -12,7 +12,7 @@ const name = ref('')
 const { createCondition } = useCondition()
 
 /**
- * create creates a new condition.
+ * Creates a new condition.
  */
 const create = () => {
   createCondition(name.value)

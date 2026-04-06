@@ -3,7 +3,7 @@ export type Branch = {
   name: string
   steps: number
   currency: string
-  ordering: string
+  ordering: string | null
   public: boolean
   pricelist: string
   cart: boolean

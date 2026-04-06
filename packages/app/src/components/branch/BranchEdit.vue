@@ -28,6 +28,9 @@ const cart = ref(props.branch.cart)
 const content = ref(props.branch.content)
 const mailReservation = ref(props.branch.mail_reservation)
 
+/**
+ * Emits an update event with the updated branch data.
+ */
 const update = (): void => {
   if (!props.user?.isAdmin) return
   emit('update', {

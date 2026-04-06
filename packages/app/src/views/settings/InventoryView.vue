@@ -13,18 +13,19 @@ const { t } = useI18n()
 useHead({ title: t('inventory') })
 
 const { user, fetchUser } = useToken()
-onMounted(() => {
-  fetchUser()
-})
-
 const { inventories, hasActiveInventory, listInventories } = useInventories()
-onMounted(() => {
-  listInventories()
+
+onMounted(async () => {
+  await fetchUser()
+  if (user) {
+    await listInventories()
+  }
 })
 
 const { createInventory } = useInventory()
 
 const create = async (): Promise<void> => {
+  if (hasActiveInventory.value || !user.value || !user.value.isAdmin) return
   await createInventory()
   await listInventories()
 }
@@ -54,7 +55,7 @@ const create = async (): Promise<void> => {
   </BContainer>
 
   <BContainer size="m">
-    <BAlert variant="info" v-if="!inventories">{{ t('no_inventories_found') }}</BAlert>
+    <BAlert type="info" v-if="!inventories">{{ t('no_inventories_found') }}</BAlert>
 
     <InventoryTable
       :inventories="inventories"

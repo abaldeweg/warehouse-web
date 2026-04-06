@@ -153,5 +153,6 @@
   "base_price": "Base Price",
   "only_admins_can_edit_branch": "Only admins can edit branch settings.",
   "branch_updated_successfully": "Branch updated successfully.",
-  "branch_update_failed": "Branch update failed. Please try again."
+  "branch_update_failed": "Branch update failed. Please try again.",
+  "only_admins_can_cleanup": "Only admins can perform cleanup."
 }

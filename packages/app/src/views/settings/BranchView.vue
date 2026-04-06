@@ -56,9 +56,9 @@ watch(isSaving, (newVal, oldVal) => {
     <BranchEdit
       :branch="branch"
       :user="user"
+      :is-saving="isSaving"
       @update="updateBranch"
       v-if="branch && user"
-      :is-saving="isSaving"
     />
 
     <BAlert variant="info" v-if="!user || !user.isAdmin">

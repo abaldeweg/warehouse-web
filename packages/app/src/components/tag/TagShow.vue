@@ -6,12 +6,10 @@ import type { Tag } from '@/types/model/tag'
 
 interface Props {
   tag: Tag
-  isAdmin?: boolean
+  isAdmin: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  isAdmin: false,
-})
+const props = defineProps<Props>()
 
 const { t } = useI18n()
 

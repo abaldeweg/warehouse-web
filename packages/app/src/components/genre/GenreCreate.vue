@@ -12,7 +12,7 @@ const name = ref('')
 const { createGenre } = useGenre()
 
 /**
- * create creates a new genre.
+ * Creates a new genre.
  */
 const create = () => {
   createGenre(name.value)

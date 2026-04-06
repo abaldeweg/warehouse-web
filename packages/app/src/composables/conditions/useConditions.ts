@@ -8,9 +8,9 @@ import type { Condition } from '@/types/model/condition'
  */
 export function useConditions(): UseConditions {
   const conditions = ref<Condition[] | null>(null)
-
   const criteria = ref<string | null>(null)
   const sort = ref<'asc' | 'desc' | null>(null)
+
   const processedConditions = computed<Condition[] | null>((): Condition[] | null => {
     if (!conditions.value) return null
     let result: Condition[] = conditions.value
@@ -23,6 +23,9 @@ export function useConditions(): UseConditions {
     return sort.value === 'asc' ? sorted : sorted.reverse()
   })
 
+  /**
+   * Fetches the list of conditions from the API and updates the conditions ref.
+   */
   const listConditions = async (): Promise<void> => {
     const response = await apiClient.get('/api/condition/')
     conditions.value = response.data

@@ -10,6 +10,7 @@ export function useTags(): UseTags {
   const tags = ref<Tag[] | null>(null)
   const criteria = ref<string | null>(null)
   const sort = ref<'asc' | 'desc' | null>(null)
+
   const processedTags = computed<Tag[] | null>((): Tag[] | null => {
     if (!tags.value) return null
     let result: Tag[] = tags.value

@@ -6,12 +6,10 @@ import type { Genre } from '@/types/model/genre'
 
 interface Props {
   genre: Genre
-  isAdmin?: boolean
+  isAdmin: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  isAdmin: false,
-})
+const props = defineProps<Props>()
 
 const { t } = useI18n()
 
@@ -41,7 +39,7 @@ const { updateGenre, removeGenre } = useGenre()
     <template #controls>
       <BDropdown v-if="isAdmin">
         <template #selector>
-          <BMaterialIcon>more_vert</BMaterialIcon>
+          <BMaterialIcon :style="{ cursor: 'pointer' }">more_vert</BMaterialIcon>
         </template>
         <BDropdownItem icon="delete" @click="removeGenre(genre.id)">
           {{ $t('delete_item') }}

@@ -39,10 +39,10 @@ export function useBranch(): UseBranch {
   }
 
   /**
-   * Clean books.
+   * Permanently delete books marked as removed.
    */
   const cleanBooks = async (): Promise<void> => {
-    return await apiClient.delete('/api/book/clean')
+    await apiClient.delete('/api/book/clean')
   }
 
   return {
