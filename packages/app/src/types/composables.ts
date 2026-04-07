@@ -4,7 +4,7 @@ import type { Stats } from './model/stats'
 import type { Book } from './model/book'
 import type { Reservation } from './model/reservation'
 import type { AxiosResponse } from 'axios'
-import type { Branch } from './model/branch'
+import type { Branch, PricelistData, PricelistEntry } from './model/branch'
 import type { Analyze } from './model/analyze'
 import type { Genre } from './model/genre'
 import type { Tag } from './model/tag'
@@ -91,6 +91,9 @@ export interface UseBranch {
   isSaving: Ref<boolean>
   savedSuccess: Ref<boolean>
   savedError: Ref<boolean>
+  isCleaning: Ref<boolean>
+  cleaningSuccess: Ref<boolean>
+  cleaningError: Ref<boolean>
   fetchBranch: (id: number) => Promise<void>
   updateBranch: (data: { id: number; params: Omit<Branch, 'id'> }) => Promise<void>
   cleanBooks: () => Promise<void>
@@ -105,11 +108,14 @@ export interface UseGenres {
   genres: Ref<Genre[] | null>
   criteria: Ref<string | null>
   sort: Ref<'asc' | 'desc' | null>
+  isLoading: Ref<boolean>
   readonly processedGenres: Ref<Genre[] | null>
   fetchGenres: () => Promise<void>
 }
 
 export interface UseGenre {
+  deleteSuccess: Ref<boolean>
+  deleteError: Ref<boolean>
   createGenre: (name: string) => Promise<number>
   updateGenre: (id: number, name: string) => Promise<void>
   removeGenre: (id: number) => Promise<void>
@@ -119,11 +125,14 @@ export interface UseTags {
   tags: Ref<Tag[] | null>
   criteria: Ref<string | null>
   sort: Ref<'asc' | 'desc' | null>
+  isLoading: Ref<boolean>
   readonly processedTags: Ref<Tag[] | null>
   listTags: () => Promise<void>
 }
 
 export interface UseTag {
+  deleteSuccess: Ref<boolean>
+  deleteError: Ref<boolean>
   createTag: (name: string) => Promise<number>
   updateTag: (id: number, name: string) => Promise<void>
   removeTag: (id: number) => Promise<void>
@@ -133,11 +142,14 @@ export interface UseConditions {
   conditions: Ref<Condition[] | null>
   criteria: Ref<string | null>
   sort: Ref<'asc' | 'desc' | null>
+  isLoading: Ref<boolean>
   readonly processedConditions: Ref<Condition[] | null>
   listConditions: () => Promise<void>
 }
 
 export interface UseCondition {
+  deleteSuccess: Ref<boolean>
+  deleteError: Ref<boolean>
   createCondition: (name: string) => Promise<number>
   updateCondition: (id: number, name: string) => Promise<void>
   removeCondition: (id: number) => Promise<void>
@@ -147,11 +159,14 @@ export interface UseFormats {
   formats: Ref<Format[] | null>
   criteria: Ref<string | null>
   sort: Ref<'asc' | 'desc' | null>
+  isLoading: Ref<boolean>
   readonly processedFormats: Ref<Format[] | null>
   listFormats: () => Promise<void>
 }
 
 export interface UseFormat {
+  deleteSuccess: Ref<boolean>
+  deleteError: Ref<boolean>
   createFormat: (name: string) => Promise<number>
   updateFormat: (id: number, name: string) => Promise<void>
   removeFormat: (id: number) => Promise<void>
@@ -166,4 +181,21 @@ export interface UseInventories {
 export interface UseInventory {
   createInventory: () => Promise<void>
   endInventory: (id: number) => Promise<void>
+}
+
+export interface UsePrices {
+  sections: Ref<{
+    label: string
+    entries: PricelistEntry[]
+    prefix: string
+  }[]>
+  pricelist: Ref<{
+    base: number
+    releaseYear: PricelistEntry[]
+    condition: PricelistEntry[]
+  }>
+  parse: (value: string) => PricelistData
+  toRecord: (entries: PricelistEntry[]) => Record<string, string>
+  addEntry: (entries: PricelistEntry[]) => void
+  removeEntry: (entries: PricelistEntry[], index: number) => void
 }

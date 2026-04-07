@@ -10,6 +10,8 @@ export function useFormats(): UseFormats {
   const formats = ref<Format[] | null>(null)
   const criteria = ref<string | null>(null)
   const sort = ref<'asc' | 'desc' | null>(null)
+  const isLoading = ref<boolean>(false)
+
 
   const processedFormats = computed<Format[] | null>((): Format[] | null => {
     if (!formats.value) return null
@@ -27,14 +29,17 @@ export function useFormats(): UseFormats {
    * Fetches the list of formats from the API and updates the `formats` ref.
    */
   const listFormats = async (): Promise<void> => {
+    isLoading.value = true
     const response = await apiClient.get('/api/format/')
     formats.value = response.data
+    isLoading.value = false
   }
 
   return {
     formats,
     criteria,
     sort,
+    isLoading,
     processedFormats,
     listFormats,
   }

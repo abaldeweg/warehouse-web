@@ -149,5 +149,20 @@
   "only_admins_can_edit_branch": "Nur Admins können die Filialeinstellungen bearbeiten.",
   "branch_updated_successfully": "Filiale erfolgreich aktualisiert.",
   "branch_update_failed": "Fehler beim Aktualisieren der Filiale. Bitte versuche es erneut.",
-  "only_admins_can_cleanup": "Nur Admins können die Bereinigung durchführen."
+  "only_admins_can_cleanup": "Nur Admins können die Bereinigung durchführen.",
+  "cleanup_success": "Produkte erfolgreich bereinigt.",
+  "cleanup_error": "Fehler beim Bereinigen der Produkte. Bitte versuche es erneut.",
+  "tag_created_successfully": "Schlagwort erfolgreich erstellt.",
+  "tag_creation_failed": "Schlagwort konnte nicht erstellt werden. Bitte versuche es erneut.",
+  "genre_created_successfully": "Rubrik erfolgreich erstellt.",
+  "genre_creation_failed": "Rubrik konnte nicht erstellt werden. Bitte versuche es erneut.",
+  "format_created_successfully": "Typ erfolgreich erstellt.",
+  "format_creation_failed": "Typ konnte nicht erstellt werden. Bitte versuche es erneut.",
+  "condition_created_successfully": "Zustand erfolgreich erstellt.",
+  "condition_creation_failed": "Zustand konnte nicht erstellt werden. Bitte versuche es erneut.",
+  "deleted": "gelöscht",
+  "tag_delete_error": "Fehler beim Löschen des Schlagworts. Bitte beachten: Wenn das Schlagwort mit Produkten verknüpft ist, kann es nicht gelöscht werden.",
+  "genre_delete_error": "Fehler beim Löschen der Rubrik. Bitte beachten: Wenn die Rubrik mit Produkten verknüpft ist, kann sie nicht gelöscht werden.",
+  "format_delete_error": "Fehler beim Löschen des Typs. Bitte beachten: Wenn der Typ mit Produkten verknüpft ist, kann er nicht gelöscht werden.",
+  "condition_delete_error": "Fehler beim Löschen des Zustands. Bitte beachten: Wenn der Zustand mit Produkten verknüpft ist, kann er nicht gelöscht werden."
 }

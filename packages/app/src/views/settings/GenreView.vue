@@ -5,7 +5,7 @@ import { useGenres } from '@/composables/genre/useGenres'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { useToken } from '@/composables/auth/useToken'
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import AppToolbar from '@/components/AppToolbar.vue'
 
 const { t } = useI18n()
@@ -13,7 +13,12 @@ const { t } = useI18n()
 useHead({ title: t('genres') })
 
 const { user, fetchUser } = useToken()
-const { genres, criteria, sort, processedGenres, fetchGenres } = useGenres()
+const { genres, criteria, sort, isLoading, processedGenres, fetchGenres } = useGenres()
+
+const counter = computed(() => {
+  if (!genres.value) return 0
+  return genres.value.length
+})
 
 onMounted(async () => {
   await fetchUser()
@@ -32,14 +37,14 @@ onMounted(async () => {
   </BContainer>
 
   <BContainer size="m">
-    <h1>{{ $t('genres') }}</h1>
+    <h1>{{ $t('genres') }} ({{ counter }})</h1>
     <p>{{ $t('genres_desc') }}</p>
   </BContainer>
 
   <BContainer size="m">
     <h2>{{ $t('create_genre') }}</h2>
 
-    <BAlert variant="info" v-if="!user?.isAdmin">
+    <BAlert variant="info" v-if="user && !user?.isAdmin">
       <p>{{ $t('only_admin_can_create_genres') }}</p>
     </BAlert>
 
@@ -49,7 +54,7 @@ onMounted(async () => {
   <BContainer size="m">
     <h2>{{ $t('all_genres') }}</h2>
 
-    <BAlert variant="info" v-if="!genres || genres.length === 0">
+    <BAlert variant="info" v-if="!isLoading && (!genres || genres.length === 0)">
       <p>{{ $t('no_genres_available') }}</p>
     </BAlert>
 

@@ -14,12 +14,22 @@ const props = defineProps<Props>()
 const { t } = useI18n()
 
 const name = ref(props.tag.name)
+const hide = ref<boolean>(false)
 
-const { updateTag, removeTag } = useTag()
+const { deleteSuccess, deleteError, updateTag, removeTag } = useTag()
 </script>
 
 <template>
-  <BList divider v-if="tag">
+  <BList v-if="deleteSuccess && !hide">
+    <template #title>
+      <span :style="{ textTransform: 'uppercase' }">{{ t('deleted') }}</span>
+    </template>
+    <template #controls>
+      <BMaterialIcon @click="hide = true" :style="{ cursor: 'pointer' }">close</BMaterialIcon>
+    </template>
+  </BList>
+
+  <BList divider v-if="!deleteSuccess && tag">
     <template #title>
       <span v-if="!isAdmin">{{ tag.name }}</span>
 
@@ -48,4 +58,11 @@ const { updateTag, removeTag } = useTag()
       </BDropdown>
     </template>
   </BList>
+
+  <BDialog v-model="deleteError">
+    <p>{{ $t('tag_delete_error') }}</p>
+    <template #actions>
+      <BButton @click="deleteError = false">{{ $t('close') }}</BButton>
+    </template>
+  </BDialog>
 </template>

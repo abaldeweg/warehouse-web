@@ -8,9 +8,12 @@ import type { UseBranch } from '@/types/composables'
  */
 export function useBranch(): UseBranch {
   const branch = ref<Branch | null>(null)
-  const isSaving = ref(false)
-  const savedSuccess = ref(false)
-  const savedError = ref(false)
+  const isSaving = ref<boolean>(false)
+  const savedSuccess = ref<boolean>(false)
+  const savedError = ref<boolean>(false)
+  const isCleaning = ref<boolean>(false)
+  const cleaningSuccess = ref<boolean>(false)
+  const cleaningError = ref<boolean>(false)
 
   /**
    * Fetch a branch by its ID.
@@ -42,7 +45,17 @@ export function useBranch(): UseBranch {
    * Permanently delete books marked as removed.
    */
   const cleanBooks = async (): Promise<void> => {
-    await apiClient.delete('/api/book/clean')
+    isCleaning.value = true
+    cleaningSuccess.value = false
+    cleaningError.value = false
+    try {
+      await apiClient.delete('/api/book/clean')
+      cleaningSuccess.value = true
+    } catch {
+      cleaningError.value = true
+    } finally {
+      isCleaning.value = false
+    }
   }
 
   return {
@@ -50,6 +63,9 @@ export function useBranch(): UseBranch {
     isSaving,
     savedSuccess,
     savedError,
+    isCleaning,
+    cleaningSuccess,
+    cleaningError,
     fetchBranch,
     updateBranch,
     cleanBooks,

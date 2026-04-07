@@ -5,7 +5,7 @@ import { useConditions } from '@/composables/conditions/useConditions'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { useToken } from '@/composables/auth/useToken'
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import AppToolbar from '@/components/AppToolbar.vue'
 
 const { t } = useI18n()
@@ -13,7 +13,13 @@ const { t } = useI18n()
 useHead({ title: t('conditions') })
 
 const { user, fetchUser } = useToken()
-const { conditions, criteria, sort, processedConditions, listConditions } = useConditions()
+const { conditions, criteria, sort, isLoading, processedConditions, listConditions } =
+  useConditions()
+
+const counter = computed(() => {
+  if (!conditions.value) return 0
+  return conditions.value.length
+})
 
 onMounted(async () => {
   await fetchUser()
@@ -32,14 +38,14 @@ onMounted(async () => {
   </BContainer>
 
   <BContainer size="m">
-    <h1>{{ $t('conditions') }}</h1>
+    <h1>{{ $t('conditions') }} ({{ counter }})</h1>
     <p>{{ $t('conditions_desc') }}</p>
   </BContainer>
 
   <BContainer size="m">
     <h2>{{ $t('create_condition') }}</h2>
 
-    <BAlert variant="info" v-if="!user?.isAdmin">
+    <BAlert variant="info" v-if="user && !user?.isAdmin">
       <p>{{ $t('only_admin_can_create_conditions') }}</p>
     </BAlert>
 
@@ -49,7 +55,7 @@ onMounted(async () => {
   <BContainer size="m">
     <h2>{{ $t('all_conditions') }}</h2>
 
-    <BAlert variant="info" v-if="!conditions || conditions.length === 0">
+    <BAlert type="info" v-if="!isLoading && (!conditions || conditions.length === 0)">
       <p>{{ $t('no_conditions_available') }}</p>
     </BAlert>
 

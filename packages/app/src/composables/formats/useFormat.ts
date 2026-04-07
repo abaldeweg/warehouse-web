@@ -1,10 +1,14 @@
 import { apiClient } from '@/api/apiClient'
-import type { UseFormat } from '../../types/composables'
+import type { UseFormat } from '@/types/composables'
+import { ref } from 'vue'
 
 /**
  * useFormat composable for single format management logic.
  */
 export function useFormat(): UseFormat {
+  const deleteSuccess = ref<boolean>(false)
+  const deleteError = ref<boolean>(false)
+
   /**
    * Creates a new format with the given name.
    */
@@ -24,10 +28,17 @@ export function useFormat(): UseFormat {
    * Removes a format by its ID.
    */
   const removeFormat = async (id: number): Promise<void> => {
-    await apiClient.delete('/api/format/' + id)
+    try {
+      await apiClient.delete('/api/format/' + id)
+      deleteSuccess.value = true
+    } catch {
+      deleteError.value = true
+    }
   }
 
   return {
+    deleteSuccess,
+    deleteError,
     createFormat,
     updateFormat,
     removeFormat,

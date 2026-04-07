@@ -10,3 +10,14 @@ export type Branch = {
   content: string | null
   mail_reservation: string | null
 }
+
+export interface PricelistEntry {
+  key: string
+  value: string
+}
+
+export interface PricelistData {
+  base: number
+  releaseYear: PricelistEntry[]
+  condition: PricelistEntry[]
+}

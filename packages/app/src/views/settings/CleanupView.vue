@@ -15,7 +15,7 @@ onMounted(() => {
   fetchUser()
 })
 
-const { cleanBooks } = useBranch()
+const { isCleaning, cleaningSuccess, cleaningError, cleanBooks } = useBranch()
 </script>
 
 <template>
@@ -30,14 +30,23 @@ const { cleanBooks } = useBranch()
   <BContainer size="m">
     <h1>{{ $t('cleanup') }}</h1>
     <p>{{ $t('cleanup_desc') }}</p>
-  </BContainer>
 
-  <BContainer size="m">
-    <BAlert variant="info" v-if="!user || !user.isAdmin">
+    <BAlert type="info" v-if="!user || !user.isAdmin">
       {{ t('only_admins_can_cleanup') }}
     </BAlert>
 
-    <BButton design="outline_danger" @click="cleanBooks" v-if="user && user.isAdmin">
+    <BAlert type="success" v-if="cleaningSuccess">
+      {{ t('cleanup_success') }}
+    </BAlert>
+
+    <BAlert type="warning" v-if="cleaningError">
+      {{ t('cleanup_error') }}
+    </BAlert>
+  </BContainer>
+
+  <BContainer size="m">
+    <BButton type="button" design="text" v-if="isCleaning"><BSpinner size="s" /></BButton>
+    <BButton design="primary_danger" @click="cleanBooks" v-if="!isCleaning && user && user.isAdmin">
       {{ $t('clean_books') }}
     </BButton>
   </BContainer>

@@ -5,7 +5,7 @@ import { useFormats } from '@/composables/formats/useFormats'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { useToken } from '@/composables/auth/useToken'
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import AppToolbar from '@/components/AppToolbar.vue'
 
 const { t } = useI18n()
@@ -13,7 +13,12 @@ const { t } = useI18n()
 useHead({ title: t('formats') })
 
 const { user, fetchUser } = useToken()
-const { formats, criteria, sort, processedFormats, listFormats } = useFormats()
+const { formats, criteria, sort, isLoading, processedFormats, listFormats } = useFormats()
+
+const counter = computed(() => {
+  if (!formats.value) return 0
+  return formats.value.length
+})
 
 onMounted(async () => {
   await fetchUser()
@@ -32,14 +37,14 @@ onMounted(async () => {
   </BContainer>
 
   <BContainer size="m">
-    <h1>{{ $t('formats') }}</h1>
+    <h1>{{ $t('formats') }} ({{ counter }})</h1>
     <p>{{ $t('formats_desc') }}</p>
   </BContainer>
 
   <BContainer size="m">
     <h2>{{ $t('create_format') }}</h2>
 
-    <BAlert variant="info" v-if="!user?.isAdmin">
+    <BAlert variant="info" v-if="user && !user?.isAdmin">
       <p>{{ $t('only_admin_can_create_formats') }}</p>
     </BAlert>
 
@@ -49,7 +54,7 @@ onMounted(async () => {
   <BContainer size="m">
     <h2>{{ $t('all_formats') }}</h2>
 
-    <BAlert variant="info" v-if="!formats || formats.length === 0">
+    <BAlert variant="info" v-if="!isLoading && (!formats || formats.length === 0)">
       <p>{{ $t('no_formats_available') }}</p>
     </BAlert>
 

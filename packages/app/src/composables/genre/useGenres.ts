@@ -10,6 +10,7 @@ export function useGenres(): UseGenres {
   const genres = ref<Genre[] | null>(null)
   const criteria = ref<string | null>(null)
   const sort = ref<'asc' | 'desc' | null>(null)
+  const isLoading = ref<boolean>(false)
 
   const processedGenres = computed<Genre[] | null>((): Genre[] | null => {
     if (!genres.value) return null
@@ -27,14 +28,17 @@ export function useGenres(): UseGenres {
    * Fetch genres from the API and update the genres ref.
    */
   const fetchGenres = async (): Promise<void> => {
+    isLoading.value = true
     const response = await apiClient.get(`/api/genre`)
     genres.value = response.data
+    isLoading.value = false
   }
 
   return {
     genres,
     criteria,
     sort,
+    isLoading,
     processedGenres,
     fetchGenres,
   }

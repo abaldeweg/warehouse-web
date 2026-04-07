@@ -154,5 +154,20 @@
   "only_admins_can_edit_branch": "Only admins can edit branch settings.",
   "branch_updated_successfully": "Branch updated successfully.",
   "branch_update_failed": "Branch update failed. Please try again.",
-  "only_admins_can_cleanup": "Only admins can perform cleanup."
+  "only_admins_can_cleanup": "Only admins can perform cleanup.",
+  "cleanup_success": "Products cleaned successfully.",
+  "cleanup_error": "Error cleaning products. Please try again.",
+  "tag_created_successfully": "Tag created successfully.",
+  "tag_creation_failed": "Tag creation failed. Please try again.",
+  "genre_created_successfully": "Genre created successfully.",
+  "genre_creation_failed": "Genre creation failed. Please try again.",
+  "format_created_successfully": "Format created successfully.",
+  "format_creation_failed": "Format creation failed. Please try again.",
+  "condition_created_successfully": "Condition created successfully.",
+  "condition_creation_failed": "Condition creation failed. Please try again.",
+  "deleted": "deleted",
+  "tag_delete_error": "Error deleting tag. Please note: If the tag is associated with any products, it cannot be deleted.",
+  "genre_delete_error": "Error deleting genre. Please note: If the genre is associated with any products, it cannot be deleted.",
+  "format_delete_error": "Error deleting format. Please note: If the format is associated with any products, it cannot be deleted.",
+  "condition_delete_error": "Error deleting condition. Please note: If the condition is associated with any products, it cannot be deleted."
 }

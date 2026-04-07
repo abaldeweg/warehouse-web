@@ -10,6 +10,7 @@ export function useConditions(): UseConditions {
   const conditions = ref<Condition[] | null>(null)
   const criteria = ref<string | null>(null)
   const sort = ref<'asc' | 'desc' | null>(null)
+  const isLoading = ref<boolean>(false)
 
   const processedConditions = computed<Condition[] | null>((): Condition[] | null => {
     if (!conditions.value) return null
@@ -27,14 +28,17 @@ export function useConditions(): UseConditions {
    * Fetches the list of conditions from the API and updates the conditions ref.
    */
   const listConditions = async (): Promise<void> => {
+    isLoading.value = true
     const response = await apiClient.get('/api/condition/')
     conditions.value = response.data
+    isLoading.value = false
   }
 
   return {
     conditions,
     criteria,
     sort,
+    isLoading,
     processedConditions,
     listConditions,
   }

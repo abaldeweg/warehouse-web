@@ -14,12 +14,22 @@ const props = defineProps<Props>()
 const { t } = useI18n()
 
 const name = ref(props.genre.name)
+const hide = ref<boolean>(false)
 
-const { updateGenre, removeGenre } = useGenre()
+const { deleteSuccess, deleteError, updateGenre, removeGenre } = useGenre()
 </script>
 
 <template>
-  <BList divider v-if="genre">
+  <BList v-if="deleteSuccess && !hide">
+    <template #title>
+      <span :style="{ textTransform: 'uppercase' }">{{ t('deleted') }}</span>
+    </template>
+    <template #controls>
+      <BMaterialIcon @click="hide = true" :style="{ cursor: 'pointer' }">close</BMaterialIcon>
+    </template>
+  </BList>
+
+  <BList divider v-if="!deleteSuccess && genre">
     <template #title>
       <span v-if="!isAdmin">{{ genre.name }}</span>
 
@@ -47,4 +57,11 @@ const { updateGenre, removeGenre } = useGenre()
       </BDropdown>
     </template>
   </BList>
+
+  <BDialog v-model="deleteError">
+    <p>{{ $t('genre_delete_error') }}</p>
+    <template #actions>
+      <BButton @click="deleteError = false">{{ $t('close') }}</BButton>
+    </template>
+  </BDialog>
 </template>

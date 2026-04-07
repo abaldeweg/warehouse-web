@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, watch } from 'vue'
 import BranchEdit from '@/components/branch/BranchEdit.vue'
+import BranchShow from '@/components/branch/BranchShow.vue'
 import { useBranch } from '@/composables/branch/useBranch'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
@@ -39,10 +40,6 @@ watch(isSaving, (newVal, oldVal) => {
   <BContainer size="m">
     <h1>{{ $t('branch') }}</h1>
 
-    <BAlert type="info" v-if="!user || !user.isAdmin">
-      {{ t('only_admins_can_edit_branch') }}
-    </BAlert>
-
     <BAlert type="success" v-if="savedSuccess" closable>
       {{ t('branch_updated_successfully') }}
     </BAlert>
@@ -52,17 +49,14 @@ watch(isSaving, (newVal, oldVal) => {
     </BAlert>
   </BContainer>
 
-  <BContainer size="m" v-if="user">
+  <BContainer size="m" v-if="branch && user && user.isAdmin">
     <BranchEdit
       :branch="branch"
       :user="user"
       :is-saving="isSaving"
       @update="updateBranch"
-      v-if="branch && user"
     />
-
-    <BAlert variant="info" v-if="!user || !user.isAdmin">
-      {{ t('only_admins_can_edit_branch') }}
-    </BAlert>
   </BContainer>
+
+  <BranchShow :branch="branch" v-if="branch && user && !user.isAdmin" />
 </template>

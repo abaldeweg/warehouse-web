@@ -1,10 +1,14 @@
 import { apiClient } from '@/api/apiClient'
-import type { UseGenre } from '../../types/composables'
+import type { UseGenre } from '@/types/composables'
+import { ref } from 'vue'
 
 /**
  * useGenre composable for single genre management logic.
  */
 export function useGenre(): UseGenre {
+  const deleteSuccess = ref<boolean>(false)
+  const deleteError = ref<boolean>(false)
+
   /**
    * Creates a new genre with the given name.
    */
@@ -24,10 +28,17 @@ export function useGenre(): UseGenre {
    * Removes a genre by its ID.
    */
   const removeGenre = async (id: number): Promise<void> => {
-    await apiClient.delete('/api/genre/' + id)
+    try {
+      await apiClient.delete('/api/genre/' + id)
+      deleteSuccess.value = true
+    } catch {
+      deleteError.value = true
+    }
   }
 
   return {
+    deleteSuccess,
+    deleteError,
     createGenre,
     updateGenre,
     removeGenre,
