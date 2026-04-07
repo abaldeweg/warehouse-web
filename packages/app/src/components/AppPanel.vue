@@ -27,8 +27,12 @@ const shop: string = import.meta.env.VITE_SHOP
     </template>
 
     <template #footer>
-      <BButton design="text" @click="emit('close-drawer')">
-        {{ $t('hide_panel') }}
+      <BButton
+        design="text"
+        @click="emit('close-drawer')"
+        :style="{ float: 'right', marginRight: '10px' }"
+      >
+        <BMaterialIcon color="var(--color-neutral-10)" hover>left_panel_close</BMaterialIcon>
       </BButton>
     </template>
 
