@@ -1,6 +1,14 @@
 import { apiClient } from '@/api/apiClient'
-import type { UseCondition } from '@/types/composables'
 import { ref } from 'vue'
+import type { Ref } from 'vue'
+
+interface UseCondition {
+  deleteSuccess: Ref<boolean>
+  deleteError: Ref<boolean>
+  createCondition: (name: string) => Promise<number>
+  updateCondition: (id: number, name: string) => Promise<void>
+  removeCondition: (id: number) => Promise<void>
+}
 
 /**
  * useCondition composable for single condition management logic.

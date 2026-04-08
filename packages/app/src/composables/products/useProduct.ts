@@ -1,8 +1,16 @@
 import type { AxiosResponse } from 'axios'
 import { apiClient } from '@/api/apiClient'
 import type { Book } from '@/types/model/book'
-import type { UseProduct } from '@/types/composables'
-import { ref, type Ref } from 'vue'
+import { ref } from 'vue'
+import type { Ref } from 'vue'
+
+interface UseProduct {
+  book: Ref<Book | null>
+  show: (id: string) => Promise<void>
+  update: (data: any) => Promise<void>
+  sellAll: (products: Book[]) => void
+  sell: (id: string) => Promise<AxiosResponse>
+}
 
 /**
  * useProduct composable for managing product sales.

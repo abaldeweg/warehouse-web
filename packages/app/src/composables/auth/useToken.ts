@@ -1,7 +1,12 @@
 import { ref } from 'vue'
+import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
 import type { User } from '@/types/model/user'
-import type { UseToken } from '@/types/composables'
+
+interface UseToken {
+  user: Ref<User | null>
+  fetchUser: () => Promise<void>
+}
 
 /**
  * Composable for handling user authentication and token-based API requests.

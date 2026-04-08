@@ -1,7 +1,17 @@
 import { computed, ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
-import type { UseConditions } from '@/types/composables'
 import type { Condition } from '@/types/model/condition'
+import type { Ref } from 'vue'
+
+interface UseConditions {
+  conditions: Ref<Condition[] | null>
+  criteria: Ref<string | null>
+  sort: Ref<'asc' | 'desc' | null>
+  isLoading: Ref<boolean>
+  readonly processedConditions: Ref<Condition[] | null>
+  counter: Ref<number>
+  listConditions: () => Promise<void>
+}
 
 /**
  * useConditions composable for managing a list of conditions.

@@ -1,6 +1,14 @@
 import { apiClient } from '@/api/apiClient'
-import type { UseTag } from '@/types/composables'
 import { ref } from 'vue'
+import type { Ref } from 'vue'
+
+interface UseTag {
+  deleteSuccess: Ref<boolean>
+  deleteError: Ref<boolean>
+  createTag: (name: string) => Promise<number>
+  updateTag: (id: number, name: string) => Promise<void>
+  removeTag: (id: number) => Promise<void>
+}
 
 /**
  * useTag composable for single tag management logic.

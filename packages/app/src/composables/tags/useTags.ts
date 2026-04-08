@@ -1,7 +1,17 @@
 import { ref, computed } from 'vue'
 import { apiClient } from '@/api/apiClient'
 import type { Tag } from '@/types/model/tag'
-import type { UseTags } from '@/types/composables'
+import type { Ref } from 'vue'
+
+interface UseTags {
+  tags: Ref<Tag[] | null>
+  criteria: Ref<string | null>
+  sort: Ref<'asc' | 'desc' | null>
+  isLoading: Ref<boolean>
+  readonly processedTags: Ref<Tag[] | null>
+  counter: Ref<number>
+  listTags: () => Promise<void>
+}
 
 /**
  * useTags composable for managing a list of tags.

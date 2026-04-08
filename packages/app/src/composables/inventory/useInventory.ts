@@ -1,5 +1,9 @@
 import { apiClient } from '@/api/apiClient'
-import type { UseInventory } from '@/types/composables'
+
+interface UseInventory {
+  createInventory: () => Promise<void>
+  endInventory: (id: number) => Promise<void>
+}
 
 /**
  * useInventory composable for managing a single inventory.

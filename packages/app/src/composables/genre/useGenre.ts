@@ -1,6 +1,14 @@
 import { apiClient } from '@/api/apiClient'
-import type { UseGenre } from '@/types/composables'
 import { ref } from 'vue'
+import type { Ref } from 'vue'
+
+interface UseGenre {
+  deleteSuccess: Ref<boolean>
+  deleteError: Ref<boolean>
+  createGenre: (name: string) => Promise<number>
+  updateGenre: (id: number, name: string) => Promise<void>
+  removeGenre: (id: number) => Promise<void>
+}
 
 /**
  * useGenre composable for single genre management logic.

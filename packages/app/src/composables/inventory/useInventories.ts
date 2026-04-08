@@ -1,7 +1,13 @@
 import { computed, ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
 import type { Inventory } from '@/types/model/inventory'
-import type { UseInventories } from '@/types/composables'
+import type { Ref } from 'vue'
+
+interface UseInventories {
+  inventories: Ref<Inventory[] | null>
+  hasActiveInventory: Ref<boolean>
+  listInventories: () => Promise<void>
+}
 
 /**
  * useInventories composable for managing a list of inventories.

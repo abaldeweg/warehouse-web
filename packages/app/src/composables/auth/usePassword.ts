@@ -1,7 +1,14 @@
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
-import type { UsePassword } from '@/types/composables'
+
+interface UsePassword {
+  password: Ref<string | null>
+  isChangingPassword: Ref<boolean>
+  passwordSuccessful: Ref<boolean>
+  passwordError: Ref<boolean>
+  changePassword: () => Promise<void>
+}
 
 /**
  * usePassword composable for managing password changes.

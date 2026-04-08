@@ -1,7 +1,17 @@
 import { computed, ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
-import type { UseFormats } from '@/types/composables'
 import type { Format } from '@/types/model/format'
+import type { Ref } from 'vue'
+
+interface UseFormats {
+  formats: Ref<Format[] | null>
+  criteria: Ref<string | null>
+  sort: Ref<'asc' | 'desc' | null>
+  isLoading: Ref<boolean>
+  readonly processedFormats: Ref<Format[] | null>
+  counter: Ref<number>
+  listFormats: () => Promise<void>
+}
 
 /**
  * useFormats composable for managing a list of formats.

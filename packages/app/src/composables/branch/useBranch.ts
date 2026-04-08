@@ -1,7 +1,20 @@
 import { ref } from 'vue'
+import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
 import type { Branch } from '@/types/model/branch'
-import type { UseBranch } from '@/types/composables'
+
+interface UseBranch {
+  branch: Ref<Branch | null>
+  isSaving: Ref<boolean>
+  savedSuccess: Ref<boolean>
+  savedError: Ref<boolean>
+  isCleaning: Ref<boolean>
+  cleaningSuccess: Ref<boolean>
+  cleaningError: Ref<boolean>
+  fetchBranch: (id: number) => Promise<void>
+  updateBranch: (data: { id: number; params: Omit<Branch, 'id'> }) => Promise<void>
+  cleanBooks: () => Promise<void>
+}
 
 /**
  * useBranch composable for branch logic.

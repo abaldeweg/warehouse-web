@@ -1,7 +1,17 @@
 import { computed, ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
-import type { UseGenres } from '@/types/composables'
 import type { Genre } from '@/types/model/genre'
+import type { Ref } from 'vue'
+
+interface UseGenres {
+  genres: Ref<Genre[] | null>
+  criteria: Ref<string | null>
+  sort: Ref<'asc' | 'desc' | null>
+  isLoading: Ref<boolean>
+  readonly processedGenres: Ref<Genre[] | null>
+  counter: Ref<number>
+  fetchGenres: () => Promise<void>
+}
 
 /**
  * useGenres composable for genre logic.

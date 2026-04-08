@@ -1,7 +1,24 @@
-import type { UsePrices } from '@/types/composables'
 import type { PricelistEntry, PricelistData } from '@/types/model/branch'
 import { computed, ref } from 'vue'
+import type { Ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+
+interface UsePrices {
+  sections: Ref<{
+    label: string
+    entries: PricelistEntry[]
+    prefix: string
+  }[]>
+  pricelist: Ref<{
+    base: number
+    releaseYear: PricelistEntry[]
+    condition: PricelistEntry[]
+  }>
+  parse: (value: string) => PricelistData
+  toRecord: (entries: PricelistEntry[]) => Record<string, string>
+  addEntry: (entries: PricelistEntry[]) => void
+  removeEntry: (entries: PricelistEntry[], index: number) => void
+}
 
 /**
  * usePrice composable for managing pricelist logic.

@@ -1,6 +1,14 @@
 import { apiClient } from '@/api/apiClient'
-import type { UseFormat } from '@/types/composables'
 import { ref } from 'vue'
+import type { Ref } from 'vue'
+
+interface UseFormat {
+  deleteSuccess: Ref<boolean>
+  deleteError: Ref<boolean>
+  createFormat: (name: string) => Promise<number>
+  updateFormat: (id: number, name: string) => Promise<void>
+  removeFormat: (id: number) => Promise<void>
+}
 
 /**
  * useFormat composable for single format management logic.
