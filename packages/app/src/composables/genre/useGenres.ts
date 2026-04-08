@@ -24,6 +24,11 @@ export function useGenres(): UseGenres {
     return sort.value === 'asc' ? sorted : sorted.reverse()
   })
 
+  const counter = computed(() => {
+    if (!genres.value) return 0
+    return genres.value.length
+  })
+
   /**
    * Fetch genres from the API and update the genres ref.
    */
@@ -40,6 +45,7 @@ export function useGenres(): UseGenres {
     sort,
     isLoading,
     processedGenres,
+    counter,
     fetchGenres,
   }
 }

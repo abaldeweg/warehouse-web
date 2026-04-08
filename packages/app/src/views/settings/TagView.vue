@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import TagShow from '@/components/tag/TagShow.vue'
 import TagCreate from '@/components/tag/TagCreate.vue'
-import { useTags } from '@/composables/tags/useTags.js'
+import { useTags } from '@/composables/tags/useTags'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { useToken } from '@/composables/auth/useToken'
-import { computed, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import AppToolbar from '@/components/AppToolbar.vue'
 
 const { t } = useI18n()
@@ -13,12 +13,7 @@ const { t } = useI18n()
 useHead({ title: t('tags') })
 
 const { user, fetchUser } = useToken()
-const { tags, criteria, sort, isLoading, processedTags, listTags } = useTags()
-
-const counter = computed(() => {
-  if (!tags.value) return 0
-  return tags.value.length
-})
+const { tags, criteria, sort, isLoading, processedTags, listTags, counter } = useTags()
 
 onMounted(async () => {
   await fetchUser()

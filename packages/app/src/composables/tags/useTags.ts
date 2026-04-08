@@ -24,6 +24,11 @@ export function useTags(): UseTags {
     return sort.value === 'asc' ? sorted : sorted.reverse()
   })
 
+  const counter = computed(() => {
+    if (!tags.value) return 0
+    return tags.value.length
+  })
+
   /**
    * Fetches the list of tags from the API and updates the `tags` ref.
    */
@@ -40,6 +45,7 @@ export function useTags(): UseTags {
     sort,
     isLoading,
     processedTags,
+    counter,
     listTags,
   }
 }

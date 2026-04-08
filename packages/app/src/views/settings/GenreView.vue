@@ -5,7 +5,7 @@ import { useGenres } from '@/composables/genre/useGenres'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { useToken } from '@/composables/auth/useToken'
-import { computed, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import AppToolbar from '@/components/AppToolbar.vue'
 
 const { t } = useI18n()
@@ -13,12 +13,7 @@ const { t } = useI18n()
 useHead({ title: t('genres') })
 
 const { user, fetchUser } = useToken()
-const { genres, criteria, sort, isLoading, processedGenres, fetchGenres } = useGenres()
-
-const counter = computed(() => {
-  if (!genres.value) return 0
-  return genres.value.length
-})
+const { genres, criteria, sort, isLoading, processedGenres, fetchGenres, counter } = useGenres()
 
 onMounted(async () => {
   await fetchUser()

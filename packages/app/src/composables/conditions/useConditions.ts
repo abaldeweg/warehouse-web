@@ -24,6 +24,11 @@ export function useConditions(): UseConditions {
     return sort.value === 'asc' ? sorted : sorted.reverse()
   })
 
+  const counter = computed(() => {
+    if (!conditions.value) return 0
+    return conditions.value.length
+  })
+
   /**
    * Fetches the list of conditions from the API and updates the conditions ref.
    */
@@ -40,6 +45,7 @@ export function useConditions(): UseConditions {
     sort,
     isLoading,
     processedConditions,
+    counter,
     listConditions,
   }
 }

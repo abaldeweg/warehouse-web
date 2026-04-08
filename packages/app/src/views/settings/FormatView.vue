@@ -5,7 +5,7 @@ import { useFormats } from '@/composables/formats/useFormats'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { useToken } from '@/composables/auth/useToken'
-import { computed, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import AppToolbar from '@/components/AppToolbar.vue'
 
 const { t } = useI18n()
@@ -13,12 +13,7 @@ const { t } = useI18n()
 useHead({ title: t('formats') })
 
 const { user, fetchUser } = useToken()
-const { formats, criteria, sort, isLoading, processedFormats, listFormats } = useFormats()
-
-const counter = computed(() => {
-  if (!formats.value) return 0
-  return formats.value.length
-})
+const { formats, criteria, sort, isLoading, processedFormats, listFormats, counter } = useFormats()
 
 onMounted(async () => {
   await fetchUser()

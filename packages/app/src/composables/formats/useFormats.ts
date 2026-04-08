@@ -24,6 +24,11 @@ export function useFormats(): UseFormats {
     return sort.value === 'asc' ? sorted : sorted.reverse()
   })
 
+  const counter = computed(() => {
+    if (!formats.value) return 0
+    return formats.value.length
+  })
+
   /**
    * Fetches the list of formats from the API and updates the `formats` ref.
    */
@@ -40,6 +45,7 @@ export function useFormats(): UseFormats {
     sort,
     isLoading,
     processedFormats,
+    counter,
     listFormats,
   }
 }

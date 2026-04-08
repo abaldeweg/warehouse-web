@@ -110,6 +110,7 @@ export interface UseGenres {
   sort: Ref<'asc' | 'desc' | null>
   isLoading: Ref<boolean>
   readonly processedGenres: Ref<Genre[] | null>
+  counter: Ref<number>
   fetchGenres: () => Promise<void>
 }
 
@@ -127,6 +128,7 @@ export interface UseTags {
   sort: Ref<'asc' | 'desc' | null>
   isLoading: Ref<boolean>
   readonly processedTags: Ref<Tag[] | null>
+  counter: Ref<number>
   listTags: () => Promise<void>
 }
 
@@ -144,6 +146,7 @@ export interface UseConditions {
   sort: Ref<'asc' | 'desc' | null>
   isLoading: Ref<boolean>
   readonly processedConditions: Ref<Condition[] | null>
+  counter: Ref<number>
   listConditions: () => Promise<void>
 }
 
@@ -161,6 +164,7 @@ export interface UseFormats {
   sort: Ref<'asc' | 'desc' | null>
   isLoading: Ref<boolean>
   readonly processedFormats: Ref<Format[] | null>
+  counter: Ref<number>
   listFormats: () => Promise<void>
 }
 
