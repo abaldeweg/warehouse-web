@@ -50,12 +50,7 @@ watch(isSaving, (newVal, oldVal) => {
   </BContainer>
 
   <BContainer size="m" v-if="branch && user && user.isAdmin">
-    <BranchEdit
-      :branch="branch"
-      :user="user"
-      :is-saving="isSaving"
-      @update="updateBranch"
-    />
+    <BranchEdit :branch="branch" :user="user" :is-saving="isSaving" @update="updateBranch" />
   </BContainer>
 
   <BranchShow :branch="branch" v-if="branch && user && !user.isAdmin" />
