@@ -44,7 +44,7 @@ onMounted(async () => {
   <BContainer size="m">
     <h2>{{ $t('create_genre') }}</h2>
 
-    <BAlert variant="info" v-if="user && !user?.isAdmin">
+    <BAlert type="info" v-if="user && !user?.isAdmin">
       <p>{{ $t('only_admin_can_create_genres') }}</p>
     </BAlert>
 
@@ -54,7 +54,7 @@ onMounted(async () => {
   <BContainer size="m">
     <h2>{{ $t('all_genres') }}</h2>
 
-    <BAlert variant="info" v-if="!isLoading && (!genres || genres.length === 0)">
+    <BAlert type="info" v-if="!isLoading && (!genres || genres.length === 0)">
       <p>{{ $t('no_genres_available') }}</p>
     </BAlert>
 

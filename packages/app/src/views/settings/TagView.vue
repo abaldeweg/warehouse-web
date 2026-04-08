@@ -49,7 +49,7 @@ onMounted(async () => {
   <BContainer size="m">
     <h2>{{ $t('all_tags') }}</h2>
 
-    <BAlert variant="info" v-if="!isLoading && (!tags || tags.length === 0)">
+    <BAlert type="info" v-if="!isLoading && (!tags || tags.length === 0)">
       <p>{{ $t('no_tags_available') }}</p>
     </BAlert>
 

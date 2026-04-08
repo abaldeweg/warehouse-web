@@ -12,7 +12,6 @@ export function useFormats(): UseFormats {
   const sort = ref<'asc' | 'desc' | null>(null)
   const isLoading = ref<boolean>(false)
 
-
   const processedFormats = computed<Format[] | null>((): Format[] | null => {
     if (!formats.value) return null
     let result: Format[] = formats.value

@@ -12,7 +12,6 @@ export function useTags(): UseTags {
   const sort = ref<'asc' | 'desc' | null>(null)
   const isLoading = ref<boolean>(false)
 
-
   const processedTags = computed<Tag[] | null>((): Tag[] | null => {
     if (!tags.value) return null
     let result: Tag[] = tags.value

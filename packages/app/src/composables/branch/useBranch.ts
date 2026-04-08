@@ -48,6 +48,7 @@ export function useBranch(): UseBranch {
     isCleaning.value = true
     cleaningSuccess.value = false
     cleaningError.value = false
+
     try {
       await apiClient.delete('/api/book/clean')
       cleaningSuccess.value = true

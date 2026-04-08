@@ -45,7 +45,7 @@ onMounted(async () => {
   <BContainer size="m">
     <h2>{{ $t('create_condition') }}</h2>
 
-    <BAlert variant="info" v-if="user && !user?.isAdmin">
+    <BAlert type="info" v-if="user && !user?.isAdmin">
       <p>{{ $t('only_admin_can_create_conditions') }}</p>
     </BAlert>
 

@@ -9,7 +9,7 @@ import { useI18n } from 'vue-i18n'
 export function usePrice(): UsePrices {
   const { t } = useI18n()
 
-  const pricelist = ref({
+  const pricelist = ref<PricelistData>({
     base: 0,
     releaseYear: [] as PricelistEntry[],
     condition: [] as PricelistEntry[],
@@ -43,12 +43,12 @@ export function usePrice(): UsePrices {
   /**
    * Adds a new entry with empty key and value to the given entries array.
    */
-  const addEntry = (entries: PricelistEntry[]) => entries.push({ key: '', value: '' })
+  const addEntry = (entries: PricelistEntry[]): number => entries.push({ key: '', value: '' })
 
   /**
    * Removes the entry at the specified index from the given entries array.
    */
-  const removeEntry = (entries: PricelistEntry[], index: number) => entries.splice(index, 1)
+  const removeEntry = (entries: PricelistEntry[], index: number): PricelistEntry[] => entries.splice(index, 1)
 
   /**
    * Parses the input JSON string into a PricelistData object.
