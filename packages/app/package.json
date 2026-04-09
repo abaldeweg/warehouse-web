@@ -27,7 +27,7 @@
     "@vue/eslint-config-typescript": "14.7.0",
     "@vue/test-utils": "2.4.6",
     "@vue/tsconfig": "0.9.1",
-    "axios": "1.14.0",
+    "axios": "1.15.0",
     "canvas-confetti": "1.9.4",
     "eslint": "10.2.0",
     "eslint-plugin-vue": "10.8.0",
