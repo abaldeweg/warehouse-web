@@ -25,7 +25,6 @@ onMounted(async () => {
 const { createInventory } = useInventory()
 
 const create = async (): Promise<void> => {
-  if (hasActiveInventory.value || !user.value || !user.value.isAdmin) return
   await createInventory()
   await listInventories()
 }
