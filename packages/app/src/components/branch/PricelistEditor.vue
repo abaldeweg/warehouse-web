@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import type { PricelistData } from '@/types/model/branch'
 import { usePrice } from '@/composables/branch/usePrice'
 
 interface Props {
@@ -19,10 +18,7 @@ const { t } = useI18n()
 const { pricelist, sections, parse, toRecord, addEntry, removeEntry } = usePrice()
 
 onMounted((): void => {
-  const parsed: PricelistData = parse(props.modelValue)
-  pricelist.value.base = parsed.base
-  pricelist.value.releaseYear = parsed.releaseYear
-  pricelist.value.condition = parsed.condition
+  pricelist.value = parse(props.modelValue)
 })
 
 watch(

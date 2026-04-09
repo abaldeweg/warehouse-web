@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import type { Branch, PricelistData } from '@/types/model/branch'
+import type { Branch } from '@/types/model/branch'
 import { usePrice } from '@/composables/branch/usePrice'
 import { onMounted } from 'vue'
 
@@ -11,10 +11,7 @@ const { t } = useI18n()
 const { pricelist, sections, parse } = usePrice()
 
 onMounted((): void => {
-  const parsed: PricelistData = parse(props.branch.pricelist)
-  pricelist.value.base = parsed.base
-  pricelist.value.releaseYear = parsed.releaseYear
-  pricelist.value.condition = parsed.condition
+  pricelist.value = parse(props.branch.pricelist)
 })
 </script>
 
