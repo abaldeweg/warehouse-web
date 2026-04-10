@@ -12,6 +12,44 @@ const { user, fetchUser } = useToken()
 onMounted(() => {
   fetchUser()
 })
+
+const settings = [
+  {
+    title: t('branch'),
+    route: { name: 'settings.branch' },
+    icon: 'house',
+  },
+  {
+    title: t('cleanup'),
+    route: { name: 'settings.cleanup' },
+    icon: 'cleaning_services',
+  },
+  {
+    title: t('inventory'),
+    route: { name: 'settings.inventory' },
+    icon: 'inventory',
+  },
+  {
+    title: t('condition'),
+    route: { name: 'settings.condition' },
+    icon: 'diagnosis',
+  },
+  {
+    title: t('format'),
+    route: { name: 'settings.format' },
+    icon: 'unknown_document',
+  },
+  {
+    title: t('genre'),
+    route: { name: 'settings.genre' },
+    icon: 'category',
+  },
+  {
+    title: t('tags'),
+    route: { name: 'settings.tag' },
+    icon: 'label',
+  },
+]
 </script>
 
 <template>
@@ -20,99 +58,22 @@ onMounted(() => {
   </BContainer>
 
   <BContainer size="m">
-    <BList :route="{ name: 'settings.branch' }" mediaSize="avatar" divider hover>
-      <template #title>{{ $t('branch') }}</template>
+    <BList
+      :route="setting.route"
+      mediaSize="avatar"
+      divider
+      hover
+      v-for="setting in settings"
+      :key="setting.title"
+    >
+      <template #title>{{ setting.title }}</template>
       <template #media>
-        <RouterLink :to="{ name: 'settings.branch' }">
-          <BMaterialIcon>house</BMaterialIcon>
+        <RouterLink :to="setting.route">
+          <BMaterialIcon>{{ setting.icon }}</BMaterialIcon>
         </RouterLink>
       </template>
       <template #controls>
-        <RouterLink :to="{ name: 'settings.branch' }">
-          <BMaterialIcon>keyboard_arrow_right</BMaterialIcon>
-        </RouterLink>
-      </template>
-    </BList>
-
-    <BList :route="{ name: 'settings.cleanup' }" mediaSize="avatar" divider hover>
-      <template #title>{{ $t('cleanup') }}</template>
-      <template #media>
-        <RouterLink :to="{ name: 'settings.cleanup' }">
-          <BMaterialIcon>cleaning_services</BMaterialIcon>
-        </RouterLink>
-      </template>
-      <template #controls>
-        <RouterLink :to="{ name: 'settings.cleanup' }">
-          <BMaterialIcon>keyboard_arrow_right</BMaterialIcon>
-        </RouterLink>
-      </template>
-    </BList>
-
-    <BList :route="{ name: 'settings.inventory' }" mediaSize="avatar" divider hover>
-      <template #title>{{ $t('inventory') }}</template>
-      <template #media>
-        <RouterLink :to="{ name: 'settings.inventory' }">
-          <BMaterialIcon>inventory</BMaterialIcon>
-        </RouterLink>
-      </template>
-      <template #controls>
-        <RouterLink :to="{ name: 'settings.inventory' }">
-          <BMaterialIcon>keyboard_arrow_right</BMaterialIcon>
-        </RouterLink>
-      </template>
-    </BList>
-
-    <BList :route="{ name: 'settings.condition' }" mediaSize="avatar" divider hover>
-      <template #title>{{ $t('condition') }}</template>
-      <template #media>
-        <RouterLink :to="{ name: 'settings.condition' }">
-          <BMaterialIcon>diagnosis</BMaterialIcon>
-        </RouterLink>
-      </template>
-      <template #controls>
-        <RouterLink :to="{ name: 'settings.condition' }">
-          <BMaterialIcon>keyboard_arrow_right</BMaterialIcon>
-        </RouterLink>
-      </template>
-    </BList>
-
-    <BList :route="{ name: 'settings.format' }" mediaSize="avatar" divider hover>
-      <template #title>{{ $t('format') }}</template>
-      <template #media>
-        <RouterLink :to="{ name: 'settings.format' }">
-          <BMaterialIcon>unknown_document</BMaterialIcon>
-        </RouterLink>
-      </template>
-      <template #controls>
-        <RouterLink :to="{ name: 'settings.format' }">
-          <BMaterialIcon>keyboard_arrow_right</BMaterialIcon>
-        </RouterLink>
-      </template>
-    </BList>
-
-    <BList :route="{ name: 'settings.genre' }" mediaSize="avatar" divider hover>
-      <template #title>{{ $t('genre') }}</template>
-      <template #media>
-        <RouterLink :to="{ name: 'settings.genre' }">
-          <BMaterialIcon>category</BMaterialIcon>
-        </RouterLink>
-      </template>
-      <template #controls>
-        <RouterLink :to="{ name: 'settings.genre' }">
-          <BMaterialIcon>keyboard_arrow_right</BMaterialIcon>
-        </RouterLink>
-      </template>
-    </BList>
-
-    <BList :route="{ name: 'settings.tag' }" mediaSize="avatar" divider hover>
-      <template #title>{{ $t('tags') }}</template>
-      <template #media>
-        <RouterLink :to="{ name: 'settings.tag' }">
-          <BMaterialIcon>label</BMaterialIcon>
-        </RouterLink>
-      </template>
-      <template #controls>
-        <RouterLink :to="{ name: 'settings.tag' }">
+        <RouterLink :to="setting.route">
           <BMaterialIcon>keyboard_arrow_right</BMaterialIcon>
         </RouterLink>
       </template>
