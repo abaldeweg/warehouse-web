@@ -1,12 +1,14 @@
 import { apiClient } from '@/api/apiClient'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
+import debounce from 'debounce'
 
 interface UseGenre {
   deleteSuccess: Ref<boolean>
   deleteError: Ref<boolean>
   createGenre: (name: string) => Promise<number>
   updateGenre: (id: number, name: string) => Promise<void>
+  updateGenreDebounced: (id: number, name: string) => void
   removeGenre: (id: number) => Promise<void>
 }
 
@@ -33,6 +35,13 @@ export function useGenre(): UseGenre {
   }
 
   /**
+   * Debounced version of updateGenre.
+   */
+  const updateGenreDebounced = debounce((id: number, name: string): void => {
+    updateGenre(id, name)
+  }, 1000)
+
+  /**
    * Removes a genre by its ID.
    */
   const removeGenre = async (id: number): Promise<void> => {
@@ -49,6 +58,7 @@ export function useGenre(): UseGenre {
     deleteError,
     createGenre,
     updateGenre,
+    updateGenreDebounced,
     removeGenre,
   }
 }

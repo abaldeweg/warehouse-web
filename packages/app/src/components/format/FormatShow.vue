@@ -16,7 +16,7 @@ const { t } = useI18n()
 const name = ref(props.format.name)
 const hide = ref<boolean>(false)
 
-const { deleteSuccess, deleteError, updateFormat, removeFormat } = useFormat()
+const { deleteSuccess, deleteError, updateFormat, updateFormatDebounced, removeFormat } = useFormat()
 </script>
 
 <template>
@@ -41,7 +41,7 @@ const { deleteSuccess, deleteError, updateFormat, removeFormat } = useFormat()
           id="name"
           :label="t('format_name')"
           hideLabel
-          @input="updateFormat(format.id, name)"
+          @input="updateFormatDebounced(format.id, name)"
         />
       </BForm>
     </template>

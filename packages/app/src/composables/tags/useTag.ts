@@ -1,12 +1,14 @@
 import { apiClient } from '@/api/apiClient'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
+import debounce from 'debounce'
 
 interface UseTag {
   deleteSuccess: Ref<boolean>
   deleteError: Ref<boolean>
   createTag: (name: string) => Promise<number>
   updateTag: (id: number, name: string) => Promise<void>
+  updateTagDebounced: (id: number, name: string) => void
   removeTag: (id: number) => Promise<void>
 }
 
@@ -33,6 +35,13 @@ export function useTag(): UseTag {
   }
 
   /**
+   * Debounced version of updateTag.
+   */
+  const updateTagDebounced = debounce((id: number, name: string): void => {
+    updateTag(id, name)
+  }, 1000)
+
+  /**
    * Removes a tag by its ID.
    */
   const removeTag = async (id: number): Promise<void> => {
@@ -49,6 +58,7 @@ export function useTag(): UseTag {
     deleteError,
     createTag,
     updateTag,
+    updateTagDebounced,
     removeTag,
   }
 }

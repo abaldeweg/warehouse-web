@@ -16,7 +16,7 @@ const { t } = useI18n()
 const name = ref(props.tag.name)
 const hide = ref<boolean>(false)
 
-const { deleteSuccess, deleteError, updateTag, removeTag } = useTag()
+const { deleteSuccess, deleteError, updateTag, updateTagDebounced, removeTag } = useTag()
 </script>
 
 <template>
@@ -42,7 +42,7 @@ const { deleteSuccess, deleteError, updateTag, removeTag } = useTag()
           :label="t('tag_name')"
           hideLabel
           class="editForm_input"
-          @input="updateTag(tag.id, name)"
+          @input="updateTagDebounced(tag.id, name)"
         />
       </BForm>
     </template>

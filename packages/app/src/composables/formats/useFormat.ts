@@ -1,12 +1,14 @@
 import { apiClient } from '@/api/apiClient'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
+import debounce from 'debounce'
 
 interface UseFormat {
   deleteSuccess: Ref<boolean>
   deleteError: Ref<boolean>
   createFormat: (name: string) => Promise<number>
   updateFormat: (id: number, name: string) => Promise<void>
+  updateFormatDebounced: (id: number, name: string) => void
   removeFormat: (id: number) => Promise<void>
 }
 
@@ -33,6 +35,13 @@ export function useFormat(): UseFormat {
   }
 
   /**
+   * Debounced version of updateFormat.
+   */
+  const updateFormatDebounced = debounce((id: number, name: string): void => {
+    updateFormat(id, name)
+  }, 1000)
+
+  /**
    * Removes a format by its ID.
    */
   const removeFormat = async (id: number): Promise<void> => {
@@ -49,6 +58,7 @@ export function useFormat(): UseFormat {
     deleteError,
     createFormat,
     updateFormat,
+    updateFormatDebounced,
     removeFormat,
   }
 }

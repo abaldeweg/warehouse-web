@@ -16,7 +16,7 @@ const { t } = useI18n()
 const name = ref(props.condition.name)
 const hide = ref<boolean>(false)
 
-const { deleteSuccess, deleteError, updateCondition, removeCondition } = useCondition()
+const { deleteSuccess, deleteError, updateCondition, updateConditionDebounced, removeCondition } = useCondition()
 </script>
 
 <template>
@@ -41,7 +41,7 @@ const { deleteSuccess, deleteError, updateCondition, removeCondition } = useCond
           id="name"
           :label="t('condition_name')"
           hideLabel
-          @input="updateCondition(condition.id, name)"
+          @input="updateConditionDebounced(condition.id, name)"
         />
       </BForm>
     </template>

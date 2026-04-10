@@ -16,7 +16,7 @@ const { t } = useI18n()
 const name = ref(props.genre.name)
 const hide = ref<boolean>(false)
 
-const { deleteSuccess, deleteError, updateGenre, removeGenre } = useGenre()
+const { deleteSuccess, deleteError, updateGenre, updateGenreDebounced, removeGenre } = useGenre()
 </script>
 
 <template>
@@ -41,7 +41,7 @@ const { deleteSuccess, deleteError, updateGenre, removeGenre } = useGenre()
           id="name"
           :label="t('genre_name')"
           hideLabel
-          @input="updateGenre(genre.id, name)"
+          @input="updateGenreDebounced(genre.id, name)"
         />
       </BForm>
     </template>

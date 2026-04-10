@@ -1,12 +1,14 @@
 import { apiClient } from '@/api/apiClient'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
+import debounce from 'debounce'
 
 interface UseCondition {
   deleteSuccess: Ref<boolean>
   deleteError: Ref<boolean>
   createCondition: (name: string) => Promise<number>
   updateCondition: (id: number, name: string) => Promise<void>
+  updateConditionDebounced: (id: number, name: string) => void
   removeCondition: (id: number) => Promise<void>
 }
 
@@ -33,6 +35,13 @@ export function useCondition(): UseCondition {
   }
 
   /**
+   * Debounced version of updateCondition.
+   */
+  const updateConditionDebounced = debounce((id: number, name: string): void => {
+    updateCondition(id, name)
+  }, 1000)
+
+  /**
    * Removes an existing condition by its ID.
    */
   const removeCondition = async (id: number): Promise<void> => {
@@ -49,6 +58,7 @@ export function useCondition(): UseCondition {
     deleteError,
     createCondition,
     updateCondition,
+    updateConditionDebounced,
     removeCondition,
   }
 }
