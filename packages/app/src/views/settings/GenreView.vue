@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import GenreShow from '@/components/genre/GenreShow.vue'
 import GenreCreate from '@/components/genre/GenreCreate.vue'
+import OptionsFilterSort from '@/components/OptionsFilterSort.vue'
 import { useGenres } from '@/composables/genre/useGenres'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
@@ -54,44 +55,7 @@ onMounted(async () => {
     </BAlert>
 
     <div v-if="user && genres && genres.length > 0">
-      <div class="options">
-        <div class="option filter">
-          <div class="icon">
-            <BMaterialIcon>filter_alt</BMaterialIcon>
-          </div>
-          <div class="form">
-            <BInput
-              type="search"
-              v-model="criteria"
-              name="criteria"
-              id="criteria"
-              :label="$t('filter_by_name')"
-              hideLabel
-              :placeholder="$t('filter_by_name')"
-            />
-          </div>
-        </div>
-        <div class="option sort">
-          <div class="icon">
-            <BMaterialIcon>sort_by_alpha</BMaterialIcon>
-          </div>
-          <div class="form">
-            <BSelect
-              v-model="sort"
-              type="options"
-              name="sort"
-              id="sort"
-              :label="$t('sort_direction')"
-              hideLabel
-              :options="[
-                { key: null, value: $t('sort_none') },
-                { key: 'asc', value: $t('sort_asc') },
-                { key: 'desc', value: $t('sort_desc') },
-              ]"
-            />
-          </div>
-        </div>
-      </div>
+      <OptionsFilterSort v-model:criteria="criteria" v-model:sort="sort" />
 
       <GenreShow
         v-for="genre in processedGenres"
@@ -102,39 +66,3 @@ onMounted(async () => {
     </div>
   </BContainer>
 </template>
-
-<style scoped>
-.options {
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-}
-
-.option {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.filter {
-  flex: 1;
-}
-
-.option .icon {
-  display: flex;
-  align-items: center;
-}
-
-.option .form {
-  flex: 1;
-}
-
-@media (min-width: 600px) {
-  .options {
-    flex-direction: row;
-  }
-  .sort {
-    width: 33%;
-  }
-}
-</style>
