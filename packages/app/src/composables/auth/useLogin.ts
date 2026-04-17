@@ -1,9 +1,17 @@
 import { ref } from 'vue'
+import type { Ref } from 'vue'
 import Cookies from 'js-cookie'
 import type { AxiosResponse } from 'axios'
 import { useRouter } from 'vue-router'
 import { apiClient } from '@/api/apiClient'
-import type { UseLogin } from '@/types/composables'
+
+interface UseLogin {
+  username: Ref<string | null>
+  password: Ref<string | null>
+  isLoggingIn: Ref<boolean>
+  invalidCredentials: Ref<boolean>
+  login: () => Promise<void>
+}
 
 /**
  * useLogin composable for handling user authentication.

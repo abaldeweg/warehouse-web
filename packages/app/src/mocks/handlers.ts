@@ -129,7 +129,7 @@ export const handlers = [
         content: null,
       },
       isUser: true,
-      isAdmin: false,
+      isAdmin: true,
     })
   }),
   http.get('*/api/book/stats', () => {
@@ -238,21 +238,26 @@ export const handlers = [
   http.put('*/api/book/1ca572bf-eb59-11ee-a9bb-02d2ac140010', () => {
     return HttpResponse.json({})
   }),
-  http.get('*/apis/core/1/api/branch/*', () => {
+  http.get('*/api/branch/*', () => {
     return HttpResponse.json({
       "id": 1,
       "name": "Branch",
-      "steps": 0,
+      "steps": 0.5,
       "currency": "EUR",
-      "ordering": "",
+      "ordering": "Ordering",
       "public": true,
-      "pricelist": "",
+      "pricelist": "{\"base\":0,\"releaseYear\":{\"2001-2002\":\"1,00\",\"2003-2004\":\"2,00\"},\"condition\":{\"Good\":\"+1,00\",\"Bad\":\"-1,00\"}}",
       "cart": true,
-      "content": "",
+      "content": "Content",
       "mail_reservation": "Dear customer,\n\nYour reserved books are ready for pickup."
     })
-  })
-  ,
+  }),
+  http.post('*/api/branch/*', () => {
+    return HttpResponse.json()
+  }),
+  http.put('*/api/branch/*', () => {
+    return HttpResponse.json({})
+  }),
   http.get('*/api/analyze/shop-search', ({ request }) => {
     const enties = [
       {
@@ -356,5 +361,281 @@ export const handlers = [
         },
       },
     ])
-  })
+  }),
+  http.post('*/api/genre/new', () => {
+    return HttpResponse.json([
+      {
+        id: 1,
+      },
+    ])
+  }),
+  http.put('*/api/genre/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.delete('*/api/genre/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.get('*/api/tag', () => {
+    return HttpResponse.json([
+      {
+        "id": 1,
+        "name": "Crime",
+        "branch_id": 1,
+        "branch": {
+          "id": 0,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": false,
+          "pricelist": "",
+          "cart": false,
+          "content": "",
+          "mail_reservation": ""
+        },
+        "books": null
+      },
+      {
+        "id": 2,
+        "name": "Thriller",
+        "branch_id": 1,
+        "branch": {
+          "id": 0,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": false,
+          "pricelist": "",
+          "cart": false,
+          "content": "",
+          "mail_reservation": ""
+        },
+        "books": null
+      },
+      {
+        "id": 3,
+        "name": "Novels",
+        "branch_id": 1,
+        "branch": {
+          "id": 0,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": false,
+          "pricelist": "",
+          "cart": false,
+          "content": "",
+          "mail_reservation": ""
+        },
+        "books": null
+      },
+    ])
+  }),
+  http.post('*/api/tag/new', () => {
+    return HttpResponse.json([
+      {
+        id: 1,
+      },
+    ])
+  }),
+  http.put('*/api/tag/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.delete('*/api/tag/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.get('*/api/condition', () => {
+    return HttpResponse.json([
+      {
+        "id": 1,
+        "name": "Good",
+        "branch_id": 1,
+        "branch": {
+          "id": 0,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": false,
+          "pricelist": "",
+          "cart": false,
+          "content": "",
+          "mail_reservation": ""
+        }
+      },
+      {
+        "id": 2,
+        "name": "Mediocre",
+        "branch_id": 1,
+        "branch": {
+          "id": 0,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": false,
+          "pricelist": "",
+          "cart": false,
+          "content": "",
+          "mail_reservation": ""
+        }
+      },
+      {
+        "id": 3,
+        "name": "Bad",
+        "branch_id": 1,
+        "branch": {
+          "id": 0,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": false,
+          "pricelist": "",
+          "cart": false,
+          "content": "",
+          "mail_reservation": ""
+        }
+      },
+    ])
+  }),
+  http.post('*/api/condition/new', () => {
+    return HttpResponse.json([
+      {
+        id: 1,
+      },
+    ])
+  }),
+  http.put('*/api/condition/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.delete('*/api/condition/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.get('*/api/format', () => {
+    return HttpResponse.json([
+      {
+        "id": 1,
+        "name": "Paperback",
+        "branch_id": 1,
+        "branch": {
+          "id": 1,
+          "name": "",
+          "steps": 0,
+          "currency": "EUR",
+          "ordering": "",
+          "public": true,
+          "pricelist": "",
+          "cart": true,
+          "content": "",
+          "mail_reservation": ""
+        }
+      },
+      {
+        "id": 2,
+        "name": "Hardcover",
+        "branch_id": 1,
+        "branch": {
+          "id": 1,
+          "name": "",
+          "steps": 0,
+          "currency": "EUR",
+          "ordering": "",
+          "public": true,
+          "pricelist": "",
+          "cart": true,
+          "content": "",
+          "mail_reservation": ""
+        }
+      },
+    ])
+  }),
+  http.post('*/api/format/new', () => {
+    return HttpResponse.json([
+      {
+        id: 1,
+      },
+    ])
+  }),
+  http.put('*/api/format/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.delete('*/api/format/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.get('*/api/inventory/', () => {
+    return HttpResponse.json([
+      {
+        "id": 2,
+        "branch_id": 1,
+        "branch": {
+          "id": 1,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": true,
+          "pricelist": "",
+          "cart": true,
+          "content": "",
+          "mail_reservation": ""
+        },
+        "startedAt": 1635718232,
+        "endedAt": 1635766242,
+        "found": 10,
+        "notFound": 20
+      },
+      {
+        "id": 2,
+        "branch_id": 1,
+        "branch": {
+          "id": 1,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": true,
+          "pricelist": "",
+          "cart": true,
+          "content": "",
+          "mail_reservation": ""
+        },
+        "startedAt": 1635768232,
+        "endedAt": 1635768242,
+        "found": 30,
+        "notFound": 40
+      },
+      {
+        "id": 3,
+        "branch_id": 1,
+        "branch": {
+          "id": 1,
+          "name": "",
+          "steps": 0,
+          "currency": "",
+          "ordering": "",
+          "public": true,
+          "pricelist": "",
+          "cart": true,
+          "content": "",
+          "mail_reservation": ""
+        },
+        "startedAt": 1775245507,
+        "endedAt": null,
+        "found": 50,
+        "notFound": 60
+      }
+    ])
+  }),
+  http.post('*/api/inventory/new', () => {
+    return HttpResponse.json({})
+  }),
+  http.put('*/api/inventory/*', () => {
+    return HttpResponse.json({})
+  }),
+  http.delete('*/api/book/clean', () => {
+    return HttpResponse.json({})
+  }),
 ]

@@ -1,12 +1,23 @@
 export type Branch = {
   id: number
   name: string
-  steps: string
+  steps: number
   currency: string
-  ordering: string
+  ordering: string | null
   public: boolean
   pricelist: string
   cart: boolean
   content: string | null
   mail_reservation: string | null
+}
+
+export interface PricelistEntry {
+  key: string
+  value: string
+}
+
+export interface PricelistData {
+  base: number
+  releaseYear: PricelistEntry[]
+  condition: PricelistEntry[]
 }

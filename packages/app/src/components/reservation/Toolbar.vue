@@ -6,6 +6,7 @@ import type { Reservation } from '@/types/model/reservation'
 import { useToken } from '@/composables/auth/useToken.js'
 import { useBranch } from '@/composables/branch/useBranch'
 import { useRouter } from 'vue-router'
+import AppToolbar from '../AppToolbar.vue'
 
 const props = defineProps<{ reservation: Reservation }>()
 
@@ -29,7 +30,6 @@ fetchUser().then(() => {
   }
 })
 
-
 /**
  * Print function to navigate to the print route for the current reservation
  */
@@ -44,17 +44,19 @@ const print = (): void => {
  * Function to compose an email
  */
 const mail = (): void => {
-  const body = branch.value?.mail_reservation ? branch.value?.mail_reservation : t('reservation_mail_body', { surname: props.reservation.surname })
+  const body = branch.value?.mail_reservation
+    ? branch.value?.mail_reservation
+    : t('reservation_mail_body', { surname: props.reservation.surname })
   window.location.href = `mailto:${props.reservation.mail}?subject=${t('your_reservation')}&body=${encodeURIComponent(body)}`
 }
 </script>
 
 <template>
-  <div class="toolbar">
-    <div class="toolbar_group">
+  <AppToolbar>
+    <template #left>
       <RouterLink :to="{ name: 'reservation' }">&lang; {{ $t('back') }}</RouterLink>
-    </div>
-    <div class="toolbar_group">
+    </template>
+    <template #right>
       <BTooltip :text="t('delete_reservation')" position="bottom">
         <BMaterialIcon @click="$emit('remove')" color="#ff0000" hover>delete</BMaterialIcon>
       </BTooltip>
@@ -67,30 +69,11 @@ const mail = (): void => {
       <BTooltip :text="t('print')" position="bottom">
         <BMaterialIcon @click="print" hover>print</BMaterialIcon>
       </BTooltip>
-      <BSwitch v-model="reservation.open" @update:modelValue="$emit('update', props.reservation.open)"
-        :label="$t('is_new')" />
-    </div>
-  </div>
+      <BSwitch
+        v-model="reservation.open"
+        @update:modelValue="$emit('update', props.reservation.open)"
+        :label="$t('is_new')"
+      />
+    </template>
+  </AppToolbar>
 </template>
-
-<style scoped>
-.toolbar {
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid var(--color-neutral-02);
-  border-radius: 20px;
-  padding: 20px;
-}
-
-.toolbar_group {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-@media print {
-  .toolbar {
-    display: none;
-  }
-}
-</style>

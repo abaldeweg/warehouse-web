@@ -1,4 +1,7 @@
-import type { UseDate } from '../../types/composables'
+interface UseDate {
+  toLocaleDateString: (timestamp: number) => string
+  isOlderThan: (days: number, timestamp: number) => boolean
+}
 
 /**
  * useDate composable for date manipulation logic.

@@ -2,7 +2,15 @@ import { computed, readonly, ref, watchEffect } from 'vue'
 import { apiClient } from '@/api/apiClient'
 import { useDate } from '@/composables/reservations/useDate'
 import type { Reservation } from '@/types/model/reservation'
-import type { UseReservations } from '@/types/composables'
+import type { Ref } from 'vue'
+
+interface UseReservations {
+  reservations: Ref<Reservation[]>
+  readonly countAllReservations: Ref<number>
+  readonly countOpenReservations: Ref<number>
+  readonly countOutdatedReservations: Ref<number>
+  fetchReservations: () => Promise<void>
+}
 
 /**
  * A composable to manage reservations.

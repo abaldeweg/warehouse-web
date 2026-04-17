@@ -1,7 +1,12 @@
 import { ref } from 'vue'
+import type { Ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
-import type { UseAnalyze } from '@/types/composables'
 import type { Analyze } from '@/types/model/analyze'
+
+interface UseAnalyze {
+  analyze: Ref<Analyze[] | null>
+  fetchShopSearch: (start?: string, end?: string) => Promise<void>
+}
 
 /**
  * useAnalyze composable for analyze logic.
