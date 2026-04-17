@@ -41,7 +41,7 @@ onMounted(async () => {
     <h2>{{ $t('create_genre') }}</h2>
 
     <BAlert type="info" v-if="user && !user?.isAdmin">
-      <p>{{ $t('only_admin_can_create_genres') }}</p>
+      {{ $t('only_admin_can_create_genres') }}
     </BAlert>
 
     <GenreCreate @created="fetchGenres" v-if="user?.isAdmin" />

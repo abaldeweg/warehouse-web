@@ -46,7 +46,7 @@ onMounted(async () => {
     <h2>{{ $t('all_tags') }}</h2>
 
     <BAlert type="info" v-if="!isLoading && (!tags || tags.length === 0)">
-      <p>{{ $t('no_tags_available') }}</p>
+      {{ $t('no_tags_available') }}
     </BAlert>
 
     <div v-if="user && tags && tags.length > 0">

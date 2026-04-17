@@ -42,7 +42,7 @@ onMounted(async () => {
     <h2>{{ $t('create_condition') }}</h2>
 
     <BAlert type="info" v-if="user && !user?.isAdmin">
-      <p>{{ $t('only_admin_can_create_conditions') }}</p>
+      {{ $t('only_admin_can_create_conditions') }}
     </BAlert>
 
     <ConditionCreate @created="listConditions" v-if="user?.isAdmin" />
@@ -52,7 +52,7 @@ onMounted(async () => {
     <h2>{{ $t('all_conditions') }}</h2>
 
     <BAlert type="info" v-if="!isLoading && (!conditions || conditions.length === 0)">
-      <p>{{ $t('no_conditions_available') }}</p>
+      {{ $t('no_conditions_available') }}
     </BAlert>
 
     <div v-if="user && conditions && conditions.length > 0">

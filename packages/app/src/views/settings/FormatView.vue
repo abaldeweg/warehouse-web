@@ -41,7 +41,7 @@ onMounted(async () => {
     <h2>{{ $t('create_format') }}</h2>
 
     <BAlert type="info" v-if="user && !user?.isAdmin">
-      <p>{{ $t('only_admin_can_create_formats') }}</p>
+      {{ $t('only_admin_can_create_formats') }}
     </BAlert>
 
     <FormatCreate @created="listFormats" v-if="user?.isAdmin" />
@@ -51,7 +51,7 @@ onMounted(async () => {
     <h2>{{ $t('all_formats') }}</h2>
 
     <BAlert type="info" v-if="!isLoading && (!formats || formats.length === 0)">
-      <p>{{ $t('no_formats_available') }}</p>
+      {{ $t('no_formats_available') }}
     </BAlert>
 
     <div v-if="user && formats && formats.length > 0">
