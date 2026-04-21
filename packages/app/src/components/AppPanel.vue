@@ -45,7 +45,7 @@ const nav = (path: string): string => {
 
     <BNavigation>
       <BNavigationItem :route="nav('/home')" icon="home">{{ $t('home') }}</BNavigationItem>
-      <BNavigationItem :route="nav(catalog)" icon="menu_book">{{ $t('catalog') }}</BNavigationItem>
+      <BNavigationItem :route="catalog" icon="menu_book">{{ $t('catalog') }}</BNavigationItem>
       <BNavigationItem :route="nav('/reservation')" icon="shopping_cart">{{
         $t('reservations')
       }}</BNavigationItem>
