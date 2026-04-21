@@ -15,9 +15,9 @@ const shop: string = import.meta.env.VITE_SHOP
 
 const nav = (path: string): string => {
   const baseURL: string = import.meta.env.VITE_BASE_URL
-  let p = path
+  let p = `${baseURL}${path}`
   if (p.startsWith('//')) p = p.slice(1)
-  return `${baseURL}${p}`
+  return p
 }
 </script>
 
@@ -44,12 +44,12 @@ const nav = (path: string): string => {
     </template>
 
     <BNavigation>
-      <BNavigationItem :route="nav('home')" icon="home">{{ $t('home') }}</BNavigationItem>
+      <BNavigationItem :route="nav('/home')" icon="home">{{ $t('home') }}</BNavigationItem>
       <BNavigationItem :route="nav(catalog)" icon="menu_book">{{ $t('catalog') }}</BNavigationItem>
-      <BNavigationItem :route="nav('reservation')" icon="shopping_cart">{{
+      <BNavigationItem :route="nav('/reservation')" icon="shopping_cart">{{
         $t('reservations')
       }}</BNavigationItem>
-      <BNavigationItem :route="nav('settings')" icon="settings">{{
+      <BNavigationItem :route="nav('/settings')" icon="settings">{{
         $t('settings')
       }}</BNavigationItem>
       <BNavigationItem :route="shop" icon="store">{{ $t('shop') }}</BNavigationItem>
