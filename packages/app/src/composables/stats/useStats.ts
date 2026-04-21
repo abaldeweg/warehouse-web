@@ -1,7 +1,12 @@
 import { ref } from 'vue'
 import { apiClient } from '@/api/apiClient'
 import type { Stats } from '@/types/model/stats'
-import type { UseStats } from '../../types/composables'
+import type { Ref } from 'vue'
+
+interface UseStats {
+  stats: Ref<Stats | null>
+  fetchStats: () => Promise<void>
+}
 
 /**
  * useAuth composable for authentication logic.

@@ -2,7 +2,14 @@ import { ref, watch } from 'vue'
 import { apiClient } from '@/api/apiClient'
 import type { Reservation } from '@/types/model/reservation'
 import type { Book } from '@/types/model/book'
-import type { UseReservation } from '@/types/composables'
+import type { Ref } from 'vue'
+
+interface UseReservation {
+  reservation: Ref<Reservation | null>
+  fetchReservation: (id: string) => Promise<void>
+  updateReservation: () => Promise<void>
+  removeReservation: () => Promise<void>
+}
 
 /**
  * useReservation composable for managing a single reservation.
