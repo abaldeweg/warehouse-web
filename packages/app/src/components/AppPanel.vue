@@ -12,6 +12,13 @@ const emit = defineEmits<{
 
 const catalog: string = import.meta.env.VITE_CATALOG
 const shop: string = import.meta.env.VITE_SHOP
+
+const nav = (path: string): string => {
+  const baseURL: string = import.meta.env.VITE_BASE_URL
+  let p = path
+  if (p.startsWith('//')) p = p.slice(1)
+  return `${baseURL}${p}`
+}
 </script>
 
 <template>
@@ -37,12 +44,14 @@ const shop: string = import.meta.env.VITE_SHOP
     </template>
 
     <BNavigation>
-      <BNavigationItem :route="'/home'" icon="home">{{ $t('home') }}</BNavigationItem>
-      <BNavigationItem :route="catalog" icon="menu_book">{{ $t('catalog') }}</BNavigationItem>
-      <BNavigationItem :route="'/reservation'" icon="shopping_cart">{{
+      <BNavigationItem :route="nav('home')" icon="home">{{ $t('home') }}</BNavigationItem>
+      <BNavigationItem :route="nav(catalog)" icon="menu_book">{{ $t('catalog') }}</BNavigationItem>
+      <BNavigationItem :route="nav('reservation')" icon="shopping_cart">{{
         $t('reservations')
       }}</BNavigationItem>
-      <BNavigationItem :route="'/settings'" icon="settings">{{ $t('settings') }}</BNavigationItem>
+      <BNavigationItem :route="nav('settings')" icon="settings">{{
+        $t('settings')
+      }}</BNavigationItem>
       <BNavigationItem :route="shop" icon="store">{{ $t('shop') }}</BNavigationItem>
       <BNavigationItem :route="'/help'" icon="help">{{ $t('help') }}</BNavigationItem>
     </BNavigation>
