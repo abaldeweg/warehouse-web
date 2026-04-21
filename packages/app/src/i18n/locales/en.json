@@ -169,5 +169,9 @@
   "tag_delete_error": "Error deleting tag. Please note: If the tag is associated with any products, it cannot be deleted.",
   "genre_delete_error": "Error deleting genre. Please note: If the genre is associated with any products, it cannot be deleted.",
   "format_delete_error": "Error deleting format. Please note: If the format is associated with any products, it cannot be deleted.",
-  "condition_delete_error": "Error deleting condition. Please note: If the condition is associated with any products, it cannot be deleted."
+  "condition_delete_error": "Error deleting condition. Please note: If the condition is associated with any products, it cannot be deleted.",
+  "delete_condition": "Delete Condition",
+  "delete_format": "Delete Format",
+  "delete_genre": "Delete Genre",
+  "delete_tag": "Delete Tag"
 }

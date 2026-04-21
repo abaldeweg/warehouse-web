@@ -52,7 +52,7 @@ const { deleteSuccess, deleteError, updateGenre, updateGenreDebounced, removeGen
           <BMaterialIcon :style="{ cursor: 'pointer' }">more_vert</BMaterialIcon>
         </template>
         <BDropdownItem icon="delete" @click="removeGenre(genre.id)">
-          {{ $t('delete_item') }}
+          {{ $t('delete_genre') }}
         </BDropdownItem>
       </BDropdown>
     </template>

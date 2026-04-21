@@ -52,7 +52,7 @@ const { deleteSuccess, deleteError, updateCondition, updateConditionDebounced, r
           <BMaterialIcon :style="{ cursor: 'pointer' }">more_vert</BMaterialIcon>
         </template>
         <BDropdownItem icon="delete" @click="removeCondition(condition.id)">
-          {{ $t('delete_item') }}
+          {{ $t('delete_condition') }}
         </BDropdownItem>
       </BDropdown>
     </template>

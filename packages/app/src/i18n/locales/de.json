@@ -169,5 +169,9 @@
   "inventory": "Inventur",
   "format": "Typ",
   "condition": "Zustand",
-  "settings_for_branch": "Einstellungen für Filiale"
+  "settings_for_branch": "Einstellungen für Filiale",
+  "delete_condition": "Zustand löschen",
+  "delete_format": "Typ löschen",
+  "delete_genre": "Rubrik löschen",
+  "delete_tag": "Schlagwort löschen"
 }

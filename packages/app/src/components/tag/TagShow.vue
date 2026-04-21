@@ -53,7 +53,7 @@ const { deleteSuccess, deleteError, updateTag, updateTagDebounced, removeTag } =
           <BMaterialIcon :style="{ cursor: 'pointer' }">more_vert</BMaterialIcon>
         </template>
         <BDropdownItem icon="delete" @click="removeTag(tag.id)">
-          {{ $t('delete_item') }}
+          {{ $t('delete_tag') }}
         </BDropdownItem>
       </BDropdown>
     </template>
