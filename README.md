@@ -16,5 +16,4 @@ The application uses the following environment variables:
 - `VITE_LOGO`: URL string for the logo.
 - `VITE_ABOUT`: HTML content for the about section.
 - `VITE_CATALOG`: URL for the product catalog.
-- `VITE_SETTINGS`: URL for the settings service.
 - `VITE_SHOP`: URL for the shop service.
