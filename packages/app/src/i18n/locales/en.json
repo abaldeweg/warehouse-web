@@ -173,5 +173,8 @@
   "delete_condition": "Delete Condition",
   "delete_format": "Delete Format",
   "delete_genre": "Delete Genre",
-  "delete_tag": "Delete Tag"
+  "delete_tag": "Delete Tag",
+  "move_up": "Move Up",
+  "move_down": "Move Down",
+  "delete": "Delete"
 }
