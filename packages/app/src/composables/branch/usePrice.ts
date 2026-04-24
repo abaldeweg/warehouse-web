@@ -18,6 +18,8 @@ interface UsePrices {
   toRecord: (entries: PricelistEntry[]) => Record<string, string>
   addEntry: (entries: PricelistEntry[]) => void
   removeEntry: (entries: PricelistEntry[], index: number) => void
+  moveEntryUp: (entries: PricelistEntry[], index: number) => void
+  moveEntryDown: (entries: PricelistEntry[], index: number) => void
 }
 
 /**
@@ -68,6 +70,22 @@ export function usePrice(): UsePrices {
   const removeEntry = (entries: PricelistEntry[], index: number): PricelistEntry[] => entries.splice(index, 1)
 
   /**
+   * Moves the entry at the given index one position up.
+   */
+  const moveEntryUp = (entries: PricelistEntry[], index: number): void => {
+    if (index <= 0) return
+    ;[entries[index - 1], entries[index]] = [entries[index], entries[index - 1]]
+  }
+
+  /**
+   * Moves the entry at the given index one position down.
+   */
+  const moveEntryDown = (entries: PricelistEntry[], index: number): void => {
+    if (index >= entries.length - 1) return
+    ;[entries[index], entries[index + 1]] = [entries[index + 1], entries[index]]
+  }
+
+  /**
    * Parses the input JSON string into a PricelistData object.
    */
   const parse = (value: string): PricelistData => {
@@ -84,6 +102,6 @@ export function usePrice(): UsePrices {
   }
 
   return {
-    pricelist, sections, parse, toRecord, addEntry, removeEntry
+    pricelist, sections, parse, toRecord, addEntry, removeEntry, moveEntryUp, moveEntryDown
   }
 }
