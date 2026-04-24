@@ -22,8 +22,6 @@ steps:
       - '--build-arg'
       - VITE_CATALOG=$_VITE_CATALOG
       - '--build-arg'
-      - VITE_SETTINGS=$_VITE_SETTINGS
-      - '--build-arg'
       - VITE_SHOP=$_VITE_SHOP
       - .
     id: Build
