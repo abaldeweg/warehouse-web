@@ -15,7 +15,8 @@ const emit = defineEmits<{
 
 const { t } = useI18n()
 
-const { pricelist, sections, parse, toRecord, addEntry, removeEntry } = usePrice()
+const { pricelist, sections, parse, toRecord, addEntry, removeEntry, moveEntryUp, moveEntryDown } =
+  usePrice()
 
 onMounted((): void => {
   pricelist.value = parse(props.modelValue)
@@ -67,6 +68,22 @@ watch(
             />
           </td>
           <td class="alignRight">
+            <BButton
+              design="text"
+              type="button"
+              @click="moveEntryUp(section.entries, index)"
+              :disabled="index === 0"
+            >
+              <BMaterialIcon>arrow_upward</BMaterialIcon>
+            </BButton>
+            <BButton
+              design="text"
+              type="button"
+              @click="moveEntryDown(section.entries, index)"
+              :disabled="index === section.entries.length - 1"
+            >
+              <BMaterialIcon>arrow_downward</BMaterialIcon>
+            </BButton>
             <BButton design="text" type="button" @click="removeEntry(section.entries, index)">
               <BMaterialIcon color="var(--color-neutral-10)">delete</BMaterialIcon>
             </BButton>
