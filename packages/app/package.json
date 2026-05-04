@@ -30,7 +30,7 @@
     "axios": "1.15.2",
     "canvas-confetti": "1.9.4",
     "debounce": "3.0.0",
-    "eslint": "10.2.1",
+    "eslint": "10.3.0",
     "eslint-plugin-vue": "10.9.0",
     "jiti": "2.6.1",
     "js-cookie": "3.0.5",
