@@ -40,8 +40,8 @@ importers:
         specifier: 24.12.2
         version: 24.12.2
       '@unhead/vue':
-        specifier: 2.1.13
-        version: 2.1.13(vue@3.5.34(typescript@6.0.3))
+        specifier: 2.1.15
+        version: 2.1.15(vue@3.5.34(typescript@6.0.3))
       '@vitejs/plugin-vue':
         specifier: 6.0.6
         version: 6.0.6(vite@8.0.11(@types/node@24.12.2)(jiti@2.6.1)(terser@5.47.1)(yaml@2.8.3))(vue@3.5.34(typescript@6.0.3))
@@ -1183,8 +1183,8 @@ packages:
     resolution: {integrity: sha512-XJ9UD9+bbDo4a4epraTwG3TsNPeiB9aShrUneAVXy8q4LuwowN+qu89/6ByLMINqvIMeI9H9hOHQtg/ijrYXzQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@unhead/vue@2.1.13':
-    resolution: {integrity: sha512-HYy0shaHRnLNW9r85gppO8IiGz0ONWVV3zGdlT8CQ0tbTwixznJCIiyqV4BSV1aIF1jJIye0pd1p/k6Eab8Z/A==}
+  '@unhead/vue@2.1.15':
+    resolution: {integrity: sha512-SSByXfEjhzPn8gXdEdgpYqpLMPSkLUH2HVE0GxZfOtNsJ0GgOHQs0g9T67ZZ1z0kTELLKdtOtYrzrbv9+ffF7g==}
     peerDependencies:
       vue: '>=3.5.18'
 
@@ -3016,8 +3016,8 @@ packages:
     resolution: {integrity: sha512-xXnp4kTyor2Zq+J1FfPI6Eq3ew5h6Vl0F/8d9XU5zZQf1tX9s2Su1/3PiMmUANFULpmksxkClamIZcaUqryHsQ==}
     engines: {node: '>=20.18.1'}
 
-  unhead@2.1.13:
-    resolution: {integrity: sha512-jO9M1sI6b2h/1KpIu4Jeu+ptumLmUKboRRLxys5pYHFeT+lqTzfNHbYUX9bxVDhC1FBszAGuWcUVlmvIPsah8Q==}
+  unhead@2.1.15:
+    resolution: {integrity: sha512-MCt5T90mCWyr3Z6pUCdM9lVRXoMoVBlL7z7U4CYVIiaDiuzad/UCfLuMqz5MeNmpZUgoBCQnrucJimU7EZR+XA==}
 
   unicode-canonical-property-names-ecmascript@2.0.1:
     resolution: {integrity: sha512-dA8WbNeb2a6oQzAQ55YlT5vQAWGV9WXOsi3SskE3bcCdM0P4SDd+24zS/OCacdRq5BkdsRj9q3Pg6YyQoxIGqg==}
@@ -4617,10 +4617,10 @@ snapshots:
       '@typescript-eslint/types': 8.58.0
       eslint-visitor-keys: 5.0.1
 
-  '@unhead/vue@2.1.13(vue@3.5.34(typescript@6.0.3))':
+  '@unhead/vue@2.1.15(vue@3.5.34(typescript@6.0.3))':
     dependencies:
       hookable: 6.0.1
-      unhead: 2.1.13
+      unhead: 2.1.15
       vue: 3.5.34(typescript@6.0.3)
 
   '@vitejs/plugin-vue@6.0.6(vite@8.0.11(@types/node@24.12.2)(jiti@2.6.1)(terser@5.47.1)(yaml@2.8.3))(vue@3.5.34(typescript@6.0.3))':
@@ -6638,7 +6638,7 @@ snapshots:
 
   undici@7.25.0: {}
 
-  unhead@2.1.13:
+  unhead@2.1.15:
     dependencies:
       hookable: 6.0.1
 
