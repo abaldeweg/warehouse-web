@@ -34,8 +34,8 @@ importers:
         specifier: 3.0.6
         version: 3.0.6
       '@types/jsdom':
-        specifier: 28.0.2
-        version: 28.0.2
+        specifier: 28.0.3
+        version: 28.0.3
       '@types/node':
         specifier: 24.12.4
         version: 24.12.4
@@ -1063,8 +1063,8 @@ packages:
   '@types/js-cookie@3.0.6':
     resolution: {integrity: sha512-wkw9yd1kEXOPnvEeEV1Go1MmxtBJL0RR79aOTAApecWFVu7w0NNXNqhcWgvw2YgZDYadliXkl14pa3WXw5jlCQ==}
 
-  '@types/jsdom@28.0.2':
-    resolution: {integrity: sha512-zZYItekplnGirFhVDrcB0+103TMakXfKfIp7uECxaFzFG3Ws5kYQSwVb1d4pQfJMMjQda6pfuZxueAv9CMiJbw==}
+  '@types/jsdom@28.0.3':
+    resolution: {integrity: sha512-/HQ2uFoetFTXuye8vzIcHw2z6Fwi7Hi/qcgC+RoS9NCyewiqxhVGqlG+ViGB6lkax481R6dmhf1I7lIGlzJStQ==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -4442,7 +4442,7 @@ snapshots:
 
   '@types/js-cookie@3.0.6': {}
 
-  '@types/jsdom@28.0.2':
+  '@types/jsdom@28.0.3':
     dependencies:
       '@types/node': 24.12.3
       '@types/tough-cookie': 4.0.5
