@@ -33,7 +33,7 @@
     "eslint": "10.3.0",
     "eslint-plugin-vue": "10.9.1",
     "jiti": "2.7.0",
-    "js-cookie": "3.0.5",
+    "js-cookie": "3.0.6",
     "jsdom": "29.1.1",
     "msw": "2.14.6",
     "prettier": "3.8.3",
