@@ -41,7 +41,6 @@ onUnmounted(() => {
       <RouterLink :to="{ name: 'reservation' }">
         <BMaterialIcon>euro</BMaterialIcon>{{ countAllReservations > 0 ? ('(' + countAllReservations + ')') : '' }}
       </RouterLink>
-      <BMaterialIcon v-if="countAllReservations === 0">euro</BMaterialIcon>
       <BDropdown position="bottom" class="action">
         <template #selector>
           <BMaterialIcon hover>account_circle</BMaterialIcon>
