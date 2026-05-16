@@ -173,5 +173,8 @@
   "delete_condition": "Zustand löschen",
   "delete_format": "Typ löschen",
   "delete_genre": "Rubrik löschen",
-  "delete_tag": "Schlagwort löschen"
+  "delete_tag": "Schlagwort löschen",
+  "move_up": "Nach oben",
+  "move_down": "Nach unten",
+  "delete": "Löschen"
 }
