@@ -176,5 +176,8 @@
   "delete_tag": "Delete Tag",
   "move_up": "Move Up",
   "move_down": "Move Down",
-  "delete": "Delete"
+  "delete": "Delete",
+  "open_reservations": "Open Reservations",
+  "outdated_reservations": "Outdated Reservations",
+  "all_reservations": "All Reservations"
 }

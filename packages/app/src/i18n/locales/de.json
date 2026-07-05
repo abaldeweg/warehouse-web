@@ -176,5 +176,8 @@
   "delete_tag": "Schlagwort löschen",
   "move_up": "Nach oben",
   "move_down": "Nach unten",
-  "delete": "Löschen"
+  "delete": "Löschen",
+  "open_reservations": "Offene Reservierungen",
+  "outdated_reservations": "Veraltete Reservierungen",
+  "all_reservations": "Alle Reservierungen"
 }
