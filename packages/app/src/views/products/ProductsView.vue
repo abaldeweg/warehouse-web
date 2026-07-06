@@ -53,14 +53,16 @@ onBeforeUnmount((): void => {
 </script>
 
 <template>
-  <BContainer size="l">
+  <!-- <BContainer size="l">
     <BAlert type="danger">
-      <BMaterialIcon class="icon">euro</BMaterialIcon>
-      {{t('open_reservations')}}: {{ countOpenReservations }} &bull;
-      {{t('outdated_reservations')}}: {{ countOutdatedReservations }} &bull;
-      {{t('all_reservations')}}: {{ countAllReservations }}
-  </BAlert>
-  </BContainer>
+      <RouterLink :to="{ name: 'reservation' }" :style="{ textDecoration: 'none' }">
+        <BMaterialIcon class="icon">euro</BMaterialIcon>
+        {{t('open_reservations')}}: {{ countOpenReservations }} &bull;
+        {{t('outdated_reservations')}}: {{ countOutdatedReservations }} &bull;
+        {{t('all_reservations')}}: {{ countAllReservations }}
+      </RouterLink>
+    </BAlert>
+  </BContainer> -->
   <iframe
     ref="catalogRef"
     :src="catalog"
