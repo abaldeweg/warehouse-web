@@ -74,6 +74,7 @@ onBeforeUnmount((): void => {
 <style scoped>
 .catalog {
   width: 100%;
+  min-height: 100vh;
   border: none;
   display: block;
 }
