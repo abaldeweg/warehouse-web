@@ -46,11 +46,11 @@ const nav = (path: string): string => {
     </template>
 
     <BNavigation>
-      <BNavigationItem :route="nav('/home')" icon="home">{{ $t('home') }}</BNavigationItem>
       <BNavigationItem :route="nav('/products')" icon="menu_book">{{ $t('catalog') }}</BNavigationItem>
       <BNavigationItem :route="nav('/reservation')" icon="shopping_cart">{{
         $t('reservations')
       }}</BNavigationItem>
+      <BNavigationItem :route="nav('/stats')" icon="bar_chart">{{ $t('stats') }}</BNavigationItem>
       <BNavigationItem :route="nav('/settings')" icon="settings">{{
         $t('settings')
       }}</BNavigationItem>
