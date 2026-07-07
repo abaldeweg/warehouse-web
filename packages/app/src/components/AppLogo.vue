@@ -1,10 +1,9 @@
 <script setup lang="ts">
 const logo: string | null = import.meta.env.VITE_LOGO !== 'false' ? import.meta.env.VITE_LOGO : null
-const catalog: string = import.meta.env.VITE_CATALOG
 </script>
 
 <template>
-  <a :href="catalog">
+  <a href="/">
     <img :src="logo" alt="warehouse" v-if="logo" />
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 200 200" class="logo"
       :style="{ fill: 'var(--color-primary-10)' }" v-else>
