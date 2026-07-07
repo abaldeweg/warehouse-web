@@ -2,7 +2,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
-import {useReservations} from '@/composables/reservations/useReservations'
+// import {useReservations} from '@/composables/reservations/useReservations'
 
 const { t } = useI18n()
 
@@ -13,7 +13,7 @@ const iframeHeight = ref<string>('auto')
 const catalog: string = import.meta.env.VITE_CATALOG
 let resizeObserver: ResizeObserver | null = null
 
-const {countAllReservations, countOpenReservations,countOutdatedReservations} = useReservations()
+// const {countAllReservations, countOpenReservations,countOutdatedReservations} = useReservations()
 
 /**
  * Updates the height of the iframe based on its content.
