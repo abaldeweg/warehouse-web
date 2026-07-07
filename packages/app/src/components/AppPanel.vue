@@ -10,9 +10,11 @@ const emit = defineEmits<{
   (event: 'close-drawer'): void
 }>()
 
-const catalog: string = import.meta.env.VITE_CATALOG
 const shop: string = import.meta.env.VITE_SHOP
 
+/**
+ * Returns the full URL for a given path, prepending the base URL from environment variables.
+ */
 const nav = (path: string): string => {
   const baseURL: string = import.meta.env.VITE_BASE_URL
   let p = `${baseURL}${path}`
@@ -45,7 +47,7 @@ const nav = (path: string): string => {
 
     <BNavigation>
       <BNavigationItem :route="nav('/home')" icon="home">{{ $t('home') }}</BNavigationItem>
-      <BNavigationItem :route="catalog" icon="menu_book">{{ $t('catalog') }}</BNavigationItem>
+      <BNavigationItem :route="nav('/products')" icon="menu_book">{{ $t('catalog') }}</BNavigationItem>
       <BNavigationItem :route="nav('/reservation')" icon="shopping_cart">{{
         $t('reservations')
       }}</BNavigationItem>
