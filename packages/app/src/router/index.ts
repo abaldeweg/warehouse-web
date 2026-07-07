@@ -9,7 +9,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('../views/HomeView.vue'),
+      redirect: { name: 'products' },
     },
     {
       path: '/products',
@@ -33,6 +33,11 @@ const router = createRouter({
       component: () => import('../views/reservation/PrintView.vue'),
       props: true,
       meta: { layout: 'print' },
+    },
+    {
+      path: '/stats',
+      name: 'stats',
+      component: () => import('../views/stats/StatsView.vue'),
     },
     {
       path: '/settings/',

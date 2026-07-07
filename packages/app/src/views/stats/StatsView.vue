@@ -12,7 +12,7 @@ import ShopSearch from '@/components/home/ShopSearch.vue'
 const { t } = useI18n()
 
 useHead({
-  title: t('welcome'),
+  title: t('stats'),
 })
 
 const { stats, fetchStats } = useStats()
@@ -25,34 +25,23 @@ fetchShopSearch()
 
 <template>
   <BContainer size="m">
-    <h1>{{ t('welcome_to_warehouse') }}</h1>
+    <h1>{{ t('stats') }}</h1>
   </BContainer>
 
   <BContainer size="m">
-    <div class="dashboard">
-      <div class="widget">
-        <Stats :stats="stats" />
-        <ShopSearch :analyze="analyze" />
-      </div>
-      <div class="widget">
-        <Reservations :countAllReservations="countAllReservations" :countOpenReservations="countOpenReservations"
-          :countOutdatedReservations="countOutdatedReservations" />
-        <Storage :stats="stats" />
-      </div>
-    </div>
+    <Stats :stats="stats" />
+  </BContainer>
 
+  <BContainer size="m">
+    <Reservations :countAllReservations="countAllReservations" :countOpenReservations="countOpenReservations"
+          :countOutdatedReservations="countOutdatedReservations" />
+  </BContainer>
+
+  <BContainer size="m">
+    <Storage :stats="stats" />
+  </BContainer>
+
+  <BContainer size="m">
+    <ShopSearch :analyze="analyze" />
   </BContainer>
 </template>
-
-<style scoped>
-@media (min-width: 600px) {
-  .dashboard {
-    display: flex;
-    gap: 20px;
-  }
-
-  .widget {
-    flex-grow: 1;
-  }
-}
-</style>
