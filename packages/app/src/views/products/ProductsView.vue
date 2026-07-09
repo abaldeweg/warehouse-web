@@ -32,6 +32,16 @@ const updateHeight = (): void => {
   }
 }
 
+/**
+ * Scrolls the page to the top.
+ */
+const scrollToTop = (): void => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+}
+
 onMounted((): void => {
   const iframe = catalogRef.value
   if (!iframe) return
@@ -69,6 +79,15 @@ onBeforeUnmount((): void => {
     class="catalog"
     :style="{ height: iframeHeight }"
   ></iframe>
+
+  <button
+    @click="scrollToTop"
+    class="scroll-to-top"
+    :title="t('scroll_to_top')"
+    aria-label="Scroll to top"
+  >
+    <BMaterialIcon>arrow_upward</BMaterialIcon>
+  </button>
 </template>
 
 <style scoped>
@@ -81,5 +100,24 @@ onBeforeUnmount((): void => {
 
 .icon {
   float: right;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-neutral-10);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-to-top:hover {
+  background-color: var(--color-neutral-08);
 }
 </style>

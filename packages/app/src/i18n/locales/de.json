@@ -179,5 +179,6 @@
   "delete": "Löschen",
   "open_reservations": "Offene Reservierungen",
   "outdated_reservations": "Veraltete Reservierungen",
-  "all_reservations": "Alle Reservierungen"
+  "all_reservations": "Alle Reservierungen",
+  "scroll_to_top": "Nach oben scrollen"
 }
