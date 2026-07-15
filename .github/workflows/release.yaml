@@ -19,7 +19,7 @@ jobs:
           git config --global user.email "a@baldeweg.org"
           git config --global user.name "André Baldeweg"
       - name: Use Node.js 22.x
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24.x
       - name: Set version in package.json
