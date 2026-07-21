@@ -109,6 +109,7 @@ onBeforeUnmount((): void => {
   width: 48px;
   height: 48px;
   background-color: var(--color-neutral-10);
+  color: var(--color-neutral-00);
   border: none;
   border-radius: 50%;
   cursor: pointer;
