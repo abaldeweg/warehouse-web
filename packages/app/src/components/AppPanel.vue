@@ -10,6 +10,7 @@ const emit = defineEmits<{
   (event: 'close-drawer'): void
 }>()
 
+const catalog: string = import.meta.env.VITE_CATALOG
 const shop: string = import.meta.env.VITE_SHOP
 
 /**
@@ -46,7 +47,7 @@ const nav = (path: string): string => {
     </template>
 
     <BNavigation>
-      <BNavigationItem :route="nav('/products')" icon="menu_book">{{ $t('catalog') }}</BNavigationItem>
+      <BNavigationItem :route="catalog" icon="menu_book">{{ $t('catalog') }}</BNavigationItem>
       <BNavigationItem :route="nav('/reservation')" icon="shopping_cart">{{
         $t('reservations')
       }}</BNavigationItem>
