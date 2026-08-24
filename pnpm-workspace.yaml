@@ -3,3 +3,5 @@ packages:
 allowBuilds:
   esbuild: true
   msw: true
+minimumReleaseAgeExclude:
+  - '@baldeweg/ui@0.20.0-alpha.4'

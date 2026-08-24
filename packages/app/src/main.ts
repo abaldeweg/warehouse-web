@@ -1,6 +1,8 @@
 import { createUi } from '@baldeweg/ui'
-import i18n from './i18n'
+// @ts-expect-error side-effect style import has no type declarations
 import '@baldeweg/ui/styles'
+import './style.css'
+import i18n from './i18n'
 import { createHead } from '@unhead/vue/client'
 import { createApp } from 'vue'
 import App from './App.vue'
