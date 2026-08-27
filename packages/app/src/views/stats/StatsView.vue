@@ -32,16 +32,16 @@ fetchShopSearch()
     <Stats :stats="stats" />
   </BContainer>
 
-  <BContainer size="m">
+  <BContainer size="m" class="mt-2xl">
     <Reservations :countAllReservations="countAllReservations" :countOpenReservations="countOpenReservations"
           :countOutdatedReservations="countOutdatedReservations" />
   </BContainer>
 
-  <BContainer size="m">
+  <BContainer size="m"  class="mt-2xl">
     <Storage :stats="stats" />
   </BContainer>
 
-  <BContainer size="m">
+  <BContainer size="m"  class="mt-2xl">
     <ShopSearch :analyze="analyze" />
   </BContainer>
 </template>

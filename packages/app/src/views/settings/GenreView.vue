@@ -25,19 +25,19 @@ onMounted(async () => {
 
 <template>
   <BContainer size="m">
-    <AppToolbar>
+    <AppToolbar class="mb-xl">
       <template #left>
         <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
       </template>
     </AppToolbar>
   </BContainer>
 
-  <BContainer size="m">
+  <BContainer size="m" >
     <h1 class="h1">{{ $t('genres') }} ({{ counter }})</h1>
     <p>{{ $t('genres_desc') }}</p>
   </BContainer>
 
-  <BContainer size="m">
+  <BContainer size="m" class="mt-xl">
     <h2 class="h2">{{ $t('create_genre') }}</h2>
 
     <BAlert type="info" v-if="user && !user?.isAdmin">

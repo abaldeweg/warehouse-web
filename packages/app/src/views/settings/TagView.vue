@@ -25,7 +25,7 @@ onMounted(async () => {
 
 <template>
   <BContainer size="m">
-    <AppToolbar>
+    <AppToolbar class="mb-xl">
       <template #left>
         <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
       </template>
@@ -37,7 +37,7 @@ onMounted(async () => {
     <p>{{ $t('tags_desc') }}</p>
   </BContainer>
 
-  <BContainer size="m">
+  <BContainer size="m" class="mt-xl">
     <h2 class="h2">{{ $t('create_tag') }}</h2>
     <TagCreate @created="listTags" />
   </BContainer>

@@ -20,7 +20,7 @@ const { isCleaning, cleaningSuccess, cleaningError, cleanBooks } = useBranch()
 
 <template>
   <BContainer size="m">
-    <AppToolbar>
+    <AppToolbar class="mb-xl">
       <template #left>
         <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
       </template>
@@ -44,7 +44,7 @@ const { isCleaning, cleaningSuccess, cleaningError, cleanBooks } = useBranch()
     </BAlert>
   </BContainer>
 
-  <BContainer size="m">
+  <BContainer size="m" class="mt-xl">
     <BButton type="button" design="text" v-if="isCleaning"><BSpinner size="s" /></BButton>
     <BButton design="primary_danger" @click="cleanBooks" v-if="!isCleaning && user && user.isAdmin">
       {{ $t('clean_books') }}

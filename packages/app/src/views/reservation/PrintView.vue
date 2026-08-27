@@ -37,7 +37,7 @@ watchEffect(() => {
       <OrderPrintCustomer :reservation="reservation" />
     </BContainer>
 
-    <BContainer size="m" class="products">
+    <BContainer size="m" class="products mt-xl">
       <OrderPrintTable :products="reservation.books" />
     </BContainer>
   </div>

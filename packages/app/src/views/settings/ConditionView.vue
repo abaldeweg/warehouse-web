@@ -26,14 +26,14 @@ onMounted(async () => {
 
 <template>
   <BContainer size="m">
-    <AppToolbar>
+    <AppToolbar class="mb-xl">
       <template #left>
         <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
       </template>
     </AppToolbar>
   </BContainer>
 
-  <BContainer size="m">
+  <BContainer size="m" class="mb-xl">
     <h1 class="h1">{{ $t('conditions') }} ({{ counter }})</h1>
     <p>{{ $t('conditions_desc') }}</p>
   </BContainer>

@@ -11,7 +11,6 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <BContainer size="m" :style="{ paddingLeft: 0, paddingRight: 0 }">
     <h2 class="h2">{{ t('reservations') }}</h2>
     <BTable>
       <table :aria-label="t('reservations_statistics_desc')">
@@ -31,11 +30,10 @@ const { t } = useI18n()
         </tbody>
       </table>
     </BTable>
-  </BContainer>
 
-  <BContainer size="m" :style="{ paddingLeft: 0, paddingRight: 0 }">
-    <RouterLink :to="{ name: 'reservation' }">{{ t('view_all_reservations') }}</RouterLink>
-  </BContainer>
+    <div class="mt-l">
+      <RouterLink :to="{ name: 'reservation' }" >{{ t('view_all_reservations') }}</RouterLink>
+    </div>
 </template>
 
 <style scoped>

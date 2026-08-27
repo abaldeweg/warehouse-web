@@ -30,7 +30,7 @@ watch(isSaving, (newVal, oldVal) => {
 
 <template>
   <BContainer size="m">
-    <AppToolbar>
+    <AppToolbar class="mb-xl">
       <template #left>
         <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
       </template>

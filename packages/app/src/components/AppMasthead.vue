@@ -26,7 +26,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header class="masthead">
+  <header class="masthead bg-neutral-100">
     <div class="masthead_start" v-if="isAuthenticated">
       <span @click="emit('open-drawer')">
         <BMaterialIcon hover>menu</BMaterialIcon>
@@ -80,11 +80,16 @@ body {
 }
 
 .masthead {
+  border-bottom: 1px solid var(--color-neutral-200);
   height: var(--masthead-top-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 12px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .masthead_start,

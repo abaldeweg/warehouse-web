@@ -8,7 +8,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <BContainer size="m" v-if="stats" :style="{ paddingLeft: 0, paddingRight: 0 }">
+  <div v-if="stats" >
     <h2 class="h2">{{ t('storage') }}</h2>
     <BTable>
       <table :aria-label="t('storage_statistics_desc')">
@@ -20,7 +20,7 @@ const { t } = useI18n()
         </tbody>
       </table>
     </BTable>
-  </BContainer>
+  </div>
 </template>
 
 <style scoped>
