@@ -108,8 +108,8 @@ onBeforeUnmount((): void => {
   right: 20px;
   width: 48px;
   height: 48px;
-  background-color: var(--color-neutral-10);
-  color: var(--color-neutral-00);
+  background-color: var(--color-neutral-950);
+  color: var(--color-neutral-100);
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -119,6 +119,6 @@ onBeforeUnmount((): void => {
 }
 
 .scroll-to-top:hover {
-  background-color: var(--color-neutral-08);
+  background-color: var(--color-neutral-800);
 }
 </style>

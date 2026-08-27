@@ -12,7 +12,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <h2>{{ t('shop_search') }}</h2>
+  <h2 class="h2">{{ t('shop_search') }}</h2>
   <p>{{ t('shop_search_description') }}</p>
   <table v-if="props.analyze && props.analyze.length">
     <thead>

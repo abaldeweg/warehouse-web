@@ -15,7 +15,7 @@ const { toLocaleDateString, isOlderThan } = useDate()
 
 <template>
   <BContainer size="m">
-    <h1>{{ $t('reservations') }}</h1>
+    <h1 class="h1">{{ $t('reservations') }}</h1>
   </BContainer>
 
   <BContainer size="m" v-if="reservations">

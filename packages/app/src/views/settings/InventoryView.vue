@@ -49,7 +49,7 @@ const create = async (): Promise<void> => {
   </BContainer>
 
   <BContainer size="m">
-    <h1>{{ $t('inventory') }}</h1>
+    <h1 class="h1">{{ $t('inventory') }}</h1>
     <p>{{ $t('inventory_desc') }}</p>
   </BContainer>
 

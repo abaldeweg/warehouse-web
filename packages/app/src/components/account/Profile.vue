@@ -14,7 +14,7 @@ const { logout } = useLogout()
 
 <template>
   <div class="media" />
-  <h2>
+  <h2 class="h2">
     {{ $t('hello_name', { name: user?.username || '' }) }}
   </h2>
   <div class="branch">
@@ -34,14 +34,14 @@ const { logout } = useLogout()
 <style scoped>
 .media {
   border-radius: 5px;
-  background: var(--color-neutral-02);
-  background: linear-gradient(90deg, var(--color-primary-10) 0%, var(--color-primary-05) 100%);
+  background: var(--color-neutral-200);
+  background: linear-gradient(90deg, var(--color-primary-900) 0%, var(--color-primary-100) 100%);
   height: 10px;
   margin-bottom: 20px;
 }
 
 .branch {
-  color: var(--color-neutral-06);
+  color: var(--color-neutral-600);
 }
 
 .actions {

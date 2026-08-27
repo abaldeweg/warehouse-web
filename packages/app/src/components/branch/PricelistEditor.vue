@@ -90,7 +90,7 @@ watch(
             </BTooltip>
             <BTooltip position="left" :text="t('delete')">
               <BButton design="text" type="button" @click="removeEntry(section.entries, index)">
-                <BMaterialIcon color="var(--color-neutral-10)">delete</BMaterialIcon>
+                <BMaterialIcon color="var(--color-neutral-950)">delete</BMaterialIcon>
               </BButton>
             </BTooltip>
           </td>

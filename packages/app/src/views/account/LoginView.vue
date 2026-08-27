@@ -10,7 +10,7 @@ useHead({ title: t('login') })
 
 <template>
   <BContainer size="s">
-    <h1>{{ t('login') }}</h1>
+    <h1 class="h1">{{ t('login') }}</h1>
   </BContainer>
 
   <BContainer size="s">

@@ -14,7 +14,7 @@ useHead({ title: t('update_password') })
   </BContainer>
 
   <BContainer size="s">
-    <h1>{{ t('update_password') }}</h1>
+    <h1 class="h1">{{ t('update_password') }}</h1>
   </BContainer>
 
   <BContainer size="s">

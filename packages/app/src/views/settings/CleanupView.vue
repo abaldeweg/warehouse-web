@@ -28,7 +28,7 @@ const { isCleaning, cleaningSuccess, cleaningError, cleanBooks } = useBranch()
   </BContainer>
 
   <BContainer size="m">
-    <h1>{{ $t('cleanup') }}</h1>
+    <h1 class="h1">{{ $t('cleanup') }}</h1>
     <p>{{ $t('cleanup_desc') }}</p>
 
     <BAlert type="info" v-if="!user || !user.isAdmin">

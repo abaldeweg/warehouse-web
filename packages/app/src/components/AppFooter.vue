@@ -10,7 +10,7 @@ const about = import.meta.env.VITE_ABOUT
 
 <style scoped>
 .footer {
-  border-top: 1px solid var(--color-neutral-02);
+  border-top: 1px solid var(--color-neutral-200);
 }
 @media print {
   .footer {

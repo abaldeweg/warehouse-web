@@ -9,7 +9,7 @@ const { t } = useI18n()
 
 <template>
   <BContainer size="m" v-if="stats" :style="{ paddingLeft: 0, paddingRight: 0 }">
-    <h2>{{ t('storage') }}</h2>
+    <h2 class="h2">{{ t('storage') }}</h2>
     <BTable>
       <table :aria-label="t('storage_statistics_desc')">
         <tbody>

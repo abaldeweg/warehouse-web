@@ -11,7 +11,7 @@ const handleUpdate = () => {
 </script>
 
 <template>
-  <h2>{{ $t('customer') }}</h2>
+  <h2 class="h2">{{ $t('customer') }}</h2>
 
   <BForm @submit.prevent="handleUpdate">
     <BSelect type="options" name="salutation" id="salutation" :label="$t('salutation')" :options="[

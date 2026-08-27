@@ -30,7 +30,7 @@ watchEffect(() => {
 <template>
   <div v-if="reservation" class="reservation_order">
     <BContainer size="m">
-      <h1>{{ $t('reservation_from') }} {{ toLocaleDateString(reservation.createdAt) }}</h1>
+      <h1 class="h1">{{ $t('reservation_from') }} {{ toLocaleDateString(reservation.createdAt) }}</h1>
     </BContainer>
 
     <BContainer size="m" class="customer">

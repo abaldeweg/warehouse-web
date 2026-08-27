@@ -33,17 +33,17 @@ onMounted(async () => {
   </BContainer>
 
   <BContainer size="m">
-    <h1>{{ $t('tags') }} ({{ counter }})</h1>
+    <h1 class="h1">{{ $t('tags') }} ({{ counter }})</h1>
     <p>{{ $t('tags_desc') }}</p>
   </BContainer>
 
   <BContainer size="m">
-    <h2>{{ $t('create_tag') }}</h2>
+    <h2 class="h2">{{ $t('create_tag') }}</h2>
     <TagCreate @created="listTags" />
   </BContainer>
 
   <BContainer size="m">
-    <h2>{{ $t('all_tags') }}</h2>
+    <h2 class="h2">{{ $t('all_tags') }}</h2>
 
     <BAlert type="info" v-if="!isLoading && (!tags || tags.length === 0)">
       {{ $t('no_tags_available') }}

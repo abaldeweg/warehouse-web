@@ -33,12 +33,12 @@ onMounted(async () => {
   </BContainer>
 
   <BContainer size="m">
-    <h1>{{ $t('genres') }} ({{ counter }})</h1>
+    <h1 class="h1">{{ $t('genres') }} ({{ counter }})</h1>
     <p>{{ $t('genres_desc') }}</p>
   </BContainer>
 
   <BContainer size="m">
-    <h2>{{ $t('create_genre') }}</h2>
+    <h2 class="h2">{{ $t('create_genre') }}</h2>
 
     <BAlert type="info" v-if="user && !user?.isAdmin">
       {{ $t('only_admin_can_create_genres') }}
@@ -48,7 +48,7 @@ onMounted(async () => {
   </BContainer>
 
   <BContainer size="m">
-    <h2>{{ $t('all_genres') }}</h2>
+    <h2 class="h2">{{ $t('all_genres') }}</h2>
 
     <BAlert type="info" v-if="!isLoading && (!genres || genres.length === 0)">
       <p>{{ $t('no_genres_available') }}</p>

@@ -12,7 +12,7 @@ const { t } = useI18n()
 
 <template>
   <BContainer size="m" :style="{ paddingLeft: 0, paddingRight: 0 }">
-    <h2>{{ t('reservations') }}</h2>
+    <h2 class="h2">{{ t('reservations') }}</h2>
     <BTable>
       <table :aria-label="t('reservations_statistics_desc')">
         <tbody>

@@ -33,12 +33,12 @@ onMounted(async () => {
   </BContainer>
 
   <BContainer size="m">
-    <h1>{{ $t('formats') }} ({{ counter }})</h1>
+    <h1 class="h1">{{ $t('formats') }} ({{ counter }})</h1>
     <p>{{ $t('formats_desc') }}</p>
   </BContainer>
 
   <BContainer size="m">
-    <h2>{{ $t('create_format') }}</h2>
+    <h2 class="h2">{{ $t('create_format') }}</h2>
 
     <BAlert type="info" v-if="user && !user?.isAdmin">
       {{ $t('only_admin_can_create_formats') }}
@@ -48,7 +48,7 @@ onMounted(async () => {
   </BContainer>
 
   <BContainer size="m">
-    <h2>{{ $t('all_formats') }}</h2>
+    <h2 class="h2">{{ $t('all_formats') }}</h2>
 
     <BAlert type="info" v-if="!isLoading && (!formats || formats.length === 0)">
       {{ $t('no_formats_available') }}

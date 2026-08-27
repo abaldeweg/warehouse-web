@@ -113,7 +113,7 @@ const removeProduct = async (productId: string): Promise<void> => {
     </BContainer>
 
     <BContainer size="m">
-      <h1>{{ $t('reservation_from') }} {{ toLocaleDateString(reservation.createdAt) }}</h1>
+      <h1 class="h1">{{ $t('reservation_from') }} {{ toLocaleDateString(reservation.createdAt) }}</h1>
     </BContainer>
 
     <BContainer size="m" class="products">

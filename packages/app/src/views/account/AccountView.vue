@@ -10,7 +10,7 @@ useHead({ title: t('account') })
 
 <template>
   <BContainer size="s">
-    <h1>{{ t('account') }}</h1>
+    <h1 class="h1">{{ t('account') }}</h1>
   </BContainer>
 
   <BContainer size="s">
@@ -22,7 +22,7 @@ useHead({ title: t('account') })
 
 <style scoped>
 .card {
-  border: 1px solid var(--color-neutral-02);
+  border: 1px solid var(--color-neutral-200);
   border-radius: 20px;
   padding: 20px;
 }
