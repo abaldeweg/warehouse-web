@@ -22,8 +22,8 @@ importers:
         version: 5.0.7(@vue/compiler-sfc@3.5.41)(rolldown@1.2.5)(rollup@4.62.5)(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)(yaml@2.9.0))(vue@3.5.41(typescript@6.0.3))
     devDependencies:
       '@baldeweg/ui':
-        specifier: 0.20.0-alpha.4
-        version: 0.20.0-alpha.4(@tailwindcss/vite@4.2.4(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)(yaml@2.9.0)))(tailwindcss@4.2.4)(vue-router@5.0.7(@vue/compiler-sfc@3.5.41)(rolldown@1.2.5)(rollup@4.62.5)(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)(yaml@2.9.0))(vue@3.5.41(typescript@6.0.3)))(vue@3.5.41(typescript@6.0.3))
+        specifier: 0.20.0-alpha.7
+        version: 0.20.0-alpha.7(@tailwindcss/vite@4.2.4(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)(yaml@2.9.0)))(tailwindcss@4.2.4)(vue-router@5.0.7(@vue/compiler-sfc@3.5.41)(rolldown@1.2.5)(rollup@4.62.5)(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)(yaml@2.9.0))(vue@3.5.41(typescript@6.0.3)))(vue@3.5.41(typescript@6.0.3))
       '@tailwindcss/vite':
         specifier: 4.2.4
         version: 4.2.4(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)(yaml@2.9.0))
@@ -656,12 +656,12 @@ packages:
     resolution: {integrity: sha512-eY+Yn3dCqTGmyiq2QRU66lA5FL8lqqqvecHt0fF3uHONIa7ToYsaCiWV8lOKqAs0Rb2SjixiKFROngnulPtt2g==}
     engines: {node: ^22.18.0 || >=24.11.0}
 
-  '@baldeweg/ui@0.20.0-alpha.4':
-    resolution: {integrity: sha512-zYkkBIS+qooUDFGr/FMBb67DtczfPbD5w+0+yRm7TC5GanWr/5mq/Rp0MuKN2o0cDhXNI0WcEpv5URSVxkz0bw==}
+  '@baldeweg/ui@0.20.0-alpha.7':
+    resolution: {integrity: sha512-+b+kyRMvj1Z7MVQwpBrdz/JMxD06B4KhEc8FEBVGKFM4tPcG7llKDkl+emN78Jw37nnoaKZgXbNFNadybZZvsg==}
     peerDependencies:
       '@tailwindcss/vite': 4.2.4
       tailwindcss: 4.2.4
-      vue: 3.5.41
+      vue: 3.5.42
       vue-router: 5.0.7
 
   '@bramus/specificity@2.4.2':
@@ -4304,7 +4304,7 @@ snapshots:
       '@babel/helper-string-parser': 8.0.0
       '@babel/helper-validator-identifier': 8.0.4
 
-  '@baldeweg/ui@0.20.0-alpha.4(@tailwindcss/vite@4.2.4(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)(yaml@2.9.0)))(tailwindcss@4.2.4)(vue-router@5.0.7(@vue/compiler-sfc@3.5.41)(rolldown@1.2.5)(rollup@4.62.5)(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)(yaml@2.9.0))(vue@3.5.41(typescript@6.0.3)))(vue@3.5.41(typescript@6.0.3))':
+  '@baldeweg/ui@0.20.0-alpha.7(@tailwindcss/vite@4.2.4(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)(yaml@2.9.0)))(tailwindcss@4.2.4)(vue-router@5.0.7(@vue/compiler-sfc@3.5.41)(rolldown@1.2.5)(rollup@4.62.5)(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)(yaml@2.9.0))(vue@3.5.41(typescript@6.0.3)))(vue@3.5.41(typescript@6.0.3))':
     dependencies:
       '@tailwindcss/vite': 4.2.4(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)(yaml@2.9.0))
       tailwindcss: 4.2.4

@@ -41,7 +41,7 @@ onUnmounted(() => {
       <RouterLink :to="{ name: 'reservation' }">
         <BMaterialIcon>euro</BMaterialIcon>{{ countAllReservations > 0 ? ('(' + countAllReservations + ')') : '' }}
       </RouterLink>
-      <BDropdown position="bottom" class="action">
+      <BDropdown position="bottom" align="left" class="action">
         <template #selector>
           <BMaterialIcon hover>account_circle</BMaterialIcon>
         </template>
