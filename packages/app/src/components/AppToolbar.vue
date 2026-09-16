@@ -9,7 +9,7 @@
 .toolbar {
   display: flex;
   justify-content: space-between;
-  border: 1px solid var(--color-neutral-02);
+  border: 1px solid var(--color-neutral-200);
   border-radius: 20px;
   padding: 20px;
 }

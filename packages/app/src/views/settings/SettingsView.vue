@@ -54,7 +54,7 @@ const settings = [
 
 <template>
   <BContainer size="m">
-    <h1>{{ $t('settings_for_branch') }} "{{ user?.branch.name }}"</h1>
+    <h1 class="h1">{{ $t('settings_for_branch') }} "{{ user?.branch.name }}"</h1>
   </BContainer>
 
   <BContainer size="m">

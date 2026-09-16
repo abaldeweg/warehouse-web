@@ -25,23 +25,23 @@ fetchShopSearch()
 
 <template>
   <BContainer size="m">
-    <h1>{{ t('stats') }}</h1>
+    <h1 class="h1">{{ t('stats') }}</h1>
   </BContainer>
 
   <BContainer size="m">
     <Stats :stats="stats" />
   </BContainer>
 
-  <BContainer size="m">
+  <BContainer size="m" class="mt-2xl">
     <Reservations :countAllReservations="countAllReservations" :countOpenReservations="countOpenReservations"
           :countOutdatedReservations="countOutdatedReservations" />
   </BContainer>
 
-  <BContainer size="m">
+  <BContainer size="m"  class="mt-2xl">
     <Storage :stats="stats" />
   </BContainer>
 
-  <BContainer size="m">
+  <BContainer size="m"  class="mt-2xl">
     <ShopSearch :analyze="analyze" />
   </BContainer>
 </template>

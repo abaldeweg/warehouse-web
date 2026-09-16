@@ -16,7 +16,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <BApp>
+  <BApp class="mt-[calc(var(--masthead-top-height)+20px)]">
     <AppMasthead @open-drawer="isDrawerActive = true" />
     <slot />
     <AppFooter />

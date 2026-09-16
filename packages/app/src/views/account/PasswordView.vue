@@ -13,8 +13,8 @@ useHead({ title: t('update_password') })
     <RouterLink :to="{ name: 'account' }">&lang; {{ t('account') }}</RouterLink>
   </BContainer>
 
-  <BContainer size="s">
-    <h1>{{ t('update_password') }}</h1>
+  <BContainer size="s" class="mt-xl">
+    <h1 class="h1">{{ t('update_password') }}</h1>
   </BContainer>
 
   <BContainer size="s">

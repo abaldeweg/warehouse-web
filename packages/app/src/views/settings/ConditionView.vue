@@ -26,20 +26,20 @@ onMounted(async () => {
 
 <template>
   <BContainer size="m">
-    <AppToolbar>
+    <AppToolbar class="mb-xl">
       <template #left>
         <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
       </template>
     </AppToolbar>
   </BContainer>
 
-  <BContainer size="m">
-    <h1>{{ $t('conditions') }} ({{ counter }})</h1>
+  <BContainer size="m" class="mb-xl">
+    <h1 class="h1">{{ $t('conditions') }} ({{ counter }})</h1>
     <p>{{ $t('conditions_desc') }}</p>
   </BContainer>
 
   <BContainer size="m">
-    <h2>{{ $t('create_condition') }}</h2>
+    <h2 class="h2">{{ $t('create_condition') }}</h2>
 
     <BAlert type="info" v-if="user && !user?.isAdmin">
       {{ $t('only_admin_can_create_conditions') }}
@@ -49,7 +49,7 @@ onMounted(async () => {
   </BContainer>
 
   <BContainer size="m">
-    <h2>{{ $t('all_conditions') }}</h2>
+    <h2 class="h2">{{ $t('all_conditions') }}</h2>
 
     <BAlert type="info" v-if="!isLoading && (!conditions || conditions.length === 0)">
       {{ $t('no_conditions_available') }}

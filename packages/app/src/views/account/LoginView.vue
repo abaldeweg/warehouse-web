@@ -9,8 +9,8 @@ useHead({ title: t('login') })
 </script>
 
 <template>
-  <BContainer size="s">
-    <h1>{{ t('login') }}</h1>
+  <BContainer size="s" class="mt-2xl">
+    <h1 class="h1">{{ t('login') }}</h1>
   </BContainer>
 
   <BContainer size="s">

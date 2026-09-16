@@ -8,7 +8,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <h2>{{ t('customer') }}</h2>
+  <h2 class="h2">{{ t('customer') }}</h2>
 
   <table class="customer-table">
     <tbody>

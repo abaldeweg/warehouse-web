@@ -42,7 +42,7 @@ const nav = (path: string): string => {
         @click="emit('close-drawer')"
         :style="{ float: 'right', marginRight: '10px' }"
       >
-        <BMaterialIcon color="var(--color-neutral-10)" hover>left_panel_close</BMaterialIcon>
+        <BMaterialIcon color="var(--color-neutral-950)" hover>left_panel_close</BMaterialIcon>
       </BButton>
     </template>
 

@@ -30,7 +30,7 @@ watch(isSaving, (newVal, oldVal) => {
 
 <template>
   <BContainer size="m">
-    <AppToolbar>
+    <AppToolbar class="mb-xl">
       <template #left>
         <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
       </template>
@@ -38,7 +38,7 @@ watch(isSaving, (newVal, oldVal) => {
   </BContainer>
 
   <BContainer size="m">
-    <h1>{{ $t('branch') }}</h1>
+    <h1 class="h1">{{ $t('branch') }}</h1>
 
     <BAlert type="success" v-if="savedSuccess" closable>
       {{ t('branch_updated_successfully') }}

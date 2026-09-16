@@ -41,7 +41,7 @@ watch(
   <BFieldset :legend="t('pricelist')">
     <BInput type="number" name="base" id="base" :label="t('base_price')" v-model="pricelist.base" />
 
-    <table v-for="section in sections" :key="section.prefix">
+    <table v-for="section in sections" :key="section.prefix" class="w-full">
       <thead>
         <tr>
           <th>{{ section.label }}</th>
@@ -59,7 +59,7 @@ watch(
               v-model="entry.key"
             />
           </td>
-          <td>
+          <td class="pl-l">
             <BInput
               type="text"
               :name="`${section.prefix}_price_${index}`"
@@ -90,7 +90,7 @@ watch(
             </BTooltip>
             <BTooltip position="left" :text="t('delete')">
               <BButton design="text" type="button" @click="removeEntry(section.entries, index)">
-                <BMaterialIcon color="var(--color-neutral-10)">delete</BMaterialIcon>
+                <BMaterialIcon color="var(--color-neutral-950)">delete</BMaterialIcon>
               </BButton>
             </BTooltip>
           </td>
@@ -98,7 +98,7 @@ watch(
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="3" class="alignRight">
+          <td colspan="3" class="alignRight pt-l">
             <BButton design="text" type="button" @click="addEntry(section.entries)">
               <BMaterialIcon>add</BMaterialIcon>
             </BButton>

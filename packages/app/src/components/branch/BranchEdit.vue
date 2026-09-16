@@ -124,8 +124,8 @@ const update = (): void => {
     <PricelistEditor v-model="pricelist" />
 
     <template #buttons v-if="user && user.isAdmin">
-      <BButton design="primary_wide" v-if="!isSaving">{{ $t('save') }}</BButton>
-      <BButton design="text" type="button" v-if="isSaving"><BSpinner size="s" /></BButton>
+      <BButton design="primary_wide" v-if="!isSaving" class="mt-xl">{{ $t('save') }}</BButton>
+      <BButton design="text" type="button" v-if="isSaving" class="mt-xl"><BSpinner size="s" /></BButton>
     </template>
   </BForm>
 </template>

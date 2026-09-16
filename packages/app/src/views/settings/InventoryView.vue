@@ -32,7 +32,7 @@ const create = async (): Promise<void> => {
 
 <template>
   <BContainer size="m">
-    <AppToolbar>
+    <AppToolbar class="mb-xl">
       <template #left>
         <RouterLink :to="{ name: 'settings' }">&lang; {{ $t('back') }}</RouterLink>
       </template>
@@ -49,7 +49,7 @@ const create = async (): Promise<void> => {
   </BContainer>
 
   <BContainer size="m">
-    <h1>{{ $t('inventory') }}</h1>
+    <h1 class="h1">{{ $t('inventory') }}</h1>
     <p>{{ $t('inventory_desc') }}</p>
   </BContainer>
 
@@ -61,6 +61,7 @@ const create = async (): Promise<void> => {
       :isAdmin="user?.isAdmin"
       @end="listInventories"
       v-if="inventories && user"
+      class="mt-xl"
     />
   </BContainer>
 </template>

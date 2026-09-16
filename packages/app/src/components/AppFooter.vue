@@ -3,14 +3,14 @@ const about = import.meta.env.VITE_ABOUT
 </script>
 
 <template>
-  <div class="footer">
+  <div class="footer p-xl mt-xl">
     <BContainer size="m" v-html="about" />
   </div>
 </template>
 
 <style scoped>
 .footer {
-  border-top: 1px solid var(--color-neutral-02);
+  border-top: 1px solid var(--color-neutral-200);
 }
 @media print {
   .footer {

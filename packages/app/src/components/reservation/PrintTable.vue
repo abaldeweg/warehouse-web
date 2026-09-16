@@ -19,7 +19,7 @@ const sum = computed(() => {
 </script>
 
 <template>
-  <h2>{{ $t('products') }}</h2>
+  <h2 class="h2">{{ $t('products') }}</h2>
 
   <BTable>
     <table>

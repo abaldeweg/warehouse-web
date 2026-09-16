@@ -29,7 +29,7 @@ const sum = computed(() => {
 </script>
 
 <template>
-  <h2>{{ $t('products') }}</h2>
+  <h2 class="h2">{{ $t('products') }}</h2>
 
   <BAlert v-if="products.length === 0" type="warning">
     <div class="table_alert">
@@ -66,7 +66,7 @@ const sum = computed(() => {
           <td class="alignRight">{{ currency(product.price) }}</td>
           <td class="alignRight">
             <BTooltip position="left" :text="t('remove_from_reservation')">
-              <BMaterialIcon @click="emit('remove-product', product.id)" hover color="var(--color-accent-red-10)">cancel
+              <BMaterialIcon @click="emit('remove-product', product.id)" hover color="var(--color-red-900)">cancel
               </BMaterialIcon>
             </BTooltip>
           </td>
