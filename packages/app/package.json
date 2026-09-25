@@ -21,7 +21,7 @@
     "@types/js-cookie": "3.0.6",
     "@types/jsdom": "30.0.0",
     "@types/node": "24.13.6",
-    "@unhead/vue": "2.1.17",
+    "@unhead/vue": "3.4.1",
     "@vitejs/plugin-vue": "6.0.9",
     "@vitest/eslint-plugin": "1.6.27",
     "@vue/eslint-config-prettier": "10.2.0",
