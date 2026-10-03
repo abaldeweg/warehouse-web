@@ -45,7 +45,7 @@
     "vite-plugin-webfont-dl": "3.13.1",
     "vitest": "5.0.3",
     "vue-i18n": "11.4.12",
-    "vue-tsc": "3.3.11"
+    "vue-tsc": "3.3.12"
   },
   "license": "MIT",
   "msw": {
