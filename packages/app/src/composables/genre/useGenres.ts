@@ -44,7 +44,7 @@ export function useGenres(): UseGenres {
    */
   const fetchGenres = async (): Promise<void> => {
     isLoading.value = true
-    const response = await apiClient.get(`/api/genre`)
+    const response = await apiClient.get(`/api/genre/`)
     genres.value = response.data
     isLoading.value = false
   }
