@@ -28,8 +28,8 @@ importers:
         specifier: 4.2.4
         version: 4.2.4(vite@8.3.8(@types/node@26.6.6)(jiti@2.7.0)(terser@5.50.0)(yaml@2.9.0))
       '@tsconfig/node26':
-        specifier: 26.0.0
-        version: 26.0.0
+        specifier: 26.0.2
+        version: 26.0.2
       '@types/canvas-confetti':
         specifier: 1.9.0
         version: 1.9.0
@@ -1248,8 +1248,8 @@ packages:
     resolution: {integrity: sha512-/67zpWDBLV+oYAEL682s1ktXL0HgqX76f6gaVGkGnVZlBbm1zd0v4Bz8MFF2GGhoX9rvfq3KSQHubFHwa6w6/Q==}
     engines: {node: '>=12'}
 
-  '@tsconfig/node26@26.0.0':
-    resolution: {integrity: sha512-AlW882moMu/JzvTVjdGqJEsrqD5nSWHiFD7Aeuw6Rb58S4Aig+09mDUFFlXJx/y6/y77NwGYLlqhWxvolcC0sw==}
+  '@tsconfig/node26@26.0.2':
+    resolution: {integrity: sha512-RIBSoNGQxUQ8r4hSrEzS6TrUneoKaCuX6BjL4zF3wqttGq2w06zCea4d8P1gRvM/HZyDT1FQJ8trZSyy/63oMg==}
 
   '@types/canvas-confetti@1.9.0':
     resolution: {integrity: sha512-aBGj/dULrimR1XDZLtG9JwxX1b4HPRF6CX9Yfwh3NvstZEm1ZL7RBnel4keCPSqs1ANRu1u2Aoz9R+VmtjYuTg==}
@@ -4717,7 +4717,7 @@ snapshots:
       magic-string: 0.30.21
       string.prototype.matchall: 4.0.12
 
-  '@tsconfig/node26@26.0.0': {}
+  '@tsconfig/node26@26.0.2': {}
 
   '@types/canvas-confetti@1.9.0': {}
 
