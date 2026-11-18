@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import OrderAge from '@/components/reservation/Age.vue'
@@ -10,6 +10,7 @@ import { useDate } from '@/composables/reservations/useDate'
 import { useReservation } from '@/composables/reservations/useReservation'
 import { useProduct } from '@/composables/products/useProduct'
 import { useRouter } from 'vue-router'
+import type { Book } from '@/types/model/book'
 
 const props = defineProps<{ id: string }>()
 
@@ -18,10 +19,19 @@ const { t } = useI18n()
 useHead({ title: t('reservation') })
 
 const isDeleteDialogVisible = ref(false)
+const rows = ref<{ book: Book; deleted: boolean }[]>([])
 
-const { reservation, updateReservation, removeReservation } = useReservation(props.id)
+const { reservation, updateReservation, removeReservation, reserveProduct } = useReservation(props.id)
 
 const router = useRouter()
+
+watch(
+  () => reservation.value?.id,
+  () => {
+    rows.value = (reservation.value?.books ?? []).map((book: Book) => ({ book, deleted: false }))
+  },
+  { immediate: true },
+)
 
 /**
  * Updates the reservation status.
@@ -61,6 +71,7 @@ const sellProducts = (): void => {
   if (reservation.value) {
     sellAll(reservation.value.books)
     reservation.value.books = []
+    rows.value = []
   }
 }
 
@@ -96,8 +107,30 @@ const removeProduct = async (productId: string): Promise<void> => {
   book.value.reserved = false
   book.value.reservedAt = null
   await update(book.value)
+  const row = rows.value.find((r) => r.book.id === productId)
+  if (row && reservation.value) {
+    row.deleted = true
+    syncBooks()
+  }
+}
+
+/**
+ * Restores a removed product at its original position.
+ */
+const undoRemoveProduct = async (productId: string): Promise<void> => {
+  const row = rows.value.find((r) => r.book.id === productId)
+  if (!row || !reservation.value) return
+  await reserveProduct(productId)
+  row.deleted = false
+  syncBooks()
+}
+
+/**
+ * Derives the reservation books from the rows, keeping the original order.
+ */
+const syncBooks = (): void => {
   if (reservation.value) {
-    reservation.value.books = reservation.value.books.filter((book: any) => book.id !== productId)
+    reservation.value.books = rows.value.filter((r) => !r.deleted).map((r) => r.book)
   }
 }
 </script>
@@ -117,7 +150,7 @@ const removeProduct = async (productId: string): Promise<void> => {
     </BContainer>
 
     <BContainer size="m" class="products">
-      <OrderTable :products="reservation.books" @remove="remove" @remove-product="removeProduct" />
+      <OrderTable :products="rows.map((r) => r.book)" :deleted-ids="rows.filter((r) => r.deleted).map((r) => r.book.id)" @remove="remove" @remove-product="removeProduct" @undo-remove-product="undoRemoveProduct" />
     </BContainer>
 
     <BContainer size="m" class="customer mt-xl">

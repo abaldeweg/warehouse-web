@@ -9,6 +9,7 @@ interface UseReservation {
   fetchReservation: (id: string) => Promise<void>
   updateReservation: () => Promise<void>
   removeReservation: () => Promise<void>
+  reserveProduct: (productId: string) => Promise<void>
 }
 
 /**
@@ -61,6 +62,40 @@ export function useReservation(reservationId: string): UseReservation {
     }
   }
 
+  /**
+   * Adds a product to this reservation again, using the book update endpoint.
+   */
+  const reserveProduct = async (productId: string): Promise<void> => {
+    const res = await apiClient.get('/api/book/' + productId)
+    const data = res.data
+
+    const tags: any[] = []
+    data.tags.forEach((element: { id: any }) => {
+      tags.push(element.id)
+    })
+
+    const book = {
+      added: new Date(data.added).getTime(),
+      title: data.title,
+      shortDescription: data.shortDescription,
+      author: data.author.surname + ',' + data.author.firstname,
+      genre: data.genre.id,
+      price: data.price,
+      sold: data.sold,
+      removed: data.removed,
+      reserved: true,
+      reservation_id: reservationId,
+      releaseYear: data.releaseYear !== '' ? data.releaseYear : 0,
+      cond: data.condition?.id,
+      tags: tags,
+      recommendation: data.recommendation,
+      format: data.format.id,
+      subtitle: data.subtitle,
+      duplicate: data.duplicate,
+    }
+    await apiClient.put('/api/book/' + data.id, book)
+  }
+
   watch(
     () => reservationId,
     (newId) => {
@@ -71,5 +106,5 @@ export function useReservation(reservationId: string): UseReservation {
     { immediate: true },
   )
 
-  return { reservation, fetchReservation, updateReservation, removeReservation }
+  return { reservation, fetchReservation, updateReservation, removeReservation, reserveProduct }
 }
