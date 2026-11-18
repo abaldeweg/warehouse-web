@@ -54,7 +54,7 @@ export const handlers = [
           genre: {
             name: 'Thriller',
           },
-          price: 2.5,
+          price: 1.5,
           subtitle: null,
         },
       ],
@@ -145,9 +145,9 @@ export const handlers = [
   http.put('*/api/book/sell/*', () => {
     return HttpResponse.json({})
   }),
-  http.get('*/api/book/1ca572bf-eb59-11ee-a9bb-02d2ac140010', () => {
+  http.get('*/api/book/:id', ({ params }) => {
     return HttpResponse.json({
-      id: '1ca572bf-eb59-11ee-a9bb-02d2ac140010',
+      id: params.id,
       branch: {
         id: 1,
         name: 'Branch 1',
@@ -235,7 +235,7 @@ export const handlers = [
       duplicate: false,
     })
   }),
-  http.put('*/api/book/1ca572bf-eb59-11ee-a9bb-02d2ac140010', () => {
+  http.put('*/api/book/:id', () => {
     return HttpResponse.json({})
   }),
   http.get('*/api/branch/*', () => {
