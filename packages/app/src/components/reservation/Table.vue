@@ -3,11 +3,15 @@ import type { Book } from '@/types/model/book'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const props = defineProps<{ products: Book[] }>()
+const props = defineProps<{
+  products: Book[]
+  deletedIds?: string[]
+}>()
 
 const emit = defineEmits<{
   (event: 'remove'): void
   (event: 'remove-product', productId: string): void
+  (event: 'undo-remove-product', productId: string): void
 }>()
 
 const { t } = useI18n()
@@ -21,9 +25,11 @@ const currency = (number: number): string => {
   }).format(number)
 }
 
+const isDeleted = (id: string): boolean => props.deletedIds?.includes(id) ?? false
+
 const sum = computed(() => {
   return props.products.reduce((prev, cur) => {
-    return prev + cur.price
+    return isDeleted(cur.id) ? prev : prev + cur.price
   }, 0)
 })
 </script>
@@ -53,19 +59,23 @@ const sum = computed(() => {
       </thead>
 
       <tbody>
-        <tr v-for="(product, index) in products" :key="index">
+        <tr v-for="product in products" :key="product.id">
           <td>
-            <a :href="catalog + '/book/' + product.id">
+            <a :href="catalog + '/book/' + product.id" :class="{ 'text-red-900 line-through': isDeleted(product.id) }">
               {{ product.title }}
             </a>
             <span v-if="product.sold"> - {{ $t('sold') }}</span>
             <span v-if="product.removed"> - {{ $t('removed') }}</span>
           </td>
-          <td>{{ product.author.surname }}, {{ product.author.firstname }}</td>
-          <td>{{ product.genre.name }}</td>
-          <td class="alignRight">{{ currency(product.price) }}</td>
+          <td :class="{ 'text-red-900 line-through': isDeleted(product.id) }">{{ product.author.surname }}, {{ product.author.firstname }}</td>
+          <td :class="{ 'text-red-900 line-through': isDeleted(product.id) }">{{ product.genre.name }}</td>
+          <td class="alignRight" :class="{ 'text-red-900 line-through': isDeleted(product.id) }">{{ currency(product.price) }}</td>
           <td class="alignRight">
-            <BTooltip position="left" :text="t('remove_from_reservation')">
+            <BTooltip v-if="isDeleted(product.id)" position="left" :text="t('restore_product')">
+              <BMaterialIcon @click="emit('undo-remove-product', product.id)" hover color="var(--color-green-900)">undo
+              </BMaterialIcon>
+            </BTooltip>
+            <BTooltip v-else position="left" :text="t('remove_from_reservation')">
               <BMaterialIcon @click="emit('remove-product', product.id)" hover color="var(--color-red-900)">cancel
               </BMaterialIcon>
             </BTooltip>
