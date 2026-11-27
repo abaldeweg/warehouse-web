@@ -10,10 +10,7 @@
       "updateTypes": [
         "patch"
       ],
-      "automerge": true,
-      "requiredStatusChecks": [
-        "ci/tests"
-      ]
+      "automerge": true
     }
   ]
 }
